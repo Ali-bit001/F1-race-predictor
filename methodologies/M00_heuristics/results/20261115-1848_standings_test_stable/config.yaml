@@ -1,0 +1,5 @@
+kind: heuristic
+cell: '000'
+which: standings
+git_commit: dbc81aa
+split: test_stable

@@ -1,0 +1,5 @@
+kind: rf
+cell: '000'
+min_samples_leaf: 40
+git_commit: dbc81aa
+split: test_stable

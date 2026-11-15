@@ -1,0 +1,8 @@
+kind: gbm
+cell: '001'
+num_leaves: 7
+n_estimators: 300
+learning_rate: 0.03
+min_child_samples: 80
+git_commit: dbc81aa
+split: dev

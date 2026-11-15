@@ -1,0 +1,5 @@
+kind: latent
+cell: '010'
+lam: 32.0
+git_commit: dbc81aa
+split: test_stable

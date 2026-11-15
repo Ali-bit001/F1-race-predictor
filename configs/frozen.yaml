@@ -1,0 +1,104 @@
+M03:
+  '000':
+    kind: latent
+    cell: '000'
+    lam: 32.0
+  '001':
+    kind: latent
+    cell: '001'
+    lam: 32.0
+  '010':
+    kind: latent
+    cell: '010'
+    lam: 32.0
+  '011':
+    kind: latent
+    cell: '011'
+    lam: 32.0
+  '100':
+    kind: latent
+    cell: '100'
+    lam: 32.0
+    halflife: 20
+  '101':
+    kind: latent
+    cell: '101'
+    lam: 2.0
+    halflife: 20
+  '110':
+    kind: latent
+    cell: '110'
+    lam: 32.0
+    halflife: 50
+  '111':
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+M04:
+  '000':
+    kind: gbm
+    cell: '000'
+    num_leaves: 7
+    n_estimators: 150
+    learning_rate: 0.05
+    min_child_samples: 40
+  '001':
+    kind: gbm
+    cell: '001'
+    num_leaves: 7
+    n_estimators: 300
+    learning_rate: 0.03
+    min_child_samples: 80
+  '010':
+    kind: gbm
+    cell: '010'
+    num_leaves: 4
+    n_estimators: 200
+    learning_rate: 0.05
+    min_child_samples: 40
+  '011':
+    kind: gbm
+    cell: '011'
+    num_leaves: 4
+    n_estimators: 200
+    learning_rate: 0.05
+    min_child_samples: 40
+  '100':
+    kind: gbm
+    cell: '100'
+    num_leaves: 4
+    n_estimators: 200
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+  '101':
+    kind: gbm
+    cell: '101'
+    num_leaves: 7
+    n_estimators: 150
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+  '110':
+    kind: gbm
+    cell: '110'
+    num_leaves: 4
+    n_estimators: 200
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+  '111':
+    kind: gbm
+    cell: '111'
+    num_leaves: 7
+    n_estimators: 300
+    learning_rate: 0.03
+    min_child_samples: 80
+    halflife: 32
+M01rf:
+  kind: rf
+  cell: '000'
+  min_samples_leaf: 40
+frozen_at: '2026-11-15T18:45:23'
+hash: 5980a1f6ddba

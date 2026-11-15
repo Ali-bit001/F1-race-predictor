@@ -1,0 +1,9 @@
+kind: gbm
+cell: '111'
+num_leaves: 7
+n_estimators: 300
+learning_rate: 0.03
+min_child_samples: 80
+halflife: 32
+git_commit: dbc81aa
+split: test_stable

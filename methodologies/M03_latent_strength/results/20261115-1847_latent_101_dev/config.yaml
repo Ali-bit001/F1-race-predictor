@@ -1,0 +1,6 @@
+kind: latent
+cell: '101'
+lam: 2.0
+halflife: 20
+git_commit: dbc81aa
+split: dev
