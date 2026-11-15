@@ -13,6 +13,7 @@ EXTERNAL = DATA / "external"
 RESULTS = ROOT / "results"
 METHODS = ROOT / "methodologies"
 CONFIGS = ROOT / "configs"
+PLAN2 = RESULTS / "plan2"          # plan-2 cross-method outputs (PLAN2.md section 6)
 
 FIRST_SEASON = 2014
 LAST_SEASON = 2026
@@ -24,6 +25,8 @@ SPLITS = {
     "test_stable": (2024, 2025),
     "test_shift": (2026, 2026),
 }
+# Plan 2 fresh holdout: races strictly after (season, round) = FRESH_AFTER. Nobody has scored these.
+FRESH_AFTER = (2026, 20)
 WARMUP_RACES = 15  # races scored (but not counted) before a split, used only for online calibration
 
 

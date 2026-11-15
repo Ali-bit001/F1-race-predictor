@@ -15,9 +15,10 @@ class GBMModel:
 
     def __init__(self, dynamic: bool, decomp: bool, ranking: bool, halflife: int = 16, num_leaves: int = 7,
                  n_estimators: int = 150, learning_rate: float = 0.05, min_child_samples: int = 40,
-                 seed: int = 0, n_jobs: int = 1, **_):
+                 seed: int = 0, n_jobs: int = 1, extra_cols: tuple[str, ...] | list[str] = (), **_):
         self.dynamic, self.decomp, self.ranking, self.halflife = dynamic, decomp, ranking, halflife
-        self.cols = gbm_feature_cols(dynamic, decomp, halflife if dynamic else None)
+        self.req = gbm_feature_cols(dynamic, decomp, halflife if dynamic else None)   # must be non-missing
+        self.cols = self.req + [c for c in extra_cols if c not in self.req]            # plan-2 extras may be NaN
         self.params = dict(num_leaves=num_leaves, n_estimators=n_estimators, learning_rate=learning_rate,
                            min_child_samples=min_child_samples, subsample=0.8, subsample_freq=1,
                            colsample_bytree=0.8, random_state=seed, n_jobs=n_jobs, verbose=-1)
@@ -25,7 +26,7 @@ class GBMModel:
 
     def fit_predict(self, train: pd.DataFrame, test: pd.DataFrame) -> np.ndarray:
         # Rows whose latent strengths are unavailable (earliest seasons) are simply dropped from training.
-        tr = train.dropna(subset=self.cols) if self.decomp else train
+        tr = train.dropna(subset=self.req) if self.decomp else train
         w = None
         if self.dynamic:
             w = 0.5 ** ((float(test["race_id"].min()) - tr["race_id"].to_numpy()) / self.halflife)

@@ -13,7 +13,9 @@ Everything runs on a CPU; no deep learning.
 
 ## Start here
 - [`PLAN.md`](PLAN.md) — the research plan and work packages (plan 1, done).
-- [`PLAN2.md`](PLAN2.md) — plan 2: practice, qualifying, sprint and weather information, a DNF model and a race-level Monte Carlo simulator (not started).
+- [`PLAN2.md`](PLAN2.md) — plan 2: practice, qualifying, sprint and weather information, a DNF model and a race-level Monte Carlo simulator.
+- [`results/plan2/REPORT.md`](results/plan2/REPORT.md) — plan 2 results (written by `python scripts/run_plan2.py`).
+- [`.claude/skills/pitlane-run/SKILL.md`](.claude/skills/pitlane-run/SKILL.md) — how runs are recorded, logged, committed and pushed.
 - [`results/REPORT.md`](results/REPORT.md) — plan 1 results.
 - [`CLAUDE.md`](CLAUDE.md) — working rules for whoever writes the code.
 - [`methodologies/`](methodologies/README.md) — every approach tried, each with its own results.
@@ -46,10 +48,12 @@ pip install -r requirements.txt
 ```
 pip install -e . && pip install -r requirements.txt
 python scripts/run_all.py          # ingest -> tune on dev -> freeze -> test once -> report  (~1 h on a laptop CPU)
+python scripts/run_plan2.py        # plan 2: ingest weekend data -> A1/A2 -> M06/M07/M08 -> freeze -> test -> report -> push
 python -m pytest                   # unit + leakage tests
 ```
-Outputs: `results/REPORT.md` (tables, factorial effects, explainability), `results/figures/*.png`,
+Plan-2 outputs: `results/plan2/REPORT.md`, `results/plan2/figures/*.png`, `results/plan2/leaderboard*.csv`.
+Plan-1 outputs: `results/REPORT.md` (tables, factorial effects, explainability), `results/figures/*.png`,
 `results/leaderboard.csv`, and one folder per run under `methodologies/<ID>/results/`.
 
 ## Status
-WP1-WP8 implemented. FastF1 practice pace / wet flags, sprint results and extensions X1-X11 are not done yet (see `PLAN.md`).
+Plan 1 (WP1-WP8) done. Plan 2 (P0-P8: practice/qualifying/sprint/weather information, DNF model, Monte Carlo simulator) implemented in `src/pitlane/plan2/`; see `PLAN2.md` amendment 1 for the data-source changes (FastF1 needs a login, so practice laps come from OpenF1, 2023+). Extensions X2-X11 of `PLAN.md` are not done.

@@ -228,3 +228,18 @@ Plan-2 cross-method outputs go to `results/plan2/`; plan-1 outputs are not overw
 Stated before running, so the result can be judged against it: gains in order accuracy are expected
 to be small (0.00–0.02 ρ at H3), larger gains are expected in probability scores from M07 and M08,
 and the three plan-1 factors are expected to show larger effects at H0 than at H2.
+
+---
+
+## 9. Amendment 1 (2026-11-15, written before the plan-2 run, after probing the data sources)
+
+These are changes forced by data access. Research questions, metrics and decision rules are unchanged.
+
+| Planned in sections 3–5 | Amendment | Consequence |
+|---|---|---|
+| FastF1 practice laps and session weather from 2018 | FastF1's timing API answers HTTP 401 without an F1 account login. Practice laps and session weather come from **OpenF1** (no login), which starts in **2023** | Practice features exist for 2023–2026 only (earlier races carry `fp_missing = 1`). The development block has practice data for one season (2023, 22 races), so practice groups are judged on dev-2023 plus the test blocks, and their dev interval is wide by construction. The decision rule is applied as written to those races |
+| Race-day rain forecast, "verify first" | Verified: Open-Meteo's historical-forecast archive returns hourly precipitation from 2020 (probabilities only from 2024). Used: forecast precipitation in the 2 h race window, from 2020; ERA5 observed precipitation on the qualifying day, all seasons. A window of ≥ 0.5 mm counts as wet | Forecast flags are missing before 2020 (`wx_missing = 1`) |
+| Race-pace oracle on the whole development block | Jolpica allows about 500 requests per hour and a race is about 12 pages, so race laps were fetched for 2023 only | The pace-oracle gate is evaluated on 22 races |
+| Weather and sprint flags as features | In the additive latent model a race-wide flag is constant within a race and cannot change a race order. In family L these enter only as interactions with qualifying position (`x_q_x_*`); family G (trees) gets the raw flags | None for the decision rule |
+| Fresh holdout | The cached 2026 data ends at round 20, so the holdout contains no races yet. The runner scores any races after round 20 automatically when re-run after re-ingesting | Reported as "no races yet" until then |
+| Model-run labels | Plan-2 runs are written to `results/plan2/leaderboard.csv` (plan-1 files untouched); how runs are recorded is documented in `.claude/skills/pitlane-run/SKILL.md` | — |

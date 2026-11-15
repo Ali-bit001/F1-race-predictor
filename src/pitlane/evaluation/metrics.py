@@ -47,6 +47,11 @@ def race_metrics(pos: np.ndarray, u: np.ndarray, classified: np.ndarray) -> dict
         "win_hit": float(rk[pos == 1][0] == 1) if (pos == 1).any() else np.nan,
         "podium": len(set(np.where(rk <= 3)[0]) & set(np.where(pos <= 3)[0])) / 3,
         "points": len(set(np.where(rk <= 10)[0]) & set(np.where(pos <= 10)[0])) / 10,
+        # plan-2 additions (PLAN2.md section 5): `points` above is the top-10 overlap
+        "top5": len(set(np.where(rk <= 5)[0]) & set(np.where(pos <= 5)[0])) / 5,
+        "exact": float((rk == pos).mean()),
+        "within1": float((np.abs(rk - pos) <= 1).mean()),
+        "within2": float((np.abs(rk - pos) <= 2).mean()),
     }
     # Finishers-only view (DNFs are mostly noise): re-rank both sides among classified cars.
     c = np.asarray(classified, bool)
@@ -99,6 +104,33 @@ def prob_scores(p: np.ndarray, pos: np.ndarray) -> dict[str, float]:
         out[f"brier_{name}"] = float(((q - y) ** 2).mean())
         out[f"logloss_{name}"] = float(-(y * np.log(q) + (1 - y) * np.log(1 - q)).mean())
     return out
+
+
+def pos_dist(u: np.ndarray, tau: float, rng: np.random.Generator, k: int = 1000) -> np.ndarray:
+    """Position distribution P[i, j] = P(entry i finishes in position j+1) under PL(tau*u)."""
+    n = len(u)
+    g = rng.gumbel(size=(k, n))
+    order = np.argsort(-(tau * u + g), axis=1)
+    ranks = np.empty_like(order)
+    ranks[np.arange(k)[:, None], order] = np.arange(n)[None, :]
+    return rank_hist(ranks, n)
+
+
+def rank_hist(ranks0: np.ndarray, n: int) -> np.ndarray:
+    """ranks0: [draws, n] 0-based finishing positions -> P[i, j] histogram over draws."""
+    k = ranks0.shape[0]
+    P = np.zeros((n, n))
+    for i in range(n):
+        P[i] = np.bincount(ranks0[:, i], minlength=n)[:n] / k
+    return P
+
+
+def rps_score(P: np.ndarray, pos: np.ndarray) -> float:
+    """Ranked probability score over the position distribution (0 = perfect), averaged over entries."""
+    n = P.shape[0]
+    F = np.cumsum(P, axis=1)
+    O = (np.arange(1, n + 1)[None, :] >= np.asarray(pos)[:, None]).astype(float)
+    return float((((F - O) ** 2)[:, :-1].sum(1) / max(n - 1, 1)).mean())
 
 
 def ece(p: np.ndarray, y: np.ndarray, bins: int = 10) -> float:

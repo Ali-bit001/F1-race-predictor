@@ -14,8 +14,9 @@ from typing import Protocol
 import numpy as np
 import pandas as pd
 
-from pitlane.config import RESULTS, SPLITS, WARMUP_RACES, save_yaml
-from pitlane.evaluation.metrics import fit_tau, prob_scores, race_metrics, sample_probs
+from pitlane.config import FRESH_AFTER, RESULTS, SPLITS, WARMUP_RACES, save_yaml
+from pitlane.evaluation.metrics import (fit_tau, pos_dist, prob_scores, race_metrics, rps_score,
+                                        sample_probs)
 
 
 class Model(Protocol):
@@ -24,9 +25,16 @@ class Model(Protocol):
 
 def split_races(entries: pd.DataFrame, split: str) -> tuple[list[int], list[int]]:
     """Return (warmup race ids, counted race ids) for a split name or 'a+b' union of names."""
+    races = entries.groupby("race_id")["season"].first()
+    if split == "fresh":      # plan 2: races after FRESH_AFTER (possibly none yet)
+        rnd = entries.groupby("race_id")["round"].first()
+        counted = races.index[(races > FRESH_AFTER[0]) | ((races == FRESH_AFTER[0]) & (rnd > FRESH_AFTER[1]))].tolist()
+        if not counted:
+            return [], []
+        first = counted[0]
+        return [r for r in races.index if r < first][-WARMUP_RACES:], counted
     lo = min(SPLITS[s][0] for s in split.split("+"))
     hi = max(SPLITS[s][1] for s in split.split("+"))
-    races = entries.groupby("race_id")["season"].first()
     counted = races[(races >= lo) & (races <= hi)].index.tolist()
     first = counted[0]
     warm = [r for r in races.index if r < first][-WARMUP_RACES:]
@@ -34,13 +42,16 @@ def split_races(entries: pd.DataFrame, split: str) -> tuple[list[int], list[int]
 
 
 def walk_forward(entries: pd.DataFrame, model: Model, split: str, refit_every: int = 1,
-                 seed: int = 0, n_samples: int = 1000) -> tuple[pd.DataFrame, pd.DataFrame]:
+                 seed: int = 0, n_samples: int = 1000, posdist: bool = False) -> tuple[pd.DataFrame, pd.DataFrame]:
     """Return (predictions per entry, metrics per counted race)."""
     assert (entries.index == np.arange(len(entries))).all(), "entries must have a RangeIndex"
     warm, counted = split_races(entries, split)
+    if not counted:
+        return pd.DataFrame(), pd.DataFrame()
     targets = warm + counted
     counted_set = set(counted)
     rng = np.random.default_rng(seed)
+    rng2 = np.random.default_rng(seed + 1)      # separate stream: plan-1 numbers stay reproducible
     race_rows = entries.groupby("race_id").indices
     scores = np.full(len(entries), np.nan)
 
@@ -62,6 +73,8 @@ def walk_forward(entries: pd.DataFrame, model: Model, split: str, refit_every: i
         if r in counted_set:
             m = race_metrics(pos, u, d["classified"].to_numpy())
             m.update(prob_scores(p, pos))
+            if posdist:
+                m["rps"] = rps_score(pos_dist(u, tau, rng2, min(n_samples, 400)), pos)
             m.update(race_id=r, season=int(d["season"].iloc[0]), round=int(d["round"].iloc[0]),
                      n=len(d), tau=tau)
             metrics.append(m)
@@ -74,6 +87,7 @@ def walk_forward(entries: pd.DataFrame, model: Model, split: str, refit_every: i
 
 
 SUMMARY_KEYS = ["spearman", "mae", "rmse", "kendall", "ndcg10", "win_hit", "podium", "points",
+                "top5", "exact", "within1", "within2", "rps",
                 "spearman_fin", "mae_fin", "brier_win", "logloss_win", "brier_podium", "logloss_podium",
                 "brier_points", "logloss_points"]
 

@@ -54,9 +54,10 @@ def fetch_pages(kind: str, season: int) -> list[dict]:
         for race in d["RaceTable"]["Races"]:
             key = race["round"]
             if key not in races:
-                races[key] = {k: v for k, v in race.items() if k not in ("Results", "QualifyingResults")}
+                races[key] = {k: v for k, v in race.items()
+                              if k not in ("Results", "QualifyingResults", "SprintResults")}
                 races[key]["rows"] = []
-            races[key]["rows"] += race.get("Results", race.get("QualifyingResults", []))
+            races[key]["rows"] += race.get("Results") or race.get("QualifyingResults") or race.get("SprintResults") or []
         offset += PAGE
         time.sleep(0.6)
     out = list(races.values())

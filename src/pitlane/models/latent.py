@@ -32,7 +32,8 @@ def _x(df: pd.DataFrame) -> np.ndarray:
 class LatentModel:
     def __init__(self, universe: pd.DataFrame, dynamic: bool, decomp: bool, ranking: bool,
                  halflife: float = 20.0, lam: float = 2.0, rho: float = 0.8, fit_mult: float = 5.0,
-                 maxiter: int = 150):
+                 maxiter: int = 150, base_x: bool = True, x_cols: tuple[str, ...] | list[str] = (),
+                 lam_x: float = 1.0):
         self.dynamic, self.decomp, self.ranking = dynamic, decomp, ranking
         self.halflife, self.lam, self.rho, self.fit_mult, self.maxiter = halflife, lam, rho, fit_mult, maxiter
         u = universe
@@ -48,13 +49,19 @@ class LatentModel:
             self.car_prev = np.full(len(self.car), -1)
         self.nD, self.nB = len(self.drivers), len(self.car)
         self.nG = len(self.lineages) * len(self.types)
-        self.nX = len(WEEKEND_X)
+        # Weekend signals (PLAN2.md section 3): the four plan-1 signals (base_x) plus extra pre-scaled
+        # columns of `universe` named in x_cols. base_x=False and no x_cols is the H0 (pre-weekend) model.
+        self.base_x, self.x_cols = base_x, list(x_cols)
+        self.x_names = (list(WEEKEND_X) if base_x else []) + self.x_cols
+        self.nX = len(self.x_names)
+        self.pen_x = np.array([1e-4] * (len(WEEKEND_X) if base_x else 0) + [lam_x] * len(self.x_cols))
         self.theta = np.zeros(self.nD + self.nB + self.nG + self.nX)
         # Row-aligned index arrays for the whole universe (must be sorted by race_id, pos).
         self.row_d = u["driverId"].map(self.drivers).to_numpy()
         self.row_b = np.array([self.car[(l, s if dynamic else None)] for l, s in zip(u["lineage"], u["season"])])
         self.row_g = (u["lineage"].map(self.lineages) * len(self.types) + u["circuit_type"].map(self.types)).to_numpy()
-        self.row_x = _x(u)
+        parts = ([_x(u)] if base_x else []) + ([u[self.x_cols].fillna(0.0).to_numpy(float)] if self.x_cols else [])
+        self.row_x = np.hstack(parts) if parts else np.zeros((len(u), 0))
         self.row_y = u["y"].to_numpy(float)
         self.row_race = u["race_id"].to_numpy()
         self.row_season = u["season"].to_numpy()
@@ -66,7 +73,7 @@ class LatentModel:
         a = th[:self.nD]
         b = th[self.nD:self.nD + self.nB]
         g = th[self.nD + self.nB:self.nD + self.nB + self.nG]
-        beta = th[-self.nX:]
+        beta = th[self.nD + self.nB + self.nG:]
         return a, b, g, beta
 
     def _utility(self, th, rows):
@@ -121,8 +128,8 @@ class LatentModel:
             np.add.at(pgb, prev[has], -2 * self.lam * self.rho * d[has])
             gb = gb + pgb
             gg = gg + 2 * self.lam * self.fit_mult * g
-        pen += 1e-4 * (beta @ beta)
-        gbeta = gx + 2e-4 * beta
+        pen += float((self.pen_x * beta * beta).sum())
+        gbeta = gx + 2 * self.pen_x * beta
         total = (loss + pen) / W
         grad = np.concatenate([ga + pga, gb, gg, gbeta]) / W
         return total, grad
@@ -165,11 +172,15 @@ class LatentModel:
             "weekend": self.row_x[rows] @ beta,
         }, index=rows)
         comp["u"] = comp.sum(axis=1)
+        if self.nX:   # per-signal weekend contributions (explanation only; not part of u's sum above)
+            wk = self.row_x[rows] * beta[None, :]
+            for j, name in enumerate(self.x_names):
+                comp[f"wk_{name}"] = wk[:, j]
         return comp
 
     @property
     def beta(self) -> dict[str, float]:
-        return dict(zip(WEEKEND_X, self._split(self.theta)[3]))
+        return dict(zip(self.x_names, self._split(self.theta)[3]))
 
 
 def walk_strengths(universe: pd.DataFrame, kwargs: dict, first_race: int) -> pd.DataFrame:
