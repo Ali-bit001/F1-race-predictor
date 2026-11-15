@@ -23,7 +23,7 @@ status `abandoned` and the reason — they are part of the record.
 | M02 | GBM ranking (LambdaRank) | Deck Baseline 3 | run | see leaderboard | see leaderboard |
 | M03 | Latent strength model — 2×2×2 factorial (Family L) | **Proposed model, primary ablation** | run | see leaderboard | see leaderboard |
 | M04 | GBM 2×2×2 factorial (Family G) | Robustness check | run | see leaderboard | see leaderboard |
-| M05 | Hybrid latent + GBM | Optional | run | see leaderboard | see leaderboard |
+| M05 | Hybrid latent + GBM | Optional | planned (optional, not built) | | |
 
 Extensions (X1–X11 in `PLAN.md` §7) get folders named `X<n>_<name>` when started.
 
