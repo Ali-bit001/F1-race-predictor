@@ -1,0 +1,19 @@
+kind: dnf_logit
+C: 0.02
+features:
+- drv_inc_ew16
+- drv_dnf_ew16
+- con_mech_ew16
+- con_dnf_ew16
+- circ_dnf
+- grid_norm
+- pit_start
+- wet_q
+- rain_fc
+- newregs
+- rookie
+- new_team
+- fp_laps
+- fp_missing
+git_commit: 44ad83d
+split: test_stable

@@ -1,0 +1,12 @@
+kind: latent
+cell: '000'
+lam: 32.0
+base_x: true
+x_cols:
+- x_q_best_gap
+- x_q_seg_gap
+- x_q_reach
+- x_q_tm_gap
+lam_x: 0.3
+git_commit: 44ad83d
+split: dev

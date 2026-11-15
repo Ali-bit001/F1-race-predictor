@@ -1,0 +1,18 @@
+{
+  "drv_inc_ew16": -0.0341,
+  "drv_dnf_ew16": 0.0171,
+  "con_mech_ew16": 0.1486,
+  "con_dnf_ew16": 0.0358,
+  "circ_dnf": 0.0268,
+  "grid_norm": 0.258,
+  "pit_start": -0.0122,
+  "wet_q": -0.0441,
+  "rain_fc": -0.0331,
+  "newregs": 0.0977,
+  "rookie": 0.0006,
+  "new_team": 0.0143,
+  "fp_laps": -0.1079,
+  "fp_missing": 0.043,
+  "intercept": -1.817974847803941,
+  "upto_race": 271
+}

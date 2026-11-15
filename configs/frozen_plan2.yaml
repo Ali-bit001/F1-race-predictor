@@ -1,0 +1,371 @@
+H0:
+  '000':
+    kind: latent
+    cell: '000'
+    lam: 2.0
+    base_x: false
+  '001':
+    kind: latent
+    cell: '001'
+    lam: 2.0
+    base_x: false
+  '010':
+    kind: latent
+    cell: '010'
+    lam: 32.0
+    base_x: false
+  '011':
+    kind: latent
+    cell: '011'
+    lam: 32.0
+    base_x: false
+  '100':
+    kind: latent
+    cell: '100'
+    lam: 0.5
+    halflife: 8
+    base_x: false
+  '101':
+    kind: latent
+    cell: '101'
+    lam: 2.0
+    halflife: 20
+    base_x: false
+  '110':
+    kind: latent
+    cell: '110'
+    lam: 32.0
+    halflife: 50
+    base_x: false
+  '111':
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+    base_x: false
+H1:
+  '000':
+    kind: latent
+    cell: '000'
+    lam: 8.0
+    base_x: false
+    x_cols:
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    lam_x: 1.0
+  '111':
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+    base_x: false
+    x_cols:
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    lam_x: 1.0
+M06L:
+  '000':
+    kind: latent
+    cell: '000'
+    lam: 32.0
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_sprint_pos
+    - x_sprint_gain
+    - x_q_x_mismatch
+    - x_q_x_rainfc
+    - x_q_x_wetq
+    lam_x: 3.0
+  '111':
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_sprint_pos
+    - x_sprint_gain
+    - x_q_x_mismatch
+    - x_q_x_rainfc
+    - x_q_x_wetq
+    lam_x: 3.0
+M06R:
+  r1_000:
+    kind: latent
+    cell: '000'
+    lam: 32.0
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    lam_x: 0.3
+  r2_000:
+    kind: latent
+    cell: '000'
+    lam: 32.0
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    lam_x: 3.0
+  r3_000:
+    kind: latent
+    cell: '000'
+    lam: 32.0
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_sprint_pos
+    - x_sprint_gain
+    lam_x: 3.0
+  r1_111:
+    kind: latent
+    cell: '111'
+    lam: 8.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    lam_x: 3.0
+  r2_111:
+    kind: latent
+    cell: '111'
+    lam: 8.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    lam_x: 3.0
+  r3_111:
+    kind: latent
+    cell: '111'
+    lam: 8.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_sprint_pos
+    - x_sprint_gain
+    lam_x: 3.0
+M06N:
+  no_qrich_111:
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_sprint_pos
+    - x_sprint_gain
+    - x_q_x_mismatch
+    - x_q_x_rainfc
+    - x_q_x_wetq
+    lam_x: 3.0
+  no_practice_111:
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_sprint_pos
+    - x_sprint_gain
+    - x_q_x_mismatch
+    - x_q_x_rainfc
+    - x_q_x_wetq
+    lam_x: 3.0
+  no_sprint_111:
+    kind: latent
+    cell: '111'
+    lam: 8.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_q_x_mismatch
+    - x_q_x_rainfc
+    - x_q_x_wetq
+    lam_x: 3.0
+  no_weather_111:
+    kind: latent
+    cell: '111'
+    lam: 8.0
+    halflife: 50
+    base_x: true
+    x_cols:
+    - x_q_best_gap
+    - x_q_seg_gap
+    - x_q_reach
+    - x_q_tm_gap
+    - x_fp_gap
+    - x_fp_long
+    - x_fp_laps
+    - x_sprint_pos
+    - x_sprint_gain
+    lam_x: 3.0
+M06G:
+  '000':
+    kind: gbm
+    cell: '000'
+    num_leaves: 7
+    n_estimators: 150
+    learning_rate: 0.05
+    min_child_samples: 40
+    extra_cols:
+    - q_best_gap
+    - q_seg_gap
+    - q_reach
+    - q_tm_gap
+    - fp_gap
+    - fp_long
+    - fp_laps
+    - fp_missing
+    - sprint_flag
+    - sprint_pos
+    - sprint_gain
+    - wet_q
+    - rain_fc
+    - mismatch
+    - rain_fp
+    - wx_missing
+    - stick
+    - circ_dnf
+    - circ_vol
+  '111':
+    kind: gbm
+    cell: '111'
+    num_leaves: 4
+    n_estimators: 200
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+    extra_cols:
+    - q_best_gap
+    - q_seg_gap
+    - q_reach
+    - q_tm_gap
+    - fp_gap
+    - fp_long
+    - fp_laps
+    - fp_missing
+    - sprint_flag
+    - sprint_pos
+    - sprint_gain
+    - wet_q
+    - rain_fc
+    - mismatch
+    - rain_fp
+    - wx_missing
+    - stick
+    - circ_dnf
+    - circ_vol
+M07:
+  C: 0.02
+M08:
+  S0:
+    tau: 1.7
+    dnf_scale: 1.0
+    kappa: 0.0
+    p0: 0.1
+    s_dis: 2.0
+    a_vol: 0.0
+    a_rain: 0.0
+    stick_ref: 0.6153145167767826
+    vol_mu: 0.18030947903628722
+    vol_sd: 0.01674393291126671
+    fit_rps: 0.12658076348278102
+  S1:
+    tau: 2.5
+    dnf_scale: 1.0
+    kappa: 0.0
+    p0: 0.1
+    s_dis: 2.0
+    a_vol: 0.0
+    a_rain: 0.0
+    stick_ref: 0.6153145167767826
+    vol_mu: 0.18030947903628722
+    vol_sd: 0.01674393291126671
+    fit_rps: 0.12086588733337271
+  S2:
+    tau: 2.5
+    dnf_scale: 1.0
+    kappa: 0.0
+    p0: 0.1
+    s_dis: 2.0
+    a_vol: 0.0
+    a_rain: 0.0
+    stick_ref: 0.6153145167767826
+    vol_mu: 0.18030947903628722
+    vol_sd: 0.01674393291126671
+    fit_rps: 0.12086588733337271
+  S3:
+    tau: 3.5
+    dnf_scale: 1.25
+    kappa: 0.0
+    p0: 0.2
+    s_dis: 2.0
+    a_vol: 0.5
+    a_rain: 2.0
+    stick_ref: 0.6153145167767826
+    vol_mu: 0.18030947903628722
+    vol_sd: 0.01674393291126671
+    fit_rps: 0.12039720066158663
+frozen_at: '2026-11-15T20:45:45'
+hash: 0d1b7c074d80

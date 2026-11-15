@@ -1,0 +1,12 @@
+{
+  "n_races": 66,
+  "model_rho": 0.6459671907040327,
+  "self_consistency_rho": 0.45624596845649473,
+  "retirement_oracle_rho": 0.8426801998881583,
+  "retirement_oracle_gain": 0.1967130091841256,
+  "pace_races": 22,
+  "pace_model_rho_fin": 0.7568682478512199,
+  "pace_oracle_rho_fin": 0.8301308665892954,
+  "pace_gap_fin": 0.07326261873807549,
+  "saturated": false
+}

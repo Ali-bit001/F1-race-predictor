@@ -46,3 +46,15 @@ Entry format:
   ingestion (reduced to an optional rookie-prior table). Reasons are in `PLAN2.md` §2.
 - Note: the 2024–2026 test blocks were scored in plan 1, so plan-2 test numbers are a second look.
 - Next: P0 (harness additions), then P1 (ceiling and horizon analysis on existing data).
+
+## 2026-11-15 — Plan 2 full run (auto-generated)
+- Methodology / WP: P0-P8 via `scripts/run_plan2.py` (A1, A2, M06, M07, M08)
+- Frozen config hash: `0d1b7c074d80` (tuned on dev 2021-23 only; test blocks are a second look, see PLAN2.md section 5)
+- A1 ceiling (dev): model rho 0.646, self-consistency 0.456, retirement oracle 0.843; pace-oracle gap on finishers 0.073 -> not saturated (gate not met)
+- Result (mean per-race Spearman rho, higher is better):
+  - dev: qualifying order 0.617; top-4: gbm_001 0.661, rf_000 0.658, gbm_000 0.657, gbm_010 0.656
+  - test_stable: qualifying order 0.701; top-4: rf_000 0.712, m06_L_no_qrich_111 0.705, m06_G_h3_000 0.703, latent_111 0.703
+  - test_shift: qualifying order 0.710; top-4: m06_G_h3_111 0.725, gbm_100 0.720, m06_L_r2_000 0.718, m06_L_r3_000 0.718
+  - M08 RPS on test_stable: m08_S0 0.1139, m08_S1 0.1098, m08_S2 0.1098, m08_S3 0.1093
+- Interpretation: see `results/plan2/REPORT.md` (information ladder, leave-one-out verdicts, DNF model, simulator ladder).
+- Deviations from PLAN2.md: FastF1 is blocked (HTTP 401 without an F1 login), so practice laps and session weather come from OpenF1 and exist for 2023+ only; practice is judged on dev-2023 plus test; race laps for the pace oracle were fetched for 2023 only (Jolpica rate limit); the race-day forecast comes from Open-Meteo's historical-forecast archive (2020+); every ladder rung is tuned separately on dev; no git tag was created for the freeze (the config hash identifies it).

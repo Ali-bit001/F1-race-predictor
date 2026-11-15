@@ -1,0 +1,20 @@
+kind: m08
+cell: S0
+theta:
+  tau: 1.7
+  dnf_scale: 1.0
+  kappa: 0.0
+  p0: 0.1
+  s_dis: 2.0
+  a_vol: 0.0
+  a_rain: 0.0
+consts:
+  stick_ref: 0.6153145167767826
+  vol_mu: 0.18030947903628722
+  vol_sd: 0.01674393291126671
+switches:
+  dnf: false
+  stick: false
+  regime: false
+git_commit: 44ad83d
+split: test_shift

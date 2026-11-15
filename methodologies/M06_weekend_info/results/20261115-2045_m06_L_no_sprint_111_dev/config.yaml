@@ -1,0 +1,19 @@
+kind: latent
+cell: '111'
+lam: 8.0
+halflife: 50
+base_x: true
+x_cols:
+- x_q_best_gap
+- x_q_seg_gap
+- x_q_reach
+- x_q_tm_gap
+- x_fp_gap
+- x_fp_long
+- x_fp_laps
+- x_q_x_mismatch
+- x_q_x_rainfc
+- x_q_x_wetq
+lam_x: 3.0
+git_commit: 44ad83d
+split: dev

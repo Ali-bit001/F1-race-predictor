@@ -1,0 +1,7 @@
+kind: latent
+cell: '101'
+lam: 2.0
+halflife: 20
+base_x: false
+git_commit: 44ad83d
+split: test_shift

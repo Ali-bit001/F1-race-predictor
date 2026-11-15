@@ -1,0 +1,6 @@
+kind: latent
+cell: '011'
+lam: 32.0
+base_x: false
+git_commit: 44ad83d
+split: dev

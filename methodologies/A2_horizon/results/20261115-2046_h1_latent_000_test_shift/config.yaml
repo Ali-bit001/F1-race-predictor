@@ -1,0 +1,11 @@
+kind: latent
+cell: '000'
+lam: 8.0
+base_x: false
+x_cols:
+- x_fp_gap
+- x_fp_long
+- x_fp_laps
+lam_x: 1.0
+git_commit: 44ad83d
+split: test_shift
