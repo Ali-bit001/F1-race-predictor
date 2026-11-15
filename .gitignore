@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+.ipynb_checkpoints/
+
+# Data: regenerable, not committed (data/external/ IS committed)
+data/raw/*
+data/interim/*
+data/processed/*
+!data/**/.gitkeep
+fastf1_cache/
+
+# OS / editor
+.vscode/
+.idea/
+Thumbs.db
+.DS_Store
+~$*.pptx
+
+# Local Claude settings
+.claude/settings.local.json

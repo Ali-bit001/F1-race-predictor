@@ -1,0 +1,14 @@
+# CPU-only stack. Pin exact versions after the first successful install (pip freeze).
+numpy
+pandas
+pyarrow
+scipy
+scikit-learn
+lightgbm
+statsmodels
+fastf1
+requests
+pyyaml
+matplotlib
+shap
+pytest
