@@ -11,19 +11,19 @@ One folder per approach. Each contains:
     <run_id>/    config snapshot, metrics.json, per_race_metrics.csv, predictions.parquet, figures/
 ```
 
-Create the folder when work on that methodology starts. Abandoned approaches stay here with
+Folders are created when a methodology is first run. Abandoned approaches stay here with
 status `abandoned` and the reason — they are part of the record.
 
 ## Index
 
 | ID | Name | Role | Status | Best dev Spearman ρ | Best dev MAE |
 |----|------|------|--------|---------------------|--------------|
-| M00 | Heuristic baselines (grid, quali, standings, last race) | Deck Baseline 1 | planned | | |
-| M01 | Direct GBM / RF regression | Deck Baseline 2 | planned | | |
-| M02 | GBM ranking (LambdaRank) | Deck Baseline 3 | planned | | |
-| M03 | Latent strength model — 2×2×2 factorial (Family L) | **Proposed model, primary ablation** | planned | | |
-| M04 | GBM 2×2×2 factorial (Family G) | Robustness check | planned | | |
-| M05 | Hybrid latent + GBM | Optional | planned | | |
+| M00 | Heuristic baselines (grid, quali, standings, last race) | Deck Baseline 1 | run | see leaderboard | see leaderboard |
+| M01 | Direct GBM / RF regression | Deck Baseline 2 | run | see leaderboard | see leaderboard |
+| M02 | GBM ranking (LambdaRank) | Deck Baseline 3 | run | see leaderboard | see leaderboard |
+| M03 | Latent strength model — 2×2×2 factorial (Family L) | **Proposed model, primary ablation** | run | see leaderboard | see leaderboard |
+| M04 | GBM 2×2×2 factorial (Family G) | Robustness check | run | see leaderboard | see leaderboard |
+| M05 | Hybrid latent + GBM | Optional | run | see leaderboard | see leaderboard |
 
 Extensions (X1–X11 in `PLAN.md` §7) get folders named `X<n>_<name>` when started.
 

@@ -1,0 +1,15 @@
+constructorId,lineage,source
+toro_rosso,rb_lineage,rebrand chain: Toro Rosso -> AlphaTauri -> RB
+alphatauri,rb_lineage,rebrand chain
+rb,rb_lineage,rebrand chain
+force_india,aston_lineage,rebrand chain: Force India -> Racing Point -> Aston Martin
+racing_point,aston_lineage,rebrand chain
+aston_martin,aston_lineage,rebrand chain
+lotus_f1,alpine_lineage,rebrand chain: Lotus F1 -> Renault -> Alpine
+renault,alpine_lineage,rebrand chain
+alpine,alpine_lineage,rebrand chain
+sauber,sauber_lineage,rebrand chain: Sauber -> Alfa Romeo -> Sauber -> Audi
+alfa,sauber_lineage,rebrand chain
+audi,sauber_lineage,rebrand chain
+marussia,manor_lineage,rebrand chain: Marussia -> Manor
+manor,manor_lineage,rebrand chain

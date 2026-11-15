@@ -1,0 +1,33 @@
+circuitId,type,source
+monaco,street,analyst judgement (not measured); replace via extension X4
+baku,street,analyst judgement
+marina_bay,street,analyst judgement
+jeddah,street,analyst judgement
+miami,street,analyst judgement
+vegas,street,analyst judgement
+albert_park,street,analyst judgement (semi-street)
+villeneuve,street,analyst judgement (semi-street)
+monza,power,analyst judgement
+spa,power,analyst judgement
+red_bull_ring,power,analyst judgement
+silverstone,power,analyst judgement
+americas,power,analyst judgement
+yas_marina,power,analyst judgement
+shanghai,power,analyst judgement
+bahrain,power,analyst judgement
+sochi,power,analyst judgement
+hungaroring,downforce,analyst judgement
+catalunya,downforce,analyst judgement
+zandvoort,downforce,analyst judgement
+suzuka,downforce,analyst judgement
+imola,downforce,analyst judgement
+interlagos,downforce,analyst judgement
+rodriguez,downforce,analyst judgement
+losail,downforce,analyst judgement
+ricard,downforce,analyst judgement
+hockenheimring,power,analyst judgement
+nurburgring,downforce,analyst judgement
+mugello,downforce,analyst judgement
+portimao,downforce,analyst judgement
+istanbul,downforce,analyst judgement
+madring,street,analyst judgement (2026 Madrid; semi-street)

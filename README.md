@@ -40,5 +40,14 @@ python -m venv .venv
 pip install -r requirements.txt
 ```
 
+## Run the study
+```
+pip install -e . && pip install -r requirements.txt
+python scripts/run_all.py          # ingest -> tune on dev -> freeze -> test once -> report  (~1 h on a laptop CPU)
+python -m pytest                   # unit + leakage tests
+```
+Outputs: `results/REPORT.md` (tables, factorial effects, explainability), `results/figures/*.png`,
+`results/leaderboard.csv`, and one folder per run under `methodologies/<ID>/results/`.
+
 ## Status
-Planning complete. No code or results yet — next step is WP1 (data ingestion) in `PLAN.md`.
+WP1-WP8 implemented. FastF1 practice pace / wet flags, sprint results and extensions X1-X11 are not done yet (see `PLAN.md`).
