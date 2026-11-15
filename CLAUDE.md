@@ -1,6 +1,8 @@
 # PitLane — working rules
 
 Read `PLAN.md` first. It is the specification; implement one work package (WP) at a time, in order.
+Plan 1 (WP1–WP8) is done. The current work is `PLAN2.md` (work packages P0–P8); it inherits every
+rule below. In plan 2 the 2024–2026 test blocks have already been seen once: tune only on 2021–2023.
 
 ## Non-negotiables
 - **CPU only.** No neural networks, no LLM training, no GPU libraries. Stack: pandas, numpy, scipy,

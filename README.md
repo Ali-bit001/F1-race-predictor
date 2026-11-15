@@ -12,7 +12,9 @@ Three ideas are tested, alone and in combination, on races the models have never
 Everything runs on a CPU; no deep learning.
 
 ## Start here
-- [`PLAN.md`](PLAN.md) — the research plan and work packages.
+- [`PLAN.md`](PLAN.md) — the research plan and work packages (plan 1, done).
+- [`PLAN2.md`](PLAN2.md) — plan 2: practice, qualifying, sprint and weather information, a DNF model and a race-level Monte Carlo simulator (not started).
+- [`results/REPORT.md`](results/REPORT.md) — plan 1 results.
 - [`CLAUDE.md`](CLAUDE.md) — working rules for whoever writes the code.
 - [`methodologies/`](methodologies/README.md) — every approach tried, each with its own results.
 - [`experiments/LOG.md`](experiments/LOG.md) — chronological journal, failures included.

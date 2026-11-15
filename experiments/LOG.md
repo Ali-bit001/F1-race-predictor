@@ -32,3 +32,17 @@ Entry format:
   - test_shift: grid baseline 0.666; top-3: gbm_100 0.720, gbm_110 0.714, gbm_101 0.714
 - Interpretation: see `results/REPORT.md` (paired bootstrap CIs and factorial effects).
 - Deviations from PLAN.md: FastF1 practice pace and wet-weather flags not yet used (deferred); sprint results not used; circuit types are analyst judgement (`data/external/circuits.csv`); no git tag was created for the freeze, the config hash above identifies it.
+
+## 2026-11-15 — Plan 2 written
+- Methodology / WP: planning (`PLAN2.md`)
+- What was tried: Read the plan-1 results. All trained models tie with qualifying order on test
+  (0.70–0.71 rho); only the dynamic factor gained (+0.010, p = 0.04); `latent_111` scores 0.703 on
+  all starters and 0.780 on finishers.
+- Interpretation: the limit is information beyond qualifying and the handling of retirements, not
+  model capacity.
+- Decision: plan 2 adds practice, richer qualifying, sprint and pre-race weather data; a DNF hazard
+  model; a race-level Monte Carlo simulator; a ceiling analysis and a forecast-horizon analysis.
+  Considered and not built: lap-by-lap simulator, hidden Markov model for car form, full F2
+  ingestion (reduced to an optional rookie-prior table). Reasons are in `PLAN2.md` §2.
+- Note: the 2024–2026 test blocks were scored in plan 1, so plan-2 test numbers are a second look.
+- Next: P0 (harness additions), then P1 (ceiling and horizon analysis on existing data).

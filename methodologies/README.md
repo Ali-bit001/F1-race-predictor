@@ -24,6 +24,11 @@ status `abandoned` and the reason — they are part of the record.
 | M03 | Latent strength model — 2×2×2 factorial (Family L) | **Proposed model, primary ablation** | run | see leaderboard | see leaderboard |
 | M04 | GBM 2×2×2 factorial (Family G) | Robustness check | run | see leaderboard | see leaderboard |
 | M05 | Hybrid latent + GBM | Optional | planned (optional, not built) | | |
+| M06 | Weekend-information models (practice, richer qualifying, sprint, weather) | Plan 2 main model | planned | | |
+| M07 | DNF hazard model (logistic) | Plan 2, retirements | planned | | |
+| M08 | Race-level Monte Carlo simulator | Plan 2, structure | planned | | |
+
+M06–M08 are specified in `PLAN2.md` §4.
 
 Extensions (X1–X11 in `PLAN.md` §7) get folders named `X<n>_<name>` when started.
 
