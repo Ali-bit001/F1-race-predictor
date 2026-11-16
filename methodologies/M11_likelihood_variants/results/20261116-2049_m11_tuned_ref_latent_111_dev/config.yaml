@@ -1,0 +1,8 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+component: latent_111
+tuned_on: dev, 12-point plan-1 grid (lam x halflife), selected by mean rho
+git_commit: c3b4fbc+dirty-f4b9f340bb01
+split: dev

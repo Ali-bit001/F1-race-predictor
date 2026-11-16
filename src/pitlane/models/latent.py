@@ -33,8 +33,19 @@ class LatentModel:
     def __init__(self, universe: pd.DataFrame, dynamic: bool, decomp: bool, ranking: bool,
                  halflife: float = 20.0, lam: float = 2.0, rho: float = 0.8, fit_mult: float = 5.0,
                  maxiter: int = 150, base_x: bool = True, x_cols: tuple[str, ...] | list[str] = (),
-                 lam_x: float = 1.0, lam_a: float | None = None):
+                 lam_x: float = 1.0, lam_a: float | None = None, finishers_only: bool = False,
+                 topk: int | None = None, reverse: bool = False):
         self.dynamic, self.decomp, self.ranking = dynamic, decomp, ranking
+        # PLAN3 M11 likelihood variants (Plackett-Luce only; all off = plan-1 likelihood, bit for bit).
+        # finishers_only: non-classified entries are dropped from their race's ranking; topk: only the first k
+        # places are stages (all entries stay in those choice sets); reverse: order built from last place upward.
+        self.finishers_only, self.topk, self.reverse = bool(finishers_only), (None if topk is None else int(topk)), bool(reverse)
+        if (self.finishers_only or self.topk is not None or self.reverse) and not ranking:
+            raise ValueError("M11 likelihood switches need ranking=True (Plackett-Luce)")
+        if self.reverse and self.topk is not None:
+            raise ValueError("reverse + topk is not defined")
+        if self.topk is not None and self.topk < 1:
+            raise ValueError("topk must be >= 1")
         self.halflife, self.lam, self.rho, self.fit_mult, self.maxiter = halflife, lam, rho, fit_mult, maxiter
         # PLAN3 A5: separate ridge strength for the driver effects. None (default) = same as `lam`: old behaviour.
         self.lam_a = lam if lam_a is None else lam_a
@@ -65,6 +76,8 @@ class LatentModel:
         parts = ([_x(u)] if base_x else []) + ([u[self.x_cols].fillna(0.0).to_numpy(float)] if self.x_cols else [])
         self.row_x = np.hstack(parts) if parts else np.zeros((len(u), 0))
         self.row_y = u["y"].to_numpy(float)
+        # Classification status of the entry (known after its own race only; used for training races, which are past).
+        self.row_cls = u["classified"].to_numpy(bool) if finishers_only else None
         self.row_race = u["race_id"].to_numpy()
         self.row_season = u["season"].to_numpy()
         self.race_rows = u.groupby("race_id").indices
@@ -96,19 +109,26 @@ class LatentModel:
             gu = w_row * r / SIGMA ** 2
         else:
             # Plackett-Luce, vectorised over races via a padded [race, finishing slot] matrix.
-            idx, mask = pad
-            U = np.where(mask, u[idx], -1e9)
-            m = U.max(1, keepdims=True)
-            E = np.exp(U - m)
-            S = np.cumsum(E[:, ::-1], axis=1)[:, ::-1]
-            S = np.where(mask, S, 1.0)
-            ll = np.where(mask, (U - m) - np.log(S), 0.0)
-            wr = w_row[idx[:, 0]][:, None]            # race weight (same for all rows of a race)
-            loss = -(wr * ll).sum()
-            C = np.cumsum(np.where(mask, 1.0 / S, 0.0), axis=1)
-            G = np.where(mask, E * C - 1.0, 0.0) * wr
-            gu = np.zeros(n_train)
-            np.add.at(gu, idx[mask], G[mask])
+            idx, mask = pad[0], pad[1]
+            if len(pad) == 2 and not self.reverse:    # plan-1 likelihood (all switches off): original code path
+                U = np.where(mask, u[idx], -1e9)
+                m = U.max(1, keepdims=True)
+                E = np.exp(U - m)
+                S = np.cumsum(E[:, ::-1], axis=1)[:, ::-1]
+                S = np.where(mask, S, 1.0)
+                ll = np.where(mask, (U - m) - np.log(S), 0.0)
+                wr = w_row[idx[:, 0]][:, None]            # race weight (same for all rows of a race)
+                loss = -(wr * ll).sum()
+                C = np.cumsum(np.where(mask, 1.0 / S, 0.0), axis=1)
+                G = np.where(mask, E * C - 1.0, 0.0) * wr
+                gu = np.zeros(n_train)
+                np.add.at(gu, idx[mask], G[mask])
+            else:   # PLAN3 M11 variants: `mask` = choice sets, `stage` = stages that contribute
+                stage = pad[2] if len(pad) > 2 else mask
+                wr = w_row[idx[:, 0]][:, None]
+                loss, G = self._pl_variant(u[idx], mask, stage, wr)
+                gu = np.zeros(n_train)
+                np.add.at(gu, idx[mask], G[mask])
         # scatter gradient to parameters
         ga = np.bincount(self.row_d[:n_train], gu, self.nD)
         gx = self.row_x[:n_train].T @ gu
@@ -136,8 +156,32 @@ class LatentModel:
         grad = np.concatenate([ga + pga, gb, gg, gbeta]) / W
         return total, grad
 
+    def _pl_variant(self, Uraw: np.ndarray, choice: np.ndarray, stage: np.ndarray, wr: np.ndarray):
+        """Plackett-Luce loss and d loss / d u for the M11 variants on the padded [race, slot] matrix.
+
+        choice[r, j]: entry j is in the choice sets (it can still be picked at later stages).
+        stage[r, j]:  the stage at which entry j is picked contributes to the likelihood (stage is a subset of choice).
+        Forward (default): stage j picks entry j among entries j.. (slots in finishing order), probability
+            exp(u_j) / sum_{k >= j, k in choice} exp(u_k).
+        Reverse: the order is built from last place upward: stage j picks entry j among entries ..j with probability
+            exp(-u_j) / sum_{k <= j, k in choice} exp(-u_k)   (PL on the reversed order with negated strengths).
+        """
+        sgn = -1.0 if self.reverse else 1.0
+        U = np.where(choice, sgn * Uraw, -1e9)
+        m = U.max(1, keepdims=True)
+        E = np.where(choice, np.exp(U - m), 0.0)
+        S = np.cumsum(E, axis=1) if self.reverse else np.cumsum(E[:, ::-1], axis=1)[:, ::-1]
+        S = np.where(choice, S, 1.0)
+        ll = np.where(stage, (U - m) - np.log(S), 0.0)
+        loss = -(wr * ll).sum()
+        inv = np.where(stage, 1.0 / S, 0.0)
+        C = np.cumsum(inv[:, ::-1], axis=1)[:, ::-1] if self.reverse else np.cumsum(inv, axis=1)
+        Gv = np.where(choice, E * C, 0.0) - stage          # d loss / d (sgn * u)
+        return loss, sgn * Gv * wr
+
     # ------------------------------------------------------------------ fit / predict
     def _pad(self, n_races: int):
+        """Padded [race, finishing slot] index matrix. With a likelihood switch on it also returns the stage mask."""
         nmax = max(len(self.race_rows[r]) for r in range(n_races))
         idx = np.zeros((n_races, nmax), dtype=int)
         mask = np.zeros((n_races, nmax), dtype=bool)
@@ -145,7 +189,14 @@ class LatentModel:
             rows = self.race_rows[r]
             idx[r, :len(rows)] = rows
             mask[r, :len(rows)] = True
-        return idx, mask
+        if not (self.finishers_only or self.topk is not None):
+            return idx, mask
+        if self.finishers_only:      # censored: retirees leave the ranking (stages and choice sets) of their race
+            mask = mask & self.row_cls[idx]
+        stage = mask.copy()
+        if self.topk is not None:    # only the first k places are stages; everyone stays in those choice sets
+            stage &= (np.arange(nmax)[None, :] < self.topk)
+        return idx, mask, stage
 
     def fit_inputs(self, n_train: int, t_ref: float):
         """Row weights and (for Plackett-Luce) the padded race matrix used by the objective."""

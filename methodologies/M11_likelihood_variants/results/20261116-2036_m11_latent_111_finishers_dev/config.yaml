@@ -1,0 +1,9 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+finishers_only: true
+component: M11_finishers
+frozen_hyperparameters: plan-1, not re-tuned
+git_commit: 040bc4b+dirty-f4b9f340bb01
+split: dev

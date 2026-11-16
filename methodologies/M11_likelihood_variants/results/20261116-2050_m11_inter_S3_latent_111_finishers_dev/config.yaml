@@ -1,0 +1,8 @@
+component: M11_finishers
+simulator: S3 (plan-2 frozen parameters, unchanged)
+order_model: M11_finishers
+retirement_model: M07 dev predictions (plan-2 stored run)
+draws: 1000
+seed: 0
+split: dev
+git_commit: c3b4fbc+dirty-f4b9f340bb01

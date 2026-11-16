@@ -23,7 +23,7 @@ status `abandoned` and the reason — they are part of the record.
 | M02 | GBM ranking (LambdaRank) | Deck Baseline 3 | run | see leaderboard | see leaderboard |
 | M03 | Latent strength model — 2×2×2 factorial (Family L) | **Proposed model, primary ablation** | run | see leaderboard | see leaderboard |
 | M04 | GBM 2×2×2 factorial (Family G) | Robustness check | run | see leaderboard | see leaderboard |
-| M05 | Hybrid latent + GBM | Optional | planned (optional, not built) | | |
+| M05 | Ensemble (rank average of latent + GBM) and monotone GBM | Plan 3 (R10) | done | dev: no gain with an interval excluding 0 on rho or MAE | [M05_ensemble](M05_ensemble/README.md) |
 | M06 | Weekend-information models (practice, richer qualifying, sprint, weather) | Plan 2 main model | run | see `results/plan2/` | see `results/plan2/` |
 | M07 | DNF hazard model (logistic) | Plan 2, retirements | run | log-loss, see `results/plan2/` | |
 | M08 | Race-level Monte Carlo simulator | Plan 2, structure | run | RPS, see `results/plan2/` | |
@@ -33,8 +33,8 @@ status `abandoned` and the reason — they are part of the record.
 | A3 | Race-pace persistence analysis | Plan 3, gate | planned | | |
 | M09 | Race-pace model (race-minus-qualifying offset) | Plan 3 primary hypothesis | planned | | |
 | M10 | Upgrade signal (FIA car presentation documents) | Plan 3 | planned | | |
-| M11 | Likelihood variants (finishers-only, truncated, reverse) | Plan 3 | planned | | |
-| M12 | Two-stage Friday forecast | Plan 3 | planned | | |
+| M11 | Likelihood variants (finishers-only, truncated, reverse) | Plan 3 | done (R5, revised) | dev only: reverse passes alone on MAE and exact rate (not rho, not Holm over 36), no variant beats grid order, tuning and M11 x M07 change nothing measurable | [M11_likelihood_variants](M11_likelihood_variants/README.md) |
+| M12 | Two-stage Friday forecast | Plan 3 (R10) | done | dev, 21 races of 2023: no measurable difference from H1 | [M12_two_stage](M12_two_stage/README.md) |
 | M13 | Market benchmark (price collection) | Plan 3, data collection | planned | | |
 | A4 | Rolling-origin evaluation and rolling re-tune | Plan 3, amendment 1 | done (R3) | rolling re-tune vs fixed on dev: no gain, keep 2021-23 tuning | [A4_rolling_origin](A4_rolling_origin/README.md) |
 | A5 | Strength audit (all teams, intervals, shrinkage) | Plan 3, amendment 1, run first | done (R1) | descriptive; see `results/plan3/` | |

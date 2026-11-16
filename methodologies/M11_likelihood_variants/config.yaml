@@ -1,0 +1,18 @@
+split: dev                    # 2021-2023 only; the test blocks and the fresh holdout are not scored
+refit_every: 1                # refit before every race
+frozen_path: configs/frozen.yaml
+frozen_key: M03               # plan-1 frozen hyper-parameters of cell 111 are used as they are (no re-tuning)
+cell: "111"
+reference_label: latent_111
+reference_run: latent_111     # label of the stored plan-1 dev run used only for the reproduction check
+# One entry per component. `switches` are LatentModel keyword arguments; the reference has none.
+variants:
+  M11_finishers: {label: latent_111_finishers, switches: {finishers_only: true}}
+  M11_topk10: {label: latent_111_top10, switches: {topk: 10}}
+  M11_reverse: {label: latent_111_reverse, switches: {reverse: true}}
+reproduction_extra_cells: ["110"]   # also re-run and compare with the stored plan-1 run (switches do not touch it)
+verdict_metric: spearman
+tie_break: driverId           # outcome-free tie-break for the predicted order (never input row order)
+bootstrap: {n_boot: 10000, seed: 0}
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv

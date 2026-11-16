@@ -1,0 +1,6 @@
+variant,n_train_rows,n_params,coords_checked,max_rel_error
+off,2808,254,40,6.877662372917155e-07
+finishers,2808,254,40,6.900684324512385e-07
+top10,2808,254,40,6.291202319109146e-08
+reverse,2808,254,40,1.3667252570183032e-07
+finishers+reverse (not a component),2808,254,40,8.157123873276422e-08

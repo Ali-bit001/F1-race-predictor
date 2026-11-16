@@ -720,7 +720,10 @@ def test_disk_jolpica_lap_counts_match_results(disk, results_ids):
             laps_won = max(int(x.get("laps", 0) or 0) for x in r["rows"])
             if mx[k] != laps_won:
                 bad.append((k, int(mx[k]), laps_won))
-    assert not bad, bad
+    # 2014 round 4 (China): the lap table has 56 laps, the Jolpica results record lap count and race time
+    # at lap 54 (winner's 56 lap times minus laps 55-56 equal the results time 1:33:28.338 exactly).
+    # The lap table is kept as is; this is the only accepted mismatch (checked over all 182 races, 2026-11-17).
+    assert bad in ([], [((2014, 4), 56, 54)]), bad
 
 
 def test_disk_pit_rows_per_season_vs_race_counts(disk):
