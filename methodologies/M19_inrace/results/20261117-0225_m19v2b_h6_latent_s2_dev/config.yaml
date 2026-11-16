@@ -1,0 +1,92 @@
+horizon: H6
+frac: 0.5
+model: latent_s2
+source: jolpica
+feature_cols:
+- ir_pos
+- ir_gap
+- ir_pits
+- ir_out
+- ir_def
+role: MAIN (two-stage, frozen pre-race score)
+k_dev_races:
+  138: 28
+  139: 32
+  140: 33
+  141: 33
+  142: 39
+  143: 26
+  144: 27
+  145: 36
+  146: 36
+  147: 26
+  148: 35
+  149: 1
+  150: 36
+  151: 27
+  152: 27
+  153: 29
+  154: 28
+  155: 36
+  156: 36
+  157: 29
+  158: 25
+  159: 29
+  160: 29
+  161: 25
+  162: 29
+  163: 32
+  164: 29
+  165: 33
+  166: 39
+  167: 26
+  168: 35
+  169: 26
+  170: 36
+  171: 27
+  172: 35
+  173: 22
+  174: 36
+  175: 27
+  176: 31
+  177: 27
+  178: 28
+  179: 36
+  180: 36
+  181: 29
+  182: 29
+  183: 25
+  184: 29
+  185: 26
+  186: 29
+  187: 39
+  188: 33
+  189: 35
+  190: 36
+  191: 26
+  192: 35
+  193: 22
+  194: 36
+  195: 26
+  196: 31
+  197: 27
+  198: 29
+  199: 28
+  200: 36
+  201: 36
+  202: 25
+  203: 29
+scheduled_laps_path: data/external/scheduled_laps.csv
+red_flag_margin_s: 20.0
+min_train_race: 20
+model_config:
+  kind: stage2_latent
+  score: pre_lat (latent_111 walk-forward)
+  lam_x: 1.0
+  halflife: 50
+  fix_c: false
+  min_train_race: 20
+note: in-race forecast, reported separately from pre-race results; v2 supersedes the
+  m19_* rows of the first run
+git_commit: efec0d3+dirty-6a1ed3b48edc
+split: dev

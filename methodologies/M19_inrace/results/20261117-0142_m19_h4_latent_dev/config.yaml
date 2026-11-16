@@ -1,0 +1,87 @@
+horizon: H4
+frac: null
+model: latent
+source: jolpica
+feature_cols: &id001
+- ir_pos
+- ir_gap
+- ir_pits
+- ir_out
+- ir_def
+k_dev_races:
+  138: 1
+  139: 1
+  140: 1
+  141: 1
+  142: 1
+  143: 1
+  144: 1
+  145: 1
+  146: 1
+  147: 1
+  148: 1
+  149: 1
+  150: 1
+  151: 1
+  152: 1
+  153: 1
+  154: 1
+  155: 1
+  156: 1
+  157: 1
+  158: 1
+  159: 1
+  160: 1
+  161: 1
+  162: 1
+  163: 1
+  164: 1
+  165: 1
+  166: 1
+  167: 1
+  168: 1
+  169: 1
+  170: 1
+  171: 1
+  172: 1
+  173: 1
+  174: 1
+  175: 1
+  176: 1
+  177: 1
+  178: 1
+  179: 1
+  180: 1
+  181: 1
+  182: 1
+  183: 1
+  184: 1
+  185: 1
+  186: 1
+  187: 1
+  188: 1
+  189: 1
+  190: 1
+  191: 1
+  192: 1
+  193: 1
+  194: 1
+  195: 1
+  196: 1
+  197: 1
+  198: 1
+  199: 1
+  200: 1
+  201: 1
+  202: 1
+  203: 1
+model_config:
+  kind: latent
+  cell: '111'
+  lam: 32.0
+  halflife: 50
+  x_cols: *id001
+  lam_x: 1.0
+note: in-race forecast, reported separately from pre-race results
+git_commit: c44007b+dirty-63c10fad3632
+split: dev

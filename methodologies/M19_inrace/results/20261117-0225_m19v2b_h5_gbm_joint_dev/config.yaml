@@ -1,0 +1,94 @@
+horizon: H5
+frac: 0.25
+model: gbm_joint
+source: jolpica
+feature_cols: &id001
+- ir_pos
+- ir_gap
+- ir_pits
+- ir_out
+- ir_def
+role: variant (joint refit, as in v1)
+k_dev_races:
+  138: 14
+  139: 16
+  140: 17
+  141: 17
+  142: 20
+  143: 13
+  144: 14
+  145: 18
+  146: 18
+  147: 13
+  148: 18
+  149: 1
+  150: 18
+  151: 14
+  152: 14
+  153: 15
+  154: 14
+  155: 18
+  156: 18
+  157: 15
+  158: 13
+  159: 15
+  160: 15
+  161: 13
+  162: 15
+  163: 16
+  164: 15
+  165: 17
+  166: 20
+  167: 13
+  168: 18
+  169: 13
+  170: 18
+  171: 14
+  172: 18
+  173: 11
+  174: 18
+  175: 14
+  176: 16
+  177: 14
+  178: 14
+  179: 18
+  180: 18
+  181: 15
+  182: 15
+  183: 13
+  184: 15
+  185: 13
+  186: 15
+  187: 20
+  188: 17
+  189: 18
+  190: 18
+  191: 13
+  192: 18
+  193: 11
+  194: 18
+  195: 13
+  196: 16
+  197: 14
+  198: 15
+  199: 14
+  200: 18
+  201: 18
+  202: 13
+  203: 15
+scheduled_laps_path: data/external/scheduled_laps.csv
+red_flag_margin_s: 20.0
+min_train_race: 20
+model_config:
+  kind: gbm
+  cell: '100'
+  num_leaves: 4
+  n_estimators: 200
+  learning_rate: 0.05
+  min_child_samples: 40
+  halflife: 32
+  extra_cols: *id001
+note: in-race forecast, reported separately from pre-race results; v2 supersedes the
+  m19_* rows of the first run
+git_commit: efec0d3+dirty-6a1ed3b48edc
+split: dev

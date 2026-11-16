@@ -43,7 +43,7 @@ status `abandoned` and the reason — they are part of the record.
 | M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | planned | | |
 | M17 | Metric-matched decoding (assignment) | Plan 3, amendment 2, run early | done (dev) | D2 exact 13.8% vs grid 16.3%, CI includes 0 | [M17_decoding](M17_decoding/README.md) |
 | M18 | Overtaking threshold | Plan 3, amendment 2 | planned | | |
-| M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | done (R13, dev) | rho above the running order at H4/H5 (+0.036, +0.035, CIs exclude 0), H6 +0.011 (latent) / not measurable (gbm); exact-position rate is lower | [M19_inrace](M19_inrace/README.md) |
+| M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | done (R13, dev; v2 after review) | running order is a strong exact-rate baseline the two-stage model does not beat (exact rate lower at all 6 pairs); rho +0.03 to +0.04 at H4/H5 (2022-23 only), H6 +0.010 to +0.012 marginal | [M19_inrace](M19_inrace/README.md) |
 | M20 | Race-craft traits and pit crew | Plan 3, amendment 2 | planned | | |
 | M21 | Neural-network control (optional, needs rule change) | Plan 3, amendment 2 | planned | | |
 

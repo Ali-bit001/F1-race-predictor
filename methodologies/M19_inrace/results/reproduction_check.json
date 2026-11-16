@@ -1,0 +1,113 @@
+{
+  "reproduction": {
+    "latent_111": {
+      "max_abs_diff_per_race_metrics": 8.881784197001252e-16,
+      "max_abs_diff_scores": 0.0,
+      "races": 66,
+      "entries": 1311
+    },
+    "gbm_100": {
+      "max_abs_diff_per_race_metrics": 4.440892098500626e-16,
+      "max_abs_diff_scores": 0.0,
+      "races": 66,
+      "entries": 1311
+    },
+    "walk_scores_latent_111_vs_stored_dev": {
+      "max_abs_diff_scores": 3.672062653947705e-12,
+      "entries": 1311
+    },
+    "walk_scores_gbm_100_vs_stored_dev": {
+      "max_abs_diff_scores": 0.0,
+      "entries": 1311
+    },
+    "stage2_latent_no_inrace_columns_fixed_c": {
+      "max_abs_diff_scores_vs_pre_race": 0.0
+    }
+  },
+  "lam_x_chosen": {
+    "H4": {
+      "two_stage": 10.0,
+      "joint": 1.0
+    },
+    "H5": {
+      "two_stage": 0.1,
+      "joint": 10.0
+    },
+    "H6": {
+      "two_stage": 1.0,
+      "joint": 1.0
+    }
+  },
+  "latent_beta_last_dev_refit": {
+    "H4": {
+      "latent_s2": {
+        "c": 0.6862098424831513,
+        "ir_pos": -0.918949207135661,
+        "ir_gap": -0.18081858771427414,
+        "ir_pits": 0.12357828452315653,
+        "ir_out": -0.7581296851927029,
+        "ir_def": -0.7581296851927029
+      },
+      "latent_joint": {
+        "ir_pos": -1.705687306423981,
+        "ir_gap": -0.1934654578802969,
+        "ir_pits": 0.29047384891048217,
+        "ir_out": -1.2449745499731042,
+        "ir_def": -1.244974549973104
+      }
+    },
+    "H5": {
+      "latent_s2": {
+        "c": 0.5742705424847657,
+        "ir_pos": -1.9992207055650972,
+        "ir_gap": -0.14616553511974203,
+        "ir_pits": 0.1876693563100956,
+        "ir_out": -1.622298607123206,
+        "ir_def": -2.2011925764396056
+      },
+      "latent_joint": {
+        "ir_pos": -1.5182274472822286,
+        "ir_gap": -0.11042776524440787,
+        "ir_pits": 0.12131447815606305,
+        "ir_out": -1.0980193528316062,
+        "ir_def": -0.8375472003362123
+      }
+    },
+    "H6": {
+      "latent_s2": {
+        "c": 0.47888255082356945,
+        "ir_pos": -3.509556059655226,
+        "ir_gap": -0.1024693550341548,
+        "ir_pits": 0.3567416212510871,
+        "ir_out": -1.6708790790703718,
+        "ir_def": -1.659500849217103
+      },
+      "latent_joint": {
+        "ir_pos": -3.5996383906895786,
+        "ir_gap": -0.09774393015850857,
+        "ir_pits": 0.36266023238364864,
+        "ir_out": -1.6172508539872472,
+        "ir_def": -1.6882927898993603
+      }
+    }
+  },
+  "capped_horizons": {
+    "H4": [],
+    "H5": [
+      [
+        2021,
+        12,
+        11,
+        1
+      ]
+    ],
+    "H6": [
+      [
+        2021,
+        12,
+        22,
+        1
+      ]
+    ]
+  }
+}
