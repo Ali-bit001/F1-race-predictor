@@ -33,9 +33,11 @@ class LatentModel:
     def __init__(self, universe: pd.DataFrame, dynamic: bool, decomp: bool, ranking: bool,
                  halflife: float = 20.0, lam: float = 2.0, rho: float = 0.8, fit_mult: float = 5.0,
                  maxiter: int = 150, base_x: bool = True, x_cols: tuple[str, ...] | list[str] = (),
-                 lam_x: float = 1.0):
+                 lam_x: float = 1.0, lam_a: float | None = None):
         self.dynamic, self.decomp, self.ranking = dynamic, decomp, ranking
         self.halflife, self.lam, self.rho, self.fit_mult, self.maxiter = halflife, lam, rho, fit_mult, maxiter
+        # PLAN3 A5: separate ridge strength for the driver effects. None (default) = same as `lam`: old behaviour.
+        self.lam_a = lam if lam_a is None else lam_a
         u = universe
         self.drivers = {d: i for i, d in enumerate(sorted(u["driverId"].unique()))}
         self.types = {t: i for i, t in enumerate(sorted(u["circuit_type"].unique()))}
@@ -113,8 +115,8 @@ class LatentModel:
         gb = np.zeros(self.nB)
         gg = np.zeros(self.nG)
         a, b, g, beta = self._split(th)
-        pen = self.lam * (a @ a)
-        pga = 2 * self.lam * a
+        pen = self.lam_a * (a @ a)
+        pga = 2 * self.lam_a * a
         if self.decomp:
             gb = np.bincount(self.row_b[:n_train], gu, self.nB)
             gg = np.bincount(self.row_g[:n_train], gu, self.nG)
@@ -145,13 +147,18 @@ class LatentModel:
             mask[r, :len(rows)] = True
         return idx, mask
 
-    def fit(self, n_train: int, t_ref: float):
+    def fit_inputs(self, n_train: int, t_ref: float):
+        """Row weights and (for Plackett-Luce) the padded race matrix used by the objective."""
         races = self.row_race[:n_train]
         if self.dynamic:
             w_row = 0.5 ** ((t_ref - races) / self.halflife)
         else:
             w_row = np.ones(n_train)
         pad = self._pad(int(races.max()) + 1) if self.ranking else None
+        return w_row, pad
+
+    def fit(self, n_train: int, t_ref: float):
+        w_row, pad = self.fit_inputs(n_train, t_ref)
         res = minimize(self._objective, self.theta, args=(n_train, w_row, pad), jac=True, method="L-BFGS-B",
                        options={"maxiter": self.maxiter})
         self.theta = res.x

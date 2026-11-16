@@ -1,0 +1,14 @@
+season,champion,points,lineage,teammate,rounds
+2014,hamilton,384.0,mercedes,rosberg,19
+2015,hamilton,381.0,mercedes,rosberg,19
+2016,rosberg,385.0,mercedes,hamilton,21
+2017,hamilton,363.0,mercedes,bottas,20
+2018,hamilton,408.0,mercedes,bottas,21
+2019,hamilton,413.0,mercedes,bottas,21
+2020,hamilton,347.0,mercedes,bottas,17
+2021,max_verstappen,388.5,red_bull,perez,22
+2022,max_verstappen,433.0,red_bull,perez,22
+2023,max_verstappen,530.0,red_bull,perez,22
+2024,max_verstappen,399.0,red_bull,perez,24
+2025,norris,394.0,mclaren,piastri,24
+2026,antonelli,359.0,mercedes,russell,20

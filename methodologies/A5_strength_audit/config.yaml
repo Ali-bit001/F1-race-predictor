@@ -1,0 +1,30 @@
+# A5 strength audit (PLAN3.md section 4, work package R1)
+seed: 0
+entries: data/processed/entries_feat.parquet
+frozen_plan1: configs/frozen.yaml        # M03 cell 110 = fig7 model (quali_pos etc. in the model)
+frozen_plan2: configs/frozen_plan2.yaml  # H0 cell 110 = history-only model (no weekend signals)
+models:
+  quali_in: {source: plan1, key: M03, cell: "110"}   # `a` = race-day gain beyond the grid slot
+  h0:       {source: plan2, key: H0,  cell: "110"}   # `a` = overall skill (history only)
+# Shrinkage fix: separate ridge strength on the driver effects (LatentModel(lam_a=...)). None = old behaviour.
+# Tuned on dev 2021-23 only (refit_every=4 as in plan 1; the empirical-Bayes input is a fit through the end of 2023).
+# Selection history (stated honestly): rule 1, written before the grid was scored, was "largest lam_a whose paired
+# Spearman difference to the dev-best has a 95% interval containing 0". It picked the grid edge (4096) for both
+# models, where the spread of `a` is 0.002 (the driver table is flat), so it was SUPERSEDED after seeing that result
+# by rule 2 (the one used): lam_a_EB = 1 / (2 sd^2), sd = sd of the unpenalised driver effects of drivers with >= 30
+# starts in the fit through 2023 (an upper bound on the true between-driver sd, hence a lower bound on lam_a);
+# chosen = grid value nearest to lam_a_EB on a log scale, required to be dev-indistinguishable from the dev-best
+# (paired interval contains 0). Both outcomes are in results/plan3/tuning_lam_a.csv.
+lam_a_grid: [64, 128, 256, 512, 1024, 2048, 4096]
+select_rule: eb_nearest_log   # rule 2; rule 1 = largest_within_ci (superseded)
+eb_min_starts: 30
+eb_snapshot_season: 2023
+tune_refit_every: 4
+bootstrap: 5000
+# Audit settings
+interval_z: 1.96            # 95% Laplace interval
+min_starts: 10              # drivers below this are shown separately
+weak_min_teammates: 2       # identification flag: fewer distinct teammates than this
+min_pair_starts: 8          # plan-1 definition of a teammate pair (report.py)
+maxiter_tight: 5000
+holdout_note: "2024-26 shown in the strengths table (descriptive); no decision uses them."

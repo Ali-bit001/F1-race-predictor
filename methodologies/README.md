@@ -37,7 +37,7 @@ status `abandoned` and the reason — they are part of the record.
 | M12 | Two-stage Friday forecast | Plan 3 | planned | | |
 | M13 | Market benchmark (price collection) | Plan 3, data collection | planned | | |
 | A4 | Rolling-origin evaluation and rolling re-tune | Plan 3, amendment 1 | planned | | |
-| A5 | Strength audit (all teams, intervals, shrinkage) | Plan 3, amendment 1, run first | planned | | |
+| A5 | Strength audit (all teams, intervals, shrinkage) | Plan 3, amendment 1, run first | done (R1) | descriptive; see `results/plan3/` | |
 | M14 | Car traits (engine supplier, trait × circuit) | Plan 3, amendment 1 | planned | | |
 | M15 | Rookie prior from junior-series record | Plan 3, amendment 1 | planned | | |
 | M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | planned | | |

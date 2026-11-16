@@ -1,0 +1,9 @@
+model,population,n_slots,n_lowsample_in_top_or_bottom3
+h0,"final fit, drivers active 2024-26",6,0.0
+h0,"season-end snapshot, drivers racing that season",78,3.0
+h0_lam_a,"final fit, drivers active 2024-26",6,0.0
+h0_lam_a,"season-end snapshot, drivers racing that season",78,0.0
+quali_in,"final fit, drivers active 2024-26",6,2.0
+quali_in,"season-end snapshot, drivers racing that season",78,5.0
+quali_in_lam_a,"final fit, drivers active 2024-26",6,0.0
+quali_in_lam_a,"season-end snapshot, drivers racing that season",78,0.0
