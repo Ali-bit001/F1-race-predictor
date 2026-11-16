@@ -1,0 +1,10 @@
+metric,gain,lo,hi,n,verdict,component,reference,primary
+spearman,0.02178064208139395,-0.010072801050244665,0.056940267335004145,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,True
+spearman_fin,0.036343808778572156,-0.002335600907029468,0.08886486105913351,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,False
+mae,0.18195488721804512,-0.034335839598997484,0.3909837092731827,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,True
+mae_fin,0.2530617510161959,0.03271242561352021,0.4995109856808217,21,passes alone,M12_two_stage,plan2_H1_latent_111,False
+exact,0.01716791979949875,-0.02355889724310777,0.060780075187969886,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,False
+exact_fin,0.016439704536785477,-0.028706426283963877,0.062160205456451574,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,False
+exact_1_3,0.03174603174603175,-0.0634920634920635,0.14285714285714285,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,False
+exact_4_10,0.027210884353741496,-0.04081632653061224,0.10884353741496598,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,False
+exact_11p,0.005820105820105816,-0.04814814814814815,0.0671957671957672,21,no measurable difference,M12_two_stage,plan2_H1_latent_111,False

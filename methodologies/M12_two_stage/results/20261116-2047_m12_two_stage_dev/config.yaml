@@ -1,0 +1,30 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+component: M12_two_stage
+stage1:
+  model: ridge
+  alpha: 1.0
+  halflives_quali:
+  - 8
+  - 32
+  history_cols:
+  - drv_q_ew8
+  - drv_q_ew32
+  - con_q_ew8
+  - con_q_ew32
+  - drv_ew16
+  - con_ew16
+  practice_cols:
+  - x_fp_gap
+  - x_fp_long
+  - x_fp_laps
+h2_inputs_from_stage1:
+  quali_norm: stage-1 predicted rank
+  grid_minus_quali: 0
+  q1_gap: mean by predicted rank, earlier races
+  pit_start: 0
+frozen_hyperparameters: plan-1 H2 / plan-2 H1, not re-tuned
+git_commit: c3b4fbc+dirty-bcbe84f51af6
+split: dev

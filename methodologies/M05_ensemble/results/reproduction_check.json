@@ -1,0 +1,14 @@
+{
+  "latent_111": {
+    "max_abs_diff_per_race_metrics": 8.881784197001252e-16,
+    "max_abs_diff_scores": 0.0,
+    "races": 66,
+    "entries": 1311
+  },
+  "gbm_100": {
+    "max_abs_diff_per_race_metrics": 4.440892098500626e-16,
+    "max_abs_diff_scores": 0.0,
+    "races": 66,
+    "entries": 1311
+  }
+}

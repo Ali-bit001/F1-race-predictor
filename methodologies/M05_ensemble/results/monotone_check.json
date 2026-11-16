@@ -1,0 +1,26 @@
+{
+  "gbm_100": {
+    "grid_norm": {
+      "race_id": 203,
+      "entries": 20,
+      "entries_with_decreasing_y": 20
+    },
+    "quali_norm": {
+      "race_id": 203,
+      "entries": 20,
+      "entries_with_decreasing_y": 1
+    }
+  },
+  "M05_gbm_monotone": {
+    "grid_norm": {
+      "race_id": 203,
+      "entries": 20,
+      "entries_with_decreasing_y": 0
+    },
+    "quali_norm": {
+      "race_id": 203,
+      "entries": 20,
+      "entries_with_decreasing_y": 0
+    }
+  }
+}

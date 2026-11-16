@@ -1,0 +1,33 @@
+{
+  "h1_latent_111": {
+    "max_abs_diff_per_race_metrics": 8.881784197001252e-16,
+    "max_abs_diff_scores": 0.0,
+    "races": 66,
+    "entries": 1311
+  },
+  "leakage_check_max_abs_diff": 0.0,
+  "practice_races": 21,
+  "practice_race_ids": [
+    182,
+    183,
+    184,
+    185,
+    186,
+    187,
+    188,
+    189,
+    190,
+    191,
+    192,
+    194,
+    195,
+    196,
+    197,
+    198,
+    199,
+    200,
+    201,
+    202,
+    203
+  ]
+}

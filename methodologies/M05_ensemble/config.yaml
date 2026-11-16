@@ -1,0 +1,15 @@
+split: dev                    # 2021-2023 only; the test blocks and the fresh holdout are not scored
+refit_every: 1                # refit before every race
+frozen_path: configs/frozen.yaml
+latent_ref: {key: M03, cell: "111", label: latent_111}      # plan-1 frozen hyper-parameters, not re-tuned
+gbm_ref: {key: M04, cell: "100", label: gbm_100}
+monotone:
+  # +1 = predicted y (normalised finishing position, 0 = win) must not decrease when the feature increases
+  # (better grid slot / qualifying position never predicts a worse finish). All other columns are free (0).
+  increasing_y: [grid_norm, quali_norm]
+verdict_metric: spearman
+tie_break: driverId           # outcome-free tie-break for the predicted order (never input row order)
+bootstrap: {n_boot: 10000, seed: 0}
+plan1_leaderboard: results/leaderboard.csv
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv

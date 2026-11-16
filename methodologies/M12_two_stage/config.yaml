@@ -1,0 +1,21 @@
+split: dev                    # 2021-2023 only; the test blocks and the fresh holdout are not scored
+refit_every: 1                # refit before every race
+frozen_path: configs/frozen.yaml               # H2 model = M03 cell 111 (plan 1, frozen)
+h2: {key: M03, cell: "111"}
+frozen_plan2_path: configs/frozen_plan2.yaml   # H1 reference = H1 cell 111 (plan 2, frozen)
+h1: {key: H1, cell: "111", label: h1_latent_111}
+stage1:
+  model: ridge
+  alpha: 1.0                  # fixed a priori, not tuned
+  halflives_quali: [8, 32]
+  history_cols: [drv_q_ew8, drv_q_ew32, con_q_ew8, con_q_ew32, drv_ew16, con_ew16]
+  practice_cols: [x_fp_gap, x_fp_long, x_fp_laps]
+baselines:
+  h0_label: h0_latent_111     # stored plan-2 run, used as the "H0 strength order" baseline for qualifying
+verdict_metric: spearman
+tie_break: driverId
+bootstrap: {n_boot: 10000, seed: 0}
+plan1_leaderboard: results/leaderboard.csv
+plan2_leaderboard: results/plan2/leaderboard.csv
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
