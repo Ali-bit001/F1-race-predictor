@@ -1,0 +1,34 @@
+# Plan-3 R0 ingestion settings (race laps, pit stops, stints). Read by pitlane.data.ingest3.
+user_agent: "f1-research-client/1.0"      # generic on purpose: no names or project in any header
+
+jolpica:
+  base: "https://api.jolpi.ca/ergast/f1"
+  laps_gap_s: 7.5            # documented sustained limit is 500 requests/hour = 7.2 s; keep a margin
+  pits_gap_s: 4.0            # small batch (~280 requests); the hourly cap below still applies
+  max_per_hour: 480          # sliding-window guard shared through data/raw/plan3/jolpica_requests.txt
+  page: 100
+  laps_seasons: [2022, 2021, 2020, 2019, 2018, 2017, 2016, 2015, 2014]   # download order: newest first
+  pit_seasons: [2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]
+  extra_laps_seasons: [2024, 2025, 2026]   # cross-check of OpenF1 laps; only with --jolpica-laps-extra
+  reuse_plan2_laps_seasons: [2023]         # already cached in data/raw/plan2/laps, not re-downloaded
+
+openf1:
+  base: "https://api.openf1.org/v1"
+  gap_s: 2.2                 # limits: 3 requests/s and 30/minute
+  seasons: [2023, 2024, 2025, 2026]
+  endpoints: [laps, stints, drivers, pit]
+  sessions_max_age_h: 12     # refresh the current season's session list after this age
+
+retry:
+  max_tries: 8
+  first_delay_s: 10
+  max_delay_s: 300
+  timeout_s: 90
+
+race_done_after_h: 3.5       # a race counts as run when start + this many hours is in the past
+
+pits:
+  red_flag_margin_s: 20      # red_flag_suspect = duration > race median + margin (rows are never dropped)
+
+agreement:
+  tol_s: 0.05                # Jolpica vs OpenF1 lap-time agreement threshold

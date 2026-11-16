@@ -106,3 +106,16 @@ Entry format:
 - Limits: intervals are conditional on sigma = 0.25 and the decay-weighted likelihood, coverage not verified; all strength rankings are in-sample descriptions.
 - Consequences for later packages: state driver-car separation per model (overall skill from H0; with qualifying, `a` is race-day gain beyond grid slot and is small); `lam_a` and a season-varying driver term are candidate components under the attribution protocol (PLAN3 §5), not yet run; S6 depends strongly on the driver penalty (se 0.058 to 0.034).
 - Next: R2 (attribution harness and M17), R3 (rolling origin).
+
+## 2026-11-16 — R0: lap and pit-stop ingestion (code done and tested; Jolpica laps 2014-2022 still downloading)
+- Methodology / WP: R0. Code `src/pitlane/data/ingest3.py`, `configs/ingest3.yaml`, `scripts/ingest_plan3.py`; tests `tests/test_ingest3.py` (82 pass, 3 expected failures documenting that the time parser accepts some non-times that do not occur on disk).
+- Sources verified by calling them (2026-11-16): Jolpica laps (100 timings per page, 500 requests per hour), Jolpica pit stops (from 2011), OpenF1 race laps, stints, pit and drivers (2023-2026, no key, CC BY-NC-SA 4.0). TUM database exists (2014-2019) but is not used.
+- Downloaded: OpenF1 laps, stints and drivers for all 90 races of 2023-2026; Jolpica pit stops for all 272 races. No failed requests, no unmatched drivers. Tables in `data/interim/plan3/` (git-ignored).
+- Not finished: Jolpica laps 2022 back to 2014 run detached at 7.5 s per request (about 5 hours). Resume with `python -u scripts\ingest_plan3.py --laps`; check with `--check`; rebuild tables with `--tables`. The acceptance check (files per season match race counts) is therefore not yet met for laps.
+- Facts that change later packages:
+  - Jolpica pit-stop duration is total pit-lane time (median 22-25 s), not stationary time. Stationary time exists only in OpenF1 from late 2024 and is incomplete. The M20 crew feature will measure pit lane plus stop, not crew speed alone.
+  - Red-flag stoppages appear as pit stops of many minutes and increment the stop counter; 5.6% of stops are flagged `red_flag_suspect` (duration above race median + 20 s), which also catches slow repair stops. Rows are kept; M09 and M20 must filter.
+  - Tyre compound and stints exist only for 2023-2026. For 2014-2022 stint age can only come from pit-stop laps, compound unknown.
+  - OpenF1 pit data is missing for 2023 rounds 1-6; 43 of 5,256 stint rows have `lap_end < lap_start` and must be dropped.
+  - 2023 cross-check, Jolpica against OpenF1: 99.97% of driver-laps agree within 0.05 s outside lap 1; lap-1 times differ by about 0.35 s and are not interchangeable between sources. Jolpica 2023 laps (plan-2 cache) have no position column.
+- Not tested: real rate-limit behaviour over the long run; concurrent writers on the request log; laps for 2014-2022 (not yet arrived).
