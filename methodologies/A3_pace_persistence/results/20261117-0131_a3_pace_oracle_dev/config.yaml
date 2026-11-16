@@ -1,0 +1,34 @@
+split: dev
+dev_seasons:
+- 2021
+- 2022
+- 2023
+burn_in_from: 2014
+lap_source: jolpica
+thresh: 1.07
+thresh_sensitivity:
+- 1.05
+- 1.1
+min_clean: 10
+primary_definition: med
+halflife_primary: 50
+halflives:
+- 8
+- 16
+- 32
+- 50
+min_prior_obs: 5
+bootstrap:
+  n_boot: 10000
+  seed: 0
+gate:
+  oracle_gap_min: 0.03
+  car_persistence_min: 0.2
+model_label: latent_111
+model_leaderboard: results/leaderboard.csv
+plan2_ceiling_per_race: results/plan2/ceiling_per_race.csv
+leaderboard: results/plan3/leaderboard.csv
+out_dir: methodologies/A3_pace_persistence/results
+summary_json: results/plan3/a3_summary.json
+git_commit: c3b4fbc+dirty-815ab92f2a1b
+run_id: 20261117-0131_a3_pace_oracle_dev

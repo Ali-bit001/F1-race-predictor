@@ -1,0 +1,19 @@
+split: dev                      # 2021-2023 scored; 2014-2020 only feeds the history means; nothing later is read
+dev_seasons: [2021, 2022, 2023]
+burn_in_from: 2014
+lap_source: jolpica
+thresh: 1.07                    # clean-lap threshold (share of race median)
+thresh_sensitivity: [1.05, 1.10]
+min_clean: 10                   # clean laps for a driver's pace in a race
+primary_definition: med         # med = median clean lap (D1), corr = fuel/tyre corrected (D2); both reported
+halflife_primary: 50            # frozen latent_111; 32 = frozen gbm_100; 16 and 8 sensitivity
+halflives: [8, 16, 32, 50]
+min_prior_obs: 5                # earlier valid observations needed for a row to enter the persistence correlation
+bootstrap: {n_boot: 10000, seed: 0}
+gate: {oracle_gap_min: 0.03, car_persistence_min: 0.2}
+model_label: latent_111         # plan-1 dev run used as the model in the oracle gap (as in plan 2)
+model_leaderboard: results/leaderboard.csv
+plan2_ceiling_per_race: results/plan2/ceiling_per_race.csv
+leaderboard: results/plan3/leaderboard.csv
+out_dir: methodologies/A3_pace_persistence/results
+summary_json: results/plan3/a3_summary.json

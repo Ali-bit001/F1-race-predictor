@@ -30,7 +30,7 @@ status `abandoned` and the reason — they are part of the record.
 | A1 | Ceiling analysis (oracles) | Plan 2, analysis | run | | |
 | A2 | Forecast-horizon analysis (H0/H1 factorial) | Plan 2, analysis | run | | |
 
-| A3 | Race-pace persistence analysis | Plan 3, gate | planned | | |
+| A3 | Race-pace persistence analysis | Plan 3, gate | done (R4), gate FAILED | dev: oracle gap 0.075 rho passes, car-level rq persistence 0.096 < 0.2 fails; M09 not built | [A3_pace_persistence](A3_pace_persistence/README.md) |
 | M09 | Race-pace model (race-minus-qualifying offset) | Plan 3 primary hypothesis | planned | | |
 | M10 | Upgrade signal (FIA car presentation documents) | Plan 3 | planned | | |
 | M11 | Likelihood variants (finishers-only, truncated, reverse) | Plan 3 | done (R5, revised) | dev only: reverse passes alone on MAE and exact rate (not rho, not Holm over 36), no variant beats grid order, tuning and M11 x M07 change nothing measurable | [M11_likelihood_variants](M11_likelihood_variants/README.md) |
@@ -43,7 +43,7 @@ status `abandoned` and the reason — they are part of the record.
 | M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | planned | | |
 | M17 | Metric-matched decoding (assignment) | Plan 3, amendment 2, run early | done (dev) | D2 exact 13.8% vs grid 16.3%, CI includes 0 | [M17_decoding](M17_decoding/README.md) |
 | M18 | Overtaking threshold | Plan 3, amendment 2 | planned | | |
-| M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | planned | | |
+| M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | done (R13, dev) | rho above the running order at H4/H5 (+0.036, +0.035, CIs exclude 0), H6 +0.011 (latent) / not measurable (gbm); exact-position rate is lower | [M19_inrace](M19_inrace/README.md) |
 | M20 | Race-craft traits and pit crew | Plan 3, amendment 2 | planned | | |
 | M21 | Neural-network control (optional, needs rule change) | Plan 3, amendment 2 | planned | | |
 

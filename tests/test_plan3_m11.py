@@ -262,7 +262,7 @@ def test_reverse_equals_standard_pl_on_reversed_order_with_negated_strengths():
 @pytest.fixture(scope="module")
 def head_latent(tmp_path_factory):
     try:
-        src = subprocess.check_output(["git", "show", "HEAD:src/pitlane/models/latent.py"], cwd=ROOT, text=True)
+        src = subprocess.check_output(["git", "show", "c3b4fbc:src/pitlane/models/latent.py"], cwd=ROOT, text=True)
     except Exception as e:                                           # pragma: no cover
         pytest.skip(f"git show failed: {e}")
     d = tmp_path_factory.mktemp("head_latent")
@@ -586,7 +586,7 @@ def test_attribution_m11_rows_reproduce_from_run_folders():
 @needs_results
 def test_attribution_m17_rows_unchanged_against_head():
     cur = pd.read_csv(ROOT / "results" / "plan3" / "attribution.csv", dtype=object)
-    old_txt = subprocess.check_output(["git", "show", "HEAD:results/plan3/attribution.csv"], cwd=ROOT, text=True)
+    old_txt = subprocess.check_output(["git", "show", "c3b4fbc:results/plan3/attribution.csv"], cwd=ROOT, text=True)
     from io import StringIO
     old = pd.read_csv(StringIO(old_txt), dtype=object)
     key = ["component", "reference"]
