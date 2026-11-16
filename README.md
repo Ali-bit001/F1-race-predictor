@@ -14,6 +14,7 @@ Everything runs on a CPU; no deep learning.
 ## Start here
 - [`PLAN.md`](PLAN.md) — the research plan and work packages (plan 1, done).
 - [`PLAN2.md`](PLAN2.md) — plan 2: practice, qualifying, sprint and weather information, a DNF model and a race-level Monte Carlo simulator.
+- [`PLAN3.md`](PLAN3.md) — plan 3: race pace versus qualifying pace, car upgrades, likelihood variants, a clean holdout (not started).
 - [`results/plan2/REPORT.md`](results/plan2/REPORT.md) — plan 2 results (written by `python scripts/run_plan2.py`).
 - [`.claude/skills/pitlane-run/SKILL.md`](.claude/skills/pitlane-run/SKILL.md) — how runs are recorded, logged, committed and pushed.
 - [`results/REPORT.md`](results/REPORT.md) — plan 1 results.

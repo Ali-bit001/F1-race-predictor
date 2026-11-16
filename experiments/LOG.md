@@ -58,3 +58,24 @@ Entry format:
   - M08 RPS on test_stable: m08_S0 0.1139, m08_S1 0.1098, m08_S2 0.1098, m08_S3 0.1093
 - Interpretation: see `results/plan2/REPORT.md` (information ladder, leave-one-out verdicts, DNF model, simulator ladder).
 - Deviations from PLAN2.md: FastF1 is blocked (HTTP 401 without an F1 login), so practice laps and session weather come from OpenF1 and exist for 2023+ only; practice is judged on dev-2023 plus test; race laps for the pace oracle were fetched for 2023 only (Jolpica rate limit); the race-day forecast comes from Open-Meteo's historical-forecast archive (2020+); every ladder rung is tuned separately on dev; no git tag was created for the freeze (the config hash identifies it).
+
+## 2026-11-15 — Plan 3 written
+- Methodology / WP: planning (`PLAN3.md`)
+- What was tried: Read the plan-2 results and searched the literature and public repositories (search summaries only; sources listed in `PLAN3.md` §9).
+- Result: Plan 2 improved probabilities (RPS 0.1218 to 0.1093 on test 2024-25) but not the order (rho 0.702 against 0.703 for plan 1 and 0.701 for qualifying order). The only measured gap in order accuracy is race pace (oracle gap 0.073 rho on finishers, 22 races).
+- Decision: plan 3 tests a race-minus-qualifying pace offset learned from earlier races (primary, gated by a persistence check), FIA upgrade documents, three likelihood variants, a two-stage Friday forecast and an ensemble; it collects market prices for a later benchmark. Considered and not built: news and sentiment scraping, a lap-by-lap simulator (deferred, gated), an MCMC version. Reasons are in `PLAN3.md` §2.
+- Note: the 2024-2026 test blocks have been scored twice, so plan-3 decisions use dev only and the clean test is the fresh holdout (races run after the freeze).
+- Correction: `PLAN.md` §9 cited "van Kesteren & Bergsma"; the second author is Bergkamp. Fixed.
+- Next: R0 (lap ingestion, several hours in the background), then R1 (race-pace features and the A3 gate).
+
+## 2026-11-16 — Plan 3 amended (Amendment 1), before any plan-3 code or run
+- Methodology / WP: planning (`PLAN3.md` §2.1, §4, §6, §10)
+- What was tried: Eight further ideas reviewed against the code and stored results. No model was run.
+- Checked facts:
+  - Training is already walk-forward with a refit before every race (`harness.walk_forward`, `refit_every=1`); only hyper-parameters were fixed on 2021-23.
+  - Verstappen in the stored walk-forward driver strengths (`data/processed/latent_strengths.parquet`): dynamic model mean rank 11.5 (2017), 9.0 (2018), 3.6 (2021), 1.8 (2022), 1.2 (2023), 1.0 (2025-26); static model 3.3-5.2 over 2021-26. The plan-1 chart ranks him 1st of 30.
+  - Defects found: `report.py` plots only the 8 lineages with the most rows, which drops McLaren, Haas, Cadillac, Manor and Caterham; drivers with one race sit at the extremes of the driver chart (Hirakawa 2nd, Camara last); no intervals are shown; plan 2 did not re-check strengths.
+- Decision: added A5 (strength audit, run first), A4 (season-by-season table and rolling re-tune), M14 (engine-supplier pooling, trait x circuit), M15 (rookie prior from a hand table), M16 (simulator steps S4-S7, judged on RPS); M10 extended with keyword categories. Rejected: car specification sheets and win rate as target, learned text features, scraping junior-series histories, lap-level processes. Work packages renumbered R0-R13. Secondary results now need the fresh holdout to count as findings (about fifteen secondary comparisons).
+- Also: four agent definitions in `.claude/agents/` (researcher, coder, tester, skeptic; Sonnet 5.5) and a "skeptical research partner" section in `CLAUDE.md`.
+- Not verified: the Amendment-1 references in `PLAN3.md` §9 are cited from memory; OpenF1 speed-trap and sector fields; the cause of the weak shrinkage.
+- Next: R0 (lap ingestion in the background), R1 (A5 audit) and R2 (A4) in parallel.

@@ -258,7 +258,7 @@ every later number is suspect.
 - Phillips (2014) — driver performance adjusted for team and competition effects.
 - Bell, Smith, Sabel & Jones (2016) — multilevel modelling of driver vs. constructor performance.
 - Henderson & Kirrane (2018) — time-weighted Plackett–Luce models for forecasting F1 results.
-- van Kesteren & Bergsma (2023) — Bayesian disentangling of driver skill and constructor advantage.
+- van Kesteren & Bergkamp (2023) — Bayesian disentangling of driver skill and constructor advantage.
 - The deck's sources: Prakoso et al. (2026), F1 Race Intelligence, PitWall Intel, SilverSouls predictor, FastF1.
 
 The deck already says the three ideas are not unprecedented; these papers are why. Our contribution

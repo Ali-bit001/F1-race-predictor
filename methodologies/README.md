@@ -30,6 +30,20 @@ status `abandoned` and the reason — they are part of the record.
 | A1 | Ceiling analysis (oracles) | Plan 2, analysis | run | | |
 | A2 | Forecast-horizon analysis (H0/H1 factorial) | Plan 2, analysis | run | | |
 
+| A3 | Race-pace persistence analysis | Plan 3, gate | planned | | |
+| M09 | Race-pace model (race-minus-qualifying offset) | Plan 3 primary hypothesis | planned | | |
+| M10 | Upgrade signal (FIA car presentation documents) | Plan 3 | planned | | |
+| M11 | Likelihood variants (finishers-only, truncated, reverse) | Plan 3 | planned | | |
+| M12 | Two-stage Friday forecast | Plan 3 | planned | | |
+| M13 | Market benchmark (price collection) | Plan 3, data collection | planned | | |
+
+| A4 | Rolling-origin evaluation and rolling re-tune | Plan 3, amendment 1 | planned | | |
+| A5 | Strength audit (all teams, intervals, shrinkage) | Plan 3, amendment 1, run first | planned | | |
+| M14 | Car traits (engine supplier, trait × circuit) | Plan 3, amendment 1 | planned | | |
+| M15 | Rookie prior from junior-series record | Plan 3, amendment 1 | planned | | |
+| M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | planned | | |
+
+M09–M16 and A3–A5 are specified in `PLAN3.md` §4; M05 (ensemble) is taken up there too.
 M06–M08, A1 and A2 are specified in `PLAN2.md` §4; their results are in `results/plan2/REPORT.md`.
 
 Extensions (X1–X11 in `PLAN.md` §7) get folders named `X<n>_<name>` when started.

@@ -3,6 +3,20 @@
 Read `PLAN.md` first. It is the specification; implement one work package (WP) at a time, in order.
 Plan 1 (WP1–WP8) is done. The current work is `PLAN2.md` (work packages P0–P8); it inherits every
 rule below. In plan 2 the 2024–2026 test blocks have already been seen once: tune only on 2021–2023.
+Plan 2 (P0–P8) is done. The next work is `PLAN3.md` (work packages R0–R13): decisions on dev only;
+the only clean test is the fresh holdout (races run after the plan-3 freeze).
+
+## Be a skeptical research partner
+- Say plainly when an idea is weak, already done, or not feasible, and give the reason in one or two
+  lines, before spending time on it. This applies to the user's ideas and to your own.
+- Check a claim against the code and the files in `results/` before agreeing or disagreeing with it.
+- For every proposed addition state the expected gain and what result would count as failure, before running.
+- Do not soften a null or negative result, and do not describe a change inside the noise as an improvement.
+- Mark anything not verified (a source not opened, an endpoint not called) as unverified.
+
+## Agents
+`.claude/agents/` defines `pitlane-researcher`, `pitlane-coder`, `pitlane-tester` and `pitlane-skeptic`
+(all Sonnet 5.5). Roles and order are in `PLAN3.md` §10. The main session reviews their work and commits.
 
 ## Non-negotiables
 - **CPU only.** No neural networks, no LLM training, no GPU libraries. Stack: pandas, numpy, scipy,
