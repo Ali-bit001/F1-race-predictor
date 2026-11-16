@@ -62,7 +62,7 @@ the probability layer on top.
 | 2 | Relate car specifications to win rate | **Mostly not feasible.** The specifications that decide pace (downforce, drag, power) are secret; published ones (weight, wheelbase) barely differ. Win rate is a poor target (few cars ever win) | M14: two traits that *are* observable: engine supplier, and a straight-line against cornering profile from timing data. Target is the existing car strength, not wins |
 | 3 | Verstappen is ranked badly | **Partly right.** Checked in stored walk-forward strengths: the dynamic model ranks him 1st from 2022 on (mean rank 1.8 in 2022, 1.2 in 2023, 1.0 in 2025–26), but 9th–11th in 2017–18 and 3.6 in 2021; the static model never has him above 3rd. The final chart ranks him 1st of 30. Real defects found on the way: a driver with **one** race (Hirakawa) is ranked 2nd and another (Camara) last, and no uncertainty is shown. Plan 2 never re-checked or plotted strengths | A5 |
 | 4 | Some teams are missing from the analysis | **Correct, plotting bug.** `report.py` keeps the 8 lineages with the most rows, which drops McLaren (536 rows against 537), Haas, Cadillac, Manor and Caterham. The model itself fits all 13 | A5: every lineage in every plot and table |
-| 5 | Use sub-agents (Sonnet 5.5) | Done outside the plan: definitions in `.claude/agents/` | §10 |
+| 5 | Use sub-agents (Sonnet 5.5; researcher and skeptic later moved to Opus 5.5) | Done outside the plan: definitions in `.claude/agents/` | §10 |
 | 6 | Use F3 and F2 history for drivers | **Small.** It can only matter for rookies in their first races (about 2–5 drivers a season), and after qualifying the grid slot already says most of it. Not enough rookies (about 25 since 2014) to measure an effect on overall ρ | M15: a hand-made table, scored on rookies' first 10 races and before qualifying. No scraping |
 | 7 | NLP on documents | **Mostly no.** About 1,000 short FIA documents is too few to learn text features, and news text was already rejected. The FIA forms have fixed fields, so keyword rules get the content without a language model | M10 extended: component category and stated reason, by keyword rules |
 | 8 | More advanced stochastic processes for the simulator | **Useful for probabilities, not for order.** ρ is limited by information, not by the sampler; plan 2 showed the simulator moves RPS only. Lap-level processes (Hawkes incident clustering, semi-Markov position chains) need the lap simulator and stay deferred | M16: four race-level extensions taken from the horse-racing and rating literature |
@@ -484,7 +484,8 @@ Added in Amendment 2, **from memory, not looked up**:
 
 ## 10. Agents
 
-Definitions are in `.claude/agents/` and all four run on Sonnet 5.5 (`model: sonnet`). The main session
+Definitions are in `.claude/agents/` . The researcher and the skeptic run on Opus 5.5
+(`model: opus`); the coder and the tester run on Sonnet 5.5 (`model: sonnet`). The main session
 plans, decides and commits; it is whatever model the user has selected.
 
 | Agent | Does | Does not |

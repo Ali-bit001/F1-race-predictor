@@ -16,7 +16,7 @@ the only clean test is the fresh holdout (races run after the plan-3 freeze).
 
 ## Agents
 `.claude/agents/` defines `pitlane-researcher`, `pitlane-coder`, `pitlane-tester` and `pitlane-skeptic`
-(all Sonnet 5.5). Roles and order are in `PLAN3.md` §10. The main session reviews their work and commits.
+(researcher and skeptic on Opus 5.5; coder and tester on Sonnet 5.5). Roles and order are in `PLAN3.md` §10. The main session reviews their work and commits.
 
 ## Non-negotiables
 - **CPU only.** No neural networks, no LLM training, no GPU libraries. Stack: pandas, numpy, scipy,
