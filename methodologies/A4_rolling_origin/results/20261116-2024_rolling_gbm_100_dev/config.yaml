@@ -1,0 +1,63 @@
+a4: rolling_retune
+model: gbm_100
+chosen_per_season:
+  2021:
+    kind: gbm
+    cell: '100'
+    num_leaves: 7
+    n_estimators: 150
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+  2022:
+    kind: gbm
+    cell: '100'
+    num_leaves: 4
+    n_estimators: 200
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+  2023:
+    kind: gbm
+    cell: '100'
+    num_leaves: 7
+    n_estimators: 150
+    learning_rate: 0.05
+    min_child_samples: 40
+    halflife: 32
+fixed:
+  kind: gbm
+  cell: '100'
+  num_leaves: 4
+  n_estimators: 200
+  learning_rate: 0.05
+  min_child_samples: 40
+  halflife: 32
+tuning:
+  lookback: 3
+  refit_every: 4
+  grid: pipeline.grid_for (plan-1 search space)
+paired:
+  spearman:
+    fixed: 0.6489139515455304
+    rolling: 0.6494493810283283
+    delta: 0.0005354294827979138
+    ci_lo: -0.005886021872863959
+    ci_hi: 0.006766917293233083
+    ci_excludes_0: false
+  mae:
+    fixed: 3.33652312599681
+    rolling: 3.3348484848484845
+    delta: -0.001674641148325327
+    ci_lo: -0.04234449760765544
+    ci_hi: 0.03828149920255182
+    ci_excludes_0: false
+  exact:
+    fixed: 0.14198564593301433
+    rolling: 0.14796650717703352
+    delta: 0.005980861244019139
+    ci_lo: -0.0070972886762360405
+    ci_hi: 0.019098883572567782
+    ci_excludes_0: false
+git_commit: e2f0206+dirty-4d21b8e8b5b6
+split: dev

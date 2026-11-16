@@ -1,0 +1,24 @@
+# A4 rolling-origin evaluation (PLAN3.md section 4, work package R3)
+seed: 0
+entries: data/processed/entries_feat.parquet
+frozen_plan1: configs/frozen.yaml
+models:                      # label -> (frozen key, cell); heuristics need no tuning
+  latent_111: {key: M03, cell: "111", kind: latent}
+  gbm_100:    {key: M04, cell: "100", kind: gbm}
+  quali:      {heuristic: quali}
+season_table:
+  first_season: 2015
+  last_season: 2026          # 2026 = rounds 1-20 only (the entries stop there; fresh holdout untouched)
+  reuse_from: 2021           # plan-1 stored predictions for 2021-2026; 2015-2020 are re-run
+  verify_reuse: true         # re-run 2021-2026 and compare with the stored predictions
+retune:
+  seasons: [2021, 2022, 2023]
+  lookback: 3                # tune on the three seasons before S, walk-forward inside them
+  refit_every_tuning: 4      # as in plan 1 (tuning only); final scoring uses refit_every=1
+  max_configs: 30            # plan-1 grids have 12 configs per model
+  n_jobs: 2
+  models: [latent_111, gbm_100]
+bootstrap: 5000
+decision:
+  metric: spearman
+  rule: "adopt a rolling window iff paired gain (rolling - fixed) on the 66 dev races has a 95% bootstrap CI above 0"

@@ -36,12 +36,12 @@ status `abandoned` and the reason — they are part of the record.
 | M11 | Likelihood variants (finishers-only, truncated, reverse) | Plan 3 | planned | | |
 | M12 | Two-stage Friday forecast | Plan 3 | planned | | |
 | M13 | Market benchmark (price collection) | Plan 3, data collection | planned | | |
-| A4 | Rolling-origin evaluation and rolling re-tune | Plan 3, amendment 1 | planned | | |
+| A4 | Rolling-origin evaluation and rolling re-tune | Plan 3, amendment 1 | done (R3) | rolling re-tune vs fixed on dev: no gain, keep 2021-23 tuning | [A4_rolling_origin](A4_rolling_origin/README.md) |
 | A5 | Strength audit (all teams, intervals, shrinkage) | Plan 3, amendment 1, run first | done (R1) | descriptive; see `results/plan3/` | |
 | M14 | Car traits (engine supplier, trait × circuit) | Plan 3, amendment 1 | planned | | |
 | M15 | Rookie prior from junior-series record | Plan 3, amendment 1 | planned | | |
 | M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | planned | | |
-| M17 | Metric-matched decoding (assignment) | Plan 3, amendment 2, run early | planned | | |
+| M17 | Metric-matched decoding (assignment) | Plan 3, amendment 2, run early | done (dev) | D2 exact 13.8% vs grid 16.3%, CI includes 0 | [M17_decoding](M17_decoding/README.md) |
 | M18 | Overtaking threshold | Plan 3, amendment 2 | planned | | |
 | M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | planned | | |
 | M20 | Race-craft traits and pit crew | Plan 3, amendment 2 | planned | | |

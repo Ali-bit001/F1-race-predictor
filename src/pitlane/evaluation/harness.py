@@ -33,8 +33,11 @@ def split_races(entries: pd.DataFrame, split: str) -> tuple[list[int], list[int]
             return [], []
         first = counted[0]
         return [r for r in races.index if r < first][-WARMUP_RACES:], counted
-    lo = min(SPLITS[s][0] for s in split.split("+"))
-    hi = max(SPLITS[s][1] for s in split.split("+"))
+    if split.startswith("seasons:"):   # plan 3 (A4): ad-hoc season range "seasons:2018-2020"; named splits unaffected
+        lo, hi = (int(x) for x in split[len("seasons:"):].split("-"))
+    else:
+        lo = min(SPLITS[s][0] for s in split.split("+"))
+        hi = max(SPLITS[s][1] for s in split.split("+"))
     counted = races[(races >= lo) & (races <= hi)].index.tolist()
     first = counted[0]
     warm = [r for r in races.index if r < first][-WARMUP_RACES:]

@@ -1,0 +1,223 @@
+{
+  "git_commit": "e2f0206+dirty-4d21b8e8b5b6",
+  "reuse_verification": {
+    "latent_111": {
+      "n_races_checked": 134,
+      "max_abs_diff_metrics": {
+        "spearman": 0.0,
+        "mae": 0.0,
+        "exact": 0.0,
+        "rmse": 0.0,
+        "kendall": 0.0,
+        "ndcg10": 0.0,
+        "mae_fin": 0.0,
+        "spearman_fin": 0.0
+      },
+      "max_abs_diff_score": 5.453110185626997e-12,
+      "n_entries_matched": 2695,
+      "n_entries_stored": 2695
+    },
+    "gbm_100": {
+      "n_races_checked": 134,
+      "max_abs_diff_metrics": {
+        "spearman": 0.0,
+        "mae": 0.0,
+        "exact": 0.0,
+        "rmse": 0.0,
+        "kendall": 0.0,
+        "ndcg10": 0.0,
+        "mae_fin": 0.0,
+        "spearman_fin": 0.0
+      },
+      "max_abs_diff_score": 0.0,
+      "n_entries_matched": 2695,
+      "n_entries_stored": 2695
+    },
+    "quali": {
+      "n_races_checked": 134,
+      "max_abs_diff_metrics": {
+        "spearman": 0.0,
+        "mae": 0.0,
+        "exact": 0.0,
+        "rmse": 0.0,
+        "kendall": 0.0,
+        "ndcg10": 0.0,
+        "mae_fin": 0.0,
+        "spearman_fin": 0.0
+      },
+      "max_abs_diff_score": 0.0,
+      "n_entries_matched": 2695,
+      "n_entries_stored": 2695
+    }
+  },
+  "retune": {
+    "latent_111": {
+      "chosen": {
+        "2021": {
+          "kind": "latent",
+          "cell": "111",
+          "lam": 32.0,
+          "halflife": 50
+        },
+        "2022": {
+          "kind": "latent",
+          "cell": "111",
+          "lam": 8.0,
+          "halflife": 20
+        },
+        "2023": {
+          "kind": "latent",
+          "cell": "111",
+          "lam": 32.0,
+          "halflife": 50
+        }
+      },
+      "fixed_cfg": {
+        "kind": "latent",
+        "cell": "111",
+        "lam": 32.0,
+        "halflife": 50
+      },
+      "n_races": 66,
+      "spearman": {
+        "fixed": 0.6459671907040327,
+        "rolling": 0.6422381711855396,
+        "delta": -0.0037290195184931955,
+        "ci_lo": -0.01042055897319054,
+        "ci_hi": 0.002855813776866415,
+        "ci_excludes_0": false
+      },
+      "mae": {
+        "fixed": 3.35518341307815,
+        "rolling": 3.3977671451355667,
+        "delta": 0.042583732057416265,
+        "ci_lo": 0.006060606060606046,
+        "ci_hi": 0.0806259968102073,
+        "ci_excludes_0": true
+      },
+      "exact": {
+        "fixed": 0.13967304625199362,
+        "rolling": 0.13823763955342902,
+        "delta": -0.0014354066985645952,
+        "ci_lo": -0.014314194577352472,
+        "ci_hi": 0.010849282296650659,
+        "ci_excludes_0": false
+      },
+      "by_season_spearman": {
+        "2021": {
+          "n": 22,
+          "fixed": 0.6795283663704716,
+          "rolling": 0.6795283663704716,
+          "delta": 0.0
+        },
+        "2022": {
+          "n": 22,
+          "fixed": 0.5970722260195944,
+          "rolling": 0.5858851674641148,
+          "delta": -0.011187058555479586
+        },
+        "2023": {
+          "n": 22,
+          "fixed": 0.6613009797220323,
+          "rolling": 0.6613009797220323,
+          "delta": 0.0
+        }
+      },
+      "decision": "keep hyper-parameters tuned on 2021-23"
+    },
+    "gbm_100": {
+      "chosen": {
+        "2021": {
+          "kind": "gbm",
+          "cell": "100",
+          "num_leaves": 7,
+          "n_estimators": 150,
+          "learning_rate": 0.05,
+          "min_child_samples": 40,
+          "halflife": 32
+        },
+        "2022": {
+          "kind": "gbm",
+          "cell": "100",
+          "num_leaves": 4,
+          "n_estimators": 200,
+          "learning_rate": 0.05,
+          "min_child_samples": 40,
+          "halflife": 32
+        },
+        "2023": {
+          "kind": "gbm",
+          "cell": "100",
+          "num_leaves": 7,
+          "n_estimators": 150,
+          "learning_rate": 0.05,
+          "min_child_samples": 40,
+          "halflife": 32
+        }
+      },
+      "fixed_cfg": {
+        "kind": "gbm",
+        "cell": "100",
+        "num_leaves": 4,
+        "n_estimators": 200,
+        "learning_rate": 0.05,
+        "min_child_samples": 40,
+        "halflife": 32
+      },
+      "n_races": 66,
+      "spearman": {
+        "fixed": 0.6489139515455304,
+        "rolling": 0.6494493810283283,
+        "delta": 0.0005354294827979138,
+        "ci_lo": -0.005886021872863959,
+        "ci_hi": 0.006766917293233083,
+        "ci_excludes_0": false
+      },
+      "mae": {
+        "fixed": 3.33652312599681,
+        "rolling": 3.3348484848484845,
+        "delta": -0.001674641148325327,
+        "ci_lo": -0.04234449760765544,
+        "ci_hi": 0.03828149920255182,
+        "ci_excludes_0": false
+      },
+      "exact": {
+        "fixed": 0.14198564593301433,
+        "rolling": 0.14796650717703352,
+        "delta": 0.005980861244019139,
+        "ci_lo": -0.0070972886762360405,
+        "ci_hi": 0.019098883572567782,
+        "ci_excludes_0": false
+      },
+      "by_season_spearman": {
+        "2021": {
+          "n": 22,
+          "fixed": 0.6774436090225563,
+          "rolling": 0.6739804055593528,
+          "delta": -0.0034632034632034532
+        },
+        "2022": {
+          "n": 22,
+          "fixed": 0.5974937343358396,
+          "rolling": 0.5974937343358396,
+          "delta": 0.0
+        },
+        "2023": {
+          "n": 22,
+          "fixed": 0.6718045112781954,
+          "rolling": 0.6768740031897926,
+          "delta": 0.005069491911597195
+        }
+      },
+      "decision": "keep hyper-parameters tuned on 2021-23"
+    }
+  },
+  "runtime_min": 2.28,
+  "run_ids": {
+    "season_table_latent_111": "20261116-2024_season_table_latent_111_all2015_2026",
+    "season_table_gbm_100": "20261116-2024_season_table_gbm_100_all2015_2026",
+    "season_table_quali": "20261116-2024_season_table_quali_all2015_2026",
+    "rolling_latent_111": "20261116-2024_rolling_latent_111_dev",
+    "rolling_gbm_100": "20261116-2024_rolling_gbm_100_dev"
+  }
+}

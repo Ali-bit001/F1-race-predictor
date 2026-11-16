@@ -1,0 +1,51 @@
+a4: rolling_retune
+model: latent_111
+chosen_per_season:
+  2021:
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+  2022:
+    kind: latent
+    cell: '111'
+    lam: 8.0
+    halflife: 20
+  2023:
+    kind: latent
+    cell: '111'
+    lam: 32.0
+    halflife: 50
+fixed:
+  kind: latent
+  cell: '111'
+  lam: 32.0
+  halflife: 50
+tuning:
+  lookback: 3
+  refit_every: 4
+  grid: pipeline.grid_for (plan-1 search space)
+paired:
+  spearman:
+    fixed: 0.6459671907040327
+    rolling: 0.6422381711855396
+    delta: -0.0037290195184931955
+    ci_lo: -0.01042055897319054
+    ci_hi: 0.002855813776866415
+    ci_excludes_0: false
+  mae:
+    fixed: 3.35518341307815
+    rolling: 3.3977671451355667
+    delta: 0.042583732057416265
+    ci_lo: 0.006060606060606046
+    ci_hi: 0.0806259968102073
+    ci_excludes_0: true
+  exact:
+    fixed: 0.13967304625199362
+    rolling: 0.13823763955342902
+    delta: -0.0014354066985645952
+    ci_lo: -0.014314194577352472
+    ci_hi: 0.010849282296650659
+    ci_excludes_0: false
+git_commit: e2f0206+dirty-4d21b8e8b5b6
+split: dev

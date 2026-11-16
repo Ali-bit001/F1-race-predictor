@@ -1,0 +1,21 @@
+a4: season_table
+model: latent_111
+reuse_from: 2021
+note: 2015-2020 re-run, 2021-2026 stored plan-1 predictions re-scored; 2026 = rounds
+  1-20
+reuse_verification:
+  n_races_checked: 134
+  max_abs_diff_metrics:
+    spearman: 0.0
+    mae: 0.0
+    exact: 0.0
+    rmse: 0.0
+    kendall: 0.0
+    ndcg10: 0.0
+    mae_fin: 0.0
+    spearman_fin: 0.0
+  max_abs_diff_score: 5.453110185626997e-12
+  n_entries_matched: 2695
+  n_entries_stored: 2695
+git_commit: e2f0206+dirty-4d21b8e8b5b6
+split: all2015_2026
