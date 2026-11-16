@@ -79,3 +79,13 @@ Entry format:
 - Also: four agent definitions in `.claude/agents/` (researcher, coder, tester, skeptic; Sonnet 5.5) and a "skeptical research partner" section in `CLAUDE.md`.
 - Not verified: the Amendment-1 references in `PLAN3.md` §9 are cited from memory; OpenF1 speed-trap and sector fields; the cause of the weak shrinkage.
 - Next: R0 (lap ingestion in the background), R1 (A5 audit) and R2 (A4) in parallel.
+
+## 2026-11-16 — Plan 3 amended (Amendment 2), before any plan-3 code or run
+- Methodology / WP: planning (`PLAN3.md` §2.2, §4, §5, §6)
+- What was tried: A 25% exact-position target was proposed. Checked on existing files with throw-away scripts (no model fitted, nothing written to `results/`).
+- Result (dev 2021-23, 66 races, 1,311 entries): exact-position rate of starting-grid order 16.3%; plan-2 simulator S3 sorted by score 13.6% (below grid order); model order with all retirements known in advance 28.0% (18.2% on finishers); per-race standard error about 1.1 points. On 2023 laps (22 races): running order after lap 1 18.6%, at 25% distance 22.0%, at 50% 31.9%, at 75% 42.5% (grid 14.2% on the same races).
+- Interpretation: 25% before the race is at oracle level and is not adopted. The simulator loses to the grid on this metric because sorting by score is not the right decoder for exact hits. Earlier statements that the simulator improved the exact-position rate (16.5% to 17.7% on test 2024-25) were within noise.
+- Decision: added M17 (assignment decoding, run early), M18 (overtaking threshold), M19 (in-race forecasts, reported separately), M20 (driver consistency, tyre degradation, lap-1 gain, pit crew), fuel- and tyre-corrected pace as a switch in M09, learned car x circuit factors in M14, and an attribution protocol: every component alone against a re-run reference, leave-one-out from the final model, one row each in `results/plan3/attribution.csv`. Work packages renumbered R0-R17.
+- Rejected: a neural network as a model (about 5,500 rows; LightGBM already shows flexibility is not the limit) — kept only as an optional control M21, which needs the "no neural networks" rule relaxed first; raw telemetry and "optimal decision" scoring (no public car model; lap times carry the usable part); volatility, diffusion and Mallows-type models.
+- Not verified: Jolpica pit-stop endpoint and the meaning of its duration field; OpenF1 `car_data`; the two Amendment-2 references.
+- Next: R0 in the background; R1 (audit), R2 (attribution harness and M17), R3 (rolling origin).

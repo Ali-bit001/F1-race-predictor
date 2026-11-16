@@ -9,6 +9,11 @@ temporal leakage, the working rules in `CLAUDE.md`, and the run conventions in
 verdict on each is in §2.1. They add A4, A5, M14, M15 and M16, extend M10, add the agent roster in §10
 and renumber the work packages to R0–R13.
 
+**Amendment 2 (2026-11-16, before any plan-3 code or run).** Exact-position accuracy becomes a
+headline metric with starting-grid order as the baseline to beat; the evidence and the review of six
+further ideas are in §2.2. Adds M17–M21, extends M09 and M14, adds the attribution protocol in §5
+(every change is tested on its own), and renumbers the work packages to R0–R17.
+
 ---
 
 ## 1. Why a third plan
@@ -62,6 +67,44 @@ the probability layer on top.
 | 7 | NLP on documents | **Mostly no.** About 1,000 short FIA documents is too few to learn text features, and news text was already rejected. The FIA forms have fixed fields, so keyword rules get the content without a language model | M10 extended: component category and stated reason, by keyword rules |
 | 8 | More advanced stochastic processes for the simulator | **Useful for probabilities, not for order.** ρ is limited by information, not by the sampler; plan 2 showed the simulator moves RPS only. Lap-level processes (Hawkes incident clustering, semi-Markov position chains) need the lap simulator and stay deferred | M16: four race-level extensions taken from the horse-racing and rating literature |
 
+### 2.2 Exact-position accuracy and the ideas added in Amendment 2
+
+A target of 25% exact positions before the race was proposed. Measured on existing files before
+planning anything (dev 2021–23, 66 races, 1,311 entries, unless stated):
+
+| Check | Exact-position rate |
+|---|---|
+| Starting-grid order | 16.3% |
+| Plan-2 simulator S3 (sorted by its score) | 13.6% |
+| Model order, told in advance who retires and where they are classified | 28.0% (18.2% on finishers) |
+| Grid order by finishing band: places 1–3 / 4–6 / 7–10 / 11–15 / 16+ | 35.9 / 19.2 / 12.1 / 12.1 / 10.3% |
+| Running order after lap 1 (2023 only, 22 races; grid 14.2% on the same races) | 18.6% |
+| Running order at 25% / 50% / 75% of the distance (2023 only) | 22.0 / 31.9 / 42.5% |
+| Standard error of the per-race mean on dev | about 1.1 points |
+
+Consequences: 25% before the race is at the level of an oracle that knows every retirement, so it is
+not adopted as a pre-race target. The current model is *below* grid order on this metric. 25% is
+crossed during the race, between a quarter and half distance. Differences of about one point are noise.
+
+**Targets set instead:** before the race, beat grid order on exact-position rate on dev with a paired
+interval excluding 0 (a realistic level is 17–19%); in the race, reach 25% by quarter distance.
+
+| # | Question | Tested by | Priority |
+|---|---|---|---|
+| Q13 | Does choosing the predicted order to maximise expected exact hits beat sorting by score? | Metric-matched decoding (M17) | **Run early**, no new data |
+| Q14 | Does a pace threshold for passing improve on a linear pace effect? | Overtaking threshold (M18) | Secondary |
+| Q15 | How fast does accuracy grow once the race is running? | In-race forecast (M19) | Secondary, reported separately from pre-race results |
+| Q16 | Do lap-level driver traits and pit-crew speed add anything? | Race-craft and pit crew (M20) | Secondary, small expected effect |
+| Q17 | Does a small neural network do better than the current models on the same inputs? | Control (M21) | Optional, needs a rule change |
+
+| Idea as proposed | Verdict | What goes into the plan |
+|---|---|---|
+| A small neural network or another deep-learning method | **Not expected to help.** There are about 5,500 rows and 260 races; large models work because of very large data. LightGBM, already a flexible non-linear learner, did not beat the linear latent model or qualifying order, which says the limit is information, not model flexibility. It also conflicts with the "no neural networks" rule and weakens the exact decomposition | M21: one cheap control (scikit-learn MLP, CPU, no new dependency) so the question is settled by a number. Runs only if the rule in `CLAUDE.md` is relaxed for this control |
+| Telemetry to judge drivers against an "optimal" decision | **Not as proposed.** The optimum needs a car model, which is not public. Lap time is already the sum of everything in the telemetry, and teammate qualifying gap (same car) is already a feature. Volume is large (roughly half a million samples per car-session set) and, if available at all, 2023 onward only (OpenF1 `car_data`, **unverified**) | M20: three driver traits that lap times do give: lap-time consistency, tyre degradation against the teammate, places gained on lap 1 |
+| Pit-stop times | **Available, small.** Jolpica lists each stop with a duration (believed to be total pit-lane time, **verify**). Typical gaps between crews are a few tenths of a second; what costs places is the occasional slow stop | M20: crew median time loss and slow-stop rate, from earlier races. The stops are needed anyway to split stints for the corrected pace |
+| Decision-matched prediction, overtaking threshold, in-race forecast, corrected pace, lap-1 gain, learned car × circuit factors (proposed in review) | Adopted | M17, M18, M19, M09 extension, M20, M14 part 3 |
+| Test every change on its own | Adopted; it was only partly true before (ladders inside each method) | §5 attribution protocol |
+
 ### Decided against, with reasons
 
 | Idea | Decision | Reason |
@@ -75,6 +118,10 @@ the probability layer on top.
 | Learned text features or a language model on documents (idea 7) | Not built | Too few documents; keyword rules on the fixed FIA fields are enough (M10) |
 | Scraping full F2/F3 result histories (idea 6) | Not built | About 25 rookies in the data; a hand table of their last junior season is enough to test the idea (M15) |
 | Hawkes, semi-Markov or other lap-level processes (idea 8) | Deferred with the lap simulator | They model events inside a race, which the race-level simulator does not represent |
+| A neural network as the main model, or a sequence model on laps or telemetry | Not built | Too little data at race level; lap-level deep models need a GPU and give up the decomposition. Only the M21 control is allowed |
+| Raw telemetry features; "optimal decision" scoring of drivers | Not built | No public car model to define the optimum; lap times carry the usable part (M20) |
+| Volatility (GARCH), diffusion and option-pricing models, Mallows or spin-type ranking models | Not built | They describe the size of the uncertainty, not reduce it; the part that helps probabilities is already in M16 |
+| 25% exact positions as a pre-race target | Not adopted | At oracle level (§2.2) |
 
 ---
 
@@ -85,7 +132,7 @@ the probability layer on top.
 | Jolpica laps | Race lap times, 2014–2022 | Verified in plan 2 (2023 fetched) | About 12 requests per race and a limit of about 500 requests per hour: roughly 180 races, 4 to 5 hours, cached and resumable. Run it in the background first |
 | OpenF1 | Race lap times and stints, 2023–2026 | Practice endpoint verified; **verify the race sessions before relying on it** | Falls back to Jolpica laps if not usable |
 | TUM Formula 1 timing database | Lap times 2014–2019 | **Unverified** (seen only in a search listing) | Optional accelerator for the Jolpica download; check the licence |
-| Jolpica pit stops | Lap of each pit stop | **Verify** | Needed only to drop in-laps and out-laps more precisely |
+| Jolpica pit stops | Lap and duration of each pit stop, all seasons | **Verify** the endpoint, its coverage and what "duration" measures | About one request per race. Used to split stints (corrected pace, M09) and for crew features (M20) |
 | FIA "Car Presentation Submissions" PDFs | New components each team declares before first practice, per event | 2024 documents seen; **verify 2022–2023 are still downloadable** | Rule exists since 2022. Parsing needs a PDF text library (`pypdf`, light); if parsing is unreliable, fall back to a hand-made table in `data/external/upgrades.csv` |
 | Bookmaker or prediction-market prices | Win and podium prices before each race | No free historical archive found | Collect going forward only. **Check the source's terms of use first** |
 | Engine supplier per team per season | Hand table `data/external/power_units.csv` (about 130 rows) | To be written by hand | All seasons; works or customer team flagged |
@@ -97,6 +144,10 @@ the probability layer on top.
 | Group | Features |
 |---|---|
 | Race pace of earlier races | Per driver per past race: median clean lap (lap 1, in-laps, out-laps and laps above 107% of the race median dropped; at least 10 clean laps) as a % gap to the best median in that race |
+| Corrected race pace (variant) | Per past race, a least-squares fit `lap time = driver pace + fuel term × laps remaining + tyre term × stint age`, on clean laps; the driver pace replaces the median lap |
+| Driver race-craft | From earlier races, decayed and shrunk: lap-time spread on clean corrected laps relative to the teammate; tyre-degradation slope relative to the teammate; places gained on lap 1 relative to grid slot |
+| Pit crew | Per car lineage from earlier races: median pit-lane time relative to the field at that race; share of stops slower than the field median by 3 s or more |
+| In-race state (M19 only) | At lap k: running position, gap to the car ahead, pit stops made, laps completed. Uses laps 1..k only |
 | Race-minus-qualifying offset | `rq = race pace gap − qualifying gap` for each past race. Time-decayed, shrunk means per car lineage (`con_rq`) and per driver (`drv_rq`), with the half-lives already used in plan 1 |
 | Offset × overtaking | `con_rq × (1 − stick)`: the offset should matter more where the grid is less sticky (plan-2 circuit stickiness) |
 | Upgrades | Components declared by the team at this event; decayed sum over recent events; both relative to the field mean at that event. Split by keyword rules into category (floor, wings, bodywork, other) and stated reason (performance, circuit-specific, reliability) |
@@ -162,6 +213,45 @@ The plan-2 latent model (cell `111`, plan-1 weekend signals) plus `con_rq`, `drv
 interaction in the additive weekend term, ridge-penalised as in plan 2. The same columns go to LightGBM.
 Ladder: reference → + car offset → + driver offset → + stickiness interaction.
 Each prediction still decomposes exactly, with a new named part: "race pace versus qualifying pace".
+Pace definition is tested as its own switch: median clean lap against the fuel- and tyre-corrected fit
+(§3). The persistence numbers of A3 are reported for both.
+
+### M17 — Metric-matched decoding (no new data)
+The simulator gives, for each driver, the probability of each finishing position. Three ways of turning
+that into one predicted order are compared on the same simulations:
+
+| Decoder | Rule | Best for |
+|---|---|---|
+| D0 | Sort by score (current) | — |
+| D1 | Sort by expected position | Position error, ρ |
+| D2 | The assignment of drivers to positions with the largest sum of probabilities (`scipy.optimize.linear_sum_assignment`) | Exact-position rate |
+
+Nothing is fitted, so there is nothing to tune. Reported for the plan-2 simulator first, then for
+every later model. Each metric is reported with the decoder meant for it and with D0.
+
+### M18 — Overtaking threshold
+A pace advantage only turns into a pass above some size, which differs by circuit. The linear term
+`con_rq × (1 − stick)` is compared with a dead-band version: the pace term between a car and the car
+ahead on the grid counts only above a threshold `d · stick[circuit]`, with one fitted `d`. If A3 fails
+and there is no pace offset, the same dead-band is applied to the model's strength difference.
+
+### M19 — In-race forecast (reported separately)
+Horizons H4 (after lap 1), H5 (25% of the distance) and H6 (50%). Model: the frozen pre-race score
+plus the in-race state features, in the latent model's additive term and in LightGBM. Baseline at each
+horizon: the running order itself. Needs laps for all seasons (R0). These numbers are never mixed
+with or compared against pre-race results in one table without the horizon stated.
+
+### M20 — Race-craft and pit crew
+Four features entering the weekend term one at a time: driver consistency, driver tyre degradation,
+driver lap-1 gain, pit-crew time loss (with slow-stop rate). Before any model run, each gets the same
+persistence check as A3 (correlation of a race's value with the decayed mean of earlier races); a
+feature with persistence below 0.2 on dev is reported as not persistent and not run.
+
+### M21 — Neural-network control (optional)
+`sklearn.neural_network.MLPRegressor`, one or two hidden layers of at most 32 units, early stopping,
+five seeds averaged, same inputs and target as `gbm_100`, same tuning budget, dev only. It is a
+control, not a candidate: it cannot enter the final model, because it has no exact decomposition.
+**Runs only after the "no neural networks" rule in `CLAUDE.md` is relaxed for this one control.**
 
 ### M10 — Upgrade signal
 Upgrade features enter the same weekend term. Evaluated at two horizons, because qualifying should
@@ -199,6 +289,9 @@ Two parts, tested separately.
 - **Trait × circuit (2023 onward).** Replace or supplement the hand-labelled car × circuit-type term
   `g` with car straight-line index × circuit full-throttle share. Only one dev season has the data,
   so this is exploratory and cannot enter the final model on dev evidence alone.
+- **Learned car × circuit factors (all seasons).** One or two latent factors per car-season and per
+  circuit, fitted to the residuals of earlier races (a low-rank interaction, as in factor models),
+  compared with the hand-labelled circuit types. About 24 races per car-season, so little is expected.
 
 ### M15 — Rookie prior
 The driver penalty currently pulls every new driver toward the same value. Here a rookie's starting
@@ -225,7 +318,8 @@ expected inside plan 3; once 20 or more races are collected, the simulator's pro
 against the market's with log-loss.
 
 ### Final model
-Whichever of M09–M11, M14 (supplier pooling) and M15 pass the decision rule are combined into one model;
+Whichever of M09–M11, M14 (supplier pooling, learned factors), M15, M18 and M20 pass the decision rule are
+combined into one pre-race model, decoded with M17;
 the simulator (M08 plus the M16 steps that pass) is re-fitted on top of it using dev only; the
 hyper-parameter window follows the A4 decision; and that combination is frozen.
 
@@ -249,7 +343,27 @@ holdout keeps growing through 2027 and the report is regenerated by re-running t
 - **Primary for order:** mean per-race Spearman ρ and position MAE; for M09 also ρ on finishers, because
   that is where the oracle gap was measured.
 - **Primary for probabilities:** ranked probability score and log-loss of P(points finish).
-- **Also reported:** exact-position rate, within ±1 and ±2, top-10 and top-5 overlap (as in plan 2).
+- **Headline for exact positions (Amendment 2):** exact-position rate, with starting-grid order as the
+  baseline, reported overall, on finishers, and for places 1–3, 4–10 and 11+.
+- **Also reported:** within ±1 and ±2, top-10 and top-5 overlap (as in plan 2).
+
+### Attribution protocol: every change is tested on its own
+A "component" is one switch: one feature group, one likelihood variant, one decoder, one simulator
+step, one pace definition. For every component:
+
+1. **Alone.** Reference + this component only, tuned separately with the same budget, against the
+   reference on the same dev races with the same seeds. The reference is `latent_111` (and `gbm_100`
+   for the tree family) for order components, plan-2 S3 for simulator components, D0 for decoders.
+   The reference is re-run in the same harness, not read from an old file.
+2. **Leave-one-out.** After the final model is assembled, each included component is removed in turn.
+3. **Interactions** only for pairs declared here: pace offset × overtaking threshold (M09 × M18),
+   parameter uncertainty × decoder (S6 × D2), finishers-only likelihood × retirement model (M11 × M07).
+4. **Record.** One run folder and one leaderboard row per component, one commit per component, and one
+   row in `results/plan3/attribution.csv`: component, gain alone (ρ, exact-position rate, RPS) with
+   95% intervals, leave-one-out gain, fresh-holdout gain, verdict.
+
+No result is reported for a bundle of components without the per-component rows beside it. A
+component that helps alone but not in leave-one-out is reported as redundant, not as a gain.
 
 ### Decision rules (fixed before any run)
 - A variant "adds value" if its paired per-race gain on dev has a 95% bootstrap CI excluding 0. Because
@@ -259,7 +373,10 @@ holdout keeps growing through 2027 and the report is regenerated by re-running t
   M14–M16, A4 re-tune) is secondary. After Amendment 1 there are about fifteen secondary comparisons,
   so one or two intervals excluding 0 are expected by chance alone: a secondary result counts as a
   finding only if it also holds on the fresh holdout, and is otherwise reported as "dev only".
-- M16 is judged on RPS and log-loss, not ρ.
+- M16 is judged on RPS and log-loss, not ρ. M17 is judged on exact-position rate against grid order.
+- A component enters the final model only if its gain *alone* passes the rule; leave-one-out then
+  decides whether it stays. After Amendment 2 there are about thirty components, so two or three
+  chance passes are expected: the fresh-holdout condition above applies to all of them.
 - Same tuning budget per variant (≤ 30 configurations), every variant tuned separately.
 - The freeze is recorded with a config hash **and a git tag**, with the date and the last race included.
 
@@ -271,27 +388,33 @@ In order. Each ends with a commit, a `LOG.md` entry and its acceptance check.
 
 | WP | Deliverable | Acceptance check |
 |---|---|---|
-| **R0** Lap ingestion | Cached race laps 2014–2026 (Jolpica, OpenF1), resumable, started first because it takes hours | Lap files per season match the race counts; failures listed |
+| **R0** Lap and pit-stop ingestion | Cached race laps and pit stops 2014–2026 (Jolpica, OpenF1), resumable, started first because it takes hours | Files per season match the race counts; failures listed |
 | **R1** A5 strength audit | All lineages in every plot; intervals; shrinkage cause found; `strengths.csv` | No driver with fewer than 10 starts in the top or bottom 3 without a stated reason; plan-1 numbers reproduced or the difference explained |
-| **R2** A4 rolling-origin | Season table 2015–2026; rolling re-tune against fixed on dev | Re-tune decision written to `LOG.md` |
-| **R3** Race-pace features + A3 | Per-race pace table, offsets, leakage test, the three A3 numbers | Leakage test passes; gate decision written to `LOG.md` |
-| **R4** M11 likelihood variants | Three switches with gradient tests; runs on dev | Plan-1 numbers reproduced exactly with all switches off |
-| **R5** M09 | Ladder on dev, both families (only if the gate passes) | All rungs in the leaderboard |
-| **R6** M10 | FIA document download and parser (or hand table), keyword rules; runs at H2 and H0/H1 on dev | Parsed counts and categories spot-checked by hand against three documents |
-| **R7** M12 and M05 | Two-stage forecast and ensemble on dev | In the leaderboard |
-| **R8** M14 and M15 | Hand tables, supplier pooling, trait × circuit, rookie prior | Hand tables have a source per row; leakage test covers the trait features |
-| **R9** M16 | Steps S4–S7 on dev, one at a time | Simulator with all new steps off reproduces plan-2 S3 exactly |
-| **R10** Final model + freeze | Combine what passed, re-fit the simulator on dev, freeze, tag | Tag exists; no config edits after it |
-| **R11** Score | Old test blocks (third look) and the fresh holdout | Fresh-holdout race count stated |
-| **R12** Report | `results/plan3/REPORT.md` and figures answering Q1–Q12, all teams shown | Every claim traces to a file in `results/` |
-| **R13** M13 | Price-collection script, run before each race | First snapshot stored |
+| **R2** Attribution harness + M17 | `attribution.csv` writer; decoders D0–D2 on the plan-2 simulator | D0 reproduces the plan-2 exact-position rate (13.6% on dev); grid order 16.3% reproduced |
+| **R3** A4 rolling-origin | Season table 2015–2026; rolling re-tune against fixed on dev | Re-tune decision written to `LOG.md` |
+| **R4** Race-pace features + A3 | Per-race pace table (median and corrected), offsets, leakage test, the three A3 numbers | Leakage test passes; gate decision written to `LOG.md` |
+| **R5** M11 likelihood variants | Three switches with gradient tests; runs on dev | Plan-1 numbers reproduced exactly with all switches off |
+| **R6** M09 | Ladder on dev, both families (only if the gate passes) | All rungs in the leaderboard |
+| **R7** M18 | Dead-band against linear on dev | Threshold 0 reproduces the linear version exactly |
+| **R8** M20 | Persistence check, then each of the four features alone | Persistence numbers logged before any model run |
+| **R9** M10 | FIA document download and parser (or hand table), keyword rules; runs at H2 and H0/H1 on dev | Parsed counts and categories spot-checked by hand against three documents |
+| **R10** M12 and M05 | Two-stage forecast and ensemble on dev | In the leaderboard |
+| **R11** M14 and M15 | Hand tables, supplier pooling, trait × circuit, learned factors, rookie prior | Hand tables have a source per row; leakage test covers the trait features |
+| **R12** M16 | Steps S4–S7 on dev, one at a time | Simulator with all new steps off reproduces plan-2 S3 exactly |
+| **R13** M19 | In-race forecasts at H4–H6 on dev | Leakage test: changing laps after lap k does not change the lap-k forecast |
+| **R14** Final model + freeze | Combine what passed alone, leave-one-out, re-fit the simulator on dev, freeze, tag | `attribution.csv` complete; tag exists; no config edits after it |
+| **R15** Score | Old test blocks (third look) and the fresh holdout | Fresh-holdout race count stated |
+| **R16** Report | `results/plan3/REPORT.md` and figures answering Q1–Q17, all teams shown, attribution table | Every claim traces to a file in `results/` |
+| **R17** M13 | Price-collection script, run before each race | First snapshot stored |
 
-R1 and R2 need no new data and run while R0 downloads. If time runs short, cut in this order:
-M15, M14 trait × circuit, M16 S7, M12.
+M21 (neural-network control) is not a numbered package; it runs after R6 only if the rule is relaxed.
+R1–R3 need no new data and run while R0 downloads. If time runs short, cut in this order:
+M21, M15, M14 trait × circuit and learned factors, M16 S7, M12, M20.
 
 New method folders: `methodologies/A3_pace_persistence/`, `A4_rolling_origin/`, `A5_strength_audit/`,
 `M09_race_pace/`, `M10_upgrades/`, `M11_likelihood_variants/`, `M12_two_stage/`, `M05_ensemble/`,
-`M13_market_benchmark/`, `M14_car_traits/`, `M15_rookie_prior/`, `M16_simulator_extensions/`.
+`M13_market_benchmark/`, `M14_car_traits/`, `M15_rookie_prior/`, `M16_simulator_extensions/`,
+`M17_decoding/`, `M18_overtaking_threshold/`, `M19_in_race/`, `M20_racecraft_pitcrew/`, `M21_nn_control/`.
 Plan-3 cross-method outputs go to `results/plan3/`; earlier outputs are not overwritten.
 
 ---
@@ -301,7 +424,11 @@ Plan-3 cross-method outputs go to `results/plan3/`; earlier outputs are not over
 | Risk | Mitigation |
 |---|---|
 | The race-pace offset is not persistent | A3 checks this before M09 is built; a failed gate is a reported result |
-| Lap download is slow or interrupted | Cached and resumable; R1, R2, R4 and R6–R9 do not depend on it |
+| Lap download is slow or interrupted | Cached and resumable; R1–R3, R5 and R9–R12 do not depend on it |
+| About thirty components, each tested alone, is a lot of runs | One at a time with `refit_every` above 1 while tuning; the cut order in §6; chance passes handled by the fresh-holdout rule |
+| The corrected-pace fit is unstable in short or interrupted races | Minimum laps per stint; fall back to the median lap for that race and count how often |
+| In-race results are mistaken for pre-race accuracy | Separate tables and a horizon label on every number |
+| The exact-position target invites tuning to the metric | Decoders have no fitted parameters; the baseline (grid order) and the targets are fixed in §2.2 |
 | Median race lap is distorted by strategy, traffic and caution periods | Clean-lap filter; report sensitivity to the 107% threshold; tyre-corrected pace is left to the gated lap-level simulator |
 | FIA documents missing for 2022–23 or hard to parse | Hand-made table fallback; M10 is secondary |
 | Upgrades are already reflected in qualifying | Evaluated before qualifying as well as after |
@@ -328,6 +455,13 @@ drivers, and ρ by less than 0.003. Rolling re-tune: within ±0.005. Supplier po
 possibly visible in the first races of 2026 (already seen, so not a claim). Rookie prior: not
 measurable on overall ρ. M16: a further 1–3% lower RPS, mostly from S4 and S6; no change in ρ.
 
+Amendment 2 items. Exact-position rate before the race: D2 decoding brings the simulator from 13.6% to
+about grid level (16–17%) on dev; with pace and the threshold, 17–19% at best; 25% is not expected.
+In-race: about 20% after lap 1 and 25% or more at quarter distance. Corrected pace: persistence a
+little higher than the median lap. M20: each feature under 0.003 ρ; lap-1 gain is the likeliest to
+persist. M21: within noise of `gbm_100`, probably slightly worse. Failure for M17 is D2 not beating
+grid order on dev; that would mean the simulator's position probabilities carry less than the grid.
+
 ## 9. Sources (seen as search summaries on 2026-11-15; read each before citing)
 
 - Henderson and Kirrane (2018), *A comparison of truncated and time-weighted Plackett–Luce models for probabilistic forecasting of Formula One results*, Bayesian Analysis 13(2).
@@ -343,6 +477,10 @@ Added in Amendment 1, **cited from memory and not looked up; the researcher agen
 - Stern (1990), *Models for distributions on permutations*, JASA.
 - Lo and Bacon-Shone, work on approximating ordering probabilities with a discount parameter; Benter (1994), *Computer based horse race handicapping and wagering systems*.
 - Glickman (1999), *Parameter estimation in large dynamic paired comparison experiments*; Dangauthier et al. (2007), *TrueSkill Through Time*.
+
+Added in Amendment 2, **from memory, not looked up**:
+- Grinsztajn, Oyallon and Varoquaux (2022), *Why do tree-based models still outperform deep learning on typical tabular data?*, NeurIPS.
+- Fuel- and tyre-corrected lap-time model: as used in Heilmeier et al. (above); the exact form there has not been read.
 
 ## 10. Agents
 

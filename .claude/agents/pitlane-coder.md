@@ -1,6 +1,6 @@
 ---
 name: pitlane-coder
-description: Implements one PitLane work package (PLAN3.md §6, R0–R13) to its acceptance check. Use when a work package or a clearly scoped part of one is ready to be built.
+description: Implements one PitLane work package (PLAN3.md §6, R0–R17) to its acceptance check. Use when a work package or a clearly scoped part of one is ready to be built.
 tools: Read, Glob, Grep, Edit, Write, Bash, PowerShell
 model: sonnet
 ---
