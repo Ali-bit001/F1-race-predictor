@@ -1,0 +1,39 @@
+split: dev
+simulator: S3
+frozen_path: configs/frozen_plan2.yaml
+frozen_hash: 0d1b7c074d80
+m06_label: m06_L_r4_111
+draws: 1000
+seed: 0
+decoders:
+- D0
+- D1
+- D2
+- grid
+- D0_free
+- grid_free
+- D0u
+reference_runs:
+- D0_free
+- grid_free
+blend_w:
+- 0.0
+- 0.05
+- 0.1
+- 0.15
+- 0.2
+- 0.3
+retirement_off: true
+noise_seeds:
+- 1
+- 2
+- 3
+- 4
+verdict_metric: exact
+bootstrap:
+  n_boot: 10000
+  seed: 0
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+decoder: grid
+git_commit: 5a2c2fa+dirty

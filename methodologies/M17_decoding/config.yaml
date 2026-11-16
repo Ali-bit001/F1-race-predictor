@@ -1,0 +1,18 @@
+split: dev                  # 2021-2023 only; nothing later is scored
+simulator: S3               # plan-2 simulator, frozen parameters read from configs/frozen_plan2.yaml (hash 0d1b7c074d80)
+frozen_path: configs/frozen_plan2.yaml
+frozen_hash: 0d1b7c074d80
+m06_label: m06_L_r4_111     # score input of the simulator (plan-2 run, dev predictions)
+draws: 1000                 # as plan-2 evaluate()
+seed: 0                     # as plan-2 evaluate(); rng stream is seed + 10000 + race index
+# D0, D1, grid: plan-2 tie convention (row order), kept only to reproduce the plan-2 acceptance numbers.
+# D0_free, grid_free, D2, D0u: ties broken without row order (driverId; D2 by row content). D0u = off-plan diagnostic.
+decoders: [D0, D1, D2, grid, D0_free, grid_free, D0u]
+reference_runs: [D0_free, grid_free]    # attribution references (outcome-free tie-breaks); csv names them D0 and grid
+blend_w: [0.0, 0.05, 0.1, 0.15, 0.2, 0.3]   # in-sample diagnostic, not tuned out of sample, not a component
+retirement_off: true        # diagnostic: re-simulate with p_dnf = 0
+noise_seeds: [1, 2, 3, 4]   # extra simulation seeds for the D2 - D0 noise estimate
+verdict_metric: exact
+bootstrap: {n_boot: 10000, seed: 0}
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
