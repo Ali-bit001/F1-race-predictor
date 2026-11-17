@@ -596,33 +596,37 @@ def test_grid_slot_calibration_numbers_reproduce(real):
 
 
 # ------------------------------------------------------------------ 5. shared files are append-only
+PRE_M18 = "78a5be7"      # last commit before the M18 commit (R13 / M19): the shared files as M18 found them
+
+
 def _head(path: str) -> bytes:
-    return subprocess.check_output(["git", "show", f"HEAD:{path}"], cwd=ROOT)
+    return subprocess.check_output(["git", "show", f"{PRE_M18}:{path}"], cwd=ROOT)
 
 
 @pytest.mark.parametrize("path,n_new,comp", [("results/plan3/attribution.csv", 5, "M18"), ("results/plan3/leaderboard.csv", 2, "M18")])
 def test_shared_files_are_head_bytes_plus_appended_lines(path, n_new, comp):
+    """The file as it was before M18 (pinned commit, not a moving HEAD) is a byte prefix of the current file; M18 appended
+    exactly n_new lines; later work packages (M20 phase 2, M16, ...) may append their own lines but none may start with M18."""
     try:
         old = _head(path)
     except Exception as e:                                             # pragma: no cover
         pytest.skip(f"git show failed: {e}")
     cur = (ROOT / path).read_bytes()
-    norm = lambda b: b.replace(b"\r\n", b"\n")
+    norm = lambda b: b.replace(bytes([13, 10]), bytes([10]))
     old, cur = norm(old), norm(cur)
-    # NB: HEAD may already contain the M18 rows once committed; then nothing is appended and the check is vacuous-safe
-    head_has = sum(1 for ln in old.splitlines() if ln.startswith(comp.encode() + b",") or ln.startswith(b"M18_"))
+    assert not any(ln.startswith(comp.encode()) for ln in old.splitlines()), "pinned commit already holds M18 rows"
     assert cur.startswith(old), "an existing line was rewritten"
     extra = cur[len(old):]
-    if head_has == 0:
-        lines = extra.decode("utf-8").splitlines()
-        assert len(lines) == n_new and extra.endswith(b"\n")
-        assert all(ln.startswith(comp) for ln in lines)
-    else:
-        assert extra == b""
+    assert extra.endswith(bytes([10]))
+    lines = extra.decode("utf-8").splitlines()
+    mine = [ln for ln in lines if ln.startswith(comp)]
+    assert len(mine) == n_new, (len(mine), n_new)
+    first = lines[:n_new]                                              # M18 wrote its rows first, contiguously
+    assert first == mine
     df_old = pd.read_csv(StringIO(old.decode("utf-8")))
     df_cur = pd.read_csv(StringIO(cur.decode("utf-8")))
     assert list(df_old.columns) == list(df_cur.columns)
-    assert len(df_cur) == len(df_old) + (n_new if head_has == 0 else 0)
+    assert len(df_cur) == len(df_old) + len(lines)
 
 
 def test_leaderboard_rows_match_run_folders():

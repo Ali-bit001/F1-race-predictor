@@ -1,0 +1,16 @@
+phase: 2                        # driver consistency alone in the weekend term (R8 phase 2); dev 2021-2023 only
+split: dev
+refit_every: 1                  # refit before every race
+frozen_path: configs/frozen.yaml
+latent_ref: {key: M03, cell: "111", label: latent_111}   # plan-1 frozen hyper-parameters; NOT re-tuned for this component
+gbm_ref: {key: M04, cell: "100", label: gbm_100}         # plan-1 frozen hyper-parameters; NOT re-tuned for this component
+lam_x: 1.0                      # ridge on the extra weekend column = the lam_x used for every plan-2 extra column (not tuned)
+halflife: 50                    # history half-life of the declared definition (phase 1)
+scale_seasons_max: 2020         # the column is divided by the SD of its history over seasons <= 2020 (before the dev block), fixed constant
+race_values_config: methodologies/M20_racecraft/config.yaml   # phase-1 definitions of cons_c (unchanged)
+verdict_metric: spearman
+tie_break: driverId
+bootstrap: {n_boot: 10000, seed: 0}
+plan1_leaderboard: results/leaderboard.csv
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv

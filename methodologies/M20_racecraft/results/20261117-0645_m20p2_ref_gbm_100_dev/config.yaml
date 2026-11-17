@@ -1,0 +1,11 @@
+kind: gbm
+cell: '100'
+num_leaves: 4
+n_estimators: 200
+learning_rate: 0.05
+min_child_samples: 40
+halflife: 32
+component: gbm_100
+frozen_hyperparameters: plan-1, not re-tuned; lam_x not tuned
+git_commit: 1db3fdc+dirty-ef37fb9dbc30
+split: dev

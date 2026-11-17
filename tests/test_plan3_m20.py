@@ -11,6 +11,7 @@ from __future__ import annotations
 import importlib.util
 import json
 import re
+import subprocess
 
 import numpy as np
 import pandas as pd
@@ -719,12 +720,34 @@ def test_run_folders_complete_and_summary_points_to_final(summary):
     assert m["decision"] == summary["decision"] and m["checks"] == summary["checks"]
 
 
+PHASE1_COMMIT = "1db3fdc"      # R8 phase 1 commit: the shared result files exactly as phase 1 left them
+
+
+def _at_phase1(rel: str) -> str:
+    try:
+        out = subprocess.check_output(["git", "show", f"{PHASE1_COMMIT}:{rel}"], cwd=ROOT, text=True, encoding="utf-8")
+        return out.replace(chr(13) + chr(10), chr(10))
+    except Exception as e:                                             # pragma: no cover
+        pytest.skip(f"git show failed: {e}")
+
+
 def test_no_model_and_no_leaderboard_rows_for_m20():
+    """Phase 1 itself wrote no model rows: the shared files as of the phase-1 commit hold nothing about M20. Any M20 row that
+    exists now is a phase-2 row (labels m20p2_*, component M20_consistency only); nothing else may carry the M20 name."""
     for f in ("results/leaderboard.csv", "results/plan3/leaderboard.csv", "results/plan3/attribution.csv"):
+        txt = _at_phase1(f).lower()
+        assert "m20" not in txt and "racecraft" not in txt and "race-craft" not in txt, f
         p = ROOT / f
-        if p.exists():
-            txt = p.read_text(encoding="utf-8", errors="ignore").lower()
-            assert "m20" not in txt and "racecraft" not in txt and "race-craft" not in txt, f
+        if not p.exists():
+            continue
+        cur = pd.read_csv(p, dtype=str)
+        if "method" in cur.columns:
+            m20 = cur[cur["method"] == "M20"]
+            assert m20["label"].str.startswith("m20p2_").all(), (f, m20["label"].tolist())
+            assert cur[cur["label"].astype(str).str.lower().str.contains("m20")]["method"].eq("M20").all(), f
+        if "component" in cur.columns:
+            m20 = cur[cur["component"].str.contains("M20", case=False)]
+            assert set(m20["component"]) <= {"M20_consistency"}, (f, set(m20["component"]))
     for f in ("src/pitlane/features/racecraft.py", "methodologies/M20_racecraft/run.py"):
         src = (ROOT / f).read_text(encoding="utf-8")
         for bad in ("lightgbm", "sklearn", "pitlane.models", "pitlane.weekend", "fit_", ".fit(", "leaderboard.csv"):

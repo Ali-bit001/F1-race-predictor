@@ -1,6 +1,6 @@
 # M20 — Race-craft and pit crew (phase 1: persistence check only)
 
-**Status:** in progress (phase 1: persistence of the four features; no model has been run)
+**Status:** phase 1 done (persistence); phase 2 done (consistency alone, dev): no measurable difference on any metric
 **Plan reference:** PLAN3.md §4 M20, §6 R8
 **Factors:** F1 dynamic = n/a · F2 decomposition = n/a · F3 ranking = n/a (no model in this phase)
 
@@ -185,5 +185,71 @@ Other facts: crew features measure pit-lane time (Jolpica), not stationary time.
 * Not run: tyre degradation, lap-1 gain and slow-stop rate (not persistent as declared). Crew time loss is not run
   unless the user amends the plan, because it failed the declared rule.
 
+## Phase 2 results (run 2026-11-17 06:44, dev 2021-2023 only, 66 races; code stamp `1db3fdc+dirty-...`, uncommitted at run time)
+**Set-up, as fixed in the plan above.** Feature `cons_x` = history of the declared `cons_c` (shrunk decayed mean, half-life 50,
+race_id as time, prior 0, earlier races of the same driver only), divided by one constant (SD of the history over seasons <= 2020,
+0.0718), so the column has unit scale. Latent: `latent_111` (frozen M03 cell 111) with `x_cols=[cons_x]`, `lam_x=1.0`
+(the `LatentModel` constructor default, `latent.py:36`, and the A2 value; it is not "the value used for every plan-2 extra column":
+plan-2 M06 tuned `lam_x`, mostly 3.0, sometimes 0.3, see `methodologies/M06_weekend_info/README.md`. The same wrong reason is written in a
+comment in `config_phase2.yaml` line 7 and in `run_phase2.py`; both are left unedited so that the code stamp recorded in the run configs
+still matches. `latent.py` needed no change). Trees: `gbm_100` (frozen M04 cell 100)
+with `extra_cols=[cons_x]`. **No hyper-parameter was tuned**: both models keep their frozen plan-1 values, `lam_x` is the default,
+the scale is a fixed constant. **Deviation from PLAN3 §5**, which says each component is tuned separately with the same budget: here
+neither side was tuned (budget 0 on both the candidate and the reference). The reference is the plan-1 tuned model and the candidate
+carries an untuned extra column with an untuned penalty, which leans against the candidate. Refit before every race, paired by race with the same model re-run in the same harness,
+outcome-free tie-break by driverId, 10,000 resamples, seed 0.
+
+**Join (deviation from the wording of the brief, same intent).** The history is computed on a frame with one row per entry (value
+NaN where the driver's own race value is invalid, plus the value rows that have no entry row), so for race r it is the decayed
+mean of all valid values of races < r. A literal "latest stored history row of races < r" holds only races before that row, so it
+would miss the most recent valid value. Truncation check inside the run (blank the values of race 171 and later, recompute): max
+difference 0. Values exist to 2023 only; rows after 2023 are NaN and never used.
+
+**Reproduction.** The re-run references equal the stored plan-1 dev runs: `latent_111` max |per-race metric difference| 8.9e-16,
+max |score difference| 0; `gbm_100` 4.4e-16 and 0 (66 races, 1311 entries). Means: rho 0.6460 / 0.6489, MAE 3.355 / 3.337.
+
+Paired gain on dev, candidate minus reference (positive = candidate better; MAE and log-loss signed so that positive = better); 95% CI:
+
+| Metric | vs `latent_111` | vs `gbm_100` |
+|---|---|---|
+| rho | +0.0030 [-0.0005, +0.0067] | +0.0031 [-0.0022, +0.0085] |
+| MAE | +0.0149 [-0.0128, +0.0423] | +0.0183 [-0.0246, +0.0628] |
+| exact, all | -0.0001 [-0.0123, +0.0120] | +0.0077 [-0.0061, +0.0214] |
+| exact, classified | -0.0012 [-0.0144, +0.0119] | +0.0080 [-0.0081, +0.0239] |
+| exact, places 1-3 / 4-10 / 11+ | 0.0000 [-0.025, +0.025] / +0.0152 [-0.009, +0.041] / -0.0111 [-0.030, +0.007] | -0.0101 [-0.051, +0.035] / +0.0065 [-0.024, +0.037] / +0.0131 [-0.010, +0.035] |
+| rho, finishers | +0.0019 [-0.0016, +0.0054] | -0.0011 [-0.0066, +0.0046] |
+| MAE, finishers | +0.0140 [-0.0147, +0.0417] | -0.0124 [-0.0533, +0.0272] |
+| points log-loss | +0.0008 [-0.0004, +0.0020] | -0.0008 [-0.0027, +0.0011] |
+
+Verdicts (CI excluding 0 on dev): rho, MAE and exact are all "no measurable difference" for both models (every row above has an
+interval including 0). This is the pre-stated failure outcome. The plan expected "about 0, well under 0.003 rho"; the point
+estimates of rho (+0.00304 and +0.00313) are slightly above that, inside the noise, and are not read as an improvement.
+**Power.** With 66 dev races the rho intervals reach +0.0067 and +0.0085, two to three times the plan's 0.003 ceiling, so a gain of the
+expected size could not have passed. Dev cannot distinguish 0 from about +0.007. The null says the feature is not worth adding on this
+evidence, not that the effect is zero. Per season (rho / MAE / exact,
+point estimates; intervals in `results/phase2_paired_gains_by_season.csv`), vs `latent_111`: 2021 +0.0000 / -0.0002 / -0.0068,
+2022 +0.0064 / +0.0407 / -0.0023, 2023 +0.0027 / +0.0043 / +0.0089; vs `gbm_100`: 2021 +0.0073 / +0.0505 / +0.0252,
+2022 +0.0036 / +0.0452 / +0.0112, 2023 -0.0015 / -0.0409 / -0.0135. Only one of 18 per-season intervals on rho, MAE and exact excludes 0
+(gbm_100, 2021, exact +0.0252 [+0.0002, +0.0457], 22 races). Two per-season points log-loss intervals also exclude 0 (latent_111 2021
++0.0026 [+0.0008, +0.0045]; gbm_100 2023 -0.0050 [-0.0086, -0.0019], a worsening), and 8 of the 36 teammate-relative per-season intervals
+(rho, MAE, exact, finisher rho, finisher MAE, log-loss; 2 references x 3 seasons x 6 metrics) exclude 0, all on gbm_100 (2021 rho +0.0140
+[+0.0045, +0.0244] and MAE +0.101; 2022 finisher rho and MAE negative; 2023 exact -0.032). Overall 11 of 120 per-season intervals exclude 0
+against about 6 expected by chance, with mixed signs; none is interpreted, no correction is applied. Exact-position rate against grid order is not improved (reference exact rates 0.140 / 0.142 against 0.164 for grid order;
+candidates 0.140 / 0.150).
+
+**Teammate-relative version (post hoc, no decision weight, no attribution row).** Same pipeline on `cons_c` minus the mean of the
+team's eligible drivers (history scaled by 0.0360). Paired gain vs `latent_111`: rho -0.0000 [-0.0012, +0.0012], MAE -0.0030
+[-0.0140, +0.0077], exact -0.0014 [-0.0082, +0.0054]; vs `gbm_100`: rho +0.0009 [-0.0055, +0.0071], MAE -0.0015 [-0.0404, +0.0396],
+exact -0.0060 [-0.0211, +0.0091]. On the full dev block the teammate-relative result is null with no exceptions (the exact interval for
+places 1-3 vs `latent_111`, +0.0101 [0.0000, 0.0253], has a lower bound of exactly 0 and does not exclude it; the verdict file says
+no measurable difference). The driver-specific part carries nothing.
+
+**Reading (interpretation, not tested).** Consistency as declared has a point estimate of +0.003 rho for both models, inside the noise (intervals include
+0), and the teammate-relative version adds nothing, consistent with the phase-1 finding that the persistent part of `cons_c` is the car
+and grid slot, which both models already have. Not run: tyre degradation, lap-1 gain, slow-stop rate, crew time loss (failed the
+declared rule). Files: `run_phase2.py`, `config_phase2.yaml`, `results/phase2_*.csv|json`, six run folders
+`results/20261117-0645_m20p2_*_dev` (two references, two declared candidates, two post hoc), `results/plan3/attribution.csv`
+(component `M20_consistency`, references `latent_111` and `gbm_100`), `results/plan3/leaderboard.csv` (method M20, six rows).
+
 ## Open questions / next tries
-Phase 2 (each persistent feature alone in the weekend term, paired against the reference) is not started.
+None planned for M20: the declared feature shows no measurable gain; the other four features did not pass the persistence rule.

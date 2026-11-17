@@ -44,7 +44,7 @@ status `abandoned` and the reason — they are part of the record.
 | M17 | Metric-matched decoding (assignment) | Plan 3, amendment 2, run early | done (dev) | D2 exact 13.8% vs grid 16.3%, CI includes 0 | [M17_decoding](M17_decoding/README.md) |
 | M18 | Overtaking threshold | Plan 3, amendment 2 | done (R7, dev) | RPS prefers no dead-band (d = 0); best positive d = 0.03 exact +0.8 points [-0.3, +1.8] vs S3, no measurable difference | [M18_overtaking](M18_overtaking/README.md) |
 | M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | done (R13, dev; v2 after review) | running order is a strong exact-rate baseline the two-stage model does not beat (exact rate lower at all 6 pairs); rho +0.03 to +0.04 at H4/H5 (2022-23 only), H6 +0.010 to +0.012 marginal | [M19_inrace](M19_inrace/README.md) |
-| M20 | Race-craft and pit crew (4 features) | Plan 3, R8 | phase 1 done (persistence only, dev) | persistence r (dev, hl 50): consistency 0.256 passes; tyre degradation 0.121, lap-1 gain 0.163, crew time loss 0.186, slow-stop rate 0.119 fail; no model run | [M20_racecraft](M20_racecraft/README.md) |
+| M20 | Race-craft and pit crew (4 features) | Plan 3, R8 | phase 2 done (consistency alone, dev) | persistence (dev, hl 50): consistency 0.256 passes, the other four fail; consistency in the weekend term: rho +0.003 [-0.001, +0.007] vs latent_111 and +0.003 [-0.002, +0.009] vs gbm_100, MAE and exact also no measurable difference (untuned on both sides; dev cannot rule out about +0.007 rho) | [M20_racecraft](M20_racecraft/README.md) |
 | M20 | Race-craft traits and pit crew | Plan 3, amendment 2 | planned | | |
 | M21 | Neural-network control (optional, needs rule change) | Plan 3, amendment 2 | planned | | |
 
