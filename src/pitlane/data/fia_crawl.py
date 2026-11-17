@@ -4,6 +4,7 @@ Listing: season HTML page -> event ids; per event GET /decision-document-list/aj
 JSON) -> document rows (title, published time, PDF href). Only the exact title "Car Presentation
 Submissions" is taken; the href comes from the listing, never built. PDFs go to data/raw/fia/
 (git-ignored); a manifest with URL and SHA-256 is written to methodologies/M10_upgrades/documents.csv.
+Events recorded as not found are asked again on every run (a document may appear later).
 Polite: one request at a time, >= 10 s apart (robots.txt Crawl-delay), generic User-Agent, resumable.
 
 Usage: python -m pitlane.data.fia_crawl [--seasons 2024 2025 2026] [--max-docs 150]
@@ -96,8 +97,10 @@ def _sha(b: bytes) -> str:
 def crawl(seasons: list[int], max_docs: int = 150) -> pd.DataFrame:
     RAW_DIR.mkdir(parents=True, exist_ok=True)
     old = pd.read_csv(MANIFEST) if MANIFEST.exists() else pd.DataFrame()
-    done = set(old["event_id"]) if len(old) else set()
     rows = old.to_dict("records") if len(old) else []
+    # Only events with a stored document are skipped. An event recorded as found=False is asked again on every run (a document
+    # can be published later); its old not-found row is replaced by the new result.
+    done = {r["event_id"] for r in rows if str(r.get("found")).lower() == "true"}
     total = sum(int(r["bytes"]) for r in rows if r.get("bytes") == r.get("bytes") and r.get("bytes"))
     for season in seasons:
         events = parse_season(_get(SEASON_PAGES[season]).decode("utf-8", "replace"))[::-1]  # oldest first
@@ -105,6 +108,7 @@ def crawl(seasons: list[int], max_docs: int = 150) -> pd.DataFrame:
         for order, (eid, name) in enumerate(events, start=1):
             if eid in done:
                 continue
+            rows = [r for r in rows if r["event_id"] != eid]   # drop the earlier not-found row of this event, if any
             docs = [d for d in parse_event(_get(f"/decision-document-list/ajax/{eid}", ajax=True))
                     if d["title"].strip().lower() == TITLE.lower()]
             if not docs:
@@ -133,7 +137,8 @@ def crawl(seasons: list[int], max_docs: int = 150) -> pd.DataFrame:
 
 def _write(rows: list[dict]) -> None:
     MANIFEST.parent.mkdir(parents=True, exist_ok=True)
-    pd.DataFrame(rows).to_csv(MANIFEST, index=False, lineterminator="\n")
+    ordered = sorted(rows, key=lambda r: (int(r["season"]), int(r["page_order"])))   # stable: documents of one event keep their order
+    pd.DataFrame(ordered).to_csv(MANIFEST, index=False, lineterminator="\n")
 
 
 if __name__ == "__main__":

@@ -1,143 +1,163 @@
 # M10 — Upgrade signal (FIA "Car Presentation Submissions")
 
-**Status:** in progress (R9 part 1: parser only; no model rung yet)
-**Plan reference:** PLAN3.md R9 / Amendment 3 items 1-3
-**Factors:** n/a (data layer; the model rung comes later)
+**Status:** in progress. R9 part 1: parser and data layer only (third revision). No model rung has been run.
+**Plan reference:** PLAN3.md R9 and Amendment 3 items 1-3
+**Factors:** car (the signal is the number of components a team declares as updated at an event)
 
-## Hypothesis
-Not defined yet. Part 1 only turns the 67 FIA PDFs (2024-2026) into one table
-(`data/interim/m10_car_presentations.parquet`, git-ignored, regenerable).
+## Hypothesis (copied from PLAN3 Amendment 3 item 1; the amendment rules)
+"**M10 (R9) is holdout-only.** The FIA car-presentation documents start at 2024 round 2, so dev has no data. One rung only,
+fixed now: total declared-component count per car in the weekend term, at H2 and H0/H1, `lam_x` fixed at the `LatentModel`
+default (1.0), no tuning. Category and reason are parsed and reported descriptively, not as rungs. Judged only on the fresh
+holdout; the 2024–26 test block is used to check the parser, not for any decision. Expected gain on the holdout: about 0 at H2,
+at most 0.01 ρ at H0/H1; failure is an interval including 0."
+
+The PLAN3 R9 table row says the rung "runs at H2 and H0/H1 on dev". That conflicts with the amendment (dev has no documents).
+The amendment rules, so nothing is run on dev. Nothing here has been fitted or scored.
+
+## Coverage and what is missing (read before using the data)
+- 67 of the 68 Grands Prix of 2024-2026 have a document. The manifest (`documents.csv`) has 70 rows: 68 Grands Prix and 2
+  test events ("Tests" events are not races). The missing one is the 2024 Bahrain Grand Prix (round 1).
+- The first document is 2024 round 2. A car's 2024 round-1 count is MISSING, not zero. Likewise every 2022-2023 race.
+  2022-23 have no documents on the FIA site as far as checked: 5 events were looked at, the rest is unverified.
+- Dev (2021-2023) therefore has no M10 data, so `lam_x` cannot be tuned and nothing can be judged on dev. The fresh holdout will
+  be small, so an interval that includes 0 is the likely outcome whatever the true effect.
+- **PLAN3 §M10 says the signal "covers 2022 onward". That is wrong by the evidence above** (it starts at 2024 round 2). Raised
+  here; PLAN3 is not edited by this package.
 
 ## Method (parsing)
-Code: `src/pitlane/data/fia_docs.py`. Rules and keyword lists: `config.yaml` (every R10 change is commented
-"R10 parsing fix"). Source list: `documents.csv` (SHA-256 checked on every run). Run:
-`python -m pitlane.data.fia_docs` (writes the parquet and prints a per-team summary).
+Code: `src/pitlane/data/fia_docs.py` (parser, counts, event map), `src/pitlane/data/fia_crawl.py` (download, polite, resumable).
+Rules and keyword lists: `config.yaml` (every parsing change is commented "R9 parsing fix"). Source list: `documents.csv`
+(URL and SHA-256, checked on every run). Run: `python -m pitlane.data.fia_docs` (writes `data/interim/m10_car_presentations.parquet`,
+git-ignored, and prints a per-team summary). No FIA file or text is committed.
 
-One PDF = cover page + one page per team (a table, or a "no updates" line). A row is anchored on its reason cell
-("<group> - <subtype>", or Reliability / Weight / Cost with no subtype); its component is the text from the nearest
-row-number token up to the anchor. The printed row number is never used for counting.
+One PDF = a cover page, then one page per team (a table, or a "no updates" line). A row is anchored on its reason cell
+("<group> - <subtype>", or Reliability / Weight / Cost / Cooling with no subtype). Its component is the text from the nearest
+row-number token up to the anchor. The printed row number is not used for counting, except by the "chain" check below.
 
-### R10 parsing fixes (after a hand check of 8 documents found an error rate of about 3-5% of rows)
-1. **Reversed pypdf page order.** The team name is read from next to the page-header line, before or after it. If the
-   table / "No updates" line comes before the header and the name after it, it belongs to that name
-   (2025 Japan Mercedes and Haas, 2026 China Williams). Haas's Floor Body row is no longer given to Alpine,
-   and Alpine keeps its own no-updates flag.
-2. **Completeness check.** `expected_teams` per season in the config (10 for 2024/2025, 11 for 2026). A team absent
-   from a document gets a marker row, `parse_status = "team_missing"`; a team seen under two names is marked
-   `team_duplicate`; a name not mapped to a constructor is marked `unmapped_team`. Result on the 67 files: no
-   marker rows (before the fixes three teams were omitted silently).
-3. **Row number mid-line.** A number after sentence-ending text starts a new row (`row_after_sentence_regex`), and a
-   number mid-line before an anchor is used when no line starts with one (2026 Singapore Mercedes).
-   All six documents that were one row short and flagged are now complete. Rows with a missing printed
-   number but a clean "Component Performance -" start are kept.
-4. **Reason cell lost.** A short numbered line with no reason cell after it (`cut_row_regex`) is flagged
-   (`parse_ok = False`, `parse_status = "reason_missing"`, text in `raw_text`), not dropped. These flags also catch
-   real rows whose reason is not written as "<group> - <subtype>" (e.g. "Cooling Range" alone, "Other -"): the
-   component is not parsed for them.
-5. **Wrapped subtype.** "Local" / "Load", "Flow" / "Conditioning", "Drag" / "Range" are joined when the joined text
-   starts with a configured subtype. "Drag Reduction" was added to the list. `subtype_known == False`: 111 -> 14.
-6. **Reason group case** is normalised to the configured spelling ("Circuit Specific" -> "Circuit specific").
-7. **team_raw** no longer carries header residue ("Car Presentation - Emilia - Romagna", "in Malaysia").
-8. **Latent hazards (synthetic cases) fixed:** rows before a footer on a headerless continuation page are kept; an
-   unmapped team with only "No updates" is its own team (status `unmapped_team`) instead of being merged into the
-   previous team; "2 Weight reduction ..." in a description is not a Weight row; prose that names a team on a page with
-   no table and no header is overflow of the previous team, not a new team.
-9. **Combined components.** `category` keeps the first-match rule unchanged; the new column `category_secondary` holds
-   the second matched category ("Rear Wing / Beam Wing": beam_wing + rear_wing; "Rear Wheel Bodywork":
-   rear_corner_suspension + sidepod_engine_cover after the second revision), empty otherwise.
+### What the parser does beyond the basics (all rules fitted on these 67 documents)
+1. Team name is read next to the page-header line, before or after it (pypdf sometimes reverses the page order).
+2. Completeness: each document must hold every team of the season's entry list (`expected_teams`: 10 teams for 2024-25, 11 for
+   2026). A missing team gets a `team_missing` row, a team under two names `team_duplicate`, an unknown name `unmapped_team`.
+   **A season with no entry list now raises** (`ValueError`), unless it is listed in `seasons_without_entry_list` on purpose.
+   There is no 2027 list yet.
+3. Row-number chain: per team the printed numbers 1, 2, 3, ... are followed. A printed number with no recognised reason cell
+   becomes a flagged row (`parse_ok = False`, `parse_status` reason_missing / group_missing, text in `raw_text`).
+   `chain_max_skip: 3` means a number at the start of a line may be at most 3 above the last one, i.e. at most 2 numbers skipped.
+4. A row number must be followed by a capital letter: a line such as "3 elements are used here" is description text, not a row.
+   This fixed two false rows the tester found (a following line with "Cooling", "Reliability" or "Other -"). Residual limit:
+   a description line that starts with a digit AND a capital ("3 Elements ...") followed by such a line still makes a row
+   (strict xfail test). No real row changed with this fix.
+5. A reason group printed without its dash, wrapped subtypes ("Local" / "Load"), reason group case, combined components
+   (`category_secondary`), shared reason cells (one flagged row per component), blank pages (`page_text_empty`).
+6. **Free-text subtype flag (new column `subtype_free_text`).** Six `ok` rows (2026_60300_8 Williams x2, Audi, and one each of
+   2026_60307_9, 2026_60311_11 Cadillac and 2026_63507_12 Alpine) had the subtype cell and the start of the geometry text on one
+   line, so `reason_subtype` held description text. For an unknown subtype of 6 or more words (letters only) `reason_subtype` is
+   now empty and `subtype_free_text = True` (the text is not kept: parsed rows carry no `raw_text`; read it again from the PDF); `parse_status` stays `ok` (component and group are right).
+   The cut cannot be done by position, so it is a word-count rule fitted on these rows. Ten `ok` rows still have an unknown but
+   short subtype written by the team (e.g. a 4-word phrase on one line of its own), kept as printed with `subtype_known = False`;
+   two of them are the dash-less "Circuit specific" rows whose subtype is empty by design.
 
-New columns: `category_secondary`, `parse_status` (ok, no_updates, unparsed, reason_missing, group_missing, page_text_empty, team_missing,
-team_duplicate, unmapped_team).
+### Counting rule: declared components per team per event
+`fia_docs.declared_counts(df)` (and `summarise`, which now uses the same rule):
+- count rows with `parse_status` in {ok, group_missing, reason_missing}. A reason_missing row has no component text but is one
+  printed row, so counting `component.notna()` (the old rule) undercounts it;
+- a team with "no updates" has 0;
+- `page_text_empty` (image-only page, no OCR) and `team_missing` give MISSING, not 0; so does a team-level status;
+- `unparsed` rows are not counted and are reported in `n_unparsed` (none in the 67 files).
+Result on the 67 documents: 1206 declared components (1163 ok + 14 group_missing + 29 reason_missing) in 690 team-documents:
+414 counted, 274 no updates (0), 2 missing (the two Williams pages with no text: 2024_50084_7 and 2026_60295_9).
 
-### Second revision (R10 parsing fix, after the tester's re-check)
-The re-check found a crash and ten printed rows that vanished with `parse_ok = True` on the team's other rows. Changes:
-1. **Crash.** A team absent from a document made `parse_pages` raise `TypeError`; the `team_missing` marker row is now built correctly.
-2. **No silent row loss.** Per team block the parser now follows the printed row numbers 1, 2, 3, ... (the "chain"). Every
-   number in the chain is either an anchored row or a flagged row (`parse_ok = False`, `raw_text` kept). A number at the start
-   of a line may skip up to 3 numbers. A number the PDF text never prints cannot be flagged (see limits). All ten rows from
-   the re-test are now rows or flags.
-3. **Reason groups as printed.** "Other" and "Cooling" are accepted as printed values (config comment: observed in documents,
-   not confirmed against the form definition). A group printed without its dash ("Circuit specific Modification ...",
-   "Performance Local Load") is accepted; when the dash is missing and free text follows "Circuit specific", the subtype
-   is left empty with `subtype_known = False`. A row with a known subtype and NO group ("Front Wing  Flow Conditioning") keeps
-   its component and subtype, `reason_group` is empty and `parse_status = "group_missing"` (`parse_ok = False`); the group
-   is not guessed from the subtype. "Driver Cooling" (2024_50068_10) is not read as the group "Cooling": that row is flagged.
-4. **One flag per component.** Rows that share one printed reason cell (Ferrari 2026, Audi 2026) give one flagged row per
-   component (`reason_missing`, text "9 Coke/Engine | Cover"); a flag never stands for several components. The reason cannot be
-   assigned to the rows above or below the shared cell, so none is assigned.
-5. **Rear Wheel Bodywork** (2026_60312_9) is now `rear_corner_suspension` (the rear-corner rule is tested before the sidepod rule);
-   it was the only row whose category changed.
-6. **False flag removed.** A prose line that ends in a spaced dash is flagged only if it starts with a row number or has at most
-   6 tokens (2024_50070_8 Visa RB was a description line).
-7. **Blank pages.** The two Williams pages with no text (2024_50084_7, 2026_60295_9) have `parse_status = "page_text_empty"`. No OCR.
+### Event map and publication time
+`fia_docs.event_map()` gives `event_id -> (season, round)` for joins. Names differ between the FIA list and the race table
+("Barcelona-Catalunya" / "Barcelona", "Bahrain Grand Prix" / "Bahrain Grand Prix in Malaysia", "Sao Paulo" / "Brazilian"; the
+event key for Sao Paulo is "sopaulo"), so the join uses page order: the k-th race event of a season (oldest first, "Tests" events
+removed) is round k of `data/processed/entries.parquet`. It raises if the counts differ, if a document is dated more than a day after its race date, or if it is dated more than `event_lead_max_days` (5) before it (observed lead 1.0-2.0 days).
+Tests: all 67 found documents map to exactly one race and no two documents to the same race; names differ only for 2026 rounds
+7, 16, 20; publication times rise with the round.
+Two UTC columns are given because the FIA page says "CET" and the reading is UNVERIFIED: `published_utc_fixed1` (time minus 1 h)
+and `published_utc_paris` (Europe/Paris wall clock converted, i.e. CEST in summer). They differ by 1 hour from late March to
+late October and agree otherwise.
 
-### Numbers (67 documents)
-| | first revision | second revision |
-|---|---|---|
-| table rows | 1453 | 1482 |
-| component rows (`component` set) | 1156 | 1177 (1163 `ok` + 14 `group_missing`) |
-| flagged rows (`parse_ok == False`) | 23 | 45: 29 `reason_missing`, 14 `group_missing`, 2 `page_text_empty` (no `unparsed` left) |
-| `subtype_known == False` among `ok` rows | 14 | 16 |
-| "other" category share, 2024 / 2025 / 2026 | 6.8% / 2.2% / 11.1% | 6.8% / 2.2% / 11.1% (unchanged) |
+### Which documents a prediction may use (per horizon)
+- H0 (before the weekend): only documents of EARLIER races.
+- H1: additionally the race's own document, only if it was published before the H1 cutoff. Checked for 3 documents only; the
+  others are unverified. The CET / CEST question moves a time by at most 1 hour.
+- The crawler now asks again, on every run, for events recorded as "not found" (a document may appear later); events with a
+  stored document are never asked again.
 
-Plain reading: 1163 rows are complete (component, group, subtype). 14 more have a component and subtype but the PDF prints no
-group. 29 rows are components whose reason cell is missing or shared, so they carry no reason. The estimated share of
-rows that are still wrong without being flagged is below about 0.5% (at most 7 rows of 1482). This is an estimate: all ten re-test
-rows, the 14 group-missing rows and the 29 reason-missing rows were read against the page text, the three dash-less documents
-explain the only differences from the independent Performance / Circuit-specific count, but the unflagged rows were not hand
-checked again. The chain cannot see a lost row in a block whose printed numbers do not run in order; in the 67 files that
-affects 4 anchored rows (2024_50064_9, 2024_50067_6, 2025_56441_9, 2026_60304_14), each of which was parsed normally.
-Five printed numbers are never in the text of 2025_55037_7 Red Bull (4, 5, 11, 12, 14: the table runs 1, 2, 3, 6, ... 10, 13, 15)
-and one in 2026_60295_9 Aston (6). They may be unused numbers or rows lost by pypdf; they are not flagged, because wrong and skipped
-numbers elsewhere (2024 Saudi) are normal and the plan counts rows by reason cell, not by number.
+## Numbers on the 67 documents (regenerated parquet)
+| | first revision | second revision | third revision |
+|---|---|---|---|
+| table rows | 1453 | 1482 | 1482 |
+| rows with `component` set | 1156 | 1177 | 1177 |
+| `ok` rows | n/a | 1163 | 1163 (6 of them `subtype_free_text`) |
+| flagged rows (`parse_ok == False`) | 23 | 45 (29 reason_missing, 14 group_missing, 2 page_text_empty) | 45 (same) |
+| `subtype_known == False` among `ok` rows | 14 | 16 | 16 |
+Third revision against the second: the only changed rows are the 6 free-text subtype rows (`reason_subtype` emptied, new column). Category, group, status and row count are unchanged.
 
-Rows that changed against the first revision: the flagged 23 rows became rows or per-component flags (list in the run report),
-24 old rows were replaced by 53 new ones (components that were missing, per-component flags, and the 2 blank pages); the
-category of one component row changed (Rear Wheel Bodywork).
+"Other" category share (denominator: `ok` rows, 411 / 318 / 434 for 2024 / 2025 / 2026): 6.8% / 2.2% / 11.1%.
 
-### First revision numbers (67 documents, superseded)
-| | before | after |
-|---|---|---|
-| table rows | 1435 | 1453 |
-| component rows | 1149 | 1156 |
-| unparsed entries (`parse_ok == False`) | 15 | 23 (9 `unparsed`, 14 `reason_missing`; none are silent now) |
-| `team_missing` markers | n/a (3 teams absent silently) | 0 |
-| `subtype_known == False` | 111 | 14 |
-| "other" category share, 2024 / 2025 / 2026 | 6.8% / 2.2% / 11.3% | 6.8% / 2.2% / 11.1% |
-| documents whose Performance / Circuit-specific cell count differs from the independent pypdf count | 7 | 0 |
+### Share of component units not fully parsed, per team-season
+Units = declared components (ok + group_missing + reason_missing). Flagged = group_missing + reason_missing (component, group
+or both missing); the two image-only pages are missing, not counted as units.
+| team, season | flagged / units |
+|---|---|
+| Ferrari 2026 | 15 / 52 (28.8%) |
+| Audi 2026 | 8 / 43 (18.6%) |
+| Red Bull 2026 | 8 / 58 (13.8%) |
+| Ferrari 2025 | 3 / 33 (9.1%) |
+| Red Bull 2025 | 4 / 51 (7.8%) |
+| Mercedes 2026 | 2 / 38 (5.3%) |
+| all others | at most 1 / 41 (2.4%) |
+By season: 2024 2 / 413, 2025 7 / 325, 2026 34 / 468 flagged units (these become 3 / 413 and 35 / 468 if each image-only
+Williams page is counted as one lost unit). The loss is concentrated in a few team-seasons. The declared count itself includes the
+flagged rows, so it is usable for them; category and reason shares are not reliable for Ferrari, Audi and Red Bull 2026.
+
+## Parser quality: what was measured and what was not
+Measured by the tester on the regenerated table:
+- Whole-table scans found 0 errors in the `ok` rows. Precision: for every `ok` row, component, group and subtype appear in
+  that order in the page text. Recall: an independent regex over all pages found nothing that is not already an `ok` row or one of
+  3 known flagged rows. A chain scan (tester's count: 416 team blocks across pages; the table has 414 counted
+  team-documents plus 274 no-update and 2 missing) found no team with fewer rows than its printed chain.
+- A random sample of 20 `ok` rows was read by hand: 20 of 20 correct. The 95% upper bound on the error rate from 20 of 20 is
+  about 14%, so the sample alone says little.
+Not measured: the residual silent error rate (rows that are wrong or missing and not flagged). No percentage is claimed.
+Known blind spots:
+- 6 printed numbers are absent from the page text and unflagged: 2025_55037_7 Red Bull (numbers 4, 5, 11, 12, 14) and
+  2026_60295_9 Aston Martin (number 6). They may be unused numbers or rows that exist only as images; there is no renderer here to check.
+- The chain cannot see a lost LAST row of a team, or a row inside a block whose printed numbers are out of order (4 anchored
+  rows: 2024_50064_9, 2024_50067_6, 2025_56441_9, 2026_60304_14; each parsed normally).
+- Every fix was fitted on these 67 documents, so the quality above is in-sample. Holdout documents are parsed out-of-sample and
+  will probably show some new layouts; the parser flags what it cannot place, it does not guarantee it.
 
 ### Known limits (not fixed)
-- Rows with a shared or missing reason cell (29) have no component; 14 rows have a component and subtype but no group.
-  A later model must test `parse_ok` and `parse_status`, not only `component`.
-- 2026_60303_14 Red Bull row 1 prints "Local load and flow conditioning" as the reason; only the first subtype is recorded
-  (`raw_text` has the full text). Rows 3 and 4 of that table are printed blank and are flagged.
-- "Other" and "Cooling" are recorded as printed; they are not confirmed against the form definition. "Local flow alignment" was
-  added to the subtype list for the same reason.
-- The "Weight" and "Cost" no-subtype rules never fire in the 67 files (only Reliability does); they are untested on real text.
-- Repeated identical rows inside one team and document (23 component rows) are genuine option variants (e.g. three
-  Beam Wing loads in one document), not double counting. Counted as printed.
-- The 2026 subtype "Cooling" alone (one row) and free-text subtypes stay `subtype_known = False`.
-- Category keywords are first-match; a free-text component such as "Bodywork" is "other" or sidepod by keyword only.
-- `published_cet` is a day-first CET string (`%d.%m.%y %H:%M`), not a UTC timestamp; a later model must parse it and
-  treat a document as known only after that time.
-- A page that pypdf returns empty (image-only) cannot be read: two Williams pages (`page_text_empty`). No OCR.
+- `parse_ok == False` rows (45) have no reason or no group; a model must test `parse_status`, not only `component`.
+- `optional` is low-recall: 6 rows are True, while the word "optional" occurs on 17 pages. `optional == False` does NOT mean
+  "not optional".
+- "Other" and "Cooling" are recorded as printed; they are not confirmed against the form definition.
+- The "Weight" and "Cost" no-subtype rules never fire in the 67 files; untested on real text.
+- 43 component rows sit in groups that repeat (same document, team and component), i.e. 22 surplus rows (the tester's
+  test counts 23 repeated rows on a different key); the ones checked are genuine variants, counted as printed.
+- Category keywords are first-match; a free-text component name is "other" or sidepod by keyword only.
+- Two Williams pages are image-only (no OCR).
 
 ## Leakage notes
-Description-only data. A document is usable for a race only if `published_cet` is before that race starts.
+Description-only data. A document may be used for a race only if it was published before that race's cutoff (see above).
 
 ## How to run
 ```
 python -m pitlane.data.fia_docs
-python -m pytest tests/test_plan3_m10.py tests/test_fia_crawl.py -q
+python -m pytest tests/test_plan3_m10.py tests/test_plan3_m10_status.py tests/test_plan3_m10_rev2.py tests/test_plan3_m10_rev3.py tests/test_fia_crawl.py -q
 ```
 
 ## Results
 No model run yet.
 
 ## What we learned
-Parser error rate before the fixes was 3-5% of rows by hand check of 8 documents. After the second revision no printed
-row number can vanish silently; 45 flagged rows (3.0% of table rows) are listed in the parquet with their raw text, and the
-unflagged error rate is estimated below 0.5%.
+After a hand check of 8 documents the first parser had errors on 3-5% of rows; the later revisions removed the errors found.
+The measured state is in the section above: 0 errors in the whole-table scans of `ok` rows, 20 of 20 in a random sample, and an
+unmeasured residual. The data cover only 2024 round 2 to 2026; there is no dev data for M10.
 
 ## Open questions / next tries
-Model rung (R9 part 2) is not started.
+Model rung (R9 part 2) is not started and can only be judged on the fresh holdout. Whether the FIA "CET" is fixed UTC+1 or the
+Paris clock is unverified.

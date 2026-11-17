@@ -14,6 +14,7 @@ from pitlane.config import ROOT
 from pitlane.data import fia_docs as F
 
 CFG = F.load_cfg()
+CFG["parser"]["seasons_without_entry_list"] = [2030]   # the synthetic documents use season 2030 (no entry list on purpose)
 LIN = {"alphatauri": "rb_lineage", "rb": "rb_lineage", "aston_martin": "aston_lineage", "alfa": "sauber_lineage",
        "audi": "sauber_lineage", "alpine": "alpine_lineage"}
 HEADER = "Updated \ncomponent \nPrimary reason \nfor update \nGeometric differences compared to previous \n" \
@@ -34,7 +35,7 @@ def table(*rows: str) -> str:
     return HEADER + "".join(rows)
 
 
-R_WING = "{n} Rear Wing Circuit specific - \nDrag Range Lower camber version \nExplained in made up words here. \n"
+R_WING = "{n} Rear Wing Circuit specific - \nDrag Range Test camber version \nExplained in made up words here. \n"
 R_COKE = "{n} Coke/Engine \nCover \nCircuit specific - \nCooling Range smaller exit \nMade up explanation text. \n"
 R_FLOOR = "{n} Floor Furniture \nPerformance � \nFlow Conditioning New edge \nSome made up words. \n"
 
@@ -91,13 +92,13 @@ def test_digit_at_line_start_in_description_is_not_a_row():
 
 
 def test_optional_flag_per_row():
-    opt = "2 Front Wing Circuit specific - \nBalance Range Flap chord trim to tune balance. Optional. \nMade up text. \n"
+    opt = "2 Front Wing Circuit specific - \nBalance Range Test zork trim. Optional. \nMade up text. \n"
     df = comp(parse(cover(), team_page("TEAM ONE", table(R_WING.format(n=1), opt, R_FLOOR.format(n=3)))))
     assert df["optional"].tolist() == [False, True, False]
 
 
 def test_subtype_on_same_line_as_group():
-    row = "1 Rear Wing Circuit specific - Drag Range \nLower camber \nMade up text. \n"
+    row = "1 Rear Wing Circuit specific - Drag Range \nTest camber \nMade up text. \n"
     df = comp(parse(cover(), team_page("TEAM ONE", table(row))))
     assert df["reason_subtype"].tolist() == ["Drag Range"] and df["subtype_known"].all()
 
@@ -283,7 +284,7 @@ def test_local_pdfs_team_counts():
 # =====================================================================================================================
 # R9 tester additions: one synthetic test per "R9 parsing fix" rule, each with a case where the rule must NOT fire,
 # then hand-checked rows from real PDFs, then data-quality tests on the whole parsed table.
-# R10: the strict xfails that recorded parser defects were removed after the parsing fixes; the tests now pass.
+# R9 parsing fix: the strict xfails that recorded parser defects were removed after the parsing fixes; the tests now pass.
 # =====================================================================================================================
 
 import hashlib  # noqa: E402
@@ -305,7 +306,7 @@ def triples(doc, team_sub: str | None = None) -> list[tuple]:
 
 FLAT = ("Car Presentation – Testland Grand Prix " + FER + " Updated component Primary reason for update Geometric "
         "differences compared to previous version Brief description on how the update works 1 Front Wing Performance - "
-        "Flow Conditioning New flap. Made up words. 2 Rear Wing Circuit specific - Drag Range Lower camber. Optional. "
+        "Flow Conditioning Test flap. Made up words. 2 Rear Wing Circuit specific - Drag Range Test camber. Optional. "
         "3 Floor Performance - Local Load Edge change.")
 
 
@@ -495,15 +496,15 @@ def test_unknown_subtype_is_kept_with_subtype_known_false_not_unparsed():
     assert df["reason_subtype"].iloc[0] == "Novel Thing" and not df["subtype_known"].iloc[0] and df["parse_ok"].iloc[0]
 
 
-# --- defects found by the tester, fixed in R10 (synthetic text mirrors the real pypdf output) ---------------------------------
+# --- defects found by the tester, fixed in R9 parsing fix (synthetic text mirrors the real pypdf output) ---------------------------------
 
 def test_subtype_wrapped_over_two_lines_is_joined():
-    df = comp(parse(cover(), team_page(MER, table("1 Rear Wing  Performance - Local \nLoad \nSmall winglets. \n"))))
+    df = comp(parse(cover(), team_page(MER, table("1 Rear Wing  Performance - Local \nLoad \nTest winglets. \n"))))
     assert df["reason_subtype"].tolist() == ["Local Load"] and df["subtype_known"].all()
 
 
 def test_row_starting_mid_line_after_previous_description_is_kept():
-    body = ("1 Front Wing Performance - Flow \nConditioning \nChange in chord distribution.  Results text control.  2 Front Wing \n"
+    body = ("1 Front Wing Performance - Flow \nConditioning \nTest change in chord distribution.  Results text control.  2 Front Wing \n"
             "Endplate \nPerformance - Flow \nConditioning \nFront wing endplate adjusted. \n")
     doc = parse(cover(), team_page(MER, table(body)))
     assert [t[0] for t in triples(doc)] == ["Front Wing", "Front Wing Endplate"]
@@ -525,7 +526,7 @@ def test_page_with_team_name_after_the_no_updates_line_keeps_the_team():
 def test_table_before_the_header_and_team_name_goes_to_the_named_team():
     haas = "MONEYGRAM HAAS F1 TEAM"
     doc = parse(cover(), team_page("BWT Alpine F1 Team", "No updates submitted for this event. \n"),
-                table("1 Floor Body Performance - \nLocal Load \nCentral floor. \n") + "Car Presentation – Testland Grand Prix \n" + haas + "  \n")
+                table("1 Floor Body Performance - \nLocal Load \nTest floor. \n") + "Car Presentation – Testland Grand Prix \n" + haas + "  \n")
     df = comp(doc)
     alp = df[df["team_raw"].str.contains("Alpine")]
     assert alp["no_updates"].all() and alp["component"].isna().all()
@@ -607,7 +608,7 @@ def test_category_of_components_seen_in_real_documents(component, cat):
 
 
 def test_combined_rear_wing_beam_wing_row_keeps_first_match_and_gets_a_secondary_category():
-    # R10 ruling: the first-match category is unchanged; the second matched category goes to category_secondary.
+    # R9 ruling: the first-match category is unchanged; the second matched category goes to category_secondary.
     assert F.categorise("Rear Wing / Beam Wing", CFG) == "beam_wing"
     assert F.categorise_secondary("Rear Wing / Beam Wing", CFG) == "rear_wing"
     assert F.categorise_secondary("Beam Wing", CFG) == "" and F.categorise_secondary("Mirrors", CFG) == ""
@@ -625,7 +626,7 @@ def pdf_text(f: str) -> str:
 @pytest.mark.skipif(not HAVE_ALL, reason="local FIA PDFs not present")
 def test_independent_reason_cell_count_matches_parsed_rows_per_document(all_docs):
     """Count 'Performance -' / 'Circuit specific -' cells straight from the pypdf text; parsed rows + unparsed flags must equal it.
-    After the R10 parsing fixes every document matches."""
+    After the R9 parsing fixes every document matches."""
     rx = re.compile(r"(?:Circuit\s*specific|Performance)\s*[-–—�]", re.I)
     bad = []
     for f, g in all_docs.groupby("doc_file"):
@@ -633,8 +634,8 @@ def test_independent_reason_cell_count_matches_parsed_rows_per_document(all_docs
         n_rows = int(g["reason_group"].str.lower().isin(["performance", "circuit specific"]).sum())
         if n_pdf != n_rows:
             bad.append((f, n_pdf - n_rows, int((~g["parse_ok"]).sum())))      # (file, rows missing, unparsed flags in the file)
-    # R10 parsing fix: the seven documents that lost one row (six flagged, 2026 Singapore silent) now match the text.
-    # R10 parsing fix, 2nd revision: three documents print a reason group WITHOUT its dash ('Circuit specific Modification ...',
+    # R9 parsing fix: the seven documents that lost one row (six flagged, 2026 Singapore silent) now match the text.
+    # R9 parsing fix, 2nd revision: three documents print a reason group WITHOUT its dash ('Circuit specific Modification ...',
     # 'Performance Local Load'); the parser now accepts these rows, the dash-based count in the text cannot see them (-1 each).
     assert bad == [("2025_56437_11.pdf", -1, 2), ("2026_60302_15.pdf", -1, 0), ("2026_60314_12.pdf", -1, 1)], bad
 
@@ -661,7 +662,7 @@ def test_every_document_has_every_team_exactly_once_and_distinct_constructors(al
 @pytest.mark.skipif(not HAVE_ALL, reason="local FIA PDFs not present")
 def test_2025_japan_mercedes_and_haas_pages_are_assigned_to_the_named_team():
     """pypdf returns these two pages in reversed order (Mercedes = 'No updates' + header + name, Haas = table + header + name).
-    R10 parsing fix: each goes to the team named on its own page; Alpine keeps its own no-updates flag."""
+    R9 parsing fix: each goes to the team named on its own page; Alpine keeps its own no-updates flag."""
     pages = F.read_pdf_pages(LOCAL / "2025_55039_9.pdf")
     assert "Mercedes-AMG PETRONAS" in pages[5] and "No updates" in pages[5]
     assert "HAAS" in pages[8] and "Floor Body" in pages[8]
@@ -689,7 +690,7 @@ def test_published_cet_is_carried_on_every_row_and_equals_the_manifest(all_docs)
 @pytest.mark.skipif(not HAVE_ALL, reason="local FIA PDFs not present")
 def test_table_shape_ranges_and_missing_values(all_docs):
     d = all_docs
-    # R10 parsing fix, 2nd revision: 1163 ok + 14 group_missing component rows, 45 flagged rows (was 1453 / 1156 / 23)
+    # R9 parsing fix, 2nd revision: 1163 ok + 14 group_missing component rows, 45 flagged rows (was 1453 / 1156 / 23)
     assert len(d) == 1482 and int(d["component"].notna().sum()) == 1177 and int(d["parse_ok"].eq(False).sum()) == 45
     assert d["season"].isin([2024, 2025, 2026]).all() and d.groupby("season")["doc_file"].nunique().to_dict() == {2024: 23, 2025: 24, 2026: 20}
     assert d[["event", "team_raw", "constructorId", "lineage", "doc_file", "doc_sha256", "page"]].notna().all().all()
@@ -715,7 +716,7 @@ def test_table_shape_ranges_and_missing_values(all_docs):
 
 @pytest.mark.skipif(not HAVE_ALL, reason="local FIA PDFs not present")
 def test_repeated_identical_rows_are_genuine_option_variants_not_double_counting(all_docs):
-    """23 component rows repeat (19 before R10 parsing fixes) (component, group, subtype) inside a team and document. Checked by hand for 2024 British McLaren:
+    """23 component rows repeat (19 before R9 parsing fixes) (component, group, subtype) inside a team and document. Checked by hand for 2024 British McLaren:
     three Beam Wing variants (high/mid/low load) are three separate numbered rows in the PDF. Count them as printed."""
     d = all_docs[all_docs["component"].notna()]
     k = ["doc_file", "constructorId", "component", "reason_group", "reason_subtype"]

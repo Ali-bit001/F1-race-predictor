@@ -1,11 +1,12 @@
-"""PLAN3 R10 re-test of the M10 parser: parse_status values, category_secondary, and silent row loss.
+"""PLAN3 R9 re-test of the M10 parser: parse_status values, category_secondary, and silent row loss.
 
 Synthetic cases use the helpers of test_plan3_m10.py. Real-PDF cases skip when data/raw/fia is absent.
-The defects found by hand-checking the regenerated table against the PDF text (R10 re-test) were fixed in the
+The defects found by hand-checking the regenerated table against the PDF text (R9 parsing re-test) were fixed in the
 second parser revision; the strict xfails that recorded them are now plain tests.
 """
 from __future__ import annotations
 
+import hashlib
 import re
 
 import pandas as pd
@@ -15,7 +16,8 @@ from pitlane.data import fia_docs as F
 from test_plan3_m10 import (CFG, FER, HAVE_ALL, LOCAL, MCL, MER, REAL, R_FLOOR, R_WING, comp, cover, parse, table,
                             team_page)
 
-EXPECT_STATUS = {"ok", "no_updates", "unparsed", "reason_missing", "group_missing", "page_text_empty"}   # R10 parsing fix, 2nd revision
+# statuses present in the 67 real documents (R9 parsing fix, 2nd revision: no "unparsed" row is left; the status still exists)
+EXPECT_STATUS = {"ok", "no_updates", "reason_missing", "group_missing", "page_text_empty"}
 FLAGGED = ["unparsed", "reason_missing", "group_missing", "page_text_empty"]
 BAD_STATUS = {"team_missing", "team_duplicate", "unmapped_team", "team_unexpected"}
 ENTRY = CFG["parser"]["expected_teams"]
@@ -100,7 +102,7 @@ def test_reason_missing_only_when_every_leftover_line_is_a_cut_row():
     assert cut["parse_status"].tolist() == ["ok", "reason_missing"] and cut["raw_text"].iloc[1] == "3 Beam Wing"
     assert cut["component"].iloc[1] is None or pd.isna(cut["component"].iloc[1])
     mixed = comp(parse(cover(), team_page(FER, table(R_WING.format(n=1)).rstrip() + "\n3 Beam Wing \nsome made up prose line -\n")))
-    # R10 parsing fix, 2nd revision: one flagged row per printed component; the cut row and the dash-ended prose line are separate rows
+    # R9 parsing fix, 2nd revision: one flagged row per printed component; the cut row and the dash-ended prose line are separate rows
     assert mixed["parse_status"].tolist() == ["ok", "reason_missing", "unparsed"] and mixed["raw_text"].iloc[1] == "3 Beam Wing"
     # a numbered unknown-group row ('4 Floor Novelty -') also matches the cut-row regex and is labelled reason_missing, not unparsed (minor)
     nov = comp(parse(cover(), team_page(FER, table(R_WING.format(n=1)).rstrip() + "\n4 Floor Novelty - \n")))
@@ -111,7 +113,7 @@ def test_reason_missing_only_when_every_leftover_line_is_a_cut_row():
 
 def test_cut_row_regex_does_not_fire_on_ordinary_lines():
     for s in ["Revised flap, 3 elements", "3 variations will be made available", "2 Weight reduction made possible by the new part.",
-              "1 front wing", "10 Cooling Louvres Cooling Reduced span for the medium levels"]:
+              "1 front wing", "10 Cooling Louvres Cooling Wider made-up test panel"]:
         assert not F.is_cut_row(s, CFG), s
     for s in ["3 Beam Wing", "2 Front Wing", "10 Cooling", "7 Floor Edge and Diffuser"]:
         assert F.is_cut_row(s, CFG), s
@@ -194,7 +196,7 @@ def test_real_document_has_exactly_the_entry_list_teams_once(real_table, f):
 def test_real_flagged_rows_have_raw_text_and_no_component(real_table):
     bad = real_table[~real_table["parse_ok"]]
     assert len(bad) == 45
-    # R10 parsing fix: only group_missing rows keep a component (the printed one); every other flagged row has none
+    # R9 parsing fix: only group_missing rows keep a component (the printed one); every other flagged row has none
     assert bad.loc[bad["parse_status"] != "group_missing", "component"].isna().all()
     assert bad.loc[bad["parse_status"] == "reason_missing", "raw_text"].str.len().gt(0).all()
     blank = bad[bad["parse_status"] == "page_text_empty"]     # the two Williams pages without any text (no OCR)
@@ -216,16 +218,22 @@ def test_real_subtype_proper_prefixes_are_only_the_genuine_2026_cooling_subtype(
 @pytest.mark.skipif(not HAVE_ALL, reason="local FIA PDFs not present")
 def test_real_new_repeated_identical_rows_are_distinct_numbered_rows_in_the_pdf(real_table):
     """Mercedes 2024 Italy and Ferrari 2025 Saudi 'Rear Wing / Performance / Drag Reduction' appear twice. Hand-checked: rows 1 and 2
-    of each team page carry different descriptions (Monza: 'Subtle change to wing tip detail' vs 'Reduced chord flap'; Jeddah:
-    'Decambered / shorter chord top rear wing flap' vs 'Offloaded top rear wing'). Also Mercedes 2024 Monaco rows 1 and 2
+    of each team page carry different descriptions. The description fragments are NOT stored here (FIA text stays out of git):
+    each is checked by (length in characters, sha256 prefix of the lower-cased text). Also Mercedes 2024 Monaco rows 1 and 2
     are both printed 'Rear Wing' (row 2 describes a beam wing): counted as printed."""
     d = real_table
-    for f, cid, txt in (("2024_50078_8.pdf", "mercedes", ("Subtle change to wing tip", "Reduced chord flap")),
-                        ("2025_55041_7.pdf", "ferrari", ("Decambered / shorter chord", "Offloaded top rear wing"))):
+    for f, cid, frags in (("2024_50078_8.pdf", "mercedes", ((25, "96c6bafae871"), (18, "823b34c0f1b8"))),
+                          ("2025_55041_7.pdf", "ferrari", ((26, "05b6d3813e05"), (23, "47d4379bdcc3")))):
         g = d[(d["doc_file"] == f) & (d["constructorId"] == cid) & (d["component"] == "Rear Wing")]
         assert len(g) == 2 and set(g["reason_subtype"]) == {"Drag Reduction"}
-        text = re.sub(r"\s+", " ", " ".join(F.read_pdf_pages(LOCAL / f)[1:]))
-        assert all(t in text for t in txt), f
+        text = re.sub(r"\s+", " ", " ".join(F.read_pdf_pages(LOCAL / f)[1:])).lower()
+        assert all(_has_fragment(text, n, h) for n, h in frags), f
+
+
+def _has_fragment(text: str, n: int, sha12: str) -> bool:
+    """True if some run of n characters of the (lower-cased, whitespace-collapsed) page text has this sha256 prefix.
+    The fragment itself is not kept in the test."""
+    return any(hashlib.sha256(text[i:i + n].encode()).hexdigest()[:12] == sha12 for i in range(len(text) - n + 1))
 
 
 # --- silent row loss (defects: parse_ok stays True although a numbered component row is missing) ---------------------
@@ -239,8 +247,8 @@ def _covered(real_table, f: str, cid: str) -> int:
 
 
 SILENT = [
-    ("2024_50068_10.pdf", "aston_martin", 5, "row 5 'Chassis Scoop - Driver Cooling' has a reason group that is not configured and no dash"),
-    ("2025_55037_7.pdf", "rb", 3, "row 3 'Front Suspension  Other - Local flow alignment': reason group 'Other' is not configured"),
+    ("2024_50068_10.pdf", "aston_martin", 5, "row 5 (Chassis Scoop): the printed reason group is not configured and has no dash"),
+    ("2025_55037_7.pdf", "rb", 3, "row 3 (Front Suspension): the reason group 'Other' was not configured"),
     ("2025_56436_8.pdf", "ferrari", 3, "row 3 'Beam Wing' is cut at the end of the page text mid-line ('...conditions  3 Beam Wing '), not flagged"),
     ("2025_56449_7.pdf", "red_bull", 4, "rows 3 'Floor body' and 4 'Edge wing' print 'Local load' with no group and no dash"),
     ("2026_60304_14.pdf", "ferrari", 4, "row 4 'Mirror stay' has no reason cell (mid-line after the previous description)"),

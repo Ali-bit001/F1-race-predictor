@@ -23,11 +23,11 @@ import pandas as pd
 from pitlane.config import EXTERNAL, METHODS, ROOT, load_yaml
 
 NO_SUBTYPE = "\x00nosub"   # marker: reason group with no subtype (Reliability, Weight, Cost)
-FREE_SUBTYPE = "\x00free"  # R10 parsing fix: group printed without dash, free text after it (subtype not separable)
-HDR_MARK ="\x01hdr"       # R10 parsing fix: position of the page-header line (the team name may sit before or after it)
+FREE_SUBTYPE = "\x00free"  # R9 parsing fix: group printed without dash, free text after it (subtype not separable)
+HDR_MARK ="\x01hdr"       # R9 parsing fix: position of the page-header line (the team name may sit before or after it)
 CONFIG_PATH = METHODS / "M10_upgrades" / "config.yaml"
 COLUMNS = ["season", "event", "event_key", "team_raw", "team", "constructorId", "lineage", "component",
-           "category", "category_secondary", "reason_group", "reason_subtype", "subtype_known", "optional",
+           "category", "category_secondary", "reason_group", "reason_subtype", "subtype_known", "subtype_free_text", "optional",
            "no_updates", "parse_ok", "parse_status", "raw_text", "page", "doc_file", "doc_sha256", "manifest_season", "manifest_event",
            "event_id", "published_cet"]
 
@@ -89,7 +89,7 @@ def categorise(component: str, cfg: dict) -> str:
 
 
 def categorise_secondary(component: str, cfg: dict) -> str:
-    """R10 parsing fix: second matched category of a combined component ('Rear Wing / Beam Wing'), else ''."""
+    """R9 parsing fix: second matched category of a combined component ('Rear Wing / Beam Wing'), else ''."""
     hits = categorise_all(component, cfg)
     return hits[1] if len(hits) > 1 else ""
 
@@ -123,21 +123,21 @@ def _find_anchor_line(line: str, cfg: dict) -> tuple[str, str, str] | None:
 
 def _find_anchor_nodash(line: str, cfg: dict) -> tuple[str, str, str] | None:
     """Reason cells printed without a dash: groups with no subtype (Reliability / Weight / Cost / Cooling) and,
-    R10 parsing fix, '<group> <subtype>' with the dash lost ('Performance Local Load', 'Circuit specific Modification ...')."""
+    R9 parsing fix, '<group> <subtype>' with the dash lost ('Performance Local Load', 'Circuit specific Modification ...')."""
     p = cfg["parser"]
     nos = "|".join(re.escape(g) for g in p["reason_groups_no_subtype"])
     strict = set(p.get("reason_groups_no_subtype_strict", []))
     for m in re.finditer(rf"(?<!\S)(?P<g>{nos})(?=\s|$)", line):
         pre = line[:m.start()].strip()
         if re.fullmatch(r"\d+", pre):
-            continue   # R10 parsing fix: "2 Weight reduction ..." is a description line; a row needs a component
+            continue   # R9 parsing fix: "2 Weight reduction ..." is a description line; a row needs a component
         if pre and not (re.match(r"^\d+\s", pre) or len(pre.split()) <= 3):
             continue
-        if m.group("g") in strict:   # R10 parsing fix: 'Cooling' alone is also a word of prose and of 'Cooling Range'
+        if m.group("g") in strict:   # R9 parsing fix: 'Cooling' alone is also a word of prose and of 'Cooling Range'
             if not pre or re.match(r"Range\b", line[m.end():].strip()):
                 continue
             if pre.split()[-1] in p.get("reason_group_blocked_after", {}).get(m.group("g"), []):
-                continue   # R10 parsing fix: 'Driver Cooling' is another reason cell, not the group 'Cooling'; flagged, not guessed
+                continue   # R9 parsing fix: 'Driver Cooling' is another reason cell, not the group 'Cooling'; flagged, not guessed
         return pre, m.group("g"), NO_SUBTYPE
     groups = "|".join(re.escape(g) for g in p["reason_groups"] if g not in p["reason_groups_no_subtype"])
     m = re.search(rf"^(?P<pre>\d+\s+\S.*?)\s(?P<g>{groups})(?:\s+(?P<rest>\S.*))?$", line, re.I)
@@ -159,7 +159,7 @@ def _find_anchor_nodash(line: str, cfg: dict) -> tuple[str, str, str] | None:
 
 def _split_subtype(rest: str, following: list[str], cfg: dict) -> tuple[str, bool, int]:
     """Subtype text, whether it is a known subtype, and how many following lines it used (0, 1 or 2).
-    R10 parsing fix: a subtype wrapped over two lines ('Local' / 'Load') is joined when the joined text starts with a
+    R9 parsing fix: a subtype wrapped over two lines ('Local' / 'Load') is joined when the joined text starts with a
     configured subtype and the first part is a proper prefix of it."""
     if rest == NO_SUBTYPE:
         return "", True, 0
@@ -188,11 +188,11 @@ def _row_start(lines: list[str], i: int, pre: str, floor: int, cfg: dict) -> tup
         cand.append((i, pre))
     for pos in range(len(cand) - 1, -1, -1):
         j, text = cand[pos]
-        m = re.match(r"^\d+(\s+(.*))?$", text)
+        m = re.match(r"^\d+(\s+((?-i:[A-Z]).*))?$", text)   # R9 parsing fix: a row number is followed by a capital ('3 elements are used here' is prose)
         if m:
             parts = [(m.group(2) or "").strip()] + [t for _, t in cand[pos + 1:]]
             return j, _clean(" ".join(x for x in parts if x))
-    for pos in range(len(cand) - 1, -1, -1):   # R10 parsing fix: row number mid-line after text with no full stop
+    for pos in range(len(cand) - 1, -1, -1):   # R9 parsing fix: row number mid-line after text with no full stop
         j, text = cand[pos]
         mm = list(re.finditer(r"\s(\d{1,2})\s+([A-Z].*)$", text))
         if mm:
@@ -202,19 +202,19 @@ def _row_start(lines: list[str], i: int, pre: str, floor: int, cfg: dict) -> tup
 
 
 def _canon_group(group: str, cfg: dict) -> str:
-    """R10 parsing fix: reason group in the configured spelling ('Circuit Specific' -> 'Circuit specific')."""
+    """R9 parsing fix: reason group in the configured spelling ('Circuit Specific' -> 'Circuit specific')."""
     p = cfg["parser"]
     return next((g for g in [*p["reason_groups"], *p["reason_groups_no_subtype"]] if g.lower() == group.lower()), group)
 
 
 def is_cut_row(line: str, cfg: dict) -> bool:
-    """R10 parsing fix: a short numbered line with a capitalised component and no reason cell ('3 Beam Wing')."""
+    """R9 parsing fix: a short numbered line with a capitalised component and no reason cell ('3 Beam Wing')."""
     return re.fullmatch(cfg["parser"]["cut_row_regex"], line) is not None
 
 
 @dataclass
 class _Flag:
-    """A unit of text that formed no parsed row and becomes one flagged row (R10 parsing fix)."""
+    """A unit of text that formed no parsed row and becomes one flagged row (R9 parsing fix)."""
     first: int                  # index of the first line (sort key)
     lines: list[str]
     kind: str                   # 'gap' (a printed row number with no reason cell) or 'orphan' (other leftover lines)
@@ -234,10 +234,12 @@ def _find_anchors(lines: list[str], cfg: dict) -> list[_Anchor]:
             pre, group, rest = hit
             sub, known, used = _split_subtype(rest, lines[i + 1: i + 3], cfg)
             start = _row_start(lines, i, pre, floor, cfg)
-            if start is None and rest != NO_SUBTYPE and re.fullmatch(r"[A-Z][^\d]*", pre) and len(pre.split()) <= 4:
-                start = (i, pre)   # R10 parsing fix: the printed row number is missing ('Floor Fences Performance -')
+            stop = {w.lower() for w in cfg["parser"]["missing_number_stopwords"]}
+            words = pre.lower().split()
+            if start is None and rest != NO_SUBTYPE and re.fullmatch(r"[A-Z][^\d]*", pre) and len(pre.split()) <= 4                     and not (words and (words[0] in stop or words[-1] in stop)):   # 'The wing and' is prose, not a component cell
+                start = (i, pre)   # R9 parsing fix: the printed row number is missing ('Floor Fences Performance -')
         if hit is not None and start is not None and hit[2] == FREE_SUBTYPE and not re.match(r"\d", lines[i])                 and not _short_cell_lines(lines, start[0], i, cfg):
-            start = None   # R10 parsing fix: 'Circuit specific rear wing ...' inside a description is not a reason cell
+            start = None   # R9 parsing fix: 'Circuit specific rear wing ...' inside a description is not a reason cell
         if hit is None or start is None:
             i += 1
             continue
@@ -260,8 +262,13 @@ def _anchor_rows(lines: list[str], anchors: list[_Anchor], cfg: dict) -> list[di
         stop = anchors[k + 1].start if k + 1 < len(anchors) else len(lines)
         seg = lines[a.end: stop]  # the reason line itself may carry the geometry text
         opt = any(re.search(cfg["parser"]["optional_regex"], s, re.I) for s in seg)
-        rows.append(dict(component=a.component, reason_group=_canon_group(a.group, cfg), reason_subtype=a.subtype,
-                         subtype_known=a.subtype_known, optional=opt))
+        # R9 parsing fix: an unknown subtype longer than subtype_free_text_min_words words is subtype cell plus geometry text
+        # on one line (the two cannot be separated): reason_subtype stays empty and the flag is set. The text is not kept (parsed rows carry
+        # no raw_text); it can be read again from the PDF.
+        free = (not a.subtype_known) and len(re.findall(r"[A-Za-z]+", a.subtype)) >= cfg["parser"]["subtype_free_text_min_words"]
+        rows.append(dict(component=a.component, reason_group=_canon_group(a.group, cfg),
+                         reason_subtype="" if free else a.subtype, subtype_known=a.subtype_known, subtype_free_text=free,
+                         optional=opt))
     return rows
 
 
@@ -274,7 +281,7 @@ def parse_team_body(lines: list[str], cfg: dict, drop_lead: bool = False) -> tup
 
 
 def _chain_items(lines: list[str], last: int, max_skip: int = 1) -> list[tuple[int, int, int]]:
-    """R10 parsing fix, row-number chain: (line, character position, number) of the printed row numbers 'last+1',
+    """R9 parsing fix, row-number chain: (line, character position, number) of the printed row numbers 'last+1',
     'last+2', ... found in order. A candidate is a number at the start of a line (or alone on it) or after other
     text on a line, followed by a capitalised word. Numbers that do not continue the chain (wrong or repeated
     numbers, '2 Element' prose) are skipped, so the chain is a lower bound of the printed rows."""
@@ -317,7 +324,7 @@ def _gap_flags(lines: list[str], anchors: list[_Anchor], items: list[tuple[int, 
 
 
 def _group_missing(first: str, nxt: str, cfg: dict) -> tuple[str | None, str | None, str]:
-    """R10 parsing fix: '<n> <component> <known subtype> ...' with no reason group printed -> (component, subtype).
+    """R9 parsing fix: '<n> <component> <known subtype> ...' with no reason group printed -> (component, subtype).
     The group is never inferred from the subtype."""
     subs = "|".join(re.escape(k) for k in sorted(cfg["parser"]["reason_subtypes"], key=len, reverse=True))
     text = _clean(re.sub(r"^\d+\s*", "", first) + " " + nxt)
@@ -335,7 +342,7 @@ def _group_missing(first: str, nxt: str, cfg: dict) -> tuple[str | None, str | N
 def parse_team_units(lines: list[str], cfg: dict, drop_lead: bool = False, prev_last: int = 0
                      ) -> tuple[list[dict[str, Any]], list[_Flag], int]:
     """Rows of one team's table, the flagged units, and the last printed row number reached by the chain.
-    R10 parsing fix: every printed row number of the chain 1..N is either an anchored row or a flagged unit,
+    R9 parsing fix: every printed row number of the chain 1..N is either an anchored row or a flagged unit,
     so a numbered row can no longer vanish with parse_ok True on the team's other rows."""
     anchors = _find_anchors(lines, cfg)
     rows = _anchor_rows(lines, anchors, cfg)
@@ -358,7 +365,7 @@ def _unused_prose(lines: list[str], anchors: list[_Anchor], used: set[int], cfg:
                   drop_lead: bool = False, only_dash: bool = False) -> list[str]:
     """Lines that signal a row the parser could not anchor: text before the first row, and any line outside
     the rows that ends in a dash (a reason cell with a group that is not in the config).
-    R10 parsing fix: a dash-ended line counts only if it starts with a row number or is short (a reason-cell
+    R9 parsing fix: a dash-ended line counts only if it starts with a row number or is short (a reason-cell
     wrap); a prose line that happens to end in a spaced dash is the description of the row above."""
     p = cfg["parser"]
     dash_end = re.compile(rf"\s[{p['dash_chars']}]\s*$")  # spaced dash; "re-" wraps are prose
@@ -416,7 +423,7 @@ def _split_rows(line: str, cfg: dict) -> str:
     p = cfg["parser"]
     groups = "|".join(re.escape(g) for g in p["reason_groups"])
     subs = "|".join(re.escape(k) for k in p["reason_subtypes"])
-    strict = set(p.get("reason_groups_no_subtype_strict", []))   # R10 parsing fix: 'Cooling' alone never splits a flat line
+    strict = set(p.get("reason_groups_no_subtype_strict", []))   # R9 parsing fix: 'Cooling' alone never splits a flat line
     nos = "|".join(re.escape(g) for g in p["reason_groups_no_subtype"] if g not in strict)
     rx = re.compile(rf"(?P<g>{groups})\s*[{p['dash_chars']}](?:\s*(?P<s>{subs}))?|(?P<n>(?-i:{nos}))\b(?!\s*[{p['dash_chars']}])", re.I)
     back = p["flat_component_lookback_tokens"]
@@ -440,7 +447,7 @@ def expand_flat_lines(lines: list[str], cfg: dict) -> list[str]:
     for ln in lines:
         for pat in p["flat_split_before"]:           # e.g. a team name running into the table header
             ln = re.sub(rf"(?<=\S)\s+(?={pat})", "\n", ln, count=1)
-        ln = re.sub(p["row_after_sentence_regex"], "\n", ln)   # R10 parsing fix: "...control.  2 Front Wing"
+        ln = re.sub(p["row_after_sentence_regex"], "\n", ln)   # R9 parsing fix: "...control.  2 Front Wing"
         ln = re.sub(p["flat_split_after"], lambda m: m.group(0) + "\n", ln)
         out += [x for x in (_clean(y) for y in _split_rows(ln, cfg).split("\n")) if x]
     return out
@@ -453,7 +460,7 @@ def _keep_header_tail(line: str, cfg: dict) -> str:
 
 def _page_body(text: str, cfg: dict, hdr: re.Pattern) -> list[str]:
     """Cell lines of one page. The page-header line becomes the HDR_MARK line (followed by its tail text, if any),
-    so that the team name can be found before or after it (R10 parsing fix: pypdf may reverse the page order)."""
+    so that the team name can be found before or after it (R9 parsing fix: pypdf may reverse the page order)."""
     foot = re.compile(cfg["parser"]["footer_regex"], re.I)
     start = re.compile(cfg["parser"]["table_start_regex"], re.I)
     for pat, sub in cfg["parser"]["text_fixes"]:
@@ -464,7 +471,7 @@ def _page_body(text: str, cfg: dict, hdr: re.Pattern) -> list[str]:
         raw = raw[first_hdr:]   # previous page's footer (team name, page number, (c) line) leaked before the header
     elif first_hdr is None and any(foot.search(x) for x in raw):
         last = max(i for i, x in enumerate(raw) if foot.search(x))
-        # R10 parsing fix: a footer at the BOTTOM of a headerless page (rows before it) must not eat the rows
+        # R9 parsing fix: a footer at the BOTTOM of a headerless page (rows before it) must not eat the rows
         if not any(start.search(x) and not x.isdigit() for x in raw[:last]):   # a lone page number is not a table
             raw = raw[last + 1:]    # footer block with no table before it: drop up to and including the footer
     lines: list[str] = []
@@ -483,11 +490,11 @@ def _page_body(text: str, cfg: dict, hdr: re.Pattern) -> list[str]:
 
 def _empty_fields() -> dict[str, Any]:
     return dict(component=None, category=None, category_secondary=None, reason_group=None, reason_subtype=None,
-                subtype_known=None, optional=None, raw_text=None)
+                subtype_known=None, subtype_free_text=None, optional=None, raw_text=None)
 
 
 def _flag_fields(f: _Flag, cfg: dict) -> dict[str, Any]:
-    """Fields of a flagged row. R10 parsing fix, one row per printed component:
+    """Fields of a flagged row. R9 parsing fix, one row per printed component:
     gap with a known subtype and no group -> 'group_missing' (component and subtype kept, group None, raw_text = the printed
     text without the row number); other gap -> 'reason_missing' ('unparsed' if a reason cell with an unknown group is
     printed, i.e. a spaced dash); orphan lines -> 'reason_missing' if all are cut rows, else 'unparsed'."""
@@ -507,7 +514,7 @@ def _flag_fields(f: _Flag, cfg: dict) -> dict[str, Any]:
 
 
 def _locate_team(lines: list[str], is_body: Any, has_noup: Any) -> tuple[str | None, list[str], bool]:
-    """(team name or None, body lines, page had a header line). R10 parsing fix: the team name sits next to the
+    """(team name or None, body lines, page had a header line). R9 parsing fix: the team name sits next to the
     header line, before the table (normal order) or after it, with the table / no-updates line first (reversed
     pypdf order: 2025 Japan Mercedes and Haas, 2026 China Williams)."""
     if HDR_MARK not in lines:
@@ -524,14 +531,19 @@ def _locate_team(lines: list[str], is_body: Any, has_noup: Any) -> tuple[str | N
 
 
 def _completeness_rows(rows: list[dict], doc: ParsedDoc, cfg: dict, lin: dict[str, str], n_pages: int) -> list[dict]:
-    """R10 parsing fix: every team of the season's entry list must appear exactly once per document. A missing team
+    """R9 parsing fix: every team of the season's entry list must appear exactly once per document. A missing team
     gets an explicit marker row (parse_status 'team_missing'); a team seen under two names is marked 'team_duplicate'."""
     for r in rows:
         if r["constructorId"] is None:
             r["parse_status"] = "unmapped_team" if r["parse_ok"] else r["parse_status"] + "+unmapped_team"
     entry = (cfg["parser"].get("expected_teams") or {}).get(doc.season)
     if not entry:
-        return []
+        # R9 parsing fix: no silent skip. A season without an entry list (2027 ...) needs either an entry in expected_teams or an
+        # explicit opt-out in seasons_without_entry_list (completeness is then NOT checked for that season).
+        if doc.season in (cfg["parser"].get("seasons_without_entry_list") or []):
+            return []
+        raise ValueError(f"no expected_teams entry for season {doc.season}: add the entry list to the config, or list the season in "
+                         f"parser.seasons_without_entry_list to skip the completeness check on purpose")
     names: dict[str, set[str]] = {}
     for r in rows:
         if r["constructorId"]:
@@ -628,7 +640,7 @@ def parse_pages(pages: list[str], cfg: dict, lineage: dict[str, str] | None = No
         if not rows and no_up[team_raw] and not flags:
             doc.rows.append({**base, **_empty_fields(), "no_updates": True, "parse_ok": True, "parse_status": "no_updates"})
         elif not rows and not flags:
-            # R10 parsing fix: a page with only the header and a team name has no text to parse (image-only page, no OCR):
+            # R9 parsing fix: a page with only the header and a team name has no text to parse (image-only page, no OCR):
             # 'page_text_empty'. A long "name" is prose with no table: 'unparsed', the text is kept.
             empty = len(team_raw.split()) <= p["team_name_max_tokens"]
             doc.rows.append({**base, **_empty_fields(), "no_updates": False, "parse_ok": False,
@@ -700,11 +712,124 @@ def parse_dir(path: Path | str | None = None, out: Path | str | None = None, cfg
     return df
 
 
+# --- declared-component counts ----------------------------------------------------------------------------------------
+
+DECLARED_STATUSES = ("ok", "group_missing", "reason_missing")   # one printed component each (see declared_counts)
+TEAM_LEVEL_STATUSES = ("unmapped_team", "team_duplicate", "team_unexpected")   # overwrite the row statuses of the team
+
+
+def _declared_of(g: pd.DataFrame) -> tuple[Any, str]:
+    """(declared-component count or pd.NA, how it was decided) for the rows of ONE team in ONE document."""
+    st = g["parse_status"].astype(str)
+    base = st.str.split("+").str[0]
+    if (base == "team_missing").any():
+        return pd.NA, "missing_team"                # the team is absent from the text: unknown, not zero
+    if (base == "page_text_empty").any():
+        return pd.NA, "missing_page_text"           # image-only page, no OCR: unknown, not zero
+    if base.isin(TEAM_LEVEL_STATUSES).any():
+        return pd.NA, "team_level_status"           # row statuses were overwritten, the count cannot be recovered
+    n = int(base.isin(DECLARED_STATUSES).sum())
+    if n == 0 and bool(g["no_updates"].astype(bool).any()):
+        return 0, "no_updates"                      # the team printed "no updates": a real zero
+    if (base == "unparsed").any():
+        return (pd.NA if n == 0 else n), "has_unparsed"   # only unparsed rows: unknown, not zero
+    return n, "counted"
+
+
+def declared_counts(df: pd.DataFrame) -> pd.DataFrame:
+    """Declared-component count per team per event (one row per document and team).
+
+    Rule (the number a model may use as the 'total declared components' of a car):
+    * count the rows whose parse_status is ok, group_missing or reason_missing (each is one printed component; a
+      reason_missing row has no component text but is still one printed row, so the column `component` is NOT used);
+    * a team with 'no updates' has 0;
+    * a team whose page has no text (page_text_empty) or that is absent from the document (team_missing) is
+      MISSING (pd.NA), not 0; so is a team carrying a team-level status (unmapped_team, team_duplicate,
+      team_unexpected), whose row statuses were overwritten;
+    * 'unparsed' rows are not counted; they are reported in n_unparsed and `how` is 'has_unparsed'; a team with
+      only unparsed rows is MISSING (pd.NA), not 0.
+    A document that does not exist (2022-23, 2024 round 1) has no row at all: that is also missing, not 0.
+    """
+    key = df["constructorId"].where(df["constructorId"].notna(), df["team_raw"])
+    out = []
+    for (doc, _), g in df.groupby(["doc_file", key], sort=False):
+        n, how = _declared_of(g)
+        base = g["parse_status"].astype(str).str.split("+").str[0]
+        out.append(dict(doc_file=doc, season=g["season"].iloc[0],
+                        event_id=g["event_id"].iloc[0] if "event_id" in g else None,
+                        constructorId=g["constructorId"].iloc[0], team_raw=g["team_raw"].iloc[0], declared=n, how=how,
+                        n_ok=int((base == "ok").sum()), n_group_missing=int((base == "group_missing").sum()),
+                        n_reason_missing=int((base == "reason_missing").sum()), n_unparsed=int((base == "unparsed").sum())))
+    res = pd.DataFrame(out)
+    res["declared"] = res["declared"].astype("Int64")
+    return res
+
+
 def summarise(df: pd.DataFrame) -> pd.DataFrame:
-    """Per document and team: component rows, no-update flag, unparsed rows."""
-    g = df.groupby(["doc_file", "team_raw"], sort=False)
-    return g.agg(components=("component", lambda s: int(s.notna().sum())), no_updates=("no_updates", "max"),
-                 unparsed=("parse_ok", lambda s: int((~s.astype(bool)).sum()))).reset_index()
+    """Per document and team: declared-component count (see declared_counts; NA when the page text is missing),
+    no-update flag and the number of flagged rows (parse_ok False)."""
+    rows = []
+    for (doc, team), g in df.groupby(["doc_file", "team_raw"], sort=False):
+        n, _ = _declared_of(g)
+        rows.append(dict(doc_file=doc, team_raw=team, components=n, no_updates=bool(g["no_updates"].astype(bool).any()),
+                         unparsed=int((~g["parse_ok"].astype(bool)).sum())))
+    res = pd.DataFrame(rows)
+    res["components"] = res["components"].astype("Int64")
+    return res
+
+
+# --- event map and publication time -----------------------------------------------------------------------------------
+
+RACES_PATH = ROOT / "data" / "processed" / "entries.parquet"
+
+
+def published_utc(published_cet: pd.Series) -> pd.DataFrame:
+    """Two readings of the day-first string 'dd.mm.yy hh:mm'. The FIA page says CET; whether that is fixed UTC+1 or the
+    Europe/Paris wall clock (CEST in summer) is UNVERIFIED, and the two differ by 1 hour from late March to late October.
+    published_utc_fixed1 = time - 1 h; published_utc_paris = Europe/Paris wall clock converted to UTC (NaT for a time that
+    does not exist or is ambiguous at a DST change). Both are naive UTC timestamps."""
+    t = pd.to_datetime(published_cet, format="%d.%m.%y %H:%M", errors="coerce")
+    paris = t.dt.tz_localize("Europe/Paris", ambiguous="NaT", nonexistent="NaT").dt.tz_convert("UTC").dt.tz_localize(None)
+    return pd.DataFrame({"published_utc_fixed1": t - pd.Timedelta(hours=1), "published_utc_paris": paris})
+
+
+def event_map(manifest: Path | str | None = None, races: Path | str | None = None, cfg: dict | None = None) -> pd.DataFrame:
+    """event_id -> (season, round) for every non-test event of the manifest, from page order.
+
+    The manifest lists each season's events oldest first (page_order); events whose name matches parser.non_race_event_regex
+    ('Bahrain Tests Season') are not races. The k-th race event of a season is round k of the races table
+    (data/processed/entries.parquet). Names differ between the two sources ('Barcelona-Catalunya' / 'Barcelona',
+    'Bahrain' / 'Bahrain Grand Prix in Malaysia', 'Sao Paulo' / 'Brazilian'), so names are not used for the join. Raises if a
+    season's number of race events differs from its number of rounds, or if a found document was published more than a day
+    after its race date. Columns: event_id, season, round, race_date, race_name, manifest_event, found, doc_file,
+    published_cet, published_utc_fixed1, published_utc_paris.
+    """
+    cfg = cfg or load_cfg()
+    man = pd.read_csv(manifest or MANIFEST_PATH, dtype={"published_cet": str, "file": str})
+    race_df = pd.read_parquet(races or RACES_PATH, columns=["season", "round", "date", "raceName"]).drop_duplicates(["season", "round"])
+    is_test = man["event"].str.contains(cfg["parser"]["non_race_event_regex"], case=False, regex=True)
+    out = []
+    for season, g in man[~is_test].sort_values(["season", "page_order"]).groupby("season"):
+        rr = race_df[race_df["season"] == season].sort_values("round")
+        if len(rr) != len(g):
+            raise ValueError(f"season {season}: {len(g)} race events in the manifest but {len(rr)} rounds in the races table")
+        for (_, m), (_, r) in zip(g.iterrows(), rr.iterrows()):
+            out.append(dict(event_id=int(m["event_id"]), season=int(season), round=int(r["round"]),
+                            race_date=pd.Timestamp(r["date"]), race_name=r["raceName"], manifest_event=m["event"],
+                            found=str(m["found"]).lower() == "true", doc_file=m["file"] if isinstance(m["file"], str) else None,
+                            published_cet=m["published_cet"]))
+    res = pd.DataFrame(out)
+    res = pd.concat([res, published_utc(res["published_cet"])], axis=1)
+    late = res[res["found"] & (res["published_utc_fixed1"] >= res["race_date"] + pd.Timedelta(days=1))]
+    if len(late):
+        raise ValueError(f"documents published after the race date: {late['event_id'].tolist()}")
+    # A shifted map (a cancelled event listed, another missing) keeps the counts equal but moves documents onto later
+    # races; the lead from publication to race-date midnight is then a week or more (observed 1.0-2.0 days).
+    lead_max = pd.Timedelta(days=float(cfg["parser"].get("event_lead_max_days", 5)))
+    early = res[res["found"] & (res["race_date"] - res["published_utc_fixed1"] > lead_max)]
+    if len(early):
+        raise ValueError(f"documents published more than {lead_max} before the mapped race: {early['event_id'].tolist()}")
+    return res
 
 
 if __name__ == "__main__":

@@ -153,26 +153,42 @@ def test_crawl_page_order_is_oldest_first_and_manifest_is_written(crawl_env):
     assert len(on_disk) == len(df) and on_disk["url"].dropna().str.startswith("https://www.fia.com/").all()
 
 
-def test_crawl_skips_event_ids_already_in_manifest_without_any_request(crawl_env):
+def test_crawl_skips_events_with_a_stored_document_without_any_request(crawl_env):
     calls, pages, tmp = crawl_env
     pd.DataFrame([{"season": 2030, "page_order": 2, "event": "Middle Grand Prix", "event_id": 200, "found": True,
-                   "doc_key": 5, "published_cet": "x", "url": "u", "sha256": "s", "bytes": 10, "file": "f.pdf"},
-                  {"season": 2030, "page_order": 1, "event": "Oldest Grand Prix", "event_id": 100, "found": False}]
+                   "doc_key": 5, "published_cet": "x", "url": "u", "sha256": "s", "bytes": 10, "file": "f.pdf"}]
                  ).to_csv(tmp / "documents.csv", index=False)
     df = C.crawl([2030])
-    assert "/decision-document-list/ajax/200" not in calls and "/decision-document-list/ajax/100" not in calls
+    assert "/decision-document-list/ajax/200" not in calls
     assert "/decision-document-list/ajax/300" in calls
     assert set(df["event_id"]) == {100, 200, 300}
     assert (df["event_id"] == 200).sum() == 1          # the old row is kept once, not duplicated
 
 
-def test_crawl_skip_also_applies_to_events_recorded_as_not_found(crawl_env):
-    """A not-found event is never asked again (documented limitation: a document published later is missed)."""
+def test_crawl_polls_events_recorded_as_not_found_again_and_replaces_the_row(crawl_env):
+    """R9 round 4: a not-found event is asked again on every run (a document may be published later). Event 100 has no
+    matching document in the fake listing: still not found, one row, polled again. Event 200 is recorded as not found in the
+    old manifest but now has documents: its old row is replaced by the found rows, no duplicate."""
     calls, _, tmp = crawl_env
-    pd.DataFrame([{"season": 2030, "page_order": 1, "event": "Oldest Grand Prix", "event_id": 100, "found": False}]
+    pd.DataFrame([{"season": 2030, "page_order": 1, "event": "Oldest Grand Prix", "event_id": 100, "found": False},
+                  {"season": 2030, "page_order": 2, "event": "Middle Grand Prix", "event_id": 200, "found": False}]
                  ).to_csv(tmp / "documents.csv", index=False)
+    df = C.crawl([2030])
+    assert "/decision-document-list/ajax/100" in calls and "/decision-document-list/ajax/200" in calls
+    assert (df["event_id"] == 100).sum() == 1 and not df[df["event_id"] == 100]["found"].any()
+    mid = df[df["event_id"] == 200]
+    assert len(mid) == 2 and mid["found"].all() and sorted(mid["doc_key"].astype(int)) == [5, 6]
+    on_disk = pd.read_csv(tmp / "documents.csv")
+    assert on_disk["page_order"].tolist() == sorted(on_disk["page_order"])     # manifest stays in page order
+
+
+def test_crawl_does_not_poll_a_found_event_again_after_a_second_run(crawl_env):
+    calls, _, _ = crawl_env
     C.crawl([2030])
-    assert "/decision-document-list/ajax/100" not in calls
+    calls.clear()
+    C.crawl([2030])
+    assert "/decision-document-list/ajax/200" not in calls and "/decision-document-list/ajax/300" not in calls
+    assert "/decision-document-list/ajax/100" in calls     # the one not-found event is asked again
 
 
 def test_crawl_rejects_a_download_that_is_not_a_pdf(crawl_env):
