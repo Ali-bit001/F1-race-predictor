@@ -1,0 +1,132 @@
+# M10 upgrade signal: parser settings and keyword rules (PLAN3 Amendment 3 items 1-3).
+# Part 1 only: parser. No model rung is defined here yet.
+parser:
+  input_dir: data/raw/fia
+  output: data/interim/m10_car_presentations.parquet
+  # The cover page must carry this title line; "Car Display Procedure" and others never match.
+  title_regex: 'Title\s+Car\s+Presentation\s+Submissions'
+  cover_event_regex: '^(?P<season>\d{4})\s+(?P<event>.+?)\s+GRAND\s+PRIX'
+  header_line_regex: '^Car\s+Presentation\b'      # page header line, dropped
+  # Table header lines (the first one starts a table; all are consumed at the top of the table).
+  # (R9 parsing fix: a page may also start directly with a numbered row)
+  table_start_regex: '^Updated\b|^\d+(?:\s+\S|$)'   # R10 parsing fix: a lone row number on its own line also starts a table
+  table_header_regexes:
+    - '^Updated\b'
+    - '^component\b'
+    - '^Primary\s+reason\b'
+    - '^for\s+update\b'
+    - '^update$'                       # R9 parsing fix: header wrapped over more lines in 2024-26
+    - '^\d+,\s*max\b'
+    - '^(?:\d+\s+)?words\)'
+    - '^Geometric\b'
+    - '^version\b'
+    - '^previous\s+version\b'
+    - 'Brief\s+description'
+    - '^\(min\b'
+    - '^\(?\s*max\b'
+  # "no updates" wordings, tested on the page text with every non-letter removed.
+  no_update_regex: 'noupdates?'
+  # Printed after the reason, in the geometry cell (end of line).
+  optional_regex: '\bOptional\b\.?\s*$'
+  # Characters that stand for the dash between reason group and subtype (U+FFFD is how pypdf
+  # decodes the FIA en dash).
+  dash_chars: '-–—�'
+  # Known reason groups and subtypes (fixed form fields). A new group makes the row unparsed.
+  # R10 parsing fix: 'Other' and 'Cooling' are printed as reason groups in some documents (2024_50084_7 and 2025_55037_7
+  # 'Other - Local flow alignment', 2025_55040_10 'Cooling Louvres Cooling'). Observed in documents, not confirmed against
+  # the form definition: they are recorded as printed, never mapped to another group.
+  reason_groups: ['Circuit specific', 'Performance', 'Reliability', 'Weight', 'Cost', 'Other', 'Cooling']
+  reason_subtypes: ['Flow Conditioning', 'Local Load', 'Drag Range', 'Cooling Range', 'Balance Range', 'Mechanical Setup',
+                      'Structural Improvement',
+                      'Drag Reduction', 'Local flow alignment']
+  # Mechanical Setup / Structural Improvement added in R9 (seen 2025-26); R10 parsing fix: Drag Reduction and 'Local flow alignment'
+  # (the latter printed after 'Other -' in 2024_50084_7 and 2025_55037_7: observed in documents, not confirmed against the form definition).
+  # ("Performance - Drag reduction", printed over two lines in some files). The 2026 subtype "Cooling" alone stays unknown.
+  component_lookback_lines: 5   # R9 parsing fix: was 3; 2026 tables wrap long component names over more lines
+  # --- PARSING FIXES made after the 2024-26 documents were opened (R9 part 1; format only, no category change) ---
+  # Many 2024-26 PDFs come out of pypdf with a whole table (or "<team> No updates ...") on one text line, and
+  # with the team name on the page-header line. Parsing fix: keep the text after "Grand Prix" on the header line,
+  # cut flat lines before "Updated component" / "No update(s)", after the table header, and around every
+  # "<group> - <known subtype>" anchor (row number = nearest numeric token within the lookback).
+  # R10 parsing fix: also strip a header without 'Grand Prix' (2025 'Emilia - Romagna') and a suffix 'in Malaysia'.
+  header_strip_regex: '^Car\s+Presentation\b(?:.*?Grand\s+Prix\b(?:\s+in\s+[A-Za-z]+)?|\s*[-–—�]\s*Emilia\s*-\s*Romagna\b)'
+  # R10 parsing fix: a row number that follows sentence-ending text starts a new row ('...control.  2 Front Wing').
+  # The number must be followed by a capitalised word, so '2 variations ...' prose is not split.
+  row_after_sentence_regex: '(?<=[.!?])\s+(?=\d{1,2}\s+[A-Z][a-z])'
+  # R10 parsing fix: a short numbered line with no reason cell after it (pypdf lost the cell) is flagged
+  # (parse_status reason_missing), never dropped silently.
+  cut_row_regex: '\d{1,2}\s+[A-Z][A-Za-z/&-]*(?:\s+[A-Za-z/&-]+){0,4}'
+  # R10 parsing fix: entry list per season (constructorId); each document must hold every team exactly once.
+  # A missing team becomes a marker row with parse_status team_missing.
+  expected_teams:
+    2024: [red_bull, mercedes, ferrari, mclaren, aston_martin, alpine, williams, rb, sauber, haas]
+    2025: [red_bull, mercedes, ferrari, mclaren, aston_martin, alpine, williams, rb, sauber, haas]
+    2026: [red_bull, mercedes, ferrari, mclaren, aston_martin, alpine, williams, rb, audi, haas, cadillac]
+  flat_split_before: ['Updated\s+component\b', 'No\s+u\s*pdates?\b']
+  flat_split_after: 'Brief\s+description\s+on\s+how\s+the\s+update\s+works\s*|\bOptional\.'
+  flat_component_lookback_tokens: 7
+  # Text repairs applied to the page text before line splitting (R9 parsing fix): 2024 Azerbaijan Williams prints
+  # "No u" / "pdates submitted" on two lines.
+  text_fixes:
+    - ['No\s+u\s*\n\s*pdates', 'No updates']
+  # Reliability / Weight / Cost rows carry no subtype and no dash (R9 parsing fix, case-sensitive, row must start with a number).
+  # 'Cooling' (R10 parsing fix, observed not confirmed) behaves like them but is "strict": it needs a component text before it
+  # on the same line and must not be followed by 'Range', because 'Cooling' / 'Cooling Range' also occur in subtypes and prose.
+  reason_groups_no_subtype: ['Reliability', 'Weight', 'Cost', 'Cooling']
+  reason_groups_no_subtype_strict: ['Cooling']
+  # R10 parsing fix: the word before 'Cooling' that makes it part of another printed reason ('Chassis Scoop  Driver Cooling', 2024_50068_10):
+  # such a row is flagged (reason_missing), not given the group 'Cooling'.
+  reason_group_blocked_after: {Cooling: [Driver]}
+  # R10 parsing fix: a group printed WITHOUT its dash. 'Performance Local Load' is accepted when a known subtype follows;
+  # for these groups any text after the group is accepted and the subtype is left empty (subtype_known False)
+  # ('Circuit specific Modification to ...': the subtype cannot be separated from the description).
+  dashless_free_text_groups: ['Circuit specific']
+  # R10 parsing fix, flagged units (a printed row number with no recognised reason cell): text kept per flagged row
+  flag_text_max_chars: 600
+  flag_continuation_lines: 2          # following lines that look like a wrapped component cell are kept in raw_text
+  flag_continuation_max_tokens: 3
+  flag_component_max_words: 6         # group_missing: component text before a printed known subtype
+  # R10 parsing fix: a line ending in a spaced dash is a reason-cell signal only if it starts with a row number or is short;
+  # longer prose ('... rear wing configuration -') is the description of the row above (2024_50070_8 Visa RB).
+  dash_flag_max_tokens: 6             # tokens counted with the dash; the 2024_50070_8 prose line has 8
+  # R10 parsing fix, row-number chain: a row number at the start of a line may skip up to this many printed numbers
+  # (2025_55037_7 Red Bull prints 1, 2, 3, 6, 7, ...). Numbers inside a line must be exactly the next one.
+  chain_max_skip: 3
+  # R10 parsing fix: a team page whose only text is the header and a name of at most this many words is 'page_text_empty'
+  # (2024_50084_7 and 2026_60295_9 Williams: image-only pages, no OCR); longer text without a table is 'unparsed'.
+  team_name_max_tokens: 10
+  # Page footer printed into the text of some PDFs (U+FFFD = the copyright sign), removed before parsing.
+  footer_regex: '(?:\d+\s*)?[�©]\s*\d{4}\.?\s*All\s+Rights\s+Reserved\.?(?:\s*Highly\s+Confidential\.?)?'
+
+# Team name -> our constructorId. Applied in order, first match wins, to the lower-cased
+# name with asterisks and punctuation removed. Lineage comes from data/external/lineage.csv.
+team_aliases:
+  - ['visa cash app|racing bulls|\brb\b|alphatauri|alpha tauri|toro rosso', rb]
+  - ['red bull', red_bull]
+  - ['mercedes', mercedes]
+  - ['ferrari', ferrari]
+  - ['mclaren', mclaren]
+  - ['aston martin', aston_martin]
+  - ['alpine', alpine]
+  - ['renault', renault]
+  - ['williams', williams]
+  - ['haas', haas]
+  - ['audi', audi]
+  - ['alfa romeo', alfa]
+  - ['sauber|stake|kick', sauber]
+  - ['cadillac', cadillac]
+  - ['racing point', racing_point]
+  - ['force india', force_india]
+
+# Component category: ordered, first matching keyword regex wins (lower-cased component text).
+# Anything that matches nothing is "other".
+component_categories:
+  - [beam_wing, ['beam\s*wing']]
+  - [front_wing, ['front\s*wing', 'nose\s*wing']]
+  - [rear_wing, ['rear\s*wing', 'drs']]
+  - [floor, ['floor', 'diffuser', 'edge\s*wing', 'fence', 'bargeboard', 'undertray', 'strake']]
+  # R10 parsing fix: rear_corner_suspension is tested before sidepod_engine_cover so that 'Rear Wheel Bodywork' (2026_60312_9 Red Bull)
+  # is a rear-corner component, not a sidepod one ('bodywork' matched first). Only rows matching both change; listed in the README.
+  - [rear_corner_suspension, ['rear\s*corner', 'rear\s*susp', 'rear\s*brake', 'rear\s*upright', 'rear\s*(wheel|tyre|tire)']]
+  - [sidepod_engine_cover, ['sidepod', 'side\s*pod', 'engine', 'coke', 'cooling', 'louvre', 'louver', 'bodywork', 'cover']]
+  - [front_corner_suspension, ['front\s*corner', 'front\s*susp', 'front\s*brake', 'front\s*upright', 'front\s*(wheel|tyre|tire)']]
