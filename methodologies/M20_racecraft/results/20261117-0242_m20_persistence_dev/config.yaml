@@ -1,0 +1,41 @@
+phase: 1
+split: dev
+dev_seasons:
+- 2021
+- 2022
+- 2023
+burn_in_seasons:
+- 2014
+- 2015
+- 2016
+- 2017
+- 2018
+- 2019
+- 2020
+lap_source: jolpica
+thresh: 1.07
+min_stint_laps: 5
+min_driver_laps: 10
+min_lap1_drivers: 8
+red_flag_margin_s: 20.0
+slow_stop_s: 3.0
+min_crew_stops: 2
+halflife_primary: 50
+halflives:
+- 8
+- 16
+- 32
+- 50
+min_prior_obs: 5
+persistence_min: 0.2
+bootstrap:
+  n_boot: 10000
+  seed: 0
+winsor:
+- 0.01
+- 0.99
+out_dir: methodologies/M20_racecraft/results
+csv_out: results/plan3/m20_persistence.csv
+summary_json: results/plan3/m20_summary.json
+git_commit: 78a5be7+dirty-d8be430aedfc
+run_id: 20261117-0242_m20_persistence_dev

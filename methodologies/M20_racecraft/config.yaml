@@ -1,0 +1,22 @@
+phase: 1                        # persistence check only; no model is run with these features
+split: dev                      # 2021-2023 decides; 2014-2020 is burn-in (history; also reported, labelled)
+dev_seasons: [2021, 2022, 2023]
+burn_in_seasons: [2014, 2015, 2016, 2017, 2018, 2019, 2020]
+lap_source: jolpica             # one source per race for every season 2014-2023
+thresh: 1.07                    # clean-lap threshold (share of race median), as A3
+min_stint_laps: 5
+min_driver_laps: 10
+min_lap1_drivers: 8
+red_flag_margin_s: 20.0         # = configs/ingest3.yaml pits.red_flag_margin_s
+max_stop_s: 60.0               # amendment 1: absolute cap applied before the median + margin rule
+slow_stop_s: 3.0                # declared, not tuned
+min_crew_stops: 2
+halflife_primary: 50            # decision; 8/16/32 reported
+halflives: [8, 16, 32, 50]
+min_prior_obs: 5
+persistence_min: 0.2            # decision rule on dev, point estimate
+bootstrap: {n_boot: 10000, seed: 0}
+winsor: [0.01, 0.99]            # sensitivity only (bounds computed over all 2014-2023 races: in-sample)
+out_dir: methodologies/M20_racecraft/results
+csv_out: results/plan3/m20_persistence.csv
+summary_json: results/plan3/m20_summary.json
