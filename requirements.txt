@@ -13,3 +13,4 @@ matplotlib
 shap
 pytest
 joblib
+pypdf==5.1.0  # plan 3 Amendment 3: FIA document parser (M10)

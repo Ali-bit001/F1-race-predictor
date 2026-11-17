@@ -14,6 +14,36 @@ headline metric with starting-grid order as the baseline to beat; the evidence a
 further ideas are in §2.2. Adds M17–M21, extends M09 and M14, adds the attribution protocol in §5
 (every change is tested on its own), and renumbers the work packages to R0–R17.
 
+**Amendment 3 (2026-11-17, after R0–R5, R7, R8, R10, R12, R13; decided by the user's delegation, before
+any R6, R9 or R11 code or run).** Seven open decisions, each fixed before its work package starts:
+1. **M10 (R9) is holdout-only.** The FIA car-presentation documents start at 2024 round 2, so dev has
+   no data. One rung only, fixed now: total declared-component count per car in the weekend term, at
+   H2 and H0/H1, `lam_x` fixed at the `LatentModel` default (1.0), no tuning. Category and reason are
+   parsed and reported descriptively, not as rungs. Judged only on the fresh holdout; the 2024–26
+   test block is used to check the parser, not for any decision. Expected gain on the holdout: about
+   0 at H2, at most 0.01 ρ at H0/H1; failure is an interval including 0.
+2. **`pypdf` is added** (pure Python, no compiled parts, version pinned). The Git Bash `pdftotext`
+   binary is not used because it is not part of a reproducible install.
+3. **FIA-derived data stay out of git.** PDFs in `data/raw/`, the parsed table in `data/interim/`
+   (both ignored). Committed: the parser, the keyword rules, the list of document URLs with SHA-256
+   hashes, and hand spot-check notes in our own words. Test fixtures use synthetic text only.
+4. **Engine-supplier table is built; the rookie prior (M15) is cut.** `data/external/power_units.csv`
+   (about 135 rows, one source per row) for M14 supplier pooling, expected about 0 on dev as already
+   stated. M15 is cut: 8 debuts in dev give an uninformative interval and mid-season debuts need
+   care to avoid leakage. Q11 is recorded as not tested.
+5. **The A3 oracle row stays on the plan-3 leaderboard** (cell `oracle`; the file is append-only).
+   No further oracle rows are added; later oracles go in their method folder only.
+6. **M09 (R6) runs as an exploratory component after the failed gate.** Q2 stays answered as a null
+   by the gate as declared. Definition fixed now, D1 pace: ladder reference → + car race-pace history
+   (decayed mean of the car's earlier race-pace gap) → + car offset against the Q1 gap (missing Q1
+   left missing, not imputed). Both families, `lam_x` tuned within the §5 budget; no driver rung, no
+   stickiness rung. Counted only if the fresh holdout confirms it. Expected gain on dev 0.00–0.01 ρ;
+   failure is a dev interval including 0. The reference was found after seeing the gate fail, so a
+   dev pass is weaker evidence than a declared one.
+7. **M18 × D2 is not declared** as a holdout candidate: a dead-band can at best tie grid order on
+   exact rate, and the pairing was found after seeing the data.
+Crew time loss (M20) is not run.
+
 ---
 
 ## 1. Why a third plan
