@@ -1,0 +1,62 @@
+{
+  "lam_e_chosen": 32.0,
+  "configurations_posthoc": 6,
+  "configurations_total": 12,
+  "budget": 30,
+  "grid": [
+    1.0,
+    3.0,
+    10.0,
+    32.0,
+    100.0,
+    300.0
+  ],
+  "gradient_check": {
+    "lam_e=3.0": {
+      "n_params": 129,
+      "n_e": 11,
+      "lam_e": 3.0,
+      "max_abs_err": 9.203266482238348e-10,
+      "max_rel_err": 9.203266482238348e-10,
+      "max_abs_err_e_coords": 9.203266482238348e-10,
+      "max_abs_grad_e": 0.4542313902467437
+    },
+    "lam_e=32.0": {
+      "n_params": 129,
+      "n_e": 11,
+      "lam_e": 32.0,
+      "max_abs_err": 1.154938090476565e-09,
+      "max_rel_err": 1.154938090476565e-09,
+      "max_abs_err_e_coords": 8.02120148080121e-10,
+      "max_abs_grad_e": 0.49518473381159367
+    }
+  },
+  "variance_share_end_of_dev": [
+    {
+      "season": 2021,
+      "n_cars": 10,
+      "var_total": 0.0016419180049127477,
+      "share_e": 0.23996804051947632,
+      "share_own": 0.6178776222150312,
+      "share_cov": 0.1421543372654927
+    },
+    {
+      "season": 2022,
+      "n_cars": 10,
+      "var_total": 0.004140199662304833,
+      "share_e": 0.37937270302669546,
+      "share_own": 0.3626424724395089,
+      "share_cov": 0.25798482453379584
+    },
+    {
+      "season": 2023,
+      "n_cars": 10,
+      "var_total": 0.005837606925805813,
+      "share_e": 0.3199840263243135,
+      "share_own": 0.3989259508731073,
+      "share_cov": 0.2810900228025792
+    }
+  ],
+  "reference_rerun_vs_stored_max_abs_per_race_metric_diff": 8.881784197001252e-16,
+  "rederived_declared_tuning_max_abs_rho_diff": 0.0
+}

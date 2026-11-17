@@ -1,0 +1,41 @@
+{
+  "gradient": {
+    "lam_e=3.0": {
+      "n_params": 129,
+      "n_e": 11,
+      "lam_e": 3.0,
+      "max_abs_err": 7.108488806265023e-10,
+      "max_rel_err": 7.108488806265023e-10,
+      "max_abs_err_e_coords": 6.473105662596623e-10,
+      "max_abs_grad_e": 0.08601665635886832
+    },
+    "lam_e=32.0": {
+      "n_params": 129,
+      "n_e": 11,
+      "lam_e": 32.0,
+      "max_abs_err": 7.108488806265023e-10,
+      "max_rel_err": 7.108488806265023e-10,
+      "max_abs_err_e_coords": 4.6562610711564645e-10,
+      "max_abs_grad_e": 0.1221128549173681
+    }
+  },
+  "off_switch": {
+    "races": 6,
+    "max_abs_score_diff_off": 0.0,
+    "bitwise_equal_off": true,
+    "max_abs_score_diff_lam_e_1e8": 0.33023817005570905
+  },
+  "leakage": {
+    "races": [
+      138,
+      151,
+      164,
+      177,
+      190,
+      203
+    ],
+    "max_abs_diff_scrambled_outcomes_and_later_suppliers": 1.554312234475219e-14,
+    "max_abs_diff_truncated_universe": 0.0011336058251827374,
+    "max_abs_diff_truncated_universe_plain_latent_model": 0.0010037206045082625
+  }
+}

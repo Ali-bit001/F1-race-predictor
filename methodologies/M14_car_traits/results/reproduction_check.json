@@ -1,0 +1,12 @@
+{
+  "latent_111": {
+    "max_abs_diff_per_race_metrics": 8.881784197001252e-16,
+    "max_abs_diff_scores": 0.0,
+    "races": 66,
+    "entries": 1311
+  },
+  "off_arm_vs_latent_111_same_harness": {
+    "max_abs_diff_per_race_metrics": 0.0,
+    "max_abs_diff_scores": 0.0
+  }
+}

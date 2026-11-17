@@ -1,0 +1,27 @@
+part: 1                         # engine-supplier pooling only (trait x circuit, learned factors, M15 are cut; Amendment 3 item 4)
+split: dev                      # 2021-2023 only: walk-forward targets and scores are dev races; the model only ever fits rows before the target race
+universe_last_season: 2026      # full entry universe as in earlier plan-3 runs (needed for bit-for-bit reproduction of latent_111); rows after the dev block are never fitted or scored
+refit_every: 1                  # final runs: refit before every race
+tune_refit_every: 4             # lam_e tuning only
+frozen_path: configs/frozen.yaml
+latent_ref: {key: M03, cell: "111", label: latent_111}   # plan-1 frozen hyper-parameters, not re-tuned
+power_units: data/external/power_units.csv
+lam_e_grid: [0.3, 1.0, 3.0, 10.0, 32.0, 100.0]   # chosen by dev mean rho at refit_every=4; 6 configurations (budget 30); no gbm variant
+verdict_metric: spearman
+tie_break: driverId
+bootstrap: {n_boot: 10000, seed: 0}
+plan1_leaderboard: results/leaderboard.csv
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+component: M14_supplier_pool
+reference_label: latent_111
+descriptive_2022_rounds: [1, 5]
+check_races: 6                  # truncation/leakage and off-switch checks on this many dev races
+
+# POST-HOC variant (prestatement.md, dated post-hoc section): carry-over on b_total = b + e, plain ridge lam_b on b
+posthoc_variant:
+  name: carry_on_total
+  component: M14_supplier_pool_carry_total_posthoc
+  lam_b: 32.0                   # = the plan-1 car penalty lam (frozen M03 lam 32.0); made explicit in revision 2 (identical to the earlier null)
+  lam_e_grid: [1.0, 3.0, 10.0, 32.0, 100.0, 300.0]   # 6 configurations (total M14 = 12 of 30)
+convergence_maxiter: 150        # L-BFGS-B limit of LatentModel (frozen); convergence is measured, not changed

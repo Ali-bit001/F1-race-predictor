@@ -1,0 +1,13 @@
+{
+  "lam_e_chosen": 100.0,
+  "configurations_evaluated": 6,
+  "budget": 30,
+  "grid": [
+    0.3,
+    1.0,
+    3.0,
+    10.0,
+    32.0,
+    100.0
+  ]
+}

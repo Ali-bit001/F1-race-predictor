@@ -1,0 +1,12 @@
+kind: latent_supplier
+cell: '111'
+lam: 32.0
+halflife: 50
+lam_e: 1.0
+carry_on_total: true
+lam_b: 32.0
+component: M14_supplier_pool_carry_total_posthoc
+frozen_hyperparameters: plan-1; lam_e tuned on dev; lam_b = lam
+status: POST HOC variant; dev only; no gbm variant
+git_commit: 0473890+dirty-7c679b54449f
+split: dev

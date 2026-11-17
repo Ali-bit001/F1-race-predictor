@@ -1,0 +1,240 @@
+{
+  "early_2022": [
+    {
+      "race_id": 160,
+      "round": 1,
+      "spearman_ref": 0.4662,
+      "spearman_m14": 0.4662,
+      "mae_ref": 4.4,
+      "mae_m14": 4.4,
+      "d_spearman": 0.0,
+      "d_mae": 0.0
+    },
+    {
+      "race_id": 161,
+      "round": 2,
+      "spearman_ref": 0.7491,
+      "spearman_m14": 0.7491,
+      "mae_ref": 3.0526,
+      "mae_m14": 3.0526,
+      "d_spearman": 0.0,
+      "d_mae": 0.0
+    },
+    {
+      "race_id": 162,
+      "round": 3,
+      "spearman_ref": 0.5519,
+      "spearman_m14": 0.5474,
+      "mae_ref": 4.0,
+      "mae_m14": 4.0,
+      "d_spearman": -0.0045,
+      "d_mae": 0.0
+    },
+    {
+      "race_id": 163,
+      "round": 4,
+      "spearman_ref": 0.3203,
+      "spearman_m14": 0.3203,
+      "mae_ref": 5.5,
+      "mae_m14": 5.5,
+      "d_spearman": 0.0,
+      "d_mae": 0.0
+    },
+    {
+      "race_id": 164,
+      "round": 5,
+      "spearman_ref": 0.5955,
+      "spearman_m14": 0.6105,
+      "mae_ref": 3.8,
+      "mae_m14": 3.7,
+      "d_spearman": 0.015,
+      "d_mae": 0.1
+    }
+  ],
+  "early_2022_mean_d_spearman": 0.0021052631578947433,
+  "e_end_of_dev": [
+    {
+      "supplier": "ferrari",
+      "season": 2021,
+      "e": 0.022
+    },
+    {
+      "supplier": "honda",
+      "season": 2021,
+      "e": -0.0203
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2021,
+      "e": -0.0071
+    },
+    {
+      "supplier": "renault",
+      "season": 2021,
+      "e": 0.0054
+    },
+    {
+      "supplier": "ferrari",
+      "season": 2022,
+      "e": -0.0344
+    },
+    {
+      "supplier": "honda",
+      "season": 2022,
+      "e": 0.0049
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2022,
+      "e": 0.0286
+    },
+    {
+      "supplier": "renault",
+      "season": 2022,
+      "e": 0.0009
+    },
+    {
+      "supplier": "ferrari",
+      "season": 2023,
+      "e": -0.0249
+    },
+    {
+      "supplier": "honda",
+      "season": 2023,
+      "e": 0.0662
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2023,
+      "e": -0.0246
+    },
+    {
+      "supplier": "renault",
+      "season": 2023,
+      "e": -0.0167
+    },
+    {
+      "supplier": "ferrari",
+      "season": 2024,
+      "e": 0.0
+    },
+    {
+      "supplier": "honda",
+      "season": 2024,
+      "e": -0.0
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2024,
+      "e": -0.0
+    },
+    {
+      "supplier": "renault",
+      "season": 2024,
+      "e": -0.0
+    },
+    {
+      "supplier": "ferrari",
+      "season": 2025,
+      "e": 0.0
+    },
+    {
+      "supplier": "honda",
+      "season": 2025,
+      "e": 0.0
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2025,
+      "e": -0.0
+    },
+    {
+      "supplier": "renault",
+      "season": 2025,
+      "e": 0.0
+    },
+    {
+      "supplier": "audi",
+      "season": 2026,
+      "e": -0.0
+    },
+    {
+      "supplier": "ferrari",
+      "season": 2026,
+      "e": 0.0
+    },
+    {
+      "supplier": "honda",
+      "season": 2026,
+      "e": -0.0
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2026,
+      "e": 0.0
+    },
+    {
+      "supplier": "red_bull_powertrains",
+      "season": 2026,
+      "e": -0.0
+    }
+  ],
+  "variance_share_end_of_dev": [
+    {
+      "season": 2021,
+      "n_cars": 10,
+      "var_total": 0.030603665112926875,
+      "share_e": 0.008167177355804014,
+      "share_own": 1.0570775862636614,
+      "share_cov": -0.0652447636194654
+    },
+    {
+      "season": 2022,
+      "n_cars": 10,
+      "var_total": 0.04461196963138919,
+      "share_e": 0.015320425023598667,
+      "share_own": 0.8895381524235152,
+      "share_cov": 0.0951414225528861
+    },
+    {
+      "season": 2023,
+      "n_cars": 10,
+      "var_total": 0.05582071195160021,
+      "share_e": 0.02329975568792961,
+      "share_own": 0.8466694278593694,
+      "share_cov": 0.13003081645270123
+    }
+  ],
+  "e_after_2022_round5": [
+    {
+      "supplier": "ferrari",
+      "season": 2022,
+      "e": 0.0095
+    },
+    {
+      "supplier": "honda",
+      "season": 2022,
+      "e": -0.0277
+    },
+    {
+      "supplier": "mercedes",
+      "season": 2022,
+      "e": 0.0244
+    },
+    {
+      "supplier": "renault",
+      "season": 2022,
+      "e": -0.0062
+    }
+  ],
+  "variance_share_after_2022_round5": [
+    {
+      "season": 2022,
+      "n_cars": 10,
+      "var_total": 0.022416368046134873,
+      "share_e": 0.016996944453115306,
+      "share_own": 0.8655579176209354,
+      "share_cov": 0.11744513792594945
+    }
+  ]
+}

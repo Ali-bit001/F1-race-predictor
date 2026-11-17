@@ -1,0 +1,9 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+component: latent_111
+frozen_hyperparameters: plan-1, not re-tuned
+status: dev only; no gbm variant
+git_commit: 3ad8d53+dirty-540bd0baa188
+split: dev

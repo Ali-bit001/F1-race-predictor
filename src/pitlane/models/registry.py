@@ -23,6 +23,9 @@ def build_model(cfg: dict, entries: pd.DataFrame):
     dyn, dec, rank = cell_flags(cfg["cell"])
     if kind == "latent":
         return LatentModel(entries, dynamic=dyn, decomp=dec, ranking=rank, **p)
+    if kind == "latent_supplier":       # PLAN3 M14: `entries` needs a `supplier` column; lam_e = inf means off
+        from pitlane.models.latent_supplier import LatentSupplierModel
+        return LatentSupplierModel(entries, dynamic=dyn, decomp=dec, ranking=rank, **p)
     if kind == "gbm":
         return GBMModel(dynamic=dyn, decomp=dec, ranking=rank, **p)
     raise ValueError(kind)
