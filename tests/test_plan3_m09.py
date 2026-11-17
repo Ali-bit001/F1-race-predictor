@@ -369,7 +369,10 @@ def test_run_folders_are_complete_dev_only_and_agree_with_predictions(tabs):
             assert (d / f).exists(), (label, f)
         assert load_yaml(d / "config.yaml").get("git_commit")
         stored = pd.read_csv(d / "outcome_free_table.csv")
-        pd.testing.assert_frame_equal(stored.reset_index(drop=True), tabs[k].reset_index(drop=True), check_exact=False, rtol=0, atol=1e-12)
+        # within3 was added after these tables were stored (reported only); every other column must match
+        assert set(tabs[k].columns) - set(stored.columns) <= {"within3"}
+        pd.testing.assert_frame_equal(stored.reset_index(drop=True), tabs[k][stored.columns].reset_index(drop=True),
+                                      check_exact=False, rtol=0, atol=1e-12)
         pm = pd.read_csv(d / "per_race_metrics.csv").set_index("race_id")
         t = tabs[k].set_index("race_id")
         for c in ("spearman", "mae", "exact", "logloss_points"):
