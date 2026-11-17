@@ -31,7 +31,7 @@ status `abandoned` and the reason — they are part of the record.
 | A2 | Forecast-horizon analysis (H0/H1 factorial) | Plan 2, analysis | run | | |
 
 | A3 | Race-pace persistence analysis | Plan 3, gate | done (R4), gate FAILED | dev: oracle gap 0.075 rho passes, car-level rq persistence 0.096 < 0.2 fails; M09 not built | [A3_pace_persistence](A3_pace_persistence/README.md) |
-| M09 | Race-pace model (race-minus-qualifying offset) | Plan 3 primary hypothesis | planned | | |
+| M09 | Race-pace model (car race-pace history, car Q1 offset; exploratory after failed A3 gate) | Plan 3, Amendment 3 item 6 | done (R6), dev only, exploratory | dev rho vs latent_111: +0.016 [+0.007, +0.026] (race-pace history), +0.017 [+0.007, +0.027] (+ Q1 offset); vs gbm_100: -0.002 [-0.009, +0.005] and +0.004 [-0.002, +0.011]; exact rate not improved and below grid order; the gain is a car-form proxy (a finishing-form column alone gives +0.014 [+0.003, +0.025]; race pace on top +0.001 [-0.000, +0.003]), not shown to be race pace; counted only if the fresh holdout confirms | [M09_race_pace](M09_race_pace/README.md) |
 | M10 | Upgrade signal (FIA car presentation documents) | Plan 3 | planned | | |
 | M11 | Likelihood variants (finishers-only, truncated, reverse) | Plan 3 | done (R5, revised) | dev only: reverse passes alone on MAE and exact rate (not rho, not Holm over 36), no variant beats grid order, tuning and M11 x M07 change nothing measurable | [M11_likelihood_variants](M11_likelihood_variants/README.md) |
 | M12 | Two-stage Friday forecast | Plan 3 (R10) | done | dev, 21 races of 2023: no measurable difference from H1 | [M12_two_stage](M12_two_stage/README.md) |

@@ -1,0 +1,22 @@
+split: dev                      # 2021-2023 only; PLAN3 Amendment 3 item 6 (exploratory, after the A3 gate failed)
+refit_every: 1                  # final runs: refit before every race
+tune_refit_every: 4             # lam_x tuning only (as plan 1 / plan 2 tuning)
+frozen_path: configs/frozen.yaml
+latent_ref: {key: M03, cell: "111", label: latent_111}   # plan-1 frozen hyper-parameters, not re-tuned
+gbm_ref: {key: M04, cell: "100", label: gbm_100}         # plan-1 frozen hyper-parameters, not re-tuned (LightGBM has no lam_x)
+pace_table: results/plan3/a3_pace_table_2014_2023.parquet   # D1 median clean lap gap (med_gap_pct), laps of seasons <= 2023 only
+pace_col: med_gap_pct           # D1
+halflife: 50                    # decayed-mean half-life for both columns and both families (Amendment 3 item 6)
+scale_seasons_max: 2020         # each column divided by the SD of its values over seasons <= 2020 (fixed constant, before dev)
+min_prior_obs: 1                # column is missing (NaN) when the car has no earlier valid observation
+# Missing values: the history column is NaN for a car with no earlier valid observation (new lineage, or, for the Q1 offset,
+# no earlier race with both a race pace and a real Q1 time; Q1 missing is NOT imputed). LatentModel fills NaN with 0.0 in
+# the weekend term (the columns are field-relative, prior 0, so 0 is also the centred value); LightGBM receives NaN natively.
+lam_x_grid: [0.3, 1.0, 3.0, 10.0]   # latent only; chosen per rung by dev mean rho at refit_every=4 (budget: 12 configs here + 3 LightGBM = 15 <= 30)
+verdict_metric: spearman
+tie_break: driverId
+bootstrap: {n_boot: 10000, seed: 0}
+plan1_leaderboard: results/leaderboard.csv
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+control_budget: {main: 15, control_latent_rungs: 8, total: 23, max: 30}   # R6 car-form control (diagnostic, post hoc): 2 rungs x 4 lam_x; run_control.py

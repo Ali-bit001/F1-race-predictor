@@ -1,0 +1,22 @@
+{
+  "pace_hist_x": {
+    "scale_sd": 0.900670548960905,
+    "dev_mean": -0.07448519737223493,
+    "dev_sd": 0.8547349227385763,
+    "dev_missing_share": 0.0
+  },
+  "q1off_x": {
+    "scale_sd": 0.2927575488878909,
+    "dev_mean": 0.021972902195464876,
+    "dev_sd": 0.9254978834092998,
+    "dev_missing_share": 0.0
+  },
+  "truncation_check_max_abs_diff": 0.0,
+  "truncation_race_id": 171,
+  "lam_x_chosen": {
+    "M09_car_pace_hist": 3.0,
+    "M09_car_q1_offset": 0.3,
+    "M09_car_q1_offset_alone": 3.0
+  },
+  "configurations_evaluated": 15
+}

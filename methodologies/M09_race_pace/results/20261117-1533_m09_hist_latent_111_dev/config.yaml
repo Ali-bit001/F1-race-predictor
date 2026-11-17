@@ -1,0 +1,12 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+x_cols:
+- pace_hist_x
+lam_x: 3.0
+component: M09_car_pace_hist_latent_111
+frozen_hyperparameters: plan-1; lam_x tuned on dev (latent only)
+status: exploratory post-gate (Amendment 3 item 6); dev only
+git_commit: bbe026e+dirty-e89939cbad82
+split: dev

@@ -1,0 +1,15 @@
+kind: gbm
+cell: '100'
+num_leaves: 4
+n_estimators: 200
+learning_rate: 0.05
+min_child_samples: 40
+halflife: 32
+extra_cols:
+- pace_hist_x
+- q1off_x
+component: M09_car_q1_offset_gbm_100
+frozen_hyperparameters: plan-1, not re-tuned
+status: exploratory post-gate (Amendment 3 item 6); dev only
+git_commit: bbe026e+dirty-e89939cbad82
+split: dev

@@ -1,0 +1,22 @@
+{
+  "form_x": {
+    "scale_sd": 0.17830567510963247,
+    "dev_mean": -0.017183412039233112,
+    "dev_sd": 0.9699844706256039,
+    "dev_missing_share": 0.0
+  },
+  "truncation_check_max_abs_diff": 0.0,
+  "truncation_race_id": 171,
+  "lam_x_chosen": {
+    "M09_ctrl_form": 1.0,
+    "M09_ctrl_form_hist": 3.0
+  },
+  "rank_corr_dev": {
+    "form_x~pace_hist_x": 0.9687806446427137,
+    "form_x~q1off_x": 0.8978187956244382,
+    "form_x~con_ew32": 0.9879085038959645,
+    "pace_hist_x~con_ew32": 0.9629036933112168,
+    "pace_hist_x~q1off_x": 0.9081463294629439
+  },
+  "configurations_evaluated": 23
+}

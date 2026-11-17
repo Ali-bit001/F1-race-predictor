@@ -1,0 +1,13 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+x_cols:
+- form_x
+- pace_hist_x
+lam_x: 3.0
+component: M09_ctrl_form_hist
+frozen_hyperparameters: plan-1; lam_x tuned on dev
+status: DIAGNOSTIC post hoc car-form control, no decision weight; dev only
+git_commit: bbe026e+dirty-853c961a823a
+split: dev
