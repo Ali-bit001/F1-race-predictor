@@ -606,7 +606,10 @@ def test_attribution_m17_rows_unchanged_against_head():
     assert set(old["component"]) == {"M17_D2", "M17_grid", "M17_D0u", "M17_D0"}
     expected_new = {"M11_finishers", "M11_topk10", "M11_reverse", "M05_rank_avg", "M05_gbm_monotone", "M12_two_stage",
                     "M11_finishers_x_M07"}
-    assert set(cur["component"]) - set(old["component"]) == expected_new
+    added = set(cur["component"]) - set(old["component"])
+    assert expected_new <= added
+    # later work packages append their own components; none may reuse an M17 or M11/M05/M12 name
+    assert all(not c.startswith(("M17", "M11", "M05", "M12")) for c in added - expected_new), added - expected_new
     assert set(old["component"]) <= set(cur["component"])
     assert not cur.duplicated(key).any()
     # every old HEAD row (all of them, not only M17 by prefix) is still there unchanged

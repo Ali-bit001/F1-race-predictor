@@ -1,0 +1,18 @@
+split: dev                  # 2021-2023 only; nothing later is scored
+simulator: S3               # frozen plan-2 parameters from configs/frozen_plan2.yaml
+frozen_path: configs/frozen_plan2.yaml
+frozen_hash: 0d1b7c074d80
+m06_label: m06_L_r4_111
+draws: 1000                 # final evaluation as plan-2 evaluate() / M17
+seed: 0                     # stream seed + 10000 + race index
+tune_draws: 300             # as plan-2 fit_theta: streams 1000 + race index
+d_grid: [0.0, 0.03, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75, 1.0, 1.5, 2.0, 3.0]   # threshold = d * stick[circuit], score units
+tau_grid: [2.5, 3.5, 5.0]   # secondary: tau refit at the d values in tau_at_d (3.5 = frozen, already in d_grid)
+tau_at_d: [0.2, 0.5]
+max_configs: 30             # budget on dev: 12 d values + 4 tau variants = 16
+reference: d0_D0            # frozen S3, D0 decoder, driverId tie-break
+bootstrap: {n_boot: 10000, seed: 0}
+verdict_metric: exact
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+show_d: [0.5, 1.5]            # descriptive only (not fitted): shows what a large dead-band does to the matrix

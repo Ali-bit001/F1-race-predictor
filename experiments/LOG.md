@@ -211,3 +211,31 @@ Entry format:
 - Superseded runs on the leaderboard (append-only): `m19_*` (v1, leaky flag) and `m19v2_*` (identical numbers to v2b; Monaco 77 vs 78 gives the same horizon laps).
 - Not tested: the two-stage forecast leakage used a proxy pre-race score (stage 1 never reads laps); two-stage `lam_x` tuning not re-run by the tester. A NaN lap time within the first k laps would rank a car ahead (0 cases in dev).
 - Next step, not run: a dead-band / stickiness-to-current-position decoder judged on exact rate (same idea as M18), tuned on dev, counted only if the fresh holdout confirms it.
+
+## 2026-11-17 — R7: M18 overtaking dead-band (null on dev; reviewed by tester and skeptic, card revised once)
+- Methodology / WP: `methodologies/M18_overtaking/` (R7). Code `src/pitlane/plan3/overtake.py`. Runs `20261117-0243_m18_d0.03_{D0,D2}_dev`, descriptive `20261117-0627_m18_descriptive_d{0.5,1.5}_{D0,D2}_dev` (no leaderboard or attribution rows). Tests `tests/test_plan3_m18.py` (38). Full suite 632 passed, 3 expected failures.
+- Reading (A3 failed as declared, so per the plan the dead-band acts on the strength difference): inside the frozen plan-2 S3 simulator, a car's score advantage over the car ahead on the grid counts only above `d * stick[circuit]` (soft, one-sided, cumulative along the grid). Acceptance met: d = 0 reproduces S3 bitwise on all 66 dev races.
+- d fitted by RPS on dev (16 of 30 configurations; 0.03 and 0.05 added after the first pass showed RPS rising): RPS rises at every positive d, so **fitted d = 0 and the component is inactive**; the pre-stated failure criterion is met. Best positive d = 0.03 vs S3 D0: rho -0.0013, MAE +0.008, exact +0.77 points, all no measurable difference.
+- Two separate nulls (skeptic):
+  - The objective: plan 2 had already fitted the linear grid-attachment term kappa to 0 by RPS on the same simulator, so RPS preferring d = 0 was predictable; grid-slot binary log-loss prefers d = 0.03 (+0.0023 [+0.0010, +0.0038]), but the full exact-slot log-loss is clearly worse at the large d that calibrate the grid slot (d = 0.5: -0.081 [-0.127, -0.036]). The RPS choice could not be verified as made before running.
+  - The mechanism: a dead-band can only reduce a stronger car behind to equal strength (a coin flip), never give the car ahead an advantage; as d grows the model converges to grid order. At d = 0.5 / 1.5 the grid-slot probability is calibrated (15.4 / 16.5% vs 16.4% realised) and D2 exact is 16.1% (+2.5 [+0.3, +4.8] vs S3 D0, post hoc, 1 of 8 descriptive comparisons, Monte Carlo noise not in the interval), but -0.3 vs grid order. **M18 cannot beat grid order on exact rate under any objective.**
+- Not declared: an M18 x D2 grid-slot candidate for the fresh holdout would be an interaction PLAN3 §5 does not declare; left to the user (my recommendation: do not declare).
+- Leakage: none (stick from earlier races only; inherited definition is Pearson, grid 0 counted as front).
+- Test guards in `test_plan3_m11.py` and `test_plan3_m19.py` were changed from fixed lists of appended components/rows to "later packages may append, none may reuse an earlier name".
+
+## 2026-11-17 — R8 phase 1: M20 race-craft persistence check (logged before any model run; reviewed by tester and skeptic, card revised once)
+- Methodology / WP: `methodologies/M20_racecraft/` (R8, phase 1). Code `src/pitlane/features/racecraft.py`. Run `20261117-0243_m20_persistence_dev` (first run `0242` superseded, see amendment). Outputs `results/plan3/m20_persistence.csv`, `m20_robustness.csv` (post hoc), `m20_summary.json`. Tests `tests/test_plan3_m20.py` (82). No model was run.
+- Persistence (dev 2021-23, pooled Pearson of a race's value with the decayed mean of earlier races, half-life 50, rule >= 0.2 on the point estimate):
+  - driver consistency 0.256 [0.153, 0.355]: **passes as declared**
+  - driver tyre degradation 0.121: fails (0.102 against the teammate, as PLAN3 §2.1 words it)
+  - driver lap-1 gain 0.163 [0.107, 0.220]: fails
+  - pit-crew time loss (team, pit-lane time, not stationary time) 0.186 [0.102, 0.282]: fails
+  - pit-crew slow-stop rate 0.119: fails
+- Amendment 1 (made after seeing the first crew number, -0.010): stops over 60 s are dropped before the median + 20 s red-flag rule. A real bug fix: Jolpica has 426 stops over 300 s and 27 between 60 and 300 s, and any cap from 60 to 300 s gives 0.186-0.187. It did not flip the decision.
+- The decisions are fragile (skeptic, post hoc, no decision weight):
+  - Consistency is not a driver trait: within a race it tracks grid (Spearman 0.33); 0.132 after partialling out the grid; 0.191 without Mazepin, 0.128 without Mazepin, M. Schumacher and Zhou; teammate-relative 0.091. It measures slow-car traffic and blue flags.
+  - Crew time loss fails as declared but about half of the reasonable variants are at or above 0.2 (Spearman 0.280, mean loss 0.219, red-flag races dropped 0.259, margin 10 s 0.215), while leaving out Haas gives 0.090 and seasons run 0.084 / 0.297 / 0.227. Not robust, in the A3 sense.
+  - Lap-1 gain: Spearman 0.220, but the driver part (teammate-relative about 0.05) is absent under every trim; what persists is car and grid.
+  - The card's first claim that no sensitivity version rescues a failing feature was wrong (Spearman column) and is corrected.
+- Phase 2, fixed now before any model run: consistency only, declared definition, vs `latent_111` / `gbm_100` re-run in the same harness; expected gain about 0 (under 0.003 rho); failure is a dev interval including 0; teammate-relative version reported beside it with no decision weight. Tyre degradation, lap-1 gain and slow-stop rate are not run; crew time loss only if the user amends the plan.
+- Data notes: norris 2019 R18 and alonso 2023 R19 have laps but no entries row; history rows exist only where the unit's own race value is valid, so phase 2 must forward-fill the join. Folder name `M20_racecraft` (PLAN3 §6 says `M20_racecraft_pitcrew`).

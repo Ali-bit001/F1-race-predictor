@@ -1033,13 +1033,13 @@ def test_leaderboard_existing_rows_identical_to_head_and_all_m19_rows_present_on
     pd.testing.assert_frame_equal(c.iloc[:len(o)].reset_index(drop=True), o.reset_index(drop=True), check_exact=True)     # old rows byte for byte
     assert not c.duplicated("run_id").any()
     new = c.iloc[len(o):]
-    assert new["method"].eq("M19").all(), "rows appended since HEAD must all be M19 rows"
+    # later work packages append their own rows; none may be labelled M19
+    assert not new["label"].astype(str).str.startswith("m19").any(), "M19 rows must already be in HEAD"
     m19 = c[c["method"] == "M19"]
     assert len(m19) == 39 and m19["split"].eq("dev").all()                       # 9 v1 (superseded) + 15 v2 (superseded by v2b, identical numbers) + 15 v2b
     want = {(f"m19_{h.lower()}_{m}", str(int(CELL[m]))) for h in HZ for m in V1} | {(f"m19v2_{h.lower()}_{m}", str(int(CELL[m]))) for h in HZ for m in V2} | {(f"m19v2b_{h.lower()}_{m}", str(int(CELL[m]))) for h in HZ for m in V2}
     # NB the leaderboard stores the baseline cell "000" as 0 (leading zeros lost), compared as integers
     assert set(zip(m19["label"], m19["cell"].astype(int).astype(str))) == want
-    assert len(new) in (30, 39)                                                  # 30 once the v1 rows are committed (R4 commit)
 
 
 @needs_res
