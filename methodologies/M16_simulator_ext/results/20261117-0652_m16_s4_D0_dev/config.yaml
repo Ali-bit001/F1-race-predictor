@@ -1,0 +1,163 @@
+split: dev
+simulator: S3
+frozen_path: configs/frozen_plan2.yaml
+frozen_hash: 0d1b7c074d80
+m06_label: m06_L_r4_111
+draws: 1000
+seed: 0
+tune_draws: 300
+max_configs: 30
+passes: 2
+steps:
+- S4
+- S5
+- S6
+- S7
+S4:
+  start:
+    tau: 3.5
+    m2: 1.0
+    m3: 1.0
+    m4: 1.0
+  order:
+  - m2
+  - m3
+  - m4
+  - tau
+  grids:
+    m2:
+    - 0.5
+    - 0.7
+    - 0.85
+    - 1.0
+    - 1.25
+    - 1.6
+    m3:
+    - 0.5
+    - 0.7
+    - 0.85
+    - 1.0
+    - 1.25
+    - 1.6
+    m4:
+    - 0.5
+    - 0.7
+    - 0.85
+    - 1.0
+    - 1.25
+    - 1.6
+    tau:
+    - 2.5
+    - 3.5
+    - 5.0
+S5:
+  start:
+    tau: 3.5
+    sigma: 1.282549830161864
+    tau_team: 0.0
+    e_exp: 0.0
+    e_wet: 0.0
+  order:
+  - sigma
+  - tau_team
+  - e_exp
+  - e_wet
+  - tau
+  grids:
+    sigma:
+    - 0.8
+    - 1.0
+    - 1.282549830161864
+    - 1.6
+    - 2.0
+    tau_team:
+    - 0.0
+    - 0.4
+    - 0.8
+    - 1.2
+    - 1.8
+    e_exp:
+    - 0.0
+    - 0.5
+    - 1.0
+    e_wet:
+    - 0.0
+    - 0.5
+    - 1.0
+    tau:
+    - 2.5
+    - 3.5
+    - 5.0
+S6:
+  start:
+    tau: 3.5
+    c: 0.0
+    c_early: 0.0
+  order:
+  - c
+  - c_early
+  - tau
+  grids:
+    c:
+    - 0.0
+    - 0.5
+    - 1.0
+    - 1.5
+    - 2.0
+    - 3.0
+    c_early:
+    - 0.0
+    - 1.0
+    - 2.0
+    - 4.0
+    tau:
+    - 2.5
+    - 3.5
+    - 5.0
+S7:
+  phi_grid:
+  - 0.5
+  - 0.65
+  - 0.8
+  - 0.9
+  - 1.0
+  rule_mult_grid:
+  - 1.0
+  - 2.0
+  - 4.0
+  - 8.0
+  - 16.0
+  tau_grid:
+  - 2.5
+  - 3.5
+  - 5.0
+  latent_refit_every: 4
+calibration_pass_gap: 0.02
+noise_seeds:
+- 1
+- 2
+- 3
+- 4
+verdict_metric: rps
+bootstrap:
+  n_boot: 10000
+  seed: 0
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+label: s4_D0
+step: S4
+params:
+  tau: 3.5
+  m2: 0.85
+  m3: 1.6
+  m4: 1.0
+theta:
+  tau: 3.5
+  dnf_scale: 1.25
+  kappa: 0.0
+  p0: 0.2
+  s_dis: 2.0
+  a_vol: 0.5
+  a_rain: 2.0
+calibration_gate_passed: false
+git_commit: 1db3fdc+dirty

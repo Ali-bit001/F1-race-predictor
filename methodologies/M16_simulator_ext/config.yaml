@@ -1,0 +1,52 @@
+split: dev                  # 2021-2023 only; nothing later is scored
+simulator: S3               # plan-2 simulator; frozen parameters read from configs/frozen_plan2.yaml
+frozen_path: configs/frozen_plan2.yaml
+frozen_hash: 0d1b7c074d80
+m06_label: m06_L_r4_111     # score input of the simulator (plan-2 run, dev predictions)
+draws: 1000                 # as plan-2 evaluate()
+seed: 0                     # evaluation stream = seed + 10000 + race index (as plan-2 evaluate())
+tune_draws: 300             # as plan-2 fit_theta(); tuning streams 1000 + race index
+max_configs: 30             # per step, distinct configurations incl. the start point
+passes: 2
+
+steps: [S4, S5, S6, S7]
+
+# Search grids. Only the new parameters and tau are searched; every other S3 parameter stays frozen.
+S4:
+  start: {tau: 3.5, m2: 1.0, m3: 1.0, m4: 1.0}
+  order: [m2, m3, m4, tau]
+  grids:
+    m2: [0.5, 0.7, 0.85, 1.0, 1.25, 1.6]
+    m3: [0.5, 0.7, 0.85, 1.0, 1.25, 1.6]
+    m4: [0.5, 0.7, 0.85, 1.0, 1.25, 1.6]
+    tau: [2.5, 3.5, 5.0]
+S5:
+  start: {tau: 3.5, sigma: 1.2825498301618641, tau_team: 0.0, e_exp: 0.0, e_wet: 0.0}   # sigma = Gumbel sd
+  order: [sigma, tau_team, e_exp, e_wet, tau]
+  grids:
+    sigma: [0.8, 1.0, 1.2825498301618641, 1.6, 2.0]
+    tau_team: [0.0, 0.4, 0.8, 1.2, 1.8]
+    e_exp: [0.0, 0.5, 1.0]
+    e_wet: [0.0, 0.5, 1.0]
+    tau: [2.5, 3.5, 5.0]
+S6:
+  start: {tau: 3.5, c: 0.0, c_early: 0.0}
+  order: [c, c_early, tau]
+  grids:
+    c: [0.0, 0.5, 1.0, 1.5, 2.0, 3.0]
+    c_early: [0.0, 1.0, 2.0, 4.0]
+    tau: [2.5, 3.5, 5.0]
+S7:
+  # latent-model hyper-parameters, fitted by the plan-2 latent objective (mean Spearman, refit every 4 races, dev)
+  phi_grid: [0.5, 0.65, 0.8, 0.9, 1.0]       # carry-over rho (plan-2 model: 0.8)
+  rule_mult_grid: [1.0, 2.0, 4.0, 8.0, 16.0]  # innovation variance multiplier in a rule-change season (plan-2: 1)
+  tau_grid: [2.5, 3.5, 5.0]                  # secondary: tau re-fitted by RPS on the S7 scores
+  latent_refit_every: 4
+
+descriptive: {S5_tau_team: [0.4, 0.8, 1.2], S6_c: [1.0, 1.5]}   # post hoc, not fitted; csv only
+calibration_pass_gap: 0.02   # D2 is run on a matrix only if mean P(finish = grid slot) >= realised share - 0.02
+noise_seeds: [1, 2, 3, 4]    # extra simulation seeds (seed 0 is the evaluation run)
+verdict_metric: rps
+bootstrap: {n_boot: 10000, seed: 0}
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv

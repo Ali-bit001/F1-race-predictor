@@ -40,7 +40,7 @@ status `abandoned` and the reason — they are part of the record.
 | A5 | Strength audit (all teams, intervals, shrinkage) | Plan 3, amendment 1, run first | done (R1) | descriptive; see `results/plan3/` | |
 | M14 | Car traits (engine supplier, trait × circuit) | Plan 3, amendment 1 | planned | | |
 | M15 | Rookie prior from junior-series record | Plan 3, amendment 1 | planned | | |
-| M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | planned | | |
+| M16 | Simulator extensions (S4–S7) | Plan 3, amendment 1 | done (R12, dev) | No step moves RPS (gains +0.00005 to +0.0006, every CI includes 0); all attribution verdicts on RPS are no measurable difference; secondary intervals that exclude 0 (S6 and S7 log-losses, S7 rho) are not passes (56+ comparisons, Monte Carlo noise not in the CIs); S4, S5 inactive; S6 x D2 null; S7 fitted by RPS = phi 1.0 (grid edge), rule-change term unused | [M16_simulator_ext](M16_simulator_ext/README.md) |
 | M17 | Metric-matched decoding (assignment) | Plan 3, amendment 2, run early | done (dev) | D2 exact 13.8% vs grid 16.3%, CI includes 0 | [M17_decoding](M17_decoding/README.md) |
 | M18 | Overtaking threshold | Plan 3, amendment 2 | done (R7, dev) | RPS prefers no dead-band (d = 0); best positive d = 0.03 exact +0.8 points [-0.3, +1.8] vs S3, no measurable difference | [M18_overtaking](M18_overtaking/README.md) |
 | M19 | In-race forecast (after lap 1, 25%, 50%) | Plan 3, amendment 2, reported separately | done (R13, dev; v2 after review) | running order is a strong exact-rate baseline the two-stage model does not beat (exact rate lower at all 6 pairs); rho +0.03 to +0.04 at H4/H5 (2022-23 only), H6 +0.010 to +0.012 marginal | [M19_inrace](M19_inrace/README.md) |
