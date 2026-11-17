@@ -52,6 +52,8 @@ def race_metrics(pos: np.ndarray, u: np.ndarray, classified: np.ndarray) -> dict
         "exact": float((rk == pos).mean()),
         "within1": float((np.abs(rk - pos) <= 1).mean()),
         "within2": float((np.abs(rk - pos) <= 2).mean()),
+        # plan-3 addition (PLAN3.md section 5, 2026-11-17): reported only, no decision weight
+        "within3": float((np.abs(rk - pos) <= 3).mean()),
     }
     # Finishers-only view (DNFs are mostly noise): re-rank both sides among classified cars.
     c = np.asarray(classified, bool)

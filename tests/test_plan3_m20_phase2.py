@@ -391,7 +391,8 @@ def test_stored_outcome_free_tables_and_per_race_metrics_agree_with_predictions(
         pr = pd.read_parquet(d / "predictions.parquet")
         assert pr["season"].between(2021, 2023).all() and pr["race_id"].nunique() == 66 and len(pr) == 1311
         stored = pd.read_csv(d / "outcome_free_table.csv")
-        pd.testing.assert_frame_equal(stored.reset_index(drop=True), tabs[k].reset_index(drop=True), check_exact=False, rtol=0, atol=1e-12)
+        assert set(tabs[k].columns) - set(stored.columns) <= {"within3"}  # metrics added after these runs were stored (PLAN3 section 5, 2026-11-17); recomputed but not stored
+        pd.testing.assert_frame_equal(stored.reset_index(drop=True), tabs[k][stored.columns].reset_index(drop=True), check_exact=False, rtol=0, atol=1e-12)
         pm = pd.read_csv(d / "per_race_metrics.csv").set_index("race_id")
         t = tabs[k].set_index("race_id")
         shared = [c for c in pm.columns if c in t.columns and c not in ("n", "season")]

@@ -47,6 +47,27 @@ def test_new_metrics_hand_computed():
     assert m["exact"] == 0.8 and m["within1"] == 1.0 and m["top5"] == 1.0 and m["points"] == 1.0
 
 
+def test_within_k_hand_computed():
+    pos = np.arange(1, 11)
+    u = -np.array([4, 2, 3, 1, 5, 6, 7, 8, 10, 9], float)    # 1<->4 (off by 3), 9<->10 (off by 1)
+    m = race_metrics(pos, u, np.ones(10, bool))
+    assert m["exact"] == 0.6 and m["within1"] == 0.8 and m["within2"] == 0.8 and m["within3"] == 1.0
+
+
+def test_within3_not_in_attribution_schema_and_leaderboard_header_kept(tmp_path, monkeypatch):
+    import pandas as pd
+    from pitlane.evaluation import harness
+    from pitlane.plan3.attribution import METRICS, HIGHER_BETTER
+    assert "within3" not in METRICS and HIGHER_BETTER["within3"] is True
+    monkeypatch.setattr(harness, "RESULTS", tmp_path / "results")
+    lb = tmp_path / "lb.csv"
+    pd.DataFrame([{"method": "x", "run_id": "old", "spearman": 0.1}]).to_csv(lb, index=False)
+    per = pd.DataFrame([{"spearman": 0.2, "within3": 0.5}])
+    harness.save_run(tmp_path, "t", {}, pd.DataFrame({"a": [1]}), per, "dev", "y", leaderboard=lb)
+    out = pd.read_csv(lb)
+    assert list(out.columns) == ["method", "run_id", "spearman"] and len(out) == 2
+
+
 def test_rps_is_zero_for_a_perfect_forecast_and_larger_when_wrong():
     n = 5
     perfect = np.eye(n)

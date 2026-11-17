@@ -514,6 +514,8 @@ def test_per_race_metrics_equal_rescore_of_predictions(suffix):
         m = race_metrics(g["pos"].to_numpy(), g["score"].to_numpy(), g["classified"].to_numpy())
         assert len(g) == stored.loc[rid, "n"]
         for k, v in m.items():
+            if k == "within3" and k not in stored.columns:  # metrics added after these runs were stored (PLAN3 section 5, 2026-11-17); recomputed but not stored
+                continue
             assert stored.loc[rid, k] == pytest.approx(v, abs=1e-12, nan_ok=True), (suffix, rid, k)
 
 

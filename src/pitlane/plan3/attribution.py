@@ -27,7 +27,8 @@ ATTRIBUTION_CSV = RESULTS / "plan3" / "attribution.csv"
 HIGHER_BETTER = {"spearman": True, "spearman_fin": True, "mae": False, "mae_fin": False,
                  "exact": True, "exact_fin": True, "exact_1_3": True, "exact_4_10": True, "exact_11p": True,
                  "within1": True, "within2": True, "rps": False, "logloss_points": False}
-METRICS = list(HIGHER_BETTER)
+METRICS = list(HIGHER_BETTER)  # fixed: these are the columns of the append-only attribution.csv
+HIGHER_BETTER["within3"] = True  # reported only (PLAN3.md section 5); pass metrics=[..., "within3"] to paired_gain
 BANDS = {"exact_1_3": (1, 3), "exact_4_10": (4, 10), "exact_11p": (11, 10_000)}
 N_BOOT = 10_000
 SEED = 0

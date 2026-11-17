@@ -90,7 +90,7 @@ def walk_forward(entries: pd.DataFrame, model: Model, split: str, refit_every: i
 
 
 SUMMARY_KEYS = ["spearman", "mae", "rmse", "kendall", "ndcg10", "win_hit", "podium", "points",
-                "top5", "exact", "within1", "within2", "rps",
+                "top5", "exact", "within1", "within2", "within3", "rps",
                 "spearman_fin", "mae_fin", "brier_win", "logloss_win", "brier_podium", "logloss_podium",
                 "brier_points", "logloss_points"]
 
@@ -125,6 +125,8 @@ def save_run(method_dir: Path, label: str, config: dict, preds: pd.DataFrame, pe
     row = pd.DataFrame([{"method": method, "cell": cell, "label": label, "split": split, "run_id": run_id,
                          "run_dir": str(out.relative_to(RESULTS.parent)), **summ}])
     if lb.exists():
-        row = pd.concat([pd.read_csv(lb), row], ignore_index=True)
+        old = pd.read_csv(lb)
+        # keep the existing header: a metric added later (e.g. within3) lives in metrics.json, not as a new column
+        row = pd.concat([old, row.reindex(columns=old.columns)], ignore_index=True)
     row.to_csv(lb, index=False)
     return run_id
