@@ -1,0 +1,134 @@
+season,constructorId,supplier,works,source,notes
+2014,caterham,renault,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,"Renault Energy F1-2014; team entered administration, missed US and Brazil GPs"
+2014,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Ferrari 059/3
+2014,force_india,mercedes,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Mercedes PU106A Hybrid
+2014,lotus_f1,renault,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Renault Energy F1-2014; Renault owned no team in 2014-15
+2014,marussia,ferrari,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Ferrari 059/3; switched from Cosworth before season; administration before US GP
+2014,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Mercedes PU106A Hybrid; long-time partner but customer of the Mercedes works team; Honda from 2015
+2014,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Mercedes PU106A Hybrid
+2014,red_bull,renault,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Renault Energy F1-2014; BORDERLINE: lead Renault partner but Renault owned no team; flagged customer
+2014,sauber,ferrari,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Ferrari 059/3
+2014,toro_rosso,renault,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Renault Energy F1-2014; switched from Ferrari before season
+2014,williams,mercedes,0,https://en.wikipedia.org/wiki/2014_Formula_One_World_Championship,Mercedes PU106A Hybrid; switched from Renault before season
+2015,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Ferrari 060
+2015,force_india,mercedes,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Mercedes PU106B Hybrid
+2015,lotus_f1,mercedes,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Mercedes PU106B Hybrid; switched from Renault before season
+2015,manor,ferrari,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Ferrari 059/3 (2014-spec unit); entered as Manor Marussia
+2015,mclaren,honda,1,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Honda RA615H; only Honda team (exclusive works partnership)
+2015,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Mercedes PU106B Hybrid
+2015,red_bull,renault,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Renault Energy F1-2015; BORDERLINE as 2014
+2015,sauber,ferrari,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Ferrari 060
+2015,toro_rosso,renault,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Renault Energy F1-2015
+2015,williams,mercedes,0,https://en.wikipedia.org/wiki/2015_Formula_One_World_Championship,Mercedes PU106B Hybrid
+2016,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Ferrari 061
+2016,force_india,mercedes,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Mercedes PU106C Hybrid
+2016,haas,ferrari,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Ferrari 061; new entry
+2016,manor,mercedes,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Mercedes PU106C Hybrid; constructor MRT; switched from Ferrari before season
+2016,mclaren,honda,1,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Honda RA616H; only Honda team
+2016,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Mercedes PU106C Hybrid
+2016,red_bull,renault,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,badge TAG Heuer F1-2016 is a rebadged Renault; customer
+2016,renault,renault,1,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Renault R.E.16; Renault bought Lotus and returned as works team
+2016,sauber,ferrari,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Ferrari 061
+2016,toro_rosso,ferrari,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Ferrari 060 (2015-spec unit); switched from Renault before season
+2016,williams,mercedes,0,https://en.wikipedia.org/wiki/2016_Formula_One_World_Championship,Mercedes PU106C Hybrid
+2017,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Ferrari 062
+2017,force_india,mercedes,0,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Mercedes M08 EQ Power+
+2017,haas,ferrari,0,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Ferrari 062
+2017,mclaren,honda,1,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Honda RA617H; only Honda team
+2017,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Mercedes M08 EQ Power+
+2017,red_bull,renault,0,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,badge TAG Heuer F1-2017 is a rebadged Renault
+2017,renault,renault,1,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Renault R.E.17
+2017,sauber,ferrari,0,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Ferrari 061 (year-old unit)
+2017,toro_rosso,renault,0,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,badge Toro Rosso is a rebadged Renault; back to Renault from Ferrari before season
+2017,williams,mercedes,0,https://en.wikipedia.org/wiki/2017_Formula_One_World_Championship,Mercedes M08 EQ Power+
+2018,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Ferrari 062 EVO
+2018,force_india,mercedes,0,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,"Mercedes M09 EQ Power+; MID-SEASON ENTRY CHANGE: Sahara Force India rounds 1-12, Racing Point Force India rounds 13-21, same PU; data keeps one constructorId"
+2018,haas,ferrari,0,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Ferrari 062 EVO
+2018,mclaren,renault,0,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Renault R.E.18; switched from Honda before season
+2018,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Mercedes M09 EQ Power+
+2018,red_bull,renault,0,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,badge TAG Heuer F1-2018 is a rebadged Renault R.E.18
+2018,renault,renault,1,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Renault R.E.18
+2018,sauber,ferrari,0,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Ferrari 062 EVO (current-spec); entered as Alfa Romeo Sauber
+2018,toro_rosso,honda,1,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Honda RA618H; only Honda team (full-works per source)
+2018,williams,mercedes,0,https://en.wikipedia.org/wiki/2018_Formula_One_World_Championship,Mercedes M09 EQ Power+
+2019,alfa,ferrari,0,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Ferrari 064
+2019,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Ferrari 064
+2019,haas,ferrari,0,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Ferrari 064
+2019,mclaren,renault,0,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Renault E-Tech 19
+2019,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Mercedes M10 EQ Power+
+2019,racing_point,mercedes,0,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,badge BWT Mercedes is a Mercedes customer unit
+2019,red_bull,honda,1,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,"Honda RA619H; switched from Renault before season; BORDERLINE: lead Honda partner, Honda does not own the team"
+2019,renault,renault,1,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Renault E-Tech 19
+2019,toro_rosso,honda,0,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,"Honda RA619H; BORDERLINE: sister team, second Honda team from 2019"
+2019,williams,mercedes,0,https://en.wikipedia.org/wiki/2019_Formula_One_World_Championship,Mercedes M10 EQ Power+
+2020,alfa,ferrari,0,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Ferrari 065
+2020,alphatauri,honda,0,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Honda RA620H; BORDERLINE sister team
+2020,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Ferrari 065
+2020,haas,ferrari,0,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Ferrari 065
+2020,mclaren,renault,0,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Renault E-Tech 20
+2020,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Mercedes-AMG F1 M11
+2020,racing_point,mercedes,0,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,badge BWT Mercedes is a Mercedes customer unit
+2020,red_bull,honda,1,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Honda RA620H; BORDERLINE as 2019
+2020,renault,renault,1,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Renault E-Tech 20
+2020,williams,mercedes,0,https://en.wikipedia.org/wiki/2020_Formula_One_World_Championship,Mercedes-AMG F1 M11
+2021,alfa,ferrari,0,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Ferrari 065/6
+2021,alphatauri,honda,0,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Honda RA621H; BORDERLINE sister team
+2021,alpine,renault,1,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Renault E-Tech 20B; Alpine is the Renault group brand
+2021,aston_martin,mercedes,0,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Mercedes-AMG F1 M12; customer
+2021,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Ferrari 065/6
+2021,haas,ferrari,0,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Ferrari 065/6
+2021,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Mercedes-AMG F1 M12; switched from Renault before season
+2021,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Mercedes-AMG F1 M12
+2021,red_bull,honda,1,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Honda RA621H; BORDERLINE as 2019
+2021,williams,mercedes,0,https://en.wikipedia.org/wiki/2021_Formula_One_World_Championship,Mercedes-AMG F1 M12
+2022,alfa,ferrari,0,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Ferrari 066/7
+2022,alphatauri,honda,0,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,"badge RBPT (Red Bull RBPTH001), Honda-built unit rebadged; BORDERLINE sister team"
+2022,alpine,renault,1,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Renault E-Tech RE22
+2022,aston_martin,mercedes,0,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Mercedes-AMG F1 M13
+2022,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Ferrari 066/7
+2022,haas,ferrari,0,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Ferrari 066/7
+2022,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Mercedes-AMG F1 M13
+2022,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Mercedes-AMG F1 M13
+2022,red_bull,honda,1,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,"badge RBPT (Red Bull RBPTH001), Honda-built unit rebadged"
+2022,williams,mercedes,0,https://en.wikipedia.org/wiki/2022_Formula_One_World_Championship,Mercedes-AMG F1 M13
+2023,alfa,ferrari,0,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Ferrari 066/10
+2023,alphatauri,honda,0,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,badge Honda RBPT (Honda RBPTH001); BORDERLINE sister team
+2023,alpine,renault,1,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Renault E-Tech RE23
+2023,aston_martin,mercedes,0,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Mercedes-AMG F1 M14
+2023,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Ferrari 066/10
+2023,haas,ferrari,0,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Ferrari 066/10
+2023,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Mercedes-AMG F1 M14
+2023,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Mercedes-AMG F1 M14
+2023,red_bull,honda,1,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,badge Honda RBPT (Honda RBPTH001)
+2023,williams,mercedes,0,https://en.wikipedia.org/wiki/2023_Formula_One_World_Championship,Mercedes-AMG F1 M14
+2024,alpine,renault,1,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Renault E-Tech RE24
+2024,aston_martin,mercedes,0,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Mercedes-AMG F1 M15
+2024,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Ferrari 066/12
+2024,haas,ferrari,0,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,source lists Ferrari 066/10 for Haas (066/12 for others); spec label not cross-checked
+2024,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Mercedes-AMG F1 M15
+2024,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Mercedes-AMG F1 M15
+2024,rb,honda,0,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,badge Honda RBPT (Honda RBPTH002); BORDERLINE sister team
+2024,red_bull,honda,1,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,badge Honda RBPT (Honda RBPTH002)
+2024,sauber,ferrari,0,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Ferrari 066/12; entered as Stake F1 Team Kick Sauber
+2024,williams,mercedes,0,https://en.wikipedia.org/wiki/2024_Formula_One_World_Championship,Mercedes-AMG F1 M15
+2025,alpine,renault,1,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Renault E-Tech RE25; last Renault season
+2025,aston_martin,mercedes,0,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Mercedes-AMG F1 M16
+2025,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Ferrari 066/15
+2025,haas,ferrari,0,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Ferrari 066/15
+2025,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Mercedes-AMG F1 M16
+2025,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Mercedes-AMG F1 M16
+2025,rb,honda,0,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,badge Honda RBPT (Honda RBPTH003); entered as Racing Bulls; BORDERLINE sister team
+2025,red_bull,honda,1,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,badge Honda RBPT (Honda RBPTH003)
+2025,sauber,ferrari,0,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Ferrari 066/15; entered as Stake F1 Team Kick Sauber
+2025,williams,mercedes,0,https://en.wikipedia.org/wiki/2025_Formula_One_World_Championship,Mercedes-AMG F1 M16
+2026,alpine,mercedes,0,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Mercedes-AMG F1 M17; switched from Renault (customer PU and gearbox)
+2026,aston_martin,honda,1,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Honda RA626H; only Honda team (exclusive works partnership)
+2026,audi,audi,1,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,"Audi AFR 26 Hybrid; works team, formerly Kick Sauber-Ferrari"
+2026,cadillac,ferrari,0,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Ferrari 067/6; new entry; GM unit planned for 2029
+2026,ferrari,ferrari,1,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Ferrari 067/6
+2026,haas,ferrari,0,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Ferrari 067/6
+2026,mclaren,mercedes,0,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Mercedes-AMG F1 M17
+2026,mercedes,mercedes,1,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Mercedes-AMG F1 M17
+2026,rb,red_bull_powertrains,0,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,badge Red Bull Ford DM01 (Red Bull Powertrains with Ford); BORDERLINE sister team
+2026,red_bull,red_bull_powertrains,1,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,badge Red Bull Ford DM01; own in-house unit
+2026,williams,mercedes,0,https://en.wikipedia.org/wiki/2026_Formula_One_World_Championship,Mercedes-AMG F1 M17
