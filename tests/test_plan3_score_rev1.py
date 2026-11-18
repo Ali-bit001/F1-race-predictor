@@ -493,7 +493,7 @@ def test_third_look_logloss_points_in_the_plain_model_rows_is_not_the_s3_one(tl_
 @needs_data
 def test_leaderboard_is_a_pure_addition_of_ten_rows_and_run_folders_are_complete():
     cur = (ROOT / "results/plan3/leaderboard.csv").read_text(encoding="utf-8").replace("\r\n", "\n")
-    old = subprocess.run(["git", "show", "HEAD:results/plan3/leaderboard.csv"], capture_output=True, cwd=ROOT).stdout.decode("utf-8").replace("\r\n", "\n")
+    old = subprocess.run(["git", "show", "plan3-freeze:results/plan3/leaderboard.csv"], capture_output=True, cwd=ROOT).stdout.decode("utf-8").replace("\r\n", "\n")
     assert cur.startswith(old) and len(cur[len(old):].strip().splitlines()) == 10
     lb = pd.read_csv(ROOT / "results/plan3/leaderboard.csv")
     new = lb[lb["label"].str.startswith("p3_R15_")]
