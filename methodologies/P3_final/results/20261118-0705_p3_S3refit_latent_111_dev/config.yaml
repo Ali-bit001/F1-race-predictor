@@ -1,0 +1,22 @@
+kind: m08
+cell: S3
+theta:
+  tau: 3.5
+  dnf_scale: 1.25
+  kappa: 0.0
+  p0: 0.2
+  s_dis: 2.0
+  a_vol: 0.5
+  a_rain: 2.0
+consts:
+  stick_ref: 0.6153145167767826
+  vol_mu: 0.18030947903628722
+  vol_sd: 0.01674393291126671
+order_model: latent_111
+draws: 1000
+seed: 0
+retirement_model: M07 dev walk-forward (plan-2 C)
+component: S3 re-fitted on latent_111 scores
+status: plan-3 R14 dev run; not scored on any test block
+git_commit: 8063606+dirty-6f6240706de9
+split: dev

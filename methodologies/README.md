@@ -47,6 +47,7 @@ status `abandoned` and the reason — they are part of the record.
 | M20 | Race-craft and pit crew (4 features) | Plan 3, R8 | phase 2 done (consistency alone, dev) | persistence (dev, hl 50): consistency 0.256 passes, the other four fail; consistency in the weekend term: rho +0.003 [-0.001, +0.007] vs latent_111 and +0.003 [-0.002, +0.009] vs gbm_100, MAE and exact also no measurable difference (untuned on both sides; dev cannot rule out about +0.007 rho) | [M20_racecraft](M20_racecraft/README.md) |
 | M20 | Race-craft traits and pit crew | Plan 3, amendment 2 | planned | | |
 | M21 | Neural-network control (optional, needs rule change) | Plan 3, amendment 2 | planned | | |
+| P3 | Final plan-3 pre-race model and freeze (R14) | Plan 3, section 4 | done (dev), frozen | reverse + M09 car pace history (a car-form proxy) survive leave-one-out; rho +0.0172 [-0.0002, +0.0340] vs latent_111 (lower bound at 0), MAE +0.119 [+0.013, +0.222]; exact 0.1512 vs grid 0.1638 (not beaten; the pace column costs -0.0185 exact); car-only penalty re-tune fails alone; S3 re-fitted RPS 0.1149 vs 0.1201 (both fits in-sample); all selected on dev, optimistic; holdout tests in HOLDOUT_PREREG.md | [P3_final](P3_final/README.md) |
 
 M09–M21 and A3–A5 are specified in `PLAN3.md` §4; M05 (ensemble) is taken up there too.
 M06–M08, A1 and A2 are specified in `PLAN2.md` §4; their results are in `results/plan2/REPORT.md`.

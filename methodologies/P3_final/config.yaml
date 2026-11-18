@@ -1,0 +1,39 @@
+split: dev                       # 2021-2023 only; the test blocks and the fresh holdout are not scored (PLAN3 R14)
+refit_every: 1                   # final runs: refit before every race
+tune_refit_every: 4              # tuning passes only (as plan 1 / plan 2)
+frozen_path: configs/frozen.yaml
+frozen_plan2_path: configs/frozen_plan2.yaml
+base: {key: M03, cell: "111", label: latent_111}
+# Component car_penalty_retune (declared by the main session; grid fixed in prestatement.md before any run)
+car_penalty:
+  grid: [2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0, 256.0]   # car penalty lam; driver penalty lam_a stays at the base lam (32)
+# Decided before this package (results/plan3/attribution.csv rows and the LOG, verified by run.py at start)
+included_alone:
+  M11_reverse: {criterion: [mae, exact]}
+  M09_car_pace_hist: {criterion: [spearman]}
+not_included: [M11_finishers, M11_topk10, M09_car_q1_offset, M09_car_q1_offset_alone, M05_rank_avg, M05_gbm_monotone, M12_two_stage,
+               M17_D2, M17_grid, M18_deadband, M20_consistency, M16_S4, M16_S5, M16_S6, M16_S7, M16_S7_rps, M14_supplier_pool]
+m09_tuning_csv: methodologies/M09_race_pace/results/tuning_lam_x.csv
+m09_feature_info: methodologies/M09_race_pace/results/feature_info.json
+lam_x_check: {grid: [0.3, 1.0, 3.0, 10.0], switch_margin: 0.002}
+pace_feature:                    # PLAN3 Amendment 3 item 6: D1 pace, half-life 50, scaled by the SD over seasons <= 2020
+  col: pace_hist_x
+  pace_col: med_gap_pct
+  halflife: 50
+  min_prior_obs: 1
+  scale_seasons_max: 2020
+  thresh: 1.07
+  min_clean: 10
+  source_split_season: 2023
+  lap_source: {le: jolpica, gt: openf1}      # laps of seasons <= 2023 from Jolpica, later seasons from OpenF1
+simulator: {variant: S3, draws: 1000, seed: 0, fit_k: 300}
+h1_descriptive_split: "seasons:2023-2023"    # practice data exist from 2023; carries no decision weight
+predict_check_races: 3
+bootstrap: {n_boot: 10000, seed: 0}
+tie_break: driverId
+freeze: {date: "2026-11-18", last_race_included: {season: 2026, round: 20}}
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+plan1_leaderboard: results/leaderboard.csv
+m09_leaderboard_labels: {hist: m09_hist_latent_111}
+m11_leaderboard_labels: {reverse: m11_latent_111_reverse}

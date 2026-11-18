@@ -1,0 +1,9 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+reverse: true
+component: full minus M09_car_pace_hist
+status: plan-3 R14 dev run; not scored on any test block
+git_commit: 8063606+dirty-6f6240706de9
+split: dev

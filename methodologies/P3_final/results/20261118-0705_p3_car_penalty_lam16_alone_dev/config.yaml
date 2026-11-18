@@ -1,0 +1,9 @@
+kind: latent
+cell: '111'
+lam: 16.0
+halflife: 50
+lam_a: 32.0
+component: car_penalty_retune
+status: plan-3 R14 dev run; not scored on any test block
+git_commit: 8063606+dirty-6f6240706de9
+split: dev

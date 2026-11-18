@@ -1,0 +1,46 @@
+{
+  "reproduction": {
+    "latent_111 vs stored plan-1 dev run": {
+      "max_abs_diff_per_race_metrics": 8.881784197001252e-16,
+      "max_abs_diff_scores": 0.0,
+      "races": 66,
+      "entries": 1311
+    },
+    "every switch off vs latent_111": {
+      "max_abs_diff_scores": 0.0
+    },
+    "reverse alone (M11, frozen setting)": {
+      "max_abs_diff_scores": 0.0,
+      "entries": 1311,
+      "stored_run": "20261116-2036_m11_latent_111_reverse_dev"
+    },
+    "pace_hist alone (M09, tuned lam_x)": {
+      "max_abs_diff_scores": 0.0,
+      "entries": 1311,
+      "stored_run": "20261117-1533_m09_hist_latent_111_dev"
+    },
+    "M07 p_dnf recomputed vs stored plan-2 dev run": {
+      "max_abs_diff": 0.0,
+      "entries": 1311
+    }
+  },
+  "predict_vs_harness": {
+    "138": {
+      "max_abs_score_diff": 0.0006875283333810933,
+      "rank_corr": 1.0
+    },
+    "171": {
+      "max_abs_score_diff": 0.00028376621497694376,
+      "rank_corr": 1.0
+    },
+    "203": {
+      "max_abs_score_diff": 0.0001547217237296561,
+      "rank_corr": 1.0
+    }
+  },
+  "budget_configurations": {
+    "car_penalty": 8,
+    "lam_x_combo": 4,
+    "S3_refit_each": 61
+  }
+}
