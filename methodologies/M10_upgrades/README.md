@@ -1,6 +1,6 @@
 # M10 — Upgrade signal (FIA "Car Presentation Submissions")
 
-**Status:** in progress. R9 part 1: parser and data layer only (third revision). No model rung has been run.
+**Status:** in progress. R9 part 1 (parser, data layer) done. R9 part 2 (the model rung) is BUILT but NOT RUN: it can only be judged on the fresh holdout, which has no race yet.
 **Plan reference:** PLAN3.md R9 and Amendment 3 items 1-3
 **Factors:** car (the signal is the number of components a team declares as updated at an event)
 
@@ -80,8 +80,9 @@ late October and agree otherwise.
 
 ### Which documents a prediction may use (per horizon)
 - H0 (before the weekend): only documents of EARLIER races.
-- H1: additionally the race's own document, only if it was published before the H1 cutoff. Checked for 3 documents only; the
-  others are unverified. The CET / CEST question moves a time by at most 1 hour.
+- H1 / H2: additionally the race's own document, only if it was published before the horizon's cutoff (see "The model rung").
+  The dry run checks all 67 documents against the OpenF1 FP1 and qualifying start times; only the FIA time zone (CET / CEST,
+  at most 1 hour) is unverified.
 - The crawler now asks again, on every run, for events recorded as "not found" (a document may appear later); events with a
   stored document are never asked again.
 
@@ -141,17 +142,95 @@ Known blind spots:
 - Category keywords are first-match; a free-text component name is "other" or sidepod by keyword only.
 - Two Williams pages are image-only (no OCR).
 
+## The model rung (R9 part 2) — built, not run
+**Definition (fixed by Amendment 3 item 1, nothing tuned).** One extra column `m10_declared_x` in the `LatentModel` weekend term, for
+cell `111`: for each car, the constructor's total declared-component count (`fia_docs.declared_counts`, joined to (season, round) by
+`event_id` through `fia_docs.event_map()`, never by name), centred on the mean count of that race's constructors with a usable count and
+divided by the fixed constant 2.0 (SD of the centred counts over the 688 team-documents with a usable count is 1.80; counts only, no
+outcome; rounded now, never refitted). The scale has almost no effect on the fit: the ridge `lam_x*beta^2` is negligible next to the
+likelihood summed over thousands of rows, so beta simply rescales. **No clipping (decided 2026-11-18, final):** the maximum is +6.3
+(Aston Martin 2026 R11, count 16) and 6 of 688 team-documents are above +3 (0.9%). Plan-2 weekend columns are clipped, but any clip
+threshold chosen now would be chosen after seeing 2024-26 results for these teams, while "total count as declared" is the amendment's
+definition; the leverage of those few cars is a known risk, reported, not handled. `lam_x` = 1.0, the
+`LatentModel` default, equal for all extra columns; `run.py` refuses any other value unless `model.unlock_lam_x: true`. Both drivers of a team
+share the value. Code: `src/pitlane/plan3/m10_feature.py`, `methodologies/M10_upgrades/run.py`, config section `model`.
+
+**Horizons and cutoffs.**
+| Horizon | Reference (same harness) | Rung | Own-race document used when |
+|---|---|---|---|
+| H2 (with qualifying) | frozen `latent_111` | + `m10_declared_x` | published strictly before the start of qualifying |
+| H1 (with practice) | frozen plan-2 `h1_latent_111` (history + practice) | + `m10_declared_x` | published strictly before the start of FP1 |
+| H0 (pre-weekend) | frozen H0 model | none: identical to the reference, not run | never (the document appears 1-2 days before the race) |
+Session starts: OpenF1 session lists in `data/raw/plan2/openf1/sessions_<year>.json` (UTC), meeting matched to the round by the race date
+(same rule as the plan-2 practice features). Publication time = the LATER of `published_utc_fixed1` and `published_utc_paris` (+1 h over
+fixed1 if the Paris reading does not exist). A race with no session time: the document is not used at that horizon, and counted.
+The same availability rule applies to training races, so the column means the same thing in fit and in test. Amendment 3 says "H0/H1";
+H0 has no own-race information and no lagged feature was invented, so the rung is H2 and H1 only. Raised for the main session in case
+a lagged-document H0 was meant. **H1 cutoff = FP1 start (decided 2026-11-18, final).** The H1 reference's information set ends at the
+start of qualifying, so the qualifying start would also be leak-free and would keep 3 more documents. FP1 is kept because it is what
+the amendment's H1 question means (was the declaration known before the car ran?) and because it is the safer side of the unverified
+time zone; the cost (3 of 67 documents, 2 of them dropped only by the conservative reading) is stated. Main-session decision; H1 and
+H2 therefore differ in both reference and documents.
+
+**Missing rule.** No document (2022-23, 2024 round 1, a race beyond the manifest), a document after the cutoff, no session time, an
+image-only page, an absent team, an NA count: the value is NaN, and `LatentModel` fills NaN with 0.0, which is the centred value of an
+average car (the same treatment M09 gave a missing Q1 offset). A genuine "no updates" is 0 before centring, not missing. Training rows
+before 2024 round 2 are therefore all 0, and beta is in effect fitted on 2024-round-2-onward races only; early in the holdout it is
+estimated from about 2 seasons of races and may be near 0.
+
+**Coverage (dry run on 2024-26, `python methodologies/M10_upgrades/run.py --dry-run`; features only, no model, no metric).**
+| | H2 | H1 |
+|---|---|---|
+| documents (races) | 67 | 67 |
+| documents used | 67 | 64 |
+| dropped: published after the cutoff | 0 | 3 (2025 R22, 2026 R11, 2026 R17) |
+| dropped: no session time | 0 | 0 |
+| car-races of the 67 document races | 1364 | 1364 |
+| car-races with a usable count | 1360 (99.7%) | 1296 (95.0%) |
+| share of all 2024-26 car-races | 98.3% | 93.6% |
+The 4 lost car-races at H2 are the two image-only Williams pages. Margin at H1: publication is a median 1.5 h before FP1 (range -11.7 to
++2.6 h), so the H1 rung depends on the CET/CEST reading and on the scheduled FP1 time; the later-of-two rule costs documents rather than risking
+leakage. The lead splits in two: median 2.5 h for the 17 winter documents (the two readings agree) and 1.5 h for the 50 summer ones under
+the later reading. A fixed lead before FP1 would give 2.5 h in both under the Paris reading, which the data therefore favour (inference;
+the FIA source is unverified). 2026 R11 (-0.40 h) and R17 (-0.63 h) are dropped only by the conservative rule; Las Vegas 2025 R22
+(-11.7 h) is a real drop, and Las Vegas 2026 R21 will probably be dropped at H1 too. The only reading that would leak is "stamp = UTC",
+which the two-mode pattern argues against.
+
+**Expected gain and failure (stated before any run; fixed by the commit that adds this section, made before any 2026 R21 data was
+fetched).** Expected change in mean Spearman rho against the reference: about 0 at H2 (qualifying already contains what an upgrade
+does), at most +0.01 at H1.
+- **Verdict test: one.** Mean Spearman rho at **H1**, paired 95% bootstrap over fresh races (10,000 resamples, seed 0). Passes if the
+  interval excludes 0 on the positive side; fails otherwise. **H2 is a negative control** (expected 0; a "pass" there would point to
+  a problem, not a finding). The other metrics `run.py` prints (MAE, exact, within-k, RPS, log-loss at both horizons; 14 intervals in
+  all) are descriptive only and are never quoted as a result.
+- **Minimum race count: 20 fresh races** before any verdict is written. Below that the report says "too few races (n = ...)", not a
+  null. Rough minimum detectable effect at 80% power from dev per-race SDs of one-column additions (0.010-0.041 rho; about 0.02 taken
+  as typical): 0.016-0.035 at 3 races, 0.006-0.012 at 27 races. The pre-stated +0.01 is therefore detectable only from late 2027 at
+  best, more likely 2028. At or above 20 races a non-pass is written "no measurable difference (underpowered)", not "no effect".
+- **Holdout start.** For this rung the fresh holdout is races after 2026 round 20 (`config.FRESH_AFTER`), because the rung is fixed by
+  this commit, made before the 2026 R21 weekend (FP1 2026-11-20 00:30 UTC). It is independent of the date of the plan-3 R14 freeze. The 2024-26 documents were used only to check the parser;
+the run refuses to output a metric for any race of 2021-2026 round 20 (`FreezeError`), and no model was scored on 2024-26.
+
+**Switches off.** With the column all 0 or NaN the rung equals the reference bitwise at H2; at H1 scores differ by up to 2e-12
+(one more L-BFGS parameter changes the floating-point path), with identical rank order and rho (`tests/test_plan3_m10_model_rev1.py`).
+
+**How R15 calls it.** `python methodologies/M10_upgrades/run.py` (all fresh races) or `--races 2027:1,2027:2`. Before that: rebuild the
+entries/entries2 tables with the fresh races, crawl and parse their documents (the 2027 entry list is needed in `expected_teams`), refresh the
+OpenF1 session list for the year, and re-check `event_map()` (it raises if the manifest and the races table disagree). Output: a run folder per
+model (H2 and H1, reference and rung), rows in `results/plan3/leaderboard.csv`, and a paired-gain table.
+
 ## Leakage notes
 Description-only data. A document may be used for a race only if it was published before that race's cutoff (see above).
 
 ## How to run
 ```
 python -m pitlane.data.fia_docs
-python -m pytest tests/test_plan3_m10.py tests/test_plan3_m10_status.py tests/test_plan3_m10_rev2.py tests/test_plan3_m10_rev3.py tests/test_fia_crawl.py -q
+python methodologies/M10_upgrades/run.py --dry-run
+python -m pytest tests/test_plan3_m10_model.py tests/test_plan3_m10.py tests/test_plan3_m10_status.py tests/test_plan3_m10_rev2.py tests/test_plan3_m10_rev3.py tests/test_fia_crawl.py -q
 ```
 
 ## Results
-No model run yet.
+No model run yet (no fresh-holdout race exists). Coverage only, above.
 
 ## What we learned
 After a hand check of 8 documents the first parser had errors on 3-5% of rows; the later revisions removed the errors found.
@@ -159,5 +238,5 @@ The measured state is in the section above: 0 errors in the whole-table scans of
 unmeasured residual. The data cover only 2024 round 2 to 2026; there is no dev data for M10.
 
 ## Open questions / next tries
-Model rung (R9 part 2) is not started and can only be judged on the fresh holdout. Whether the FIA "CET" is fixed UTC+1 or the
+Model rung (R9 part 2) is built and untested on outcomes; it can only be judged on the fresh holdout. Whether the FIA "CET" is fixed UTC+1 or the
 Paris clock is unverified.
