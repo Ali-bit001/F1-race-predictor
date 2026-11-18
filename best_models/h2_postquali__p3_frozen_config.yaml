@@ -1,0 +1,118 @@
+frozen:
+  plan: PLAN3 R14
+  date: '2026-11-18'
+  last_race_included:
+    season: 2026
+    round: 20
+  note: Hyper-parameters tuned on 2021-2023 only. The model is re-fitted before every
+    race on all data up to that race; nothing here is re-tuned on 2024-2026.
+components:
+  included:
+  - M11_reverse
+  - M09_car_pace_hist
+  not_included:
+  - M11_finishers
+  - M11_topk10
+  - M09_car_q1_offset
+  - M09_car_q1_offset_alone
+  - M05_rank_avg
+  - M05_gbm_monotone
+  - M12_two_stage
+  - M17_D2
+  - M17_grid
+  - M18_deadband
+  - M20_consistency
+  - M16_S4
+  - M16_S5
+  - M16_S6
+  - M16_S7
+  - M16_S7_rps
+  - M14_supplier_pool
+  decoder: D0 (sort by -E[position] of the simulator; M17 found none better)
+  ensemble: none (M05 not included)
+  rolling_retune: 'no (A4: null, hyper-parameters stay as tuned on 2021-2023)'
+walk_forward:
+  refit_every: 1
+  n_warm: 15
+  tie_break: driverId
+pace_feature:
+  col: pace_hist_x
+  pace_col: med_gap_pct
+  halflife: 50
+  min_prior_obs: 1
+  scale_seasons_max: 2020
+  thresh: 1.07
+  min_clean: 10
+  source_split_season: 2023
+  lap_source:
+    le: jolpica
+    gt: openf1
+  scale_sd: 0.900670548960905
+retirement_model:
+  kind: M07 logistic regression, refit on all earlier races
+  C: 0.02
+  features:
+  - drv_inc_ew16
+  - drv_dnf_ew16
+  - con_mech_ew16
+  - con_dnf_ew16
+  - circ_dnf
+  - grid_norm
+  - pit_start
+  - wet_q
+  - rain_fc
+  - newregs
+  - rookie
+  - new_team
+  - fp_laps
+  - fp_missing
+horizons:
+  H2:
+    description: 'after qualifying: final model (components above), simulator S3 re-fitted
+      on dev, decoder D0'
+    entries: pipeline2.load_all() (plan-2 entries)
+    uses_pace_hist: true
+    model:
+      kind: latent
+      cell: '111'
+      lam: 32.0
+      halflife: 50
+      reverse: true
+      x_cols:
+      - pace_hist_x
+      lam_x: 3.0
+    simulator:
+      variant: S3
+      draws: 1000
+      seed: 0
+      theta:
+        tau: 1.7
+        dnf_scale: 1.25
+        kappa: 0.0
+        p0: 0.05
+        s_dis: 1.5
+        a_vol: 1.0
+        a_rain: 2.0
+      fit_rps_dev: 0.11491592385846772
+      stick_ref: 0.6153145167767826
+      vol_mu: 0.18030947903628722
+      vol_sd: 0.01674393291126671
+      fitted_on: dev 2021-2023, on the final model's walk-forward scores
+  H1:
+    description: 'before qualifying (practice only): the plan-2 frozen H1 latent_111
+      model, unchanged; the final components were not tested at H1. No simulator is
+      fitted at H1.'
+    entries: pipeline2.load_all() (plan-2 entries)
+    uses_pace_hist: false
+    model:
+      kind: latent
+      cell: '111'
+      lam: 32.0
+      halflife: 50
+      base_x: false
+      x_cols:
+      - x_fp_gap
+      - x_fp_long
+      - x_fp_laps
+      lam_x: 1.0
+plan2_frozen_hash_inherited: 0d1b7c074d80

@@ -1,0 +1,36 @@
+split: dev                       # 2021-2023 only; nothing later is scored
+seed: 0
+frozen_path: configs/frozen.yaml # pre-race models: M03 cell 111 (latent) and M04 cell 100 (gbm), hyper-parameters frozen
+latent: {key: M03, cell: "111", stored_label: latent_111}
+gbm: {key: M04, cell: "100", stored_label: gbm_100}
+laps_path: data/interim/plan3/laps.parquet
+pits_path: data/interim/plan3/pits.parquet
+source: jolpica                  # one lap source for every race (2014-2023); OpenF1 is never mixed in (lap-1 times differ ~0.35 s)
+horizons:                        # k = ceil(frac * race distance); H4: after lap 1
+  H4: {frac: null}
+  H5: {frac: 0.25}
+  H6: {frac: 0.5}
+feature_cols: [ir_pos, ir_gap, ir_pits, ir_out, ir_def]
+# Race distance L that places the horizons: scheduled distance announced before the race (dev races, table with a source per row);
+# races before the dev block (training history only) use the last lap of their lap table. If a race stops before the horizon lap, the
+# last available lap <= horizon is used.
+scheduled_laps_path: data/external/scheduled_laps.csv
+ingest_config: configs/ingest3.yaml      # pits.red_flag_margin_s; the stored red_flag_suspect column is not used
+shortened_dev_races: [[2021, 12], [2022, 7], [2022, 17], [2022, 18]]   # ran fewer laps than scheduled (descriptive subset)
+cut_before_start_dev_races: [[2023, 14]]                               # Monza: 53 scheduled, 51 run after an aborted start
+# MAIN model = two stages: frozen pre-race score (walk-forward, stage 1 never refit with in-race columns) + in-race columns (stage 2).
+# Stage 2 trains on earlier races with race_id >= min_train_race (the first season has too little history for a meaningful score).
+stage2: {fix_c: false}                   # coefficient of the frozen score is free (tiny ridge 1e-4); true would fix it to 1
+min_train_race: 20
+label_prefix: m19v2b
+# Tuning (dev only, refit_every 4, pick = max mean Spearman): one ridge strength for the in-race columns of the latent model,
+# per horizon, for the two-stage model (3 configurations x 3 horizons = 9) and for the joint-refit variant (9): 18 in total
+# (budget 30). GBM keeps its frozen configuration (0 configurations).
+tune_lam_x: [0.1, 1.0, 10.0]
+tune_refit_every: 4
+refit_every: 1                   # final runs refit before every race
+tie_break: driverId              # outcome-free
+verdict_metric: spearman
+bootstrap: {n_boot: 10000, seed: 0}
+plan1_leaderboard: results/leaderboard.csv
+leaderboard: results/plan3/leaderboard.csv

@@ -375,3 +375,15 @@ Entry format:
 - Skeptic review: 22 numbers re-derived, all match; two blocking items fixed by the coder (unrendered f-strings; 2026 Antonelli labelled "eventual champion" -> "points leader after R20, season not finished", plus the A5 face-validity failure: H0 rank 17/25). Nine minor items fixed (multiplicity rule, seed-stream wording, dynamic HEAD/holdout readings, LOG-sourced literals cited, figure clipping, lineage caveat, dirty-tree third look noted).
 - Known cosmetic residue: in `r16_dev_vs_third_look.png` some grey labels touch the zero line.
 - **Correction to the R15 entry above:** "places 1–3 −0.139 [−0.264, −0.014]" on the final-vs-grid exact line is the **2025-only** row, not pooled. Pooled 2024–26 R20 final vs grid, places 1–3: −0.0686 [−0.1471, +0.0098] (includes 0). Also: the "75 exclude 0" count uses the literal rule; 2 of the 21 negative rows have upper bound ≈ −6.9e-19 (floating-point zero, duplicated test_shift / season-2026 blocks), so 73 with a 1e-9 tolerance.
+
+## 2026-11-18 — Model comparison summary + best_models/ folder
+- Wrote `results/MODEL_COMPARISON.md`: the pick per stage and the numbers behind it, taken from existing result files. No new runs, no tuning, no decision taken on the 2024–26 data.
+- Picks:
+  - H1: `h1_latent_111`. It is below the standings baseline on dev; nothing we built beats the standings before qualifying.
+  - H2: frozen `final` + S3; `reverse_only` is level with it.
+  - H4/H5: M19 `gbm_s2`. Exploratory, dev only, `lam_x` tuned on the same races.
+  - H6: running order.
+  - Exact hits: grid order / running order.
+- External comparison: one verified comparable number (arXiv 2507.10966, grid-vs-finish rho 0.748). The rest are not like for like, or come from search snippets and are unverified.
+- `best_models/`: byte-identical copies of `configs/frozen_plan2.yaml`, `methodologies/P3_final/frozen_config.yaml` and `methodologies/M19_inrace/config.yaml`, sha256 checked. The originals stay authoritative.
+- Holdout n = 0, so none of the picks is confirmed.
