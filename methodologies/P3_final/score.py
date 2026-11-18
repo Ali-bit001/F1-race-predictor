@@ -434,7 +434,7 @@ def main(argv: list[str] | None = None) -> int:
     rh = MDIR / sc["rowhash_file"]
     if not rh.exists():
         raise SystemExit(f"{rh.name} is missing: run with --write-rowhash once (only while the data files equal the FREEZE.md hashes)")
-    rh_sha = H.sha256_bytes(rh)
+    rh_sha = F.sha256_file(rh)  # LF-normalised: a CRLF checkout must not read as a change
     status_path = PLAN3 / "holdout_status.json"
     status = json.loads(status_path.read_text(encoding="utf-8")) if status_path.exists() else {}
     if status.get("freeze_rowhash_sha256") and status["freeze_rowhash_sha256"] != rh_sha:

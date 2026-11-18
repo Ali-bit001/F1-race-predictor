@@ -514,7 +514,7 @@ def test_n20_reading_is_the_same_whether_the_script_runs_at_n20_or_n23(tmp_path)
     assert v20["n_races_available"] == 20 and v23["n_races_available"] == 23
     for k in ("race_ids", "tests", "confirmed", "row_digests", "n_races_read"):
         assert v20[k] == v23[k], k
-    assert v23["git_commit"] and v23["freeze_rowhash_sha256"] == H.sha256_bytes(HERE / "freeze_rowhash.json")
+    assert v23["git_commit"] and v23["freeze_rowhash_sha256"] == F.sha256_file(HERE / "freeze_rowhash.json")
 
 
 def test_no_write_is_refused_when_a_reading_is_due_and_the_tree_dirty_check_exists():
