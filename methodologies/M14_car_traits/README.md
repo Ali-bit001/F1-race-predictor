@@ -1,6 +1,6 @@
 # M14 — Car traits, part 1: engine-supplier pooling
 
-**Status:** done (R11 part 1, dev only; revised before its first commit). Part 1 is a null on dev, as pre-stated. Parts 2 and 3 (trait x circuit, learned car x circuit factors) are NOT cut: they come later, in their own commits. M15 (rookie prior) is cut (Amendment 3 item 4).
+**Status:** done (R11 part 1, dev only; revised before its first commit). Part 1 is a null on dev, as pre-stated. Parts 2 and 3 (trait x circuit, learned car x circuit factors) were planned for later commits but were then **cut** under the PLAN3 §6 cut order (main-session decision 2026-11-18, commit f4903fd, LOG.md); they are not tested. M15 (rookie prior) is cut (Amendment 3 item 4).
 **Budget:** 12 distinct configurations of 30 (6 declared + 6 post-hoc lam_e values); about 4 tuning sweeps were seen (declared sweep twice, post-hoc sweep twice: 1828 superseded by the look-ahead fix, 1854); the post-hoc form and lam_b = 32 were fixed after the declared result and are not counted as tuned.
 **Plan reference:** PLAN3.md section 4 M14, Amendment 3 item 4, section 5
 **Factors:** latent_111 (F1 on, F2 on, F3 on) plus a supplier term in car strength. No gbm variant: the plan's term is in car strength, which LightGBM does not have.
@@ -113,7 +113,7 @@ Reading of the post-hoc arm (main evidence that the fixed lam_b ridge, not pooli
 - Part 1 is a null on dev: the declared supplier term does nothing measurable (rho -0.0003 [-0.0027, +0.0022]), and when lam_e is small it hurts. Expected: with e per (supplier, season) and no carry-over,
   e cannot help at a season's first race, and within a season the cars' own history already carries what the engine would add. The post-hoc variant that makes pooling active is worse
   (-0.0155 [-0.0249, -0.0066]).
-- M14 parts 2 and 3 (trait x circuit from timing data; learned car x circuit factors) are not tested by this commit and are not cut; they come later in their own commits.
+- M14 parts 2 and 3 (trait x circuit from timing data; learned car x circuit factors) are not tested. They were cut on 2026-11-18 (PLAN3 §6 cut order, commit f4903fd; see LOG.md).
 - The plan's motivating case (a new regulation, no history) is not testable on dev. With the present design e starts at 0 for every new
   (supplier, season) level, so even in 2026 it would help only after the first races, through customer teams sharing the supplier. A carry-over of e
   across seasons within an engine formula (or a prior from the supplier's last season) would be the version that could help at round 1; that
