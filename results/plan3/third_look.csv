@@ -1,0 +1,1225 @@
+label,block,table,name,metric,cand_mean,n,prob_source,reference,candidate,primary,ref_mean,gain,lo,hi
+"third look, no decision weight",test_stable,mean,final,spearman,0.7001197847560077,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,mae,3.1132797270955166,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,exact,0.14809332358674465,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,spearman_fin,0.7782987824009494,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,mae_fin,2.3749644996887644,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,exact_fin,0.15778060858846463,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,exact_1_3,0.2986111111111111,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,exact_4_10,0.15773809523809523,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,exact_11p,0.09542824074074074,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,within1,0.3684576023391813,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,within2,0.5475816276803119,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,within3,0.681207358674464,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final,logloss_points,0.47733768360090445,48,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,spearman,0.7069966583124477,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,mae,3.043311403508772,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,exact,0.16030701754385965,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,spearman_fin,0.7863106224271084,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,mae_fin,2.293100423648992,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,exact_fin,0.1684146922657952,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,exact_1_3,0.3541666666666667,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,exact_4_10,0.18154761904761904,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,exact_11p,0.08657407407407407,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,within1,0.38522782651072124,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,within2,0.5638218810916179,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,within3,0.689942738791423,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,reverse_only,logloss_points,0.4736010692008173,48,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,spearman,0.6996928595999803,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,mae,3.111086744639376,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,exact,0.13751827485380116,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,spearman_fin,0.7802068744164332,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,mae_fin,2.3461511468622533,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,exact_fin,0.141838306960211,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,exact_1_3,0.3055555555555556,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,exact_4_10,0.11904761904761903,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,exact_11p,0.10011574074074074,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,within1,0.3851120857699805,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,within2,0.5466496101364523,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,within3,0.6751827485380116,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,final_minus_reverse,logloss_points,0.48053632942958346,48,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,spearman,0.7028901911641849,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,mae,3.064047270955166,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,exact,0.16469907407407408,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,spearman_fin,0.7800310660701527,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,mae_fin,2.3181247901207267,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,exact_fin,0.17286353137746327,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,exact_1_3,0.3680555555555555,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,exact_4_10,0.18154761904761904,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,exact_11p,0.09126157407407408,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,within1,0.3895650584795321,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,within2,0.5511574074074074,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,within3,0.6868664717348928,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,latent_111,logloss_points,0.477619710309751,48,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,spearman,0.7028901911641849,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,mae,3.064047270955166,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,exact,0.16469907407407408,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,spearman_fin,0.7800310660701527,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,mae_fin,2.3181247901207267,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,exact_fin,0.17286353137746327,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,exact_1_3,0.3680555555555555,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,exact_4_10,0.18154761904761904,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,exact_11p,0.09126157407407408,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,within1,0.3895650584795321,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,within2,0.5511574074074074,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,within3,0.6868664717348928,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,plan2_H2,logloss_points,0.477619710309751,48,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_stable,mean,grid,spearman,0.6902581207921766,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,mae,3.0994030214424946,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,exact,0.16573464912280703,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,spearman_fin,0.7573500587819474,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,mae_fin,2.402267899118712,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,exact_fin,0.17106995941651515,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,exact_1_3,0.3819444444444444,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,exact_4_10,0.17559523809523805,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,exact_11p,0.09212962962962963,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,within1,0.38944322612085763,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,within2,0.5670565302144249,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,grid,within3,0.6834551656920079,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,spearman,0.6048724753059118,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,mae,3.77208820662768,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,exact,0.10378898635477583,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,spearman_fin,0.6920338234821596,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,mae_fin,3.018915139155077,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,exact_fin,0.10519677717578262,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,exact_1_3,0.21527777777777776,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,exact_4_10,0.09226190476190475,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,exact_11p,0.07806712962962963,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,within1,0.29602217348927873,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,within2,0.4461440058479533,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,within3,0.5846003898635477,48,,,,,,,,
+"third look, no decision weight",test_stable,mean,H1,logloss_points,0.542260356268513,48,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,spearman,0.7014570740576932,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,mae,3.099890350877193,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,exact,0.1545687134502924,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,spearman_fin,0.7795462036028985,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,mae_fin,2.3492714885661865,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,exact_fin,0.16071327471046898,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,exact_1_3,0.29166666666666663,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,exact_4_10,0.16964285714285712,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,exact_11p,0.10243055555555557,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,within1,0.36845151072124754,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,within2,0.5467592592592593,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,within3,0.6856542397660818,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,rps,0.1097026015207545,48,S3 matrix,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,final,logloss_points,0.44344201508673015,48,S3 matrix,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,spearman,0.7032090028994054,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,mae,3.0661427875243668,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,exact,0.16151924951267058,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,spearman_fin,0.7794179370466136,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,mae_fin,2.3131201676577064,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,exact_fin,0.17095031543319084,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,exact_1_3,0.3611111111111111,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,exact_4_10,0.1875,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,exact_11p,0.08292824074074073,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,within1,0.3937804580896686,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,within2,0.5490131578947368,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,within3,0.6837414717348927,48,,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,rps,0.10963704976421855,48,S3 matrix,,,,,,,
+"third look, no decision weight","test_stable [S3 matrix, D0 order]",mean,latent_111,logloss_points,0.4455740178438967,48,S3 matrix,,,,,,,
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,spearman,0.7001197847560077,48,,latent_111,final,True,0.7028901911641849,-0.002770406408177318,-0.014265611946533011,0.008612585385031173
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,mae,3.1132797270955166,48,,latent_111,final,False,3.064047270955166,-0.04923245614035085,-0.1391474780701754,0.03804824561403508
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,exact,0.14809332358674465,48,,latent_111,final,False,0.16469907407407408,-0.016605750487329433,-0.044840551900584794,0.01043006822612084
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,spearman_fin,0.7782987824009494,48,,latent_111,final,False,0.7800310660701527,-0.001732283669203186,-0.01342268652990888,0.010345450406039585
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,mae_fin,2.3749644996887644,48,,latent_111,final,False,2.3181247901207267,-0.056839709568037744,-0.14285109603051746,0.02827763214203809
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,exact_fin,0.15778060858846463,48,,latent_111,final,False,0.17286353137746327,-0.015082922788998638,-0.04653201791498762,0.014505629691569587
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,exact_1_3,0.2986111111111111,48,,latent_111,final,False,0.3680555555555555,-0.06944444444444446,-0.1388888888888889,0.0
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,exact_4_10,0.15773809523809523,48,,latent_111,final,False,0.18154761904761904,-0.023809523809523808,-0.0744047619047619,0.026785714285714284
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,exact_11p,0.09542824074074074,48,,latent_111,final,False,0.09126157407407408,0.004166666666666665,-0.01712962962962963,0.025462962962962965
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,within1,0.3684576023391813,48,,latent_111,final,False,0.3895650584795321,-0.02110745614035087,-0.05471491228070175,0.0124451754385965
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,within2,0.5475816276803119,48,,latent_111,final,False,0.5511574074074074,-0.003575779727095505,-0.026614278752436632,0.019112146686159816
+"third look, no decision weight",test_stable,contrast,T1:final_vs_latent_111,within3,0.681207358674464,48,,latent_111,final,False,0.6868664717348928,-0.005659113060428851,-0.026218628167641325,0.014242507309941517
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,spearman,0.7001197847560077,48,,final_minus_reverse,final,False,0.6996928595999803,0.0004269251560273038,-0.006105160265860743,0.007120873568725715
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,mae,3.1132797270955166,48,,final_minus_reverse,final,True,3.111086744639376,-0.002192982456140337,-0.05964912280701756,0.05646929824561404
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,exact,0.14809332358674465,48,,final_minus_reverse,final,False,0.13751827485380116,0.010575048732943473,-0.00827850877192982,0.029605263157894735
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,spearman_fin,0.7782987824009494,48,,final_minus_reverse,final,False,0.7802068744164332,-0.001908092015483669,-0.010266411220358589,0.005984665690668963
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,mae_fin,2.3749644996887644,48,,final_minus_reverse,final,False,2.3461511468622533,-0.028813352826510718,-0.08847116066821469,0.029654376827485358
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,exact_fin,0.15778060858846463,48,,final_minus_reverse,final,False,0.141838306960211,0.01594230162825364,-0.005484431437048501,0.03746227452055383
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,exact_1_3,0.2986111111111111,48,,final_minus_reverse,final,False,0.3055555555555556,-0.006944444444444445,-0.0625,0.041666666666666664
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,exact_4_10,0.15773809523809523,48,,final_minus_reverse,final,False,0.11904761904761903,0.038690476190476185,0.002976190476190476,0.0744047619047619
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,exact_11p,0.09542824074074074,48,,final_minus_reverse,final,False,0.10011574074074074,-0.004687499999999997,-0.026157407407407404,0.01689814814814815
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,within1,0.3684576023391813,48,,final_minus_reverse,final,False,0.3851120857699805,-0.016654483430799217,-0.03939449317738791,0.007261970029239766
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,within2,0.5475816276803119,48,,final_minus_reverse,final,False,0.5466496101364523,0.0009320175438596497,-0.01567982456140351,0.017653508771929824
+"third look, no decision weight",test_stable,contrast,T2:final_vs_final_minus_reverse,within3,0.681207358674464,48,,final_minus_reverse,final,False,0.6751827485380116,0.006024610136452246,-0.008674463937621823,0.020766477826510723
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,spearman,0.7001197847560077,48,,reverse_only,final,True,0.7069966583124477,-0.006876873556440123,-0.016510769878126694,0.0029297124551574817
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,mae,3.1132797270955166,48,,reverse_only,final,False,3.043311403508772,-0.06996832358674461,-0.13784143518518518,-0.0026434576023391144
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,exact,0.14809332358674465,48,,reverse_only,final,False,0.16030701754385965,-0.012213693957115005,-0.03749999999999999,0.013499025341130608
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,spearman_fin,0.7782987824009494,48,,reverse_only,final,False,0.7863106224271084,-0.008011840026158908,-0.016816359514453535,0.00035194258624501477
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,mae_fin,2.3749644996887644,48,,reverse_only,final,False,2.293100423648992,-0.08186407603977265,-0.15003902154794665,-0.018605221054064935
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,exact_fin,0.15778060858846463,48,,reverse_only,final,False,0.1684146922657952,-0.010634083677330576,-0.0396574315947139,0.017580593001089315
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,exact_1_3,0.2986111111111111,48,,reverse_only,final,False,0.3541666666666667,-0.05555555555555556,-0.13194444444444445,0.020833333333333332
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,exact_4_10,0.15773809523809523,48,,reverse_only,final,False,0.18154761904761904,-0.023809523809523808,-0.0625,0.014880952380952378
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,exact_11p,0.09542824074074074,48,,reverse_only,final,False,0.08657407407407407,0.008854166666666668,-0.016898148148148148,0.03483940972222221
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,within1,0.3684576023391813,48,,reverse_only,final,False,0.38522782651072124,-0.01677022417153996,-0.04205165692007796,0.008175103557504879
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,within2,0.5475816276803119,48,,reverse_only,final,False,0.5638218810916179,-0.016240253411306037,-0.03763508162768031,0.004166666666666672
+"third look, no decision weight",test_stable,contrast,T3:final_vs_reverse_only,within3,0.681207358674464,48,,reverse_only,final,False,0.689942738791423,-0.008735380116959063,-0.027065058479532153,0.00921052631578948
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,spearman,0.7001197847560077,48,,grid,final,False,0.6902581207921766,0.009861663963831133,-0.01208799418890363,0.03168745239323796
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,mae,3.1132797270955166,48,,grid,final,False,3.0994030214424946,-0.013876705653021413,-0.1625042641325536,0.12259015594541907
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,exact,0.14809332358674465,48,,grid,final,True,0.16573464912280703,-0.017641325536062378,-0.05397813109161793,0.01725146198830409
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,spearman_fin,0.7782987824009494,48,,grid,final,False,0.7573500587819474,0.02094872361900225,-0.004040500035203026,0.04785444578050517
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,mae_fin,2.3749644996887644,48,,grid,final,False,2.402267899118712,0.027303399429947417,-0.11925115715145704,0.17397852525513127
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,exact_fin,0.15778060858846463,48,,grid,final,False,0.17106995941651515,-0.013289350828050517,-0.05490424738060429,0.02570888644200369
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,exact_1_3,0.2986111111111111,48,,grid,final,False,0.3819444444444444,-0.08333333333333333,-0.1875,0.02083333333333334
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,exact_4_10,0.15773809523809523,48,,grid,final,False,0.17559523809523805,-0.017857142857142856,-0.0744047619047619,0.038690476190476185
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,exact_11p,0.09542824074074074,48,,grid,final,False,0.09212962962962963,0.0032986111111111085,-0.02685185185185185,0.032638888888888884
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,within1,0.3684576023391813,48,,grid,final,False,0.38944322612085763,-0.020985623781676413,-0.06513234039961013,0.021888553849902518
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,within2,0.5475816276803119,48,,grid,final,False,0.5670565302144249,-0.019474902534113058,-0.05131609405458089,0.012390350877192991
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:final,within3,0.681207358674464,48,,grid,final,False,0.6834551656920079,-0.002247807017543863,-0.023464912280701744,0.018695175438596476
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,spearman,0.7069966583124477,48,,grid,reverse_only,False,0.6902581207921766,0.016738537520271254,-0.0004756683375104437,0.03420885240060934
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,mae,3.043311403508772,48,,grid,reverse_only,False,3.0994030214424946,0.0560916179337232,-0.06030823586744642,0.16481603313840157
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,exact,0.16030701754385965,48,,grid,reverse_only,True,0.16573464912280703,-0.005427631578947371,-0.039692982456140356,0.027083333333333324
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,spearman_fin,0.7863106224271084,48,,grid,reverse_only,False,0.7573500587819474,0.02896056364516116,0.00870423800002455,0.051451024720785735
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,mae_fin,2.293100423648992,48,,grid,reverse_only,False,2.402267899118712,0.10916747546972007,0.000788401892189684,0.21827196476178187
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,exact_fin,0.1684146922657952,48,,grid,reverse_only,False,0.17106995941651515,-0.0026552671507199407,-0.03977567456990106,0.03435914675629022
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,exact_1_3,0.3541666666666667,48,,grid,reverse_only,False,0.3819444444444444,-0.027777777777777773,-0.11805555555555554,0.05555555555555556
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,exact_4_10,0.18154761904761904,48,,grid,reverse_only,False,0.17559523809523805,0.005952380952380952,-0.05059523809523809,0.0625
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,exact_11p,0.08657407407407407,48,,grid,reverse_only,False,0.09212962962962963,-0.005555555555555559,-0.037731481481481484,0.026157407407407407
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,within1,0.38522782651072124,48,,grid,reverse_only,False,0.38944322612085763,-0.004215399610136457,-0.03859039961013646,0.031149031432748497
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,within2,0.5638218810916179,48,,grid,reverse_only,False,0.5670565302144249,-0.003234649122807016,-0.028453947368421054,0.021929824561403508
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:reverse_only,within3,0.689942738791423,48,,grid,reverse_only,False,0.6834551656920079,0.006487573099415201,-0.012500913742690063,0.02569444444444444
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,spearman,0.7028901911641849,48,,grid,latent_111,False,0.6902581207921766,0.012632070372008452,-0.0031495789105115543,0.02852447448277556
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,mae,3.064047270955166,48,,grid,latent_111,False,3.0994030214424946,0.03535575048732944,-0.09134198343079923,0.14500487329434694
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,exact,0.16469907407407408,48,,grid,latent_111,True,0.16573464912280703,-0.001035575048732944,-0.03605811403508771,0.031647630360623756
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,spearman_fin,0.7800310660701527,48,,grid,latent_111,False,0.7573500587819474,0.022681007288205435,0.004253163162194692,0.0423010803722636
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,mae_fin,2.3181247901207267,48,,grid,latent_111,False,2.402267899118712,0.08414310899798516,-0.02392656477795796,0.19140114699022878
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,exact_fin,0.17286353137746327,48,,grid,latent_111,False,0.17106995941651515,0.0017935719609481196,-0.035278950030304526,0.03669684928978901
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,exact_1_3,0.3680555555555555,48,,grid,latent_111,False,0.3819444444444444,-0.013888888888888881,-0.11111111111111112,0.08333333333333336
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,exact_4_10,0.18154761904761904,48,,grid,latent_111,False,0.17559523809523805,0.005952380952380956,-0.05059523809523809,0.06249999999999999
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,exact_11p,0.09126157407407408,48,,grid,latent_111,False,0.09212962962962963,-0.0008680555555555559,-0.03206018518518519,0.027662037037037037
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,within1,0.3895650584795321,48,,grid,latent_111,False,0.38944322612085763,0.00012183235867446046,-0.03629492568226121,0.0360870492202729
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,within2,0.5511574074074074,48,,grid,latent_111,False,0.5670565302144249,-0.015899122807017548,-0.046655701754385964,0.013268914473684189
+"third look, no decision weight",test_stable,contrast,exact_vs_grid:latent_111,within3,0.6868664717348928,48,,grid,latent_111,False,0.6834551656920079,0.003411306042884988,-0.018096217105263147,0.024342105263157887
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,spearman,0.7001197847560077,48,,plan2_H2,final,True,0.7028901911641849,-0.002770406408177318,-0.014265611946533011,0.008612585385031173
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,mae,3.1132797270955166,48,,plan2_H2,final,False,3.064047270955166,-0.04923245614035085,-0.1391474780701754,0.03804824561403508
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,exact,0.14809332358674465,48,,plan2_H2,final,False,0.16469907407407408,-0.016605750487329433,-0.044840551900584794,0.01043006822612084
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,spearman_fin,0.7782987824009494,48,,plan2_H2,final,False,0.7800310660701527,-0.001732283669203186,-0.01342268652990888,0.010345450406039585
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,mae_fin,2.3749644996887644,48,,plan2_H2,final,False,2.3181247901207267,-0.056839709568037744,-0.14285109603051746,0.02827763214203809
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,exact_fin,0.15778060858846463,48,,plan2_H2,final,False,0.17286353137746327,-0.015082922788998638,-0.04653201791498762,0.014505629691569587
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,exact_1_3,0.2986111111111111,48,,plan2_H2,final,False,0.3680555555555555,-0.06944444444444446,-0.1388888888888889,0.0
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,exact_4_10,0.15773809523809523,48,,plan2_H2,final,False,0.18154761904761904,-0.023809523809523808,-0.0744047619047619,0.026785714285714284
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,exact_11p,0.09542824074074074,48,,plan2_H2,final,False,0.09126157407407408,0.004166666666666665,-0.01712962962962963,0.025462962962962965
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,within1,0.3684576023391813,48,,plan2_H2,final,False,0.3895650584795321,-0.02110745614035087,-0.05471491228070175,0.0124451754385965
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,within2,0.5475816276803119,48,,plan2_H2,final,False,0.5511574074074074,-0.003575779727095505,-0.026614278752436632,0.019112146686159816
+"third look, no decision weight",test_stable,contrast,final_vs_plan2_H2,within3,0.681207358674464,48,,plan2_H2,final,False,0.6868664717348928,-0.005659113060428851,-0.026218628167641325,0.014242507309941517
+"third look, no decision weight",test_stable,contrast,S3:final_vs_latent_111,rps,0.1097026015207545,48,,latent_111 (own S3 re-fit),final (S3 re-fit),True,0.10963704976421855,-6.555175653594897e-05,-0.0016438432112143141,0.0015525144553018612
+"third look, no decision weight",test_stable,contrast,S3:final_vs_latent_111,logloss_points,0.44344201508673015,48,,latent_111 (own S3 re-fit),final (S3 re-fit),False,0.4455740178438967,0.0021320027571665196,-0.00877584432135359,0.013016561988395191
+"third look, no decision weight",test_shift,mean,final,spearman,0.7193764782800993,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,mae,3.1673448773448776,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,exact,0.1254184704184704,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,spearman_fin,0.8223470440807901,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,mae_fin,2.1012186102511183,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,exact_fin,0.13032679738562092,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,exact_1_3,0.29999999999999993,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,exact_4_10,0.0857142857142857,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,exact_11p,0.09999999999999999,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,within1,0.37008297258297257,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,within2,0.5714971139971141,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,within3,0.6939466089466089,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final,logloss_points,0.501380870429512,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,spearman,0.7149824514786152,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,mae,3.17461038961039,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,exact,0.12649711399711397,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,spearman_fin,0.8119565457762052,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,mae_fin,2.1581191950464396,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,exact_fin,0.13979575163398691,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,exact_1_3,0.28333333333333327,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,exact_4_10,0.10714285714285714,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,exact_11p,0.09375,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,within1,0.37546897546897545,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,within2,0.5625757575757576,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,within3,0.6969516594516594,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,reverse_only,logloss_points,0.505581543179047,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,spearman,0.7115908814118533,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,mae,3.245367965367965,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,exact,0.12519841269841267,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,spearman_fin,0.8099784387439184,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,mae_fin,2.2408290333677328,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,exact_fin,0.12260685414516684,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,exact_1_3,0.2666666666666666,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,exact_4_10,0.07857142857142856,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,exact_11p,0.11537878787878786,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,within1,0.3566847041847041,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,within2,0.5440079365079364,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,within3,0.6947258297258296,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,final_minus_reverse,logloss_points,0.5164672477811728,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,spearman,0.7107841068609679,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,mae,3.2524386724386725,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,exact,0.1005952380952381,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,spearman_fin,0.8016650081085066,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,mae_fin,2.2755564155486754,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,exact_fin,0.11653809769521846,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,exact_1_3,0.2666666666666666,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,exact_4_10,0.07857142857142857,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,exact_11p,0.06749999999999999,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,within1,0.36461038961038966,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,within2,0.5460533910533911,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,within3,0.7065945165945167,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,latent_111,logloss_points,0.5199804983912302,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,spearman,0.7107841068609679,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,mae,3.2524386724386725,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,exact,0.1005952380952381,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,spearman_fin,0.8016650081085066,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,mae_fin,2.2755564155486754,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,exact_fin,0.11653809769521846,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,exact_1_3,0.2666666666666666,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,exact_4_10,0.07857142857142857,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,exact_11p,0.06749999999999999,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,within1,0.36461038961038966,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,within2,0.5460533910533911,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,within3,0.7065945165945167,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,plan2_H2,logloss_points,0.5199804983912302,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",test_shift,mean,grid,spearman,0.6662680212505223,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,mae,3.3599855699855703,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,exact,0.15455988455988454,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,spearman_fin,0.7595556906973316,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,mae_fin,2.4219078947368424,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,exact_fin,0.16585461816305472,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,exact_1_3,0.33333333333333326,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,exact_4_10,0.15714285714285714,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,exact_11p,0.10287878787878788,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,within1,0.4028138528138528,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,within2,0.5620815295815296,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,grid,within3,0.6767965367965367,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,spearman,0.6554034848805343,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,mae,3.7997907647907647,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,exact,0.08962121212121213,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,spearman_fin,0.7294657599882057,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,mae_fin,2.8265617475060205,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,exact_fin,0.08960096319229445,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,exact_1_3,0.08333333333333333,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,exact_4_10,0.07142857142857142,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,exact_11p,0.10196969696969696,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,within1,0.26982323232323235,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,within2,0.46988455988455985,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,within3,0.5916810966810966,20,,,,,,,,
+"third look, no decision weight",test_shift,mean,H1,logloss_points,0.5492728717160171,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,spearman,0.7166236475867652,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,mae,3.1730158730158733,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,exact,0.1204292929292929,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,spearman_fin,0.8188097080937637,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,mae_fin,2.1193984348125214,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,exact_fin,0.12574754901960783,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,exact_1_3,0.31666666666666665,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,exact_4_10,0.0857142857142857,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,exact_11p,0.0875,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,within1,0.3744011544011544,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,within2,0.5808152958152959,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,within3,0.701089466089466,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,rps,0.10720616504856169,20,S3 matrix,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,final,logloss_points,0.44703936651718745,20,S3 matrix,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,spearman,0.7065544120706324,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,mae,3.2351443001443,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,exact,0.11206709956709957,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,spearman_fin,0.799829537077989,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,mae_fin,2.2638729790161682,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,exact_fin,0.12527928276573788,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,exact_1_3,0.26666666666666666,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,exact_4_10,0.1,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,exact_11p,0.07659090909090908,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,within1,0.3826839826839826,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,within2,0.5507178932178933,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,within3,0.7157936507936509,20,,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,rps,0.11025954771525515,20,S3 matrix,,,,,,,
+"third look, no decision weight","test_shift [S3 matrix, D0 order]",mean,latent_111,logloss_points,0.463400926040323,20,S3 matrix,,,,,,,
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,spearman,0.7193764782800993,20,,latent_111,final,True,0.7107841068609679,0.008592371419131453,-0.006445250973282983,0.025120552048570693
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,mae,3.1673448773448776,20,,latent_111,final,False,3.2524386724386725,0.0850937950937951,-0.026309884559884526,0.2023423520923519
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,exact,0.1254184704184704,20,,latent_111,final,False,0.1005952380952381,0.024823232323232323,-0.01053282828282828,0.05891414141414142
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,spearman_fin,0.8223470440807901,20,,latent_111,final,False,0.8016650081085066,0.02068203597228364,0.0072554041353383066,0.03585030130473239
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,mae_fin,2.1012186102511183,20,,latent_111,final,False,2.2755564155486754,0.17433780529755766,0.09107401315789478,0.2651253547471621
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,exact_fin,0.13032679738562092,20,,latent_111,final,False,0.11653809769521846,0.013788699690402476,-0.02595430749054008,0.052569901315789466
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,exact_1_3,0.29999999999999993,20,,latent_111,final,False,0.2666666666666666,0.03333333333333334,-0.09999999999999999,0.16666666666666669
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,exact_4_10,0.0857142857142857,20,,latent_111,final,False,0.07857142857142857,0.007142857142857143,-0.04285714285714286,0.06428571428571428
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,exact_11p,0.09999999999999999,20,,latent_111,final,False,0.06749999999999999,0.0325,-0.014166666666666666,0.0825
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,within1,0.37008297258297257,20,,latent_111,final,False,0.36461038961038966,0.0054725829725829735,-0.041533820346320346,0.05671085858585857
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,within2,0.5714971139971141,20,,latent_111,final,False,0.5460533910533911,0.025443722943722945,-0.0013747294372294374,0.05293290043290044
+"third look, no decision weight",test_shift,contrast,T1:final_vs_latent_111,within3,0.6939466089466089,20,,latent_111,final,False,0.7065945165945167,-0.012647907647907661,-0.03810245310245312,0.010909090909090905
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,spearman,0.7193764782800993,20,,final_minus_reverse,final,False,0.7115908814118533,0.007785596868245962,-0.003692563191284405,0.01983691573155161
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,mae,3.1673448773448776,20,,final_minus_reverse,final,True,3.245367965367965,0.07802308802308804,0.0009368686868687863,0.15757936507936504
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,exact,0.1254184704184704,20,,final_minus_reverse,final,False,0.12519841269841267,0.00022005772005772027,-0.04180826118326119,0.039430014430014426
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,spearman_fin,0.8223470440807901,20,,final_minus_reverse,final,False,0.8099784387439184,0.012368605336871563,0.001978775062656594,0.02370745798319325
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,mae_fin,2.1012186102511183,20,,final_minus_reverse,final,False,2.2408290333677328,0.1396104231166151,0.047684017027863825,0.23340634674922592
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,exact_fin,0.13032679738562092,20,,final_minus_reverse,final,False,0.12260685414516684,0.007719943240454078,-0.03957118593051255,0.05242744883040935
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,exact_1_3,0.29999999999999993,20,,final_minus_reverse,final,False,0.2666666666666666,0.03333333333333334,-0.13333333333333336,0.20000000000000004
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,exact_4_10,0.0857142857142857,20,,final_minus_reverse,final,False,0.07857142857142856,0.007142857142857143,-0.03571428571428571,0.05714285714285713
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,exact_11p,0.09999999999999999,20,,final_minus_reverse,final,False,0.11537878787878786,-0.01537878787878788,-0.07037878787878789,0.037121212121212124
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,within1,0.37008297258297257,20,,final_minus_reverse,final,False,0.3566847041847041,0.013398268398268404,-0.021364177489177495,0.045887445887445893
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,within2,0.5714971139971141,20,,final_minus_reverse,final,False,0.5440079365079364,0.027489177489177497,0.006926406926406925,0.0501082251082251
+"third look, no decision weight",test_shift,contrast,T2:final_vs_final_minus_reverse,within3,0.6939466089466089,20,,final_minus_reverse,final,False,0.6947258297258296,-0.0007792207792207878,-0.03155898268398271,0.027491883116883078
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,spearman,0.7193764782800993,20,,reverse_only,final,True,0.7149824514786152,0.004394026801484066,-0.0037974615683594114,0.013402088472168531
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,mae,3.1673448773448776,20,,reverse_only,final,False,3.17461038961039,0.007265512265512331,-0.06901930014430005,0.09155844155844158
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,exact,0.1254184704184704,20,,reverse_only,final,False,0.12649711399711397,-0.0010786435786435795,-0.02971500721500721,0.024534632034632027
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,spearman_fin,0.8223470440807901,20,,reverse_only,final,False,0.8119565457762052,0.010390498304584966,0.0035737920168067124,0.018719864919652048
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,mae_fin,2.1012186102511183,20,,reverse_only,final,False,2.1581191950464396,0.05690058479532163,-0.003596491228070181,0.1195656067251461
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,exact_fin,0.13032679738562092,20,,reverse_only,final,False,0.13979575163398691,-0.009468954248366015,-0.03762580086859305,0.015347587719298235
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,exact_1_3,0.29999999999999993,20,,reverse_only,final,False,0.28333333333333327,0.01666666666666667,-0.08333333333333333,0.11666666666666667
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,exact_4_10,0.0857142857142857,20,,reverse_only,final,False,0.10714285714285714,-0.02142857142857143,-0.07857142857142857,0.02857142857142857
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,exact_11p,0.09999999999999999,20,,reverse_only,final,False,0.09375,0.006249999999999999,-0.025,0.0375
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,within1,0.37008297258297257,20,,reverse_only,final,False,0.37546897546897545,-0.005386002886002888,-0.0445298520923521,0.039579725829725736
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,within2,0.5714971139971141,20,,reverse_only,final,False,0.5625757575757576,0.008921356421356436,-0.017016865079365066,0.03641206709956709
+"third look, no decision weight",test_shift,contrast,T3:final_vs_reverse_only,within3,0.6939466089466089,20,,reverse_only,final,False,0.6969516594516594,-0.003005050505050513,-0.017651515151515154,0.011363636363636364
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,spearman,0.7193764782800993,20,,grid,final,False,0.6662680212505223,0.053108457029577005,0.011110168469301598,0.10456558799929372
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,mae,3.1673448773448776,20,,grid,final,False,3.3599855699855703,0.19264069264069267,-0.05043290043290034,0.4885443722943722
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,exact,0.1254184704184704,20,,grid,final,True,0.15455988455988454,-0.02914141414141414,-0.06823232323232324,0.004040404040404036
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,spearman_fin,0.8223470440807901,20,,grid,final,False,0.7595556906973316,0.06279135338345862,0.020498465833701896,0.11427929658705584
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,mae_fin,2.1012186102511183,20,,grid,final,False,2.4219078947368424,0.3206892844857241,0.09468388802889577,0.5927493442552458
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,exact_fin,0.13032679738562092,20,,grid,final,False,0.16585461816305472,-0.035527820777433786,-0.07995654347265223,-0.0027850877192982446
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,exact_1_3,0.29999999999999993,20,,grid,final,False,0.33333333333333326,-0.033333333333333326,-0.11666666666666667,0.06666666666666668
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,exact_4_10,0.0857142857142857,20,,grid,final,False,0.15714285714285714,-0.07142857142857142,-0.14285714285714285,-0.007142857142857143
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,exact_11p,0.09999999999999999,20,,grid,final,False,0.10287878787878788,-0.002878787878787878,-0.056136363636363616,0.047499999999999994
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,within1,0.37008297258297257,20,,grid,final,False,0.4028138528138528,-0.03273088023088022,-0.07180014430014428,0.00952380952380953
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,within2,0.5714971139971141,20,,grid,final,False,0.5620815295815296,0.009415584415584419,-0.026839826839826823,0.046103896103896105
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:final,within3,0.6939466089466089,20,,grid,final,False,0.6767965367965367,0.017150072150072138,-0.02132756132756134,0.06058441558441559
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,spearman,0.7149824514786152,20,,grid,reverse_only,False,0.6662680212505223,0.04871443022809293,0.01118157635427797,0.09475439288467621
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,mae,3.17461038961039,20,,grid,reverse_only,False,3.3599855699855703,0.18537518037518036,-0.020206890331890368,0.4394877344877345
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,exact,0.12649711399711397,20,,grid,reverse_only,True,0.15455988455988454,-0.028062770562770567,-0.05704058441558439,-6.938893903907229e-19
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,spearman_fin,0.8119565457762052,20,,grid,reverse_only,False,0.7595556906973316,0.05240085507887367,0.01347566987321247,0.09902874373433583
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,mae_fin,2.1581191950464396,20,,grid,reverse_only,False,2.4219078947368424,0.2637886996904025,0.06456561747506019,0.5029633965428277
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,exact_fin,0.13979575163398691,20,,grid,reverse_only,False,0.16585461816305472,-0.02605886652906777,-0.057048433737530095,0.004324593653250746
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,exact_1_3,0.28333333333333327,20,,grid,reverse_only,False,0.33333333333333326,-0.05,-0.11666666666666667,0.016666666666666666
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,exact_4_10,0.10714285714285714,20,,grid,reverse_only,False,0.15714285714285714,-0.05,-0.10714285714285714,0.007142857142857143
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,exact_11p,0.09375,20,,grid,reverse_only,False,0.10287878787878788,-0.009128787878787879,-0.0637121212121212,0.041666666666666664
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,within1,0.37546897546897545,20,,grid,reverse_only,False,0.4028138528138528,-0.02734487734487735,-0.06580357142857143,0.009994588744588712
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,within2,0.5625757575757576,20,,grid,reverse_only,False,0.5620815295815296,0.0004942279942279831,-0.03637472943722944,0.0368473124098124
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:reverse_only,within3,0.6969516594516594,20,,grid,reverse_only,False,0.6767965367965367,0.02015512265512265,-0.0183016774891775,0.06384406565656563
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,spearman,0.7107841068609679,20,,grid,latent_111,False,0.6662680212505223,0.044516085610445545,0.011206239412761144,0.08466129139402795
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,mae,3.2524386724386725,20,,grid,latent_111,False,3.3599855699855703,0.10754689754689757,-0.077047619047619,0.33720598845598837
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,exact,0.1005952380952381,20,,grid,latent_111,True,0.15455988455988454,-0.05396464646464647,-0.07669191919191917,-0.03282196969696979
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,spearman_fin,0.8016650081085066,20,,grid,latent_111,False,0.7595556906973316,0.04210931741117498,0.007580182072829114,0.08231042219519386
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,mae_fin,2.2755564155486754,20,,grid,latent_111,False,2.4219078947368424,0.14635147918816643,-0.03715199303405581,0.3571839095287237
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,exact_fin,0.11653809769521846,20,,grid,latent_111,False,0.16585461816305472,-0.04931652046783626,-0.07966118421052631,-0.019392086988304108
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,exact_1_3,0.2666666666666666,20,,grid,latent_111,False,0.33333333333333326,-0.06666666666666667,-0.18333333333333335,0.05
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,exact_4_10,0.07857142857142857,20,,grid,latent_111,False,0.15714285714285714,-0.07857142857142857,-0.14285714285714285,-0.02142857142857143
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,exact_11p,0.06749999999999999,20,,grid,latent_111,False,0.10287878787878788,-0.035378787878787885,-0.06242424242424242,-0.00909090909090909
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,within1,0.36461038961038966,20,,grid,latent_111,False,0.4028138528138528,-0.0382034632034632,-0.07954545454545456,0.001082251082251072
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,within2,0.5460533910533911,20,,grid,latent_111,False,0.5620815295815296,-0.01602813852813853,-0.05205898268398269,0.01794372294372294
+"third look, no decision weight",test_shift,contrast,exact_vs_grid:latent_111,within3,0.7065945165945167,20,,grid,latent_111,False,0.6767965367965367,0.029797979797979803,-0.001515151515151525,0.06753246753246753
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,spearman,0.7193764782800993,20,,plan2_H2,final,True,0.7107841068609679,0.008592371419131453,-0.006445250973282983,0.025120552048570693
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,mae,3.1673448773448776,20,,plan2_H2,final,False,3.2524386724386725,0.0850937950937951,-0.026309884559884526,0.2023423520923519
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,exact,0.1254184704184704,20,,plan2_H2,final,False,0.1005952380952381,0.024823232323232323,-0.01053282828282828,0.05891414141414142
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,spearman_fin,0.8223470440807901,20,,plan2_H2,final,False,0.8016650081085066,0.02068203597228364,0.0072554041353383066,0.03585030130473239
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,mae_fin,2.1012186102511183,20,,plan2_H2,final,False,2.2755564155486754,0.17433780529755766,0.09107401315789478,0.2651253547471621
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,exact_fin,0.13032679738562092,20,,plan2_H2,final,False,0.11653809769521846,0.013788699690402476,-0.02595430749054008,0.052569901315789466
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,exact_1_3,0.29999999999999993,20,,plan2_H2,final,False,0.2666666666666666,0.03333333333333334,-0.09999999999999999,0.16666666666666669
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,exact_4_10,0.0857142857142857,20,,plan2_H2,final,False,0.07857142857142857,0.007142857142857143,-0.04285714285714286,0.06428571428571428
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,exact_11p,0.09999999999999999,20,,plan2_H2,final,False,0.06749999999999999,0.0325,-0.014166666666666666,0.0825
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,within1,0.37008297258297257,20,,plan2_H2,final,False,0.36461038961038966,0.0054725829725829735,-0.041533820346320346,0.05671085858585857
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,within2,0.5714971139971141,20,,plan2_H2,final,False,0.5460533910533911,0.025443722943722945,-0.0013747294372294374,0.05293290043290044
+"third look, no decision weight",test_shift,contrast,final_vs_plan2_H2,within3,0.6939466089466089,20,,plan2_H2,final,False,0.7065945165945167,-0.012647907647907661,-0.03810245310245312,0.010909090909090905
+"third look, no decision weight",test_shift,contrast,S3:final_vs_latent_111,rps,0.10720616504856169,20,,latent_111 (own S3 re-fit),final (S3 re-fit),True,0.11025954771525515,0.0030533826666934785,-5.623101147420251e-05,0.0061892871877655495
+"third look, no decision weight",test_shift,contrast,S3:final_vs_latent_111,logloss_points,0.44703936651718745,20,,latent_111 (own S3 re-fit),final (S3 re-fit),False,0.463400926040323,0.016361559523135498,0.0031884321802554557,0.03147472748759698
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,spearman,0.7057835181454465,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,mae,3.1291812418747407,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,exact,0.1414242491254875,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,spearman_fin,0.7912541534832558,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,mae_fin,2.2944510027953386,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,exact_fin,0.14970595823468708,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,exact_1_3,0.29901960784313725,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,exact_4_10,0.13655462184873945,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,exact_11p,0.09677287581699345,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,within1,0.36893565241088455,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,within2,0.5546155942440772,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,within3,0.6849541969898008,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final,logloss_points,0.48440920913873015,68,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,spearman,0.7093454210083794,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,mae,3.081928752362189,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,exact,0.15036292826540504,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,spearman_fin,0.7938535410591955,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,mae_fin,2.2534000622953,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,exact_fin,0.1599973567858516,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,exact_1_3,0.33333333333333326,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,exact_4_10,0.15966386554621848,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,exact_11p,0.08868464052287582,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,within1,0.3823575762043254,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,within2,0.5634553741751884,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,within3,0.6920041860444337,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,reverse_only,logloss_points,0.4830070909591201,68,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,spearman,0.7031922777799431,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,mae,3.1505812213242557,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,exact,0.13389478598456928,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,spearman_fin,0.7889632168656937,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,mae_fin,2.315174054657983,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,exact_fin,0.13618199730872743,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,exact_1_3,0.2941176470588235,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,exact_4_10,0.10714285714285714,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,exact_11p,0.10460487225193107,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,within1,0.37675109118607575,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,within2,0.5458726473045358,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,within3,0.6809307135932523,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,final_minus_reverse,logloss_points,0.4911042465918156,68,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,spearman,0.7052119310750034,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,mae,3.1194565066856086,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,exact,0.14584500466853406,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,spearman_fin,0.7863939901990803,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,mae_fin,2.3056046799524763,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,exact_fin,0.1562972273532736,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,exact_1_3,0.338235294117647,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,exact_4_10,0.15126050420168066,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,exact_11p,0.08427287581699347,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,within1,0.38222544998860786,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,within2,0.5496562261268144,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,within3,0.6926688378700762,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,latent_111,logloss_points,0.4900787656278331,68,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,spearman,0.7052119310750034,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,mae,3.1194565066856086,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,exact,0.14584500466853406,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,spearman_fin,0.7863939901990803,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,mae_fin,2.3056046799524763,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,exact_fin,0.1562972273532736,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,exact_1_3,0.338235294117647,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,exact_4_10,0.15126050420168066,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,exact_11p,0.08427287581699347,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,within1,0.38222544998860786,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,within2,0.5496562261268144,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,within3,0.6926688378700762,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,plan2_H2,logloss_points,0.4900787656278331,68,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,spearman,0.6832022091622783,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,mae,3.176044947484576,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,exact,0.16244795366312398,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,spearman_fin,0.757998774051178,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,mae_fin,2.4080443684181616,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,exact_fin,0.16953603551843854,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,exact_1_3,0.36764705882352944,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,exact_4_10,0.17016806722689073,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,exact_11p,0.095291146761735,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,within1,0.39337576338350333,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,within2,0.5655932947341615,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,grid,within3,0.6814967454286339,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,spearman,0.6197345369455067,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,mae,3.7802360178521166,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,exact,0.09962199393313945,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,spearman_fin,0.7030432165721731,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,mae_fin,2.962340612199472,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,exact_fin,0.10060977306299199,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,exact_1_3,0.17647058823529413,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,exact_4_10,0.08613445378151262,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,exact_11p,0.08509729649435532,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,within1,0.28831660255808855,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,within2,0.4531265217410729,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,within3,0.5866829506922385,68,,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,mean,H1,logloss_points,0.5443228608118966,68,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,spearman,0.7059178309780085,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,mae,3.1213978573885695,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,exact,0.1445277074147043,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,spearman_fin,0.7910942931590355,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,mae_fin,2.2816617668739316,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,exact_fin,0.15042923774256864,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,exact_1_3,0.29901960784313725,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,exact_4_10,0.1449579831932773,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,exact_11p,0.09803921568627451,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,within1,0.37020140592122014,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,within2,0.55677574059927,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,within3,0.690194012214136,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,rps,0.1089683554995213,68,S3 matrix,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,final,logloss_points,0.4445000596250999,68,S3 matrix,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,spearman,0.7041929467732956,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,mae,3.1158491147655227,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,exact,0.14697449952867908,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,spearman_fin,0.7854213488205476,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,mae_fin,2.2986357004101947,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,exact_fin,0.15751765876629287,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,exact_1_3,0.3333333333333333,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,exact_4_10,0.16176470588235292,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,exact_11p,0.08106431966726084,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,within1,0.39051678885270213,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,within2,0.5495145506368417,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,within3,0.693168583222763,68,,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,rps,0.10982013739687639,68,S3 matrix,,,,,,,
+"third look, no decision weight","pooled test_stable+test_shift [S3 matrix, D0 order]",mean,latent_111,logloss_points,0.45081722613696323,68,S3 matrix,,,,,,,
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,spearman,0.7057835181454465,68,,latent_111,final,True,0.7052119310750034,0.0005715870704429089,-0.008962928806417761,0.009861720814440882
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,mae,3.1291812418747407,68,,latent_111,final,False,3.1194565066856086,-0.009724735189131454,-0.08137845449184457,0.06344468010489682
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,exact,0.1414242491254875,68,,latent_111,final,False,0.14584500466853406,-0.004420755543046563,-0.027692120508490476,0.017616099071207425
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,spearman_fin,0.7912541534832558,68,,latent_111,final,False,0.7863939901990803,0.0048601632841752925,-0.004875991611815016,0.014464875152847495
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,mae_fin,2.2944510027953386,68,,latent_111,final,False,2.3056046799524763,0.011153677157137373,-0.05879323272136514,0.08005806895771725
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,exact_fin,0.14970595823468708,68,,latent_111,final,False,0.1562972273532736,-0.006591269118586547,-0.031623731600483325,0.017805282878115107
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,exact_1_3,0.29901960784313725,68,,latent_111,final,False,0.338235294117647,-0.03921568627450981,-0.10294117647058823,0.02450980392156863
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,exact_4_10,0.13655462184873945,68,,latent_111,final,False,0.15126050420168066,-0.014705882352941175,-0.05252100840336134,0.02521008403361344
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,exact_11p,0.09677287581699345,68,,latent_111,final,False,0.08427287581699347,0.012499999999999999,-0.007518382352941179,0.03390522875816993
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,within1,0.36893565241088455,68,,latent_111,final,False,0.38222544998860786,-0.013289797577723271,-0.041216996367925154,0.01426808861503133
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,within2,0.5546155942440772,68,,latent_111,final,False,0.5496562261268144,0.004959368117262863,-0.013363565721344353,0.023342488909439376
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T1:final_vs_latent_111,within3,0.6849541969898008,68,,latent_111,final,False,0.6926688378700762,-0.00771464088027556,-0.023741500587475827,0.007874704307560336
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,spearman,0.7057835181454465,68,,final_minus_reverse,final,False,0.7031922777799431,0.0025912403655033796,-0.0033166953286288834,0.008390554275406359
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,mae,3.1291812418747407,68,,final_minus_reverse,final,True,3.1505812213242557,0.021399979449515067,-0.027553015225228832,0.06947199493832619
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,exact,0.1414242491254875,68,,final_minus_reverse,final,False,0.13389478598456928,0.0075294631409182486,-0.011033700561564339,0.0258170604765032
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,spearman_fin,0.7912541534832558,68,,final_minus_reverse,final,False,0.7889632168656937,0.0022909366175619876,-0.004524460981105955,0.008913473254269534
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,mae_fin,2.2944510027953386,68,,final_minus_reverse,final,False,2.315174054657983,0.020723051862643928,-0.03291220861409581,0.07373355263157895
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,exact_fin,0.14970595823468708,68,,final_minus_reverse,final,False,0.13618199730872743,0.01352396092595965,-0.007192075036929114,0.033448455427062464
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,exact_1_3,0.29901960784313725,68,,final_minus_reverse,final,False,0.2941176470588235,0.004901960784313725,-0.058823529411764705,0.06862745098039215
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,exact_4_10,0.13655462184873945,68,,final_minus_reverse,final,False,0.10714285714285714,0.029411764705882353,0.002100840336134453,0.0588235294117647
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,exact_11p,0.09677287581699345,68,,final_minus_reverse,final,False,0.10460487225193107,-0.007831996434937611,-0.029482323232323228,0.01315415181224004
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,within1,0.36893565241088455,68,,final_minus_reverse,final,False,0.37675109118607575,-0.007815438775191091,-0.027431578891524706,0.01178562633187246
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,within2,0.5546155942440772,68,,final_minus_reverse,final,False,0.5458726473045358,0.00874294693954137,-0.004791658290110298,0.022688991864688472
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T2:final_vs_final_minus_reverse,within3,0.6849541969898008,68,,final_minus_reverse,final,False,0.6809307135932523,0.004023483396548413,-0.009947262597223894,0.01726677572943053
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,spearman,0.7057835181454465,68,,reverse_only,final,True,0.7093454210083794,-0.0035619028629330085,-0.010812958548977175,0.0036981634912191122
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,mae,3.1291812418747407,68,,reverse_only,final,False,3.081928752362189,-0.0472524895125514,-0.1017912176832455,0.006247791381305316
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,exact,0.1414242491254875,68,,reverse_only,final,False,0.15036292826540504,-0.008938679139917527,-0.029027712161419583,0.01040282580336758
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,spearman_fin,0.7912541534832558,68,,reverse_only,final,False,0.7938535410591955,-0.002599387575940121,-0.0095953348444641,0.003988523219480657
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,mae_fin,2.2944510027953386,68,,reverse_only,final,False,2.2534000622953,-0.041050940500039046,-0.09635465809130671,0.010129369794873522
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,exact_fin,0.14970595823468708,68,,reverse_only,final,False,0.1599973567858516,-0.010291398551164526,-0.03149467436613448,0.011905616703595783
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,exact_1_3,0.29901960784313725,68,,reverse_only,final,False,0.33333333333333326,-0.034313725490196074,-0.0980392156862745,0.024509803921568638
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,exact_4_10,0.13655462184873945,68,,reverse_only,final,False,0.15966386554621848,-0.023109243697478993,-0.05672268907563024,0.008403361344537815
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,exact_11p,0.09677287581699345,68,,reverse_only,final,False,0.08868464052287582,0.008088235294117648,-0.012091503267973855,0.028758169934640518
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,within1,0.36893565241088455,68,,reverse_only,final,False,0.3823575762043254,-0.013421923793440815,-0.03496850833634889,0.008106285376989715
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,within2,0.5546155942440772,68,,reverse_only,final,False,0.5634553741751884,-0.008839779931111194,-0.026224824259847467,0.007951455901339808
+"third look, no decision weight",pooled test_stable+test_shift,contrast,T3:final_vs_reverse_only,within3,0.6849541969898008,68,,reverse_only,final,False,0.6920041860444337,-0.00704998905463302,-0.02064461370672672,0.0063921724989836415
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,spearman,0.7057835181454465,68,,grid,final,False,0.6832022091622783,0.022581308983168152,0.0024513304508038953,0.04497539783972424
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,mae,3.1291812418747407,68,,grid,final,False,3.176044947484576,0.04686370560983567,-0.08045713939483284,0.17968214319220513
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,exact,0.1414242491254875,68,,grid,final,True,0.16244795366312398,-0.02102370453763643,-0.04865570370891579,0.005695587844388151
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,spearman_fin,0.7912541534832558,68,,grid,final,False,0.757998774051178,0.03325537943207765,0.010522520347148134,0.058110383278698455
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,mae_fin,2.2944510027953386,68,,grid,final,False,2.4080443684181616,0.1135933656228229,-0.019697077812032934,0.2468658025000505
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,exact_fin,0.14970595823468708,68,,grid,final,False,0.16953603551843854,-0.01983007728375148,-0.05195626302636637,0.010551636805392941
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,exact_1_3,0.29901960784313725,68,,grid,final,False,0.36764705882352944,-0.06862745098039215,-0.14705882352941177,0.009803921568627456
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,exact_4_10,0.13655462184873945,68,,grid,final,False,0.17016806722689073,-0.03361344537815126,-0.07983193277310924,0.01050420168067227
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,exact_11p,0.09677287581699345,68,,grid,final,False,0.095291146761735,0.0014817290552584623,-0.024989044860368393,0.02787061794414735
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,within1,0.36893565241088455,68,,grid,final,False,0.39337576338350333,-0.02444011097261871,-0.056918972732633716,0.009122442637342017
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,within2,0.5546155942440772,68,,grid,final,False,0.5655932947341615,-0.010977700490084384,-0.036528562381890554,0.013763945570253632
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:final,within3,0.6849541969898008,68,,grid,final,False,0.6814967454286339,0.0034574515611667253,-0.01572550192325734,0.02246896765085617
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,spearman,0.7093454210083794,68,,grid,reverse_only,False,0.6832022091622783,0.02614321184610116,0.009395869279686076,0.045019632977091044
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,mae,3.081928752362189,68,,grid,reverse_only,False,3.176044947484576,0.09411619512238707,-0.007600016082988192,0.2025166888924628
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,exact,0.15036292826540504,68,,grid,reverse_only,True,0.16244795366312398,-0.0120850253977189,-0.03725038699690403,0.013351229846005383
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,spearman_fin,0.7938535410591955,68,,grid,reverse_only,False,0.757998774051178,0.03585476700801778,0.017289265342955464,0.05686576640063026
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,mae_fin,2.2534000622953,68,,grid,reverse_only,False,2.4080443684181616,0.15464430612286195,0.05320301501663622,0.2589580054157886
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,exact_fin,0.1599973567858516,68,,grid,reverse_only,False,0.16953603551843854,-0.009538678732586948,-0.03782126185742615,0.017453745107434093
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,exact_1_3,0.33333333333333326,68,,grid,reverse_only,False,0.36764705882352944,-0.034313725490196074,-0.0980392156862745,0.029411764705882353
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,exact_4_10,0.15966386554621848,68,,grid,reverse_only,False,0.17016806722689073,-0.010504201680672265,-0.05462184873949579,0.03361344537815126
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,exact_11p,0.08868464052287582,68,,grid,reverse_only,False,0.095291146761735,-0.006606506238859183,-0.03421030154486037,0.02121212121212121
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,within1,0.3823575762043254,68,,grid,reverse_only,False,0.39337576338350333,-0.011018187179177892,-0.03735534664423983,0.017163917201649392
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,within2,0.5634553741751884,68,,grid,reverse_only,False,0.5655932947341615,-0.0021379205589731943,-0.022482389686337045,0.018447755697175192
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:reverse_only,within3,0.6920041860444337,68,,grid,reverse_only,False,0.6814967454286339,0.010507440615799744,-0.007666417045287015,0.02951524030664898
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,spearman,0.7052119310750034,68,,grid,latent_111,False,0.6832022091622783,0.02200972191272524,0.007010963421210819,0.03902491313832398
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,mae,3.1194565066856086,68,,grid,latent_111,False,3.176044947484576,0.056588440798967125,-0.047285727688204444,0.1593185643475891
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,exact,0.14584500466853406,68,,grid,latent_111,True,0.16244795366312398,-0.01660294899458986,-0.041996737889733245,0.008131420630453133
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,spearman_fin,0.7863939901990803,68,,grid,latent_111,False,0.757998774051178,0.02839521614790236,0.011661885908209442,0.04681451140827848
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,mae_fin,2.3056046799524763,68,,grid,latent_111,False,2.4080443684181616,0.10243968846568556,0.002857345660142225,0.1985313521693507
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,exact_fin,0.1562972273532736,68,,grid,latent_111,False,0.16953603551843854,-0.013238808165164932,-0.04129187927105828,0.014010493225928136
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,exact_1_3,0.338235294117647,68,,grid,latent_111,False,0.36764705882352944,-0.029411764705882346,-0.10784313725490195,0.049019607843137254
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,exact_4_10,0.15126050420168066,68,,grid,latent_111,False,0.17016806722689073,-0.018907563025210083,-0.06302521008403361,0.02521008403361344
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,exact_11p,0.08427287581699347,68,,grid,latent_111,False,0.095291146761735,-0.011018270944741533,-0.034455399584076056,0.011491662953059987
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,within1,0.38222544998860786,68,,grid,latent_111,False,0.39337576338350333,-0.01115031339489544,-0.03956717495610684,0.017287274558946387
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,within2,0.5496562261268144,68,,grid,latent_111,False,0.5655932947341615,-0.015937068607347248,-0.04011157573077078,0.0067341900875182575
+"third look, no decision weight",pooled test_stable+test_shift,contrast,exact_vs_grid:latent_111,within3,0.6926688378700762,68,,grid,latent_111,False,0.6814967454286339,0.011172092441442284,-0.0075331697671094005,0.029814227525140843
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,spearman,0.7057835181454465,68,,plan2_H2,final,True,0.7052119310750034,0.0005715870704429089,-0.008962928806417761,0.009861720814440882
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,mae,3.1291812418747407,68,,plan2_H2,final,False,3.1194565066856086,-0.009724735189131454,-0.08137845449184457,0.06344468010489682
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,exact,0.1414242491254875,68,,plan2_H2,final,False,0.14584500466853406,-0.004420755543046563,-0.027692120508490476,0.017616099071207425
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,spearman_fin,0.7912541534832558,68,,plan2_H2,final,False,0.7863939901990803,0.0048601632841752925,-0.004875991611815016,0.014464875152847495
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,mae_fin,2.2944510027953386,68,,plan2_H2,final,False,2.3056046799524763,0.011153677157137373,-0.05879323272136514,0.08005806895771725
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,exact_fin,0.14970595823468708,68,,plan2_H2,final,False,0.1562972273532736,-0.006591269118586547,-0.031623731600483325,0.017805282878115107
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,exact_1_3,0.29901960784313725,68,,plan2_H2,final,False,0.338235294117647,-0.03921568627450981,-0.10294117647058823,0.02450980392156863
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,exact_4_10,0.13655462184873945,68,,plan2_H2,final,False,0.15126050420168066,-0.014705882352941175,-0.05252100840336134,0.02521008403361344
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,exact_11p,0.09677287581699345,68,,plan2_H2,final,False,0.08427287581699347,0.012499999999999999,-0.007518382352941179,0.03390522875816993
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,within1,0.36893565241088455,68,,plan2_H2,final,False,0.38222544998860786,-0.013289797577723271,-0.041216996367925154,0.01426808861503133
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,within2,0.5546155942440772,68,,plan2_H2,final,False,0.5496562261268144,0.004959368117262863,-0.013363565721344353,0.023342488909439376
+"third look, no decision weight",pooled test_stable+test_shift,contrast,final_vs_plan2_H2,within3,0.6849541969898008,68,,plan2_H2,final,False,0.6926688378700762,-0.00771464088027556,-0.023741500587475827,0.007874704307560336
+"third look, no decision weight",pooled test_stable+test_shift,contrast,S3:final_vs_latent_111,rps,0.1089683554995213,68,,latent_111 (own S3 re-fit),final (S3 re-fit),True,0.10982013739687639,0.0008517818973550591,-0.0006348865718036423,0.0023436513772269146
+"third look, no decision weight",pooled test_stable+test_shift,contrast,S3:final_vs_latent_111,logloss_points,0.4445000596250999,68,,latent_111 (own S3 re-fit),final (S3 re-fit),False,0.45081722613696323,0.006317166511863278,-0.002774340759447374,0.015229987354959212
+"third look, no decision weight",season 2024,mean,final,spearman,0.7534141726866185,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,mae,2.839278752436647,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,exact,0.14651559454191032,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,spearman_fin,0.8120520357265711,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,mae_fin,2.22166501834652,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,exact_fin,0.1526102582846004,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,exact_1_3,0.27777777777777773,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,exact_4_10,0.15476190476190474,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,exact_11p,0.10196759259259258,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,within1,0.3709064327485381,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,within2,0.5742202729044834,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,within3,0.7154848927875245,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final,logloss_points,0.447190589735531,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,spearman,0.7595446950710109,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,mae,2.7831140350877193,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,exact,0.15,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,spearman_fin,0.8210805813553491,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,mae_fin,2.156416623667011,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,exact_fin,0.15352149266139203,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,exact_1_3,0.3333333333333333,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,exact_4_10,0.19642857142857142,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,exact_11p,0.0625,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,within1,0.38756091617933724,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,within2,0.5856481481481483,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,within3,0.7247319688109162,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,reverse_only,logloss_points,0.4471098910891862,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,spearman,0.7524245663177552,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,mae,2.864278752436647,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,exact,0.13205409356725148,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,spearman_fin,0.8081521204973218,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,mae_fin,2.2406533081068685,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,exact_fin,0.13459752321981425,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,exact_1_3,0.2916666666666667,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,exact_4_10,0.11309523809523808,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,exact_11p,0.09837962962962964,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,within1,0.38327241715399607,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,within2,0.5635843079922027,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,within3,0.7011330409356725,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,final_minus_reverse,logloss_points,0.45498938241320536,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,spearman,0.7552060297803331,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,mae,2.8169103313840154,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,exact,0.1565911306042885,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,spearman_fin,0.8117925020885547,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,mae_fin,2.181180842219929,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,exact_fin,0.1630231624813668,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,exact_1_3,0.3333333333333333,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,exact_4_10,0.20833333333333334,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,exact_11p,0.06770833333333333,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,within1,0.3859283625730994,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,within2,0.5603192007797271,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,within3,0.7223075048732944,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,latent_111,logloss_points,0.4546796656873227,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,spearman,0.7552060297803331,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,mae,2.8169103313840154,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,exact,0.1565911306042885,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,spearman_fin,0.8117925020885547,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,mae_fin,2.181180842219929,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,exact_fin,0.1630231624813668,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,exact_1_3,0.3333333333333333,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,exact_4_10,0.20833333333333334,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,exact_11p,0.06770833333333333,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,within1,0.3859283625730994,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,within2,0.5603192007797271,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,within3,0.7223075048732944,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,plan2_H2,logloss_points,0.4546796656873227,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2024,mean,grid,spearman,0.7328032090028994,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,mae,2.8575779727095516,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,exact,0.1525219298245614,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,spearman_fin,0.7788638262322474,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,mae_fin,2.320502235982112,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,exact_fin,0.1526287123036349,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,exact_1_3,0.3055555555555555,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,exact_4_10,0.17857142857142858,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,exact_11p,0.08750000000000001,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,within1,0.3943469785575049,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,within2,0.6070297270955165,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,grid,within3,0.7242568226120859,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,spearman,0.6322908988156666,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,mae,3.6514132553606236,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,exact,0.10034113060428851,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,spearman_fin,0.7083952221239374,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,mae_fin,2.9838493292053663,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,exact_fin,0.09686604173833276,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,exact_1_3,0.19444444444444442,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,exact_4_10,0.08333333333333333,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,exact_11p,0.08437500000000002,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,within1,0.29149610136452236,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,within2,0.4467836257309942,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,within3,0.6022051656920078,24,,,,,,,,
+"third look, no decision weight",season 2024,mean,H1,logloss_points,0.5227378598983705,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,spearman,0.7549609317411173,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,mae,2.8219298245614035,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,exact,0.15497076023391812,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,spearman_fin,0.8151670536635707,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,mae_fin,2.163464983946795,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,exact_fin,0.15873842592592594,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,exact_1_3,0.3055555555555555,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,exact_4_10,0.1726190476190476,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,exact_11p,0.09837962962962965,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,within1,0.3665082846003898,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,within2,0.5742202729044834,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,within3,0.7242690058479532,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,rps,0.10145256076568054,24,S3 matrix,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,final,logloss_points,0.3743025927954718,24,S3 matrix,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,spearman,0.754016167870657,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,mae,2.829653996101365,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,exact,0.15034113060428847,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,spearman_fin,0.8094662206988058,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,mae_fin,2.19765436876505,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,exact_fin,0.15624140006879944,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,exact_1_3,0.3055555555555555,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,exact_4_10,0.21428571428571427,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,exact_11p,0.05937500000000001,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,within1,0.3858065302144249,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,within2,0.5642543859649123,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,within3,0.7160575048732944,24,,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,rps,0.10200815028379773,24,S3 matrix,,,,,,,
+"third look, no decision weight","season 2024 [S3 matrix, D0 order]",mean,latent_111,logloss_points,0.3779238576747241,24,S3 matrix,,,,,,,
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,spearman,0.7534141726866185,24,,latent_111,final,True,0.7552060297803331,-0.0017918570937146758,-0.018202430094844933,0.014079315936901064
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,mae,2.839278752436647,24,,latent_111,final,False,2.8169103313840154,-0.022368421052631583,-0.15679824561403502,0.10833333333333332
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,exact,0.14651559454191032,24,,latent_111,final,False,0.1565911306042885,-0.010075536062378163,-0.053718628167641315,0.02962962962962963
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,spearman_fin,0.8120520357265711,24,,latent_111,final,False,0.8117925020885547,0.0002595336380166134,-0.013907969986240089,0.014286716331269367
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,mae_fin,2.22166501834652,24,,latent_111,final,False,2.181180842219929,-0.040484176126591,-0.16281927244582042,0.0795758800596261
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,exact_fin,0.1526102582846004,24,,latent_111,final,False,0.1630231624813668,-0.010412904196766428,-0.05814674170106639,0.03407639426384589
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,exact_1_3,0.27777777777777773,24,,latent_111,final,False,0.3333333333333333,-0.055555555555555546,-0.13888888888888887,0.013888888888888893
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,exact_4_10,0.15476190476190474,24,,latent_111,final,False,0.20833333333333334,-0.05357142857142857,-0.1369047619047619,0.029761904761904757
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,exact_11p,0.10196759259259258,24,,latent_111,final,False,0.06770833333333333,0.03425925925925926,0.004629629629629629,0.06388888888888888
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,within1,0.3709064327485381,24,,latent_111,final,False,0.3859283625730994,-0.0150219298245614,-0.0668859649122807,0.035197368421052644
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,within2,0.5742202729044834,24,,latent_111,final,False,0.5603192007797271,0.013901072124756346,-0.017592592592592587,0.04723440545808968
+"third look, no decision weight",season 2024,contrast,T1:final_vs_latent_111,within3,0.7154848927875245,24,,latent_111,final,False,0.7223075048732944,-0.00682261208576999,-0.0337962962962963,0.01864035087719298
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,spearman,0.7534141726866185,24,,final_minus_reverse,final,False,0.7524245663177552,0.0009896063688633282,-0.006487619170475224,0.008406509533638024
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,mae,2.839278752436647,24,,final_minus_reverse,final,True,2.864278752436647,0.024999999999999967,-0.06316337719298247,0.11666666666666663
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,exact,0.14651559454191032,24,,final_minus_reverse,final,False,0.13205409356725148,0.014461500974658871,-0.014705165692007796,0.04594298245614035
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,spearman_fin,0.8120520357265711,24,,final_minus_reverse,final,False,0.8081521204973218,0.0038999152292496,-0.00313352698535553,0.011185976583615882
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,mae_fin,2.22166501834652,24,,final_minus_reverse,final,False,2.2406533081068685,0.01898828976034859,-0.05944525068799442,0.09865909156060078
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,exact_fin,0.1526102582846004,24,,final_minus_reverse,final,False,0.13459752321981425,0.01801273506478615,-0.014699978858502463,0.053010083419332645
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,exact_1_3,0.27777777777777773,24,,final_minus_reverse,final,False,0.2916666666666667,-0.01388888888888889,-0.09722222222222221,0.05555555555555555
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,exact_4_10,0.15476190476190474,24,,final_minus_reverse,final,False,0.11309523809523808,0.041666666666666664,-0.011904761904761904,0.10119047619047618
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,exact_11p,0.10196759259259258,24,,final_minus_reverse,final,False,0.09837962962962964,0.0035879629629629642,-0.022916666666666665,0.03275462962962963
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,within1,0.3709064327485381,24,,final_minus_reverse,final,False,0.38327241715399607,-0.01236598440545808,-0.048464912280701745,0.02326998050682262
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,within2,0.5742202729044834,24,,final_minus_reverse,final,False,0.5635843079922027,0.010635964912280702,-0.014583333333333337,0.037719298245614034
+"third look, no decision weight",season 2024,contrast,T2:final_vs_final_minus_reverse,within3,0.7154848927875245,24,,final_minus_reverse,final,False,0.7011330409356725,0.01435185185185186,-0.005080713937621818,0.03344298245614035
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,spearman,0.7534141726866185,24,,reverse_only,final,True,0.7595446950710109,-0.006130522384392355,-0.019894973340213284,0.007758980785296587
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,mae,2.839278752436647,24,,reverse_only,final,False,2.7831140350877193,-0.05616471734892791,-0.15331871345029235,0.04493177387914221
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,exact,0.14651559454191032,24,,reverse_only,final,False,0.15,-0.0034844054580896663,-0.0375,0.032285575048732945
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,spearman_fin,0.8120520357265711,24,,reverse_only,final,False,0.8210805813553491,-0.009028545628777813,-0.021199648170671725,0.0016839471534227648
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,mae_fin,2.22166501834652,24,,reverse_only,final,False,2.156416623667011,-0.06524839467950926,-0.1623576890551543,0.027675850676527898
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,exact_fin,0.1526102582846004,24,,reverse_only,final,False,0.15352149266139203,-0.0009112343767916503,-0.03952107341474601,0.040796075923059276
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,exact_1_3,0.27777777777777773,24,,reverse_only,final,False,0.3333333333333333,-0.05555555555555556,-0.13888888888888887,0.013888888888888893
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,exact_4_10,0.15476190476190474,24,,reverse_only,final,False,0.19642857142857142,-0.041666666666666664,-0.09523809523809523,0.011904761904761904
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,exact_11p,0.10196759259259258,24,,reverse_only,final,False,0.0625,0.03946759259259259,0.009259259259259259,0.07546874999999992
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,within1,0.3709064327485381,24,,reverse_only,final,False,0.38756091617933724,-0.016654483430799213,-0.0543859649122807,0.020394736842105275
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,within2,0.5742202729044834,24,,reverse_only,final,False,0.5856481481481483,-0.011427875243664712,-0.04539473684210526,0.018750000000000006
+"third look, no decision weight",season 2024,contrast,T3:final_vs_reverse_only,within3,0.7154848927875245,24,,reverse_only,final,False,0.7247319688109162,-0.009247076023391816,-0.03691520467836258,0.018640350877192957
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,spearman,0.7534141726866185,24,,grid,final,False,0.7328032090028994,0.020610963683719088,-0.015040926458302638,0.056156291463953956
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,mae,2.839278752436647,24,,grid,final,False,2.8575779727095516,0.01829922027290448,-0.24003411306042877,0.2583333333333333
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,exact,0.14651559454191032,24,,grid,final,True,0.1525219298245614,-0.006006335282651068,-0.07497624269005847,0.05972222222222223
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,spearman_fin,0.8120520357265711,24,,grid,final,False,0.7788638262322474,0.03318820949432404,-0.007307476718757696,0.07668991335569317
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,mae_fin,2.22166501834652,24,,grid,final,False,2.320502235982112,0.09883721763559224,-0.1515820379686963,0.3373315757223941
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,exact_fin,0.1526102582846004,24,,grid,final,False,0.1526287123036349,-1.845401903451116e-05,-0.07885910714797614,0.07305274714052286
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,exact_1_3,0.27777777777777773,24,,grid,final,False,0.3055555555555555,-0.027777777777777773,-0.19444444444444442,0.13888888888888887
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,exact_4_10,0.15476190476190474,24,,grid,final,False,0.17857142857142858,-0.023809523809523808,-0.125,0.07142857142857142
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,exact_11p,0.10196759259259258,24,,grid,final,False,0.08750000000000001,0.014467592592592582,-0.03819444444444445,0.06446759259259259
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,within1,0.3709064327485381,24,,grid,final,False,0.3943469785575049,-0.02344054580896686,-0.09649336013645222,0.04739278752436648
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,within2,0.5742202729044834,24,,grid,final,False,0.6070297270955165,-0.032809454191033136,-0.08851181773879142,0.022453703703703726
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:final,within3,0.7154848927875245,24,,grid,final,False,0.7242568226120859,-0.008771929824561408,-0.04287280701754386,0.026644736842105252
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,spearman,0.7595446950710109,24,,grid,reverse_only,False,0.7328032090028994,0.026741486068111442,-0.0005432852965747692,0.05471847510934195
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,mae,2.7831140350877193,24,,grid,reverse_only,False,2.8575779727095516,0.0744639376218324,-0.12654239766081873,0.2648148148148149
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,exact,0.15,24,,grid,reverse_only,True,0.1525219298245614,-0.0025219298245614022,-0.0587719298245614,0.049890350877192985
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,spearman_fin,0.8210805813553491,24,,grid,reverse_only,False,0.7788638262322474,0.04221675512310185,0.008817616959064314,0.07981802699149837
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,mae_fin,2.156416623667011,24,,grid,reverse_only,False,2.320502235982112,0.16408561231510152,-0.023905148133814936,0.34435346433895186
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,exact_fin,0.15352149266139203,24,,grid,reverse_only,False,0.1526287123036349,0.0008927803577571345,-0.06062258574848068,0.058796945770267145
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,exact_1_3,0.3333333333333333,24,,grid,reverse_only,False,0.3055555555555555,0.02777777777777778,-0.11111111111111112,0.16666666666666666
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,exact_4_10,0.19642857142857142,24,,grid,reverse_only,False,0.17857142857142858,0.01785714285714286,-0.07142857142857142,0.10714285714285714
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,exact_11p,0.0625,24,,grid,reverse_only,False,0.08750000000000001,-0.025000000000000005,-0.07083333333333335,0.02083333333333333
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,within1,0.38756091617933724,24,,grid,reverse_only,False,0.3943469785575049,-0.0067860623781676455,-0.06217105263157895,0.050249147173489196
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,within2,0.5856481481481483,24,,grid,reverse_only,False,0.6070297270955165,-0.021381578947368418,-0.05910087719298246,0.020394736842105268
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:reverse_only,within3,0.7247319688109162,24,,grid,reverse_only,False,0.7242568226120859,0.00047514619883040854,-0.029605263157894735,0.030555555555555555
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,spearman,0.7552060297803331,24,,grid,latent_111,False,0.7328032090028994,0.022402820777433764,-0.005764933166248957,0.04922603690599045
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,mae,2.8169103313840154,24,,grid,latent_111,False,2.8575779727095516,0.040667641325536075,-0.1903508771929824,0.23596491228070174
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,exact,0.1565911306042885,24,,grid,latent_111,True,0.1525219298245614,0.004069200779727102,-0.0589939692982456,0.06042884990253412
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,spearman_fin,0.8117925020885547,24,,grid,latent_111,False,0.7788638262322474,0.032928675856307425,0.002507509582780484,0.0657441090471276
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,mae_fin,2.181180842219929,24,,grid,latent_111,False,2.320502235982112,0.13932139376218322,-0.05626453925868591,0.31417537409700713
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,exact_fin,0.1630231624813668,24,,grid,latent_111,False,0.1526287123036349,0.010394450177731914,-0.05596609477124182,0.07088993163054691
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,exact_1_3,0.3333333333333333,24,,grid,latent_111,False,0.3055555555555555,0.02777777777777778,-0.125,0.18055555555555555
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,exact_4_10,0.20833333333333334,24,,grid,latent_111,False,0.17857142857142858,0.029761904761904767,-0.06547619047619048,0.11904761904761905
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,exact_11p,0.06770833333333333,24,,grid,latent_111,False,0.08750000000000001,-0.01979166666666667,-0.07083333333333335,0.02604166666666666
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,within1,0.3859283625730994,24,,grid,latent_111,False,0.3943469785575049,-0.008418615984405459,-0.07109649122807017,0.05254629629629629
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,within2,0.5603192007797271,24,,grid,latent_111,False,0.6070297270955165,-0.04671052631578948,-0.09791666666666665,0.0032894736842105205
+"third look, no decision weight",season 2024,contrast,exact_vs_grid:latent_111,within3,0.7223075048732944,24,,grid,latent_111,False,0.7242568226120859,-0.0019493177387914183,-0.03515198586744638,0.02897173489278754
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,spearman,0.7534141726866185,24,,plan2_H2,final,True,0.7552060297803331,-0.0017918570937146758,-0.018202430094844933,0.014079315936901064
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,mae,2.839278752436647,24,,plan2_H2,final,False,2.8169103313840154,-0.022368421052631583,-0.15679824561403502,0.10833333333333332
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,exact,0.14651559454191032,24,,plan2_H2,final,False,0.1565911306042885,-0.010075536062378163,-0.053718628167641315,0.02962962962962963
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,spearman_fin,0.8120520357265711,24,,plan2_H2,final,False,0.8117925020885547,0.0002595336380166134,-0.013907969986240089,0.014286716331269367
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,mae_fin,2.22166501834652,24,,plan2_H2,final,False,2.181180842219929,-0.040484176126591,-0.16281927244582042,0.0795758800596261
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,exact_fin,0.1526102582846004,24,,plan2_H2,final,False,0.1630231624813668,-0.010412904196766428,-0.05814674170106639,0.03407639426384589
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,exact_1_3,0.27777777777777773,24,,plan2_H2,final,False,0.3333333333333333,-0.055555555555555546,-0.13888888888888887,0.013888888888888893
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,exact_4_10,0.15476190476190474,24,,plan2_H2,final,False,0.20833333333333334,-0.05357142857142857,-0.1369047619047619,0.029761904761904757
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,exact_11p,0.10196759259259258,24,,plan2_H2,final,False,0.06770833333333333,0.03425925925925926,0.004629629629629629,0.06388888888888888
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,within1,0.3709064327485381,24,,plan2_H2,final,False,0.3859283625730994,-0.0150219298245614,-0.0668859649122807,0.035197368421052644
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,within2,0.5742202729044834,24,,plan2_H2,final,False,0.5603192007797271,0.013901072124756346,-0.017592592592592587,0.04723440545808968
+"third look, no decision weight",season 2024,contrast,final_vs_plan2_H2,within3,0.7154848927875245,24,,plan2_H2,final,False,0.7223075048732944,-0.00682261208576999,-0.0337962962962963,0.01864035087719298
+"third look, no decision weight",season 2024,contrast,S3:final_vs_latent_111,rps,0.10145256076568054,24,,latent_111 (own S3 re-fit),final (S3 re-fit),True,0.10200815028379773,0.0005555895181171867,-0.0018244767501576647,0.003051762447683749
+"third look, no decision weight",season 2024,contrast,S3:final_vs_latent_111,logloss_points,0.3743025927954718,24,,latent_111 (own S3 re-fit),final (S3 re-fit),False,0.3779238576747241,0.003621264879252295,-0.012012386368020546,0.018236362098527806
+"third look, no decision weight",season 2025,mean,final,spearman,0.6468253968253967,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,mae,3.3872807017543862,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,exact,0.14967105263157895,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,spearman_fin,0.7445455290753277,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,mae_fin,2.528263981031009,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,exact_fin,0.16295095889232888,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,exact_1_3,0.3194444444444445,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,exact_4_10,0.1607142857142857,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,exact_11p,0.08888888888888889,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,within1,0.36600877192982456,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,within2,0.5209429824561403,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,within3,0.6469298245614036,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final,logloss_points,0.507484777466278,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,spearman,0.6544486215538847,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,mae,3.3035087719298253,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,exact,0.1706140350877193,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,spearman_fin,0.7515406634988677,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,mae_fin,2.4297842236309726,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,exact_fin,0.1833078918701984,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,exact_1_3,0.375,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,exact_4_10,0.16666666666666666,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,exact_11p,0.11064814814814816,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,within1,0.38289473684210523,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,within2,0.5419956140350878,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,within3,0.6551535087719298,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,reverse_only,logloss_points,0.5000922473124483,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,spearman,0.6469611528822056,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,mae,3.3578947368421055,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,exact,0.14298245614035088,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,spearman_fin,0.7522616283355447,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,mae_fin,2.451648985617639,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,exact_fin,0.14907909070060774,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,exact_1_3,0.3194444444444445,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,exact_4_10,0.12499999999999999,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,exact_11p,0.10185185185185186,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,within1,0.3869517543859649,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,within2,0.5297149122807018,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,within3,0.6492324561403509,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,final_minus_reverse,logloss_points,0.5060832764459616,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,spearman,0.6505743525480366,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,mae,3.311184210526316,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,exact,0.17280701754385963,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,spearman_fin,0.7482696300517508,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,mae_fin,2.4550687380215246,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,exact_fin,0.18270390027355973,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,exact_1_3,0.40277777777777773,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,exact_4_10,0.15476190476190477,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,exact_11p,0.11481481481481481,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,within1,0.39320175438596494,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,within2,0.5419956140350877,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,within3,0.6514254385964913,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,latent_111,logloss_points,0.5005597549321793,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,spearman,0.6505743525480366,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,mae,3.311184210526316,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,exact,0.17280701754385963,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,spearman_fin,0.7482696300517508,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,mae_fin,2.4550687380215246,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,exact_fin,0.18270390027355973,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,exact_1_3,0.40277777777777773,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,exact_4_10,0.15476190476190477,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,exact_11p,0.11481481481481481,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,within1,0.39320175438596494,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,within2,0.5419956140350877,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,within3,0.6514254385964913,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,plan2_H2,logloss_points,0.5005597549321793,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2025,mean,grid,spearman,0.6477130325814536,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,mae,3.3412280701754384,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,exact,0.17894736842105263,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,spearman_fin,0.7358362913316473,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,mae_fin,2.4840335622553114,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,exact_fin,0.18951120652939538,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,exact_1_3,0.4583333333333333,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,exact_4_10,0.1726190476190476,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,exact_11p,0.09675925925925927,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,within1,0.38453947368421054,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,within2,0.5270833333333333,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,grid,within3,0.6426535087719297,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,spearman,0.577454051796157,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,mae,3.8927631578947364,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,exact,0.10723684210526314,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,spearman_fin,0.6756724248403815,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,mae_fin,3.0539809491047882,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,exact_fin,0.11352751261323242,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,exact_1_3,0.23611111111111108,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,exact_4_10,0.10119047619047618,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,exact_11p,0.07175925925925926,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,within1,0.3005482456140351,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,within2,0.4455043859649123,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,within3,0.5669956140350877,24,,,,,,,,
+"third look, no decision weight",season 2025,mean,H1,logloss_points,0.5617828526386554,24,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,spearman,0.647953216374269,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,mae,3.3778508771929823,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,exact,0.15416666666666665,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,spearman_fin,0.7439253535422266,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,mae_fin,2.535077993185578,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,exact_fin,0.16268812349501202,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,exact_1_3,0.27777777777777773,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,exact_4_10,0.16666666666666666,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,exact_11p,0.10648148148148147,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,within1,0.3703947368421052,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,within2,0.519298245614035,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,within3,0.6470394736842106,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,rps,0.11795264227582847,24,S3 matrix,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,final,logloss_points,0.5125814373779884,24,S3 matrix,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,spearman,0.6524018379281536,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,mae,3.3026315789473686,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,exact,0.17269736842105265,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,spearman_fin,0.7493696533944213,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,mae_fin,2.428585966550363,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,exact_fin,0.18565923079758218,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,exact_1_3,0.4166666666666667,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,exact_4_10,0.1607142857142857,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,exact_11p,0.10648148148148147,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,within1,0.40175438596491225,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,within2,0.5337719298245615,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,within3,0.6514254385964912,24,,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,rps,0.11726594924463939,24,S3 matrix,,,,,,,
+"third look, no decision weight","season 2025 [S3 matrix, D0 order]",mean,latent_111,logloss_points,0.5132241780130692,24,S3 matrix,,,,,,,
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,spearman,0.6468253968253967,24,,latent_111,final,True,0.6505743525480366,-0.00374895572263996,-0.02040517961570593,0.012291405597326622
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,mae,3.3872807017543862,24,,latent_111,final,False,3.311184210526316,-0.07609649122807012,-0.19561403508771924,0.029610745614035087
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,exact,0.14967105263157895,24,,latent_111,final,False,0.17280701754385963,-0.023135964912280694,-0.05866228070175439,0.010635964912280702
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,spearman_fin,0.7445455290753277,24,,latent_111,final,False,0.7482696300517508,-0.003724100976422985,-0.02265719563803932,0.015308828490910496
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,mae_fin,2.528263981031009,24,,latent_111,final,False,2.4550687380215246,-0.0731952430094845,-0.19719587085565224,0.044818913859403404
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,exact_fin,0.16295095889232888,24,,latent_111,final,False,0.18270390027355973,-0.019752941381230852,-0.05778952269869936,0.01982601328177469
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,exact_1_3,0.3194444444444445,24,,latent_111,final,False,0.40277777777777773,-0.08333333333333333,-0.20833333333333334,0.041666666666666664
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,exact_4_10,0.1607142857142857,24,,latent_111,final,False,0.15476190476190477,0.005952380952380952,-0.05357142857142857,0.06547619047619047
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,exact_11p,0.08888888888888889,24,,latent_111,final,False,0.11481481481481481,-0.025925925925925925,-0.04861111111111111,-0.0009259259259259238
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,within1,0.36600877192982456,24,,latent_111,final,False,0.39320175438596494,-0.027192982456140352,-0.0706140350877193,0.01655701754385965
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,within2,0.5209429824561403,24,,latent_111,final,False,0.5419956140350877,-0.02105263157894736,-0.05416666666666664,0.008333333333333333
+"third look, no decision weight",season 2025,contrast,T1:final_vs_latent_111,within3,0.6469298245614036,24,,latent_111,final,False,0.6514254385964913,-0.0044956140350877125,-0.036074561403508766,0.024999999999999994
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,spearman,0.6468253968253967,24,,final_minus_reverse,final,False,0.6469611528822056,-0.00013575605680872025,-0.01101738721804513,0.011059158312447765
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,mae,3.3872807017543862,24,,final_minus_reverse,final,True,3.3578947368421055,-0.02938596491228064,-0.10175438596491211,0.04210526315789478
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,exact,0.14967105263157895,24,,final_minus_reverse,final,False,0.14298245614035088,0.006688596491228073,-0.01831140350877193,0.029388706140350846
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,spearman_fin,0.7445455290753277,24,,final_minus_reverse,final,False,0.7522616283355447,-0.007716099260216938,-0.02229180694713785,0.006569066012032314
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,mae_fin,2.528263981031009,24,,final_minus_reverse,final,False,2.451648985617639,-0.07661499541337002,-0.16148376583820664,0.0032784908554064837
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,exact_fin,0.16295095889232888,24,,final_minus_reverse,final,False,0.14907909070060774,0.013871868191721135,-0.012088815789473682,0.03914470996732026
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,exact_1_3,0.3194444444444445,24,,final_minus_reverse,final,False,0.3194444444444445,0.0,-0.06944444444444445,0.06944444444444445
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,exact_4_10,0.1607142857142857,24,,final_minus_reverse,final,False,0.12499999999999999,0.03571428571428571,-0.011904761904761899,0.08333333333333333
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,exact_11p,0.08888888888888889,24,,final_minus_reverse,final,False,0.10185185185185186,-0.012962962962962963,-0.04675925925925926,0.018055555555555554
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,within1,0.36600877192982456,24,,final_minus_reverse,final,False,0.3869517543859649,-0.020942982456140347,-0.04857456140350877,0.01074561403508772
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,within2,0.5209429824561403,24,,final_minus_reverse,final,False,0.5297149122807018,-0.008771929824561403,-0.028070175438596506,0.010416666666666678
+"third look, no decision weight",season 2025,contrast,T2:final_vs_final_minus_reverse,within3,0.6469298245614036,24,,final_minus_reverse,final,False,0.6492324561403509,-0.0023026315789473686,-0.023574561403508772,0.01885964912280701
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,spearman,0.6468253968253967,24,,reverse_only,final,True,0.6544486215538847,-0.00762322472848789,-0.021052631578947364,0.006287071846282359
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,mae,3.3872807017543862,24,,reverse_only,final,False,3.3035087719298253,-0.08377192982456132,-0.17566337719298247,0.004166666666666819
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,exact,0.14967105263157895,24,,reverse_only,final,False,0.1706140350877193,-0.020942982456140347,-0.05866228070175439,0.014476425438596457
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,spearman_fin,0.7445455290753277,24,,reverse_only,final,False,0.7515406634988677,-0.006995134423540003,-0.020477346091945563,0.005713306408933323
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,mae_fin,2.528263981031009,24,,reverse_only,final,False,2.4297842236309726,-0.09847975740003607,-0.1966486464834472,-0.01205859061460839
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,exact_fin,0.16295095889232888,24,,reverse_only,final,False,0.1833078918701984,-0.020356932977869505,-0.06085012111569773,0.018617574496904023
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,exact_1_3,0.3194444444444445,24,,reverse_only,final,False,0.375,-0.05555555555555556,-0.18055555555555558,0.06944444444444446
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,exact_4_10,0.1607142857142857,24,,reverse_only,final,False,0.16666666666666666,-0.005952380952380952,-0.07142857142857141,0.05357142857142857
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,exact_11p,0.08888888888888889,24,,reverse_only,final,False,0.11064814814814816,-0.021759259259259256,-0.05879629629629629,0.012500000000000002
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,within1,0.36600877192982456,24,,reverse_only,final,False,0.38289473684210523,-0.0168859649122807,-0.05021929824561403,0.01436403508771931
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,within2,0.5209429824561403,24,,reverse_only,final,False,0.5419956140350878,-0.02105263157894736,-0.048245614035087724,0.006140350877192988
+"third look, no decision weight",season 2025,contrast,T3:final_vs_reverse_only,within3,0.6469298245614036,24,,reverse_only,final,False,0.6551535087719298,-0.008223684210526312,-0.03135964912280701,0.01326754385964913
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,spearman,0.6468253968253967,24,,grid,final,False,0.6477130325814536,-0.0008876357560568213,-0.024969715956558076,0.023173819966583107
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,mae,3.3872807017543862,24,,grid,final,False,3.3412280701754384,-0.046052631578947324,-0.17521929824561397,0.07390899122807013
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,exact,0.14967105263157895,24,,grid,final,True,0.17894736842105263,-0.02927631578947369,-0.05230263157894737,-0.005921052631578952
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,spearman_fin,0.7445455290753277,24,,grid,final,False,0.7358362913316473,0.008709237743680459,-0.021785180629269277,0.041647466552410375
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,mae_fin,2.528263981031009,24,,grid,final,False,2.4840335622553114,-0.04423041877569741,-0.20972619201189246,0.1187480918902649
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,exact_fin,0.16295095889232888,24,,grid,final,False,0.18951120652939538,-0.026560247637066523,-0.052418509253116446,0.00016630564872146126
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,exact_1_3,0.3194444444444445,24,,grid,final,False,0.4583333333333333,-0.1388888888888889,-0.2638888888888889,-0.013888888888888881
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,exact_4_10,0.1607142857142857,24,,grid,final,False,0.1726190476190476,-0.011904761904761904,-0.07142857142857142,0.041666666666666664
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,exact_11p,0.08888888888888889,24,,grid,final,False,0.09675925925925927,-0.007870370370370371,-0.038425925925925926,0.02268518518518518
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,within1,0.36600877192982456,24,,grid,final,False,0.38453947368421054,-0.018530701754385964,-0.06677631578947368,0.03157894736842105
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,within2,0.5209429824561403,24,,grid,final,False,0.5270833333333333,-0.006140350877192978,-0.035635964912280695,0.023135964912280704
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:final,within3,0.6469298245614036,24,,grid,final,False,0.6426535087719297,0.004276315789473681,-0.021052631578947368,0.02532894736842106
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,spearman,0.6544486215538847,24,,grid,reverse_only,False,0.6477130325814536,0.0067355889724310695,-0.012374686716791981,0.02512531328320802
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,mae,3.3035087719298253,24,,grid,reverse_only,False,3.3412280701754384,0.037719298245614,-0.06359649122807019,0.14167214912280696
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,exact,0.1706140350877193,24,,grid,reverse_only,True,0.17894736842105263,-0.008333333333333338,-0.04638157894736842,0.03157894736842105
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,spearman_fin,0.7515406634988677,24,,grid,reverse_only,False,0.7358362913316473,0.01570437216722046,-0.005744171065862245,0.040017345754091105
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,mae_fin,2.4297842236309726,24,,grid,reverse_only,False,2.4840335622553114,0.05424933862433867,-0.05830683479532157,0.17056073343079925
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,exact_fin,0.1833078918701984,24,,grid,reverse_only,False,0.18951120652939538,-0.006203314659197015,-0.04787117021516209,0.03769628575114254
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,exact_1_3,0.375,24,,grid,reverse_only,False,0.4583333333333333,-0.08333333333333333,-0.18055555555555555,0.013888888888888888
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,exact_4_10,0.16666666666666666,24,,grid,reverse_only,False,0.1726190476190476,-0.005952380952380952,-0.07738095238095237,0.06547619047619047
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,exact_11p,0.11064814814814816,24,,grid,reverse_only,False,0.09675925925925927,0.013888888888888886,-0.02962962962962963,0.05740740740740741
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,within1,0.38289473684210523,24,,grid,reverse_only,False,0.38453947368421054,-0.0016447368421052637,-0.043530701754385955,0.038925438596491224
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,within2,0.5419956140350878,24,,grid,reverse_only,False,0.5270833333333333,0.014912280701754384,-0.014473684210526305,0.04429824561403508
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:reverse_only,within3,0.6551535087719298,24,,grid,reverse_only,False,0.6426535087719297,0.012499999999999992,-0.010638706140350899,0.03574561403508771
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,spearman,0.6505743525480366,24,,grid,latent_111,False,0.6477130325814536,0.002861319966583139,-0.011215538847117757,0.0163640873015873
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,mae,3.311184210526316,24,,grid,latent_111,False,3.3412280701754384,0.030043859649122793,-0.06600877192982456,0.11710526315789477
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,exact,0.17280701754385963,24,,grid,latent_111,True,0.17894736842105263,-0.00614035087719299,-0.035416666666666666,0.025328947368421045
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,spearman_fin,0.7482696300517508,24,,grid,latent_111,False,0.7358362913316473,0.012433338720103444,-0.007623532164215198,0.032680341325126525
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,mae_fin,2.4550687380215246,24,,grid,latent_111,False,2.4840335622553114,0.028964824233787097,-0.07950697695013678,0.13066768355734096
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,exact_fin,0.18270390027355973,24,,grid,latent_111,False,0.18951120652939538,-0.006807306255835675,-0.03883540166797714,0.027363207984217063
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,exact_1_3,0.40277777777777773,24,,grid,latent_111,False,0.4583333333333333,-0.05555555555555556,-0.18055555555555558,0.06944444444444445
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,exact_4_10,0.15476190476190477,24,,grid,latent_111,False,0.1726190476190476,-0.017857142857142856,-0.07738095238095238,0.041666666666666664
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,exact_11p,0.11481481481481481,24,,grid,latent_111,False,0.09675925925925927,0.018055555555555557,-0.016203703703703703,0.04999999999999999
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,within1,0.39320175438596494,24,,grid,latent_111,False,0.38453947368421054,0.008662280701754385,-0.029057017543859642,0.04517543859649122
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,within2,0.5419956140350877,24,,grid,latent_111,False,0.5270833333333333,0.014912280701754379,-0.01239035087719297,0.04188596491228067
+"third look, no decision weight",season 2025,contrast,exact_vs_grid:latent_111,within3,0.6514254385964913,24,,grid,latent_111,False,0.6426535087719297,0.008771929824561394,-0.02083333333333334,0.03640350877192983
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,spearman,0.6468253968253967,24,,plan2_H2,final,True,0.6505743525480366,-0.00374895572263996,-0.02040517961570593,0.012291405597326622
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,mae,3.3872807017543862,24,,plan2_H2,final,False,3.311184210526316,-0.07609649122807012,-0.19561403508771924,0.029610745614035087
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,exact,0.14967105263157895,24,,plan2_H2,final,False,0.17280701754385963,-0.023135964912280694,-0.05866228070175439,0.010635964912280702
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,spearman_fin,0.7445455290753277,24,,plan2_H2,final,False,0.7482696300517508,-0.003724100976422985,-0.02265719563803932,0.015308828490910496
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,mae_fin,2.528263981031009,24,,plan2_H2,final,False,2.4550687380215246,-0.0731952430094845,-0.19719587085565224,0.044818913859403404
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,exact_fin,0.16295095889232888,24,,plan2_H2,final,False,0.18270390027355973,-0.019752941381230852,-0.05778952269869936,0.01982601328177469
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,exact_1_3,0.3194444444444445,24,,plan2_H2,final,False,0.40277777777777773,-0.08333333333333333,-0.20833333333333334,0.041666666666666664
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,exact_4_10,0.1607142857142857,24,,plan2_H2,final,False,0.15476190476190477,0.005952380952380952,-0.05357142857142857,0.06547619047619047
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,exact_11p,0.08888888888888889,24,,plan2_H2,final,False,0.11481481481481481,-0.025925925925925925,-0.04861111111111111,-0.0009259259259259238
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,within1,0.36600877192982456,24,,plan2_H2,final,False,0.39320175438596494,-0.027192982456140352,-0.0706140350877193,0.01655701754385965
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,within2,0.5209429824561403,24,,plan2_H2,final,False,0.5419956140350877,-0.02105263157894736,-0.05416666666666664,0.008333333333333333
+"third look, no decision weight",season 2025,contrast,final_vs_plan2_H2,within3,0.6469298245614036,24,,plan2_H2,final,False,0.6514254385964913,-0.0044956140350877125,-0.036074561403508766,0.024999999999999994
+"third look, no decision weight",season 2025,contrast,S3:final_vs_latent_111,rps,0.11795264227582847,24,,latent_111 (own S3 re-fit),final (S3 re-fit),True,0.11726594924463939,-0.0006866930311890847,-0.0028343124323830433,0.001287918232821632
+"third look, no decision weight",season 2025,contrast,S3:final_vs_latent_111,logloss_points,0.5125814373779884,24,,latent_111 (own S3 re-fit),final (S3 re-fit),False,0.5132241780130692,0.0006427406350807454,-0.015105279421211185,0.015670010180622078
+"third look, no decision weight",season 2026,mean,final,spearman,0.7193764782800993,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,mae,3.1673448773448776,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,exact,0.1254184704184704,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,spearman_fin,0.8223470440807901,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,mae_fin,2.1012186102511183,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,exact_fin,0.13032679738562092,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,exact_1_3,0.29999999999999993,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,exact_4_10,0.0857142857142857,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,exact_11p,0.09999999999999999,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,within1,0.37008297258297257,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,within2,0.5714971139971141,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,within3,0.6939466089466089,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final,logloss_points,0.501380870429512,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,spearman,0.7149824514786152,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,mae,3.17461038961039,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,exact,0.12649711399711397,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,spearman_fin,0.8119565457762052,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,mae_fin,2.1581191950464396,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,exact_fin,0.13979575163398691,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,exact_1_3,0.28333333333333327,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,exact_4_10,0.10714285714285714,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,exact_11p,0.09375,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,within1,0.37546897546897545,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,within2,0.5625757575757576,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,within3,0.6969516594516594,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,reverse_only,logloss_points,0.505581543179047,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,spearman,0.7115908814118533,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,mae,3.245367965367965,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,exact,0.12519841269841267,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,spearman_fin,0.8099784387439184,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,mae_fin,2.2408290333677328,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,exact_fin,0.12260685414516684,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,exact_1_3,0.2666666666666666,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,exact_4_10,0.07857142857142856,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,exact_11p,0.11537878787878786,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,within1,0.3566847041847041,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,within2,0.5440079365079364,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,within3,0.6947258297258296,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,final_minus_reverse,logloss_points,0.5164672477811728,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,spearman,0.7107841068609679,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,mae,3.2524386724386725,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,exact,0.1005952380952381,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,spearman_fin,0.8016650081085066,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,mae_fin,2.2755564155486754,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,exact_fin,0.11653809769521846,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,exact_1_3,0.2666666666666666,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,exact_4_10,0.07857142857142857,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,exact_11p,0.06749999999999999,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,within1,0.36461038961038966,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,within2,0.5460533910533911,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,within3,0.7065945165945167,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,latent_111,logloss_points,0.5199804983912302,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,spearman,0.7107841068609679,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,mae,3.2524386724386725,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,exact,0.1005952380952381,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,spearman_fin,0.8016650081085066,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,mae_fin,2.2755564155486754,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,exact_fin,0.11653809769521846,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,exact_1_3,0.2666666666666666,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,exact_4_10,0.07857142857142857,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,exact_11p,0.06749999999999999,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,within1,0.36461038961038966,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,within2,0.5460533910533911,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,within3,0.7065945165945167,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,plan2_H2,logloss_points,0.5199804983912302,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight",season 2026,mean,grid,spearman,0.6662680212505223,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,mae,3.3599855699855703,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,exact,0.15455988455988454,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,spearman_fin,0.7595556906973316,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,mae_fin,2.4219078947368424,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,exact_fin,0.16585461816305472,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,exact_1_3,0.33333333333333326,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,exact_4_10,0.15714285714285714,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,exact_11p,0.10287878787878788,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,within1,0.4028138528138528,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,within2,0.5620815295815296,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,grid,within3,0.6767965367965367,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,spearman,0.6554034848805343,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,mae,3.7997907647907647,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,exact,0.08962121212121213,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,spearman_fin,0.7294657599882057,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,mae_fin,2.8265617475060205,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,exact_fin,0.08960096319229445,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,exact_1_3,0.08333333333333333,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,exact_4_10,0.07142857142857142,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,exact_11p,0.10196969696969696,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,within1,0.26982323232323235,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,within2,0.46988455988455985,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,within3,0.5916810966810966,20,,,,,,,,
+"third look, no decision weight",season 2026,mean,H1,logloss_points,0.5492728717160171,20,"Plackett-Luce (harness), not S3",,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,spearman,0.7166236475867652,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,mae,3.1730158730158733,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,exact,0.1204292929292929,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,spearman_fin,0.8188097080937637,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,mae_fin,2.1193984348125214,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,exact_fin,0.12574754901960783,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,exact_1_3,0.31666666666666665,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,exact_4_10,0.0857142857142857,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,exact_11p,0.0875,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,within1,0.3744011544011544,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,within2,0.5808152958152959,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,within3,0.701089466089466,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,rps,0.10720616504856169,20,S3 matrix,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,final,logloss_points,0.44703936651718745,20,S3 matrix,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,spearman,0.7065544120706324,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,mae,3.2351443001443,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,exact,0.11206709956709957,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,spearman_fin,0.799829537077989,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,mae_fin,2.2638729790161682,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,exact_fin,0.12527928276573788,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,exact_1_3,0.26666666666666666,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,exact_4_10,0.1,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,exact_11p,0.07659090909090908,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,within1,0.3826839826839826,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,within2,0.5507178932178933,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,within3,0.7157936507936509,20,,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,rps,0.11025954771525515,20,S3 matrix,,,,,,,
+"third look, no decision weight","season 2026 [S3 matrix, D0 order]",mean,latent_111,logloss_points,0.463400926040323,20,S3 matrix,,,,,,,
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,spearman,0.7193764782800993,20,,latent_111,final,True,0.7107841068609679,0.008592371419131453,-0.006445250973282983,0.025120552048570693
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,mae,3.1673448773448776,20,,latent_111,final,False,3.2524386724386725,0.0850937950937951,-0.026309884559884526,0.2023423520923519
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,exact,0.1254184704184704,20,,latent_111,final,False,0.1005952380952381,0.024823232323232323,-0.01053282828282828,0.05891414141414142
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,spearman_fin,0.8223470440807901,20,,latent_111,final,False,0.8016650081085066,0.02068203597228364,0.0072554041353383066,0.03585030130473239
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,mae_fin,2.1012186102511183,20,,latent_111,final,False,2.2755564155486754,0.17433780529755766,0.09107401315789478,0.2651253547471621
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,exact_fin,0.13032679738562092,20,,latent_111,final,False,0.11653809769521846,0.013788699690402476,-0.02595430749054008,0.052569901315789466
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,exact_1_3,0.29999999999999993,20,,latent_111,final,False,0.2666666666666666,0.03333333333333334,-0.09999999999999999,0.16666666666666669
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,exact_4_10,0.0857142857142857,20,,latent_111,final,False,0.07857142857142857,0.007142857142857143,-0.04285714285714286,0.06428571428571428
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,exact_11p,0.09999999999999999,20,,latent_111,final,False,0.06749999999999999,0.0325,-0.014166666666666666,0.0825
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,within1,0.37008297258297257,20,,latent_111,final,False,0.36461038961038966,0.0054725829725829735,-0.041533820346320346,0.05671085858585857
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,within2,0.5714971139971141,20,,latent_111,final,False,0.5460533910533911,0.025443722943722945,-0.0013747294372294374,0.05293290043290044
+"third look, no decision weight",season 2026,contrast,T1:final_vs_latent_111,within3,0.6939466089466089,20,,latent_111,final,False,0.7065945165945167,-0.012647907647907661,-0.03810245310245312,0.010909090909090905
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,spearman,0.7193764782800993,20,,final_minus_reverse,final,False,0.7115908814118533,0.007785596868245962,-0.003692563191284405,0.01983691573155161
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,mae,3.1673448773448776,20,,final_minus_reverse,final,True,3.245367965367965,0.07802308802308804,0.0009368686868687863,0.15757936507936504
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,exact,0.1254184704184704,20,,final_minus_reverse,final,False,0.12519841269841267,0.00022005772005772027,-0.04180826118326119,0.039430014430014426
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,spearman_fin,0.8223470440807901,20,,final_minus_reverse,final,False,0.8099784387439184,0.012368605336871563,0.001978775062656594,0.02370745798319325
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,mae_fin,2.1012186102511183,20,,final_minus_reverse,final,False,2.2408290333677328,0.1396104231166151,0.047684017027863825,0.23340634674922592
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,exact_fin,0.13032679738562092,20,,final_minus_reverse,final,False,0.12260685414516684,0.007719943240454078,-0.03957118593051255,0.05242744883040935
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,exact_1_3,0.29999999999999993,20,,final_minus_reverse,final,False,0.2666666666666666,0.03333333333333334,-0.13333333333333336,0.20000000000000004
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,exact_4_10,0.0857142857142857,20,,final_minus_reverse,final,False,0.07857142857142856,0.007142857142857143,-0.03571428571428571,0.05714285714285713
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,exact_11p,0.09999999999999999,20,,final_minus_reverse,final,False,0.11537878787878786,-0.01537878787878788,-0.07037878787878789,0.037121212121212124
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,within1,0.37008297258297257,20,,final_minus_reverse,final,False,0.3566847041847041,0.013398268398268404,-0.021364177489177495,0.045887445887445893
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,within2,0.5714971139971141,20,,final_minus_reverse,final,False,0.5440079365079364,0.027489177489177497,0.006926406926406925,0.0501082251082251
+"third look, no decision weight",season 2026,contrast,T2:final_vs_final_minus_reverse,within3,0.6939466089466089,20,,final_minus_reverse,final,False,0.6947258297258296,-0.0007792207792207878,-0.03155898268398271,0.027491883116883078
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,spearman,0.7193764782800993,20,,reverse_only,final,True,0.7149824514786152,0.004394026801484066,-0.0037974615683594114,0.013402088472168531
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,mae,3.1673448773448776,20,,reverse_only,final,False,3.17461038961039,0.007265512265512331,-0.06901930014430005,0.09155844155844158
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,exact,0.1254184704184704,20,,reverse_only,final,False,0.12649711399711397,-0.0010786435786435795,-0.02971500721500721,0.024534632034632027
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,spearman_fin,0.8223470440807901,20,,reverse_only,final,False,0.8119565457762052,0.010390498304584966,0.0035737920168067124,0.018719864919652048
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,mae_fin,2.1012186102511183,20,,reverse_only,final,False,2.1581191950464396,0.05690058479532163,-0.003596491228070181,0.1195656067251461
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,exact_fin,0.13032679738562092,20,,reverse_only,final,False,0.13979575163398691,-0.009468954248366015,-0.03762580086859305,0.015347587719298235
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,exact_1_3,0.29999999999999993,20,,reverse_only,final,False,0.28333333333333327,0.01666666666666667,-0.08333333333333333,0.11666666666666667
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,exact_4_10,0.0857142857142857,20,,reverse_only,final,False,0.10714285714285714,-0.02142857142857143,-0.07857142857142857,0.02857142857142857
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,exact_11p,0.09999999999999999,20,,reverse_only,final,False,0.09375,0.006249999999999999,-0.025,0.0375
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,within1,0.37008297258297257,20,,reverse_only,final,False,0.37546897546897545,-0.005386002886002888,-0.0445298520923521,0.039579725829725736
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,within2,0.5714971139971141,20,,reverse_only,final,False,0.5625757575757576,0.008921356421356436,-0.017016865079365066,0.03641206709956709
+"third look, no decision weight",season 2026,contrast,T3:final_vs_reverse_only,within3,0.6939466089466089,20,,reverse_only,final,False,0.6969516594516594,-0.003005050505050513,-0.017651515151515154,0.011363636363636364
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,spearman,0.7193764782800993,20,,grid,final,False,0.6662680212505223,0.053108457029577005,0.011110168469301598,0.10456558799929372
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,mae,3.1673448773448776,20,,grid,final,False,3.3599855699855703,0.19264069264069267,-0.05043290043290034,0.4885443722943722
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,exact,0.1254184704184704,20,,grid,final,True,0.15455988455988454,-0.02914141414141414,-0.06823232323232324,0.004040404040404036
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,spearman_fin,0.8223470440807901,20,,grid,final,False,0.7595556906973316,0.06279135338345862,0.020498465833701896,0.11427929658705584
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,mae_fin,2.1012186102511183,20,,grid,final,False,2.4219078947368424,0.3206892844857241,0.09468388802889577,0.5927493442552458
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,exact_fin,0.13032679738562092,20,,grid,final,False,0.16585461816305472,-0.035527820777433786,-0.07995654347265223,-0.0027850877192982446
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,exact_1_3,0.29999999999999993,20,,grid,final,False,0.33333333333333326,-0.033333333333333326,-0.11666666666666667,0.06666666666666668
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,exact_4_10,0.0857142857142857,20,,grid,final,False,0.15714285714285714,-0.07142857142857142,-0.14285714285714285,-0.007142857142857143
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,exact_11p,0.09999999999999999,20,,grid,final,False,0.10287878787878788,-0.002878787878787878,-0.056136363636363616,0.047499999999999994
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,within1,0.37008297258297257,20,,grid,final,False,0.4028138528138528,-0.03273088023088022,-0.07180014430014428,0.00952380952380953
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,within2,0.5714971139971141,20,,grid,final,False,0.5620815295815296,0.009415584415584419,-0.026839826839826823,0.046103896103896105
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:final,within3,0.6939466089466089,20,,grid,final,False,0.6767965367965367,0.017150072150072138,-0.02132756132756134,0.06058441558441559
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,spearman,0.7149824514786152,20,,grid,reverse_only,False,0.6662680212505223,0.04871443022809293,0.01118157635427797,0.09475439288467621
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,mae,3.17461038961039,20,,grid,reverse_only,False,3.3599855699855703,0.18537518037518036,-0.020206890331890368,0.4394877344877345
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,exact,0.12649711399711397,20,,grid,reverse_only,True,0.15455988455988454,-0.028062770562770567,-0.05704058441558439,-6.938893903907229e-19
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,spearman_fin,0.8119565457762052,20,,grid,reverse_only,False,0.7595556906973316,0.05240085507887367,0.01347566987321247,0.09902874373433583
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,mae_fin,2.1581191950464396,20,,grid,reverse_only,False,2.4219078947368424,0.2637886996904025,0.06456561747506019,0.5029633965428277
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,exact_fin,0.13979575163398691,20,,grid,reverse_only,False,0.16585461816305472,-0.02605886652906777,-0.057048433737530095,0.004324593653250746
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,exact_1_3,0.28333333333333327,20,,grid,reverse_only,False,0.33333333333333326,-0.05,-0.11666666666666667,0.016666666666666666
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,exact_4_10,0.10714285714285714,20,,grid,reverse_only,False,0.15714285714285714,-0.05,-0.10714285714285714,0.007142857142857143
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,exact_11p,0.09375,20,,grid,reverse_only,False,0.10287878787878788,-0.009128787878787879,-0.0637121212121212,0.041666666666666664
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,within1,0.37546897546897545,20,,grid,reverse_only,False,0.4028138528138528,-0.02734487734487735,-0.06580357142857143,0.009994588744588712
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,within2,0.5625757575757576,20,,grid,reverse_only,False,0.5620815295815296,0.0004942279942279831,-0.03637472943722944,0.0368473124098124
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:reverse_only,within3,0.6969516594516594,20,,grid,reverse_only,False,0.6767965367965367,0.02015512265512265,-0.0183016774891775,0.06384406565656563
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,spearman,0.7107841068609679,20,,grid,latent_111,False,0.6662680212505223,0.044516085610445545,0.011206239412761144,0.08466129139402795
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,mae,3.2524386724386725,20,,grid,latent_111,False,3.3599855699855703,0.10754689754689757,-0.077047619047619,0.33720598845598837
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,exact,0.1005952380952381,20,,grid,latent_111,True,0.15455988455988454,-0.05396464646464647,-0.07669191919191917,-0.03282196969696979
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,spearman_fin,0.8016650081085066,20,,grid,latent_111,False,0.7595556906973316,0.04210931741117498,0.007580182072829114,0.08231042219519386
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,mae_fin,2.2755564155486754,20,,grid,latent_111,False,2.4219078947368424,0.14635147918816643,-0.03715199303405581,0.3571839095287237
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,exact_fin,0.11653809769521846,20,,grid,latent_111,False,0.16585461816305472,-0.04931652046783626,-0.07966118421052631,-0.019392086988304108
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,exact_1_3,0.2666666666666666,20,,grid,latent_111,False,0.33333333333333326,-0.06666666666666667,-0.18333333333333335,0.05
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,exact_4_10,0.07857142857142857,20,,grid,latent_111,False,0.15714285714285714,-0.07857142857142857,-0.14285714285714285,-0.02142857142857143
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,exact_11p,0.06749999999999999,20,,grid,latent_111,False,0.10287878787878788,-0.035378787878787885,-0.06242424242424242,-0.00909090909090909
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,within1,0.36461038961038966,20,,grid,latent_111,False,0.4028138528138528,-0.0382034632034632,-0.07954545454545456,0.001082251082251072
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,within2,0.5460533910533911,20,,grid,latent_111,False,0.5620815295815296,-0.01602813852813853,-0.05205898268398269,0.01794372294372294
+"third look, no decision weight",season 2026,contrast,exact_vs_grid:latent_111,within3,0.7065945165945167,20,,grid,latent_111,False,0.6767965367965367,0.029797979797979803,-0.001515151515151525,0.06753246753246753
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,spearman,0.7193764782800993,20,,plan2_H2,final,True,0.7107841068609679,0.008592371419131453,-0.006445250973282983,0.025120552048570693
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,mae,3.1673448773448776,20,,plan2_H2,final,False,3.2524386724386725,0.0850937950937951,-0.026309884559884526,0.2023423520923519
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,exact,0.1254184704184704,20,,plan2_H2,final,False,0.1005952380952381,0.024823232323232323,-0.01053282828282828,0.05891414141414142
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,spearman_fin,0.8223470440807901,20,,plan2_H2,final,False,0.8016650081085066,0.02068203597228364,0.0072554041353383066,0.03585030130473239
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,mae_fin,2.1012186102511183,20,,plan2_H2,final,False,2.2755564155486754,0.17433780529755766,0.09107401315789478,0.2651253547471621
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,exact_fin,0.13032679738562092,20,,plan2_H2,final,False,0.11653809769521846,0.013788699690402476,-0.02595430749054008,0.052569901315789466
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,exact_1_3,0.29999999999999993,20,,plan2_H2,final,False,0.2666666666666666,0.03333333333333334,-0.09999999999999999,0.16666666666666669
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,exact_4_10,0.0857142857142857,20,,plan2_H2,final,False,0.07857142857142857,0.007142857142857143,-0.04285714285714286,0.06428571428571428
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,exact_11p,0.09999999999999999,20,,plan2_H2,final,False,0.06749999999999999,0.0325,-0.014166666666666666,0.0825
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,within1,0.37008297258297257,20,,plan2_H2,final,False,0.36461038961038966,0.0054725829725829735,-0.041533820346320346,0.05671085858585857
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,within2,0.5714971139971141,20,,plan2_H2,final,False,0.5460533910533911,0.025443722943722945,-0.0013747294372294374,0.05293290043290044
+"third look, no decision weight",season 2026,contrast,final_vs_plan2_H2,within3,0.6939466089466089,20,,plan2_H2,final,False,0.7065945165945167,-0.012647907647907661,-0.03810245310245312,0.010909090909090905
+"third look, no decision weight",season 2026,contrast,S3:final_vs_latent_111,rps,0.10720616504856169,20,,latent_111 (own S3 re-fit),final (S3 re-fit),True,0.11025954771525515,0.0030533826666934785,-5.623101147420251e-05,0.0061892871877655495
+"third look, no decision weight",season 2026,contrast,S3:final_vs_latent_111,logloss_points,0.44703936651718745,20,,latent_111 (own S3 re-fit),final (S3 re-fit),False,0.463400926040323,0.016361559523135498,0.0031884321802554557,0.03147472748759698

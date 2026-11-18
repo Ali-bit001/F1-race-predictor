@@ -1,0 +1,15 @@
+kind: m08
+cell: S3
+theta:
+  tau: 3.5
+  dnf_scale: 1.25
+  kappa: 0.0
+  p0: 0.2
+  s_dis: 2.0
+  a_vol: 0.5
+  a_rain: 2.0
+order_model: latent_111
+component: S3refit_latent_111
+scored: 'test_stable: third look, no decision weight'
+git_commit: df9b8e8+dirty-1ba1a78b255c
+split: test_stable

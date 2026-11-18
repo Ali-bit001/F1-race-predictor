@@ -37,3 +37,8 @@ attribution: results/plan3/attribution.csv
 plan1_leaderboard: results/leaderboard.csv
 m09_leaderboard_labels: {hist: m09_hist_latent_111}
 m11_leaderboard_labels: {reverse: m11_latent_111_reverse}
+# R15 scoring (score.py). Only the freeze boundary and the rowhash file name are read from here. The pre-registered constants (alpha 0.05, levels 20/40,
+# 10,000 resamples, seed 0, the eight data files) are hard-coded in src/pitlane/plan3/holdout.py; score.py refuses a config that disagrees with them.
+score:
+  last_race: {race_id: 271, season: 2026, round: 20}     # last race in the data at the freeze; the fresh holdout is every later race
+  rowhash_file: freeze_rowhash.json

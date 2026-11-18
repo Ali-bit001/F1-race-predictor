@@ -1,0 +1,11 @@
+kind: latent
+cell: '111'
+lam: 32.0
+halflife: 50
+x_cols:
+- pace_hist_x
+lam_x: 3.0
+component: final_minus_reverse
+scored: 'test_shift: third look, no decision weight'
+git_commit: df9b8e8+dirty-1ba1a78b255c
+split: test_shift

@@ -1,0 +1,165 @@
+split: dev
+refit_every: 1
+tune_refit_every: 4
+frozen_path: configs/frozen.yaml
+frozen_plan2_path: configs/frozen_plan2.yaml
+base:
+  key: M03
+  cell: '111'
+  label: latent_111
+car_penalty:
+  grid:
+  - 2.0
+  - 4.0
+  - 8.0
+  - 16.0
+  - 32.0
+  - 64.0
+  - 128.0
+  - 256.0
+included_alone:
+  M11_reverse:
+    criterion:
+    - mae
+    - exact
+  M09_car_pace_hist:
+    criterion:
+    - spearman
+not_included:
+- M11_finishers
+- M11_topk10
+- M09_car_q1_offset
+- M09_car_q1_offset_alone
+- M05_rank_avg
+- M05_gbm_monotone
+- M12_two_stage
+- M17_D2
+- M17_grid
+- M18_deadband
+- M20_consistency
+- M16_S4
+- M16_S5
+- M16_S6
+- M16_S7
+- M16_S7_rps
+- M14_supplier_pool
+m09_tuning_csv: methodologies/M09_race_pace/results/tuning_lam_x.csv
+m09_feature_info: methodologies/M09_race_pace/results/feature_info.json
+lam_x_check:
+  grid:
+  - 0.3
+  - 1.0
+  - 3.0
+  - 10.0
+  switch_margin: 0.002
+pace_feature:
+  col: pace_hist_x
+  pace_col: med_gap_pct
+  halflife: 50
+  min_prior_obs: 1
+  scale_seasons_max: 2020
+  thresh: 1.07
+  min_clean: 10
+  source_split_season: 2023
+  lap_source:
+    le: jolpica
+    gt: openf1
+simulator:
+  variant: S3
+  draws: 1000
+  seed: 0
+  fit_k: 300
+h1_descriptive_split: seasons:2023-2023
+predict_check_races: 3
+bootstrap:
+  n_boot: 10000
+  seed: 0
+tie_break: driverId
+freeze:
+  date: '2026-11-18'
+  last_race_included:
+    season: 2026
+    round: 20
+leaderboard: results/plan3/leaderboard.csv
+attribution: results/plan3/attribution.csv
+plan1_leaderboard: results/leaderboard.csv
+m09_leaderboard_labels:
+  hist: m09_hist_latent_111
+m11_leaderboard_labels:
+  reverse: m11_latent_111_reverse
+score:
+  last_race:
+    race_id: 271
+    season: 2026
+    round: 20
+  rowhash_file: freeze_rowhash.json
+scored_run: 20261118-1407_p3_R15_score
+git_commit: df9b8e8+dirty-1ba1a78b255c
+frozen_config_sha256: 24ef86b6271b9df4d12a4d08e5fff587d2f2d5bb877e79213c82dad1e19abe00
+fresh_n: 0
+leaderboard_rows:
+- model: final
+  split: test_stable
+  row: appended
+  run_id: 20261118-1407_p3_R15_final_test_stable_test_stable
+- model: reverse_only
+  split: test_stable
+  row: appended
+  run_id: 20261118-1407_p3_R15_reverse_only_test_stable_test_stable
+- model: final_minus_reverse
+  split: test_stable
+  row: appended
+  run_id: 20261118-1407_p3_R15_final_minus_reverse_test_stable_test_stable
+- model: latent_111
+  split: test_stable
+  row: not appended
+  reason: results/leaderboard.csv:20261115-1848_latent_111_test_stable
+- model: H1
+  split: test_stable
+  row: not appended
+  reason: results/plan2/leaderboard.csv:20261115-2046_h1_latent_111_test_stable
+- model: grid
+  split: test_stable
+  row: not appended
+  reason: results/leaderboard.csv:20261115-1848_grid_test_stable
+- model: S3refit_final
+  split: test_stable
+  row: appended
+  run_id: 20261118-1407_p3_R15_S3refit_final_test_stable_test_stable
+- model: S3refit_latent_111
+  split: test_stable
+  row: appended
+  run_id: 20261118-1407_p3_R15_S3refit_latent_111_test_stable_test_stable
+- model: final
+  split: test_shift
+  row: appended
+  run_id: 20261118-1407_p3_R15_final_test_shift_test_shift
+- model: reverse_only
+  split: test_shift
+  row: appended
+  run_id: 20261118-1407_p3_R15_reverse_only_test_shift_test_shift
+- model: final_minus_reverse
+  split: test_shift
+  row: appended
+  run_id: 20261118-1407_p3_R15_final_minus_reverse_test_shift_test_shift
+- model: latent_111
+  split: test_shift
+  row: not appended
+  reason: results/leaderboard.csv:20261115-1850_latent_111_test_shift
+- model: H1
+  split: test_shift
+  row: not appended
+  reason: results/plan2/leaderboard.csv:20261115-2046_h1_latent_111_test_shift
+- model: grid
+  split: test_shift
+  row: not appended
+  reason: results/leaderboard.csv:20261115-1850_grid_test_shift
+- model: S3refit_final
+  split: test_shift
+  row: appended
+  run_id: 20261118-1407_p3_R15_S3refit_final_test_shift_test_shift
+- model: S3refit_latent_111
+  split: test_shift
+  row: appended
+  run_id: 20261118-1407_p3_R15_S3refit_latent_111_test_shift_test_shift
+note: R15 scoring; nothing tuned or selected

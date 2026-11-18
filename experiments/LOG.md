@@ -349,3 +349,21 @@ Entry format:
   - B4: this entry.
   Wording fixes in the README and the index row. FREEZE.md records the hashes of frozen_config.yaml, HOLDOUT_PREREG.md, prestatement.md and the data files, plus package versions.
 - Freeze: frozen_config.yaml SHA-256 24ef86b6...abe00; last race in data 2026 R20 (race_id 271). The fresh holdout is every later race.
+
+## 2026-11-18 — R15: holdout scoring script + third look on 2024–26 R20 (fresh holdout n = 0; no verdict)
+- Code: `src/pitlane/plan3/holdout.py`, `methodologies/P3_final/score.py`, config section `score`. Tests `tests/test_plan3_score.py` (43, coder) and `tests/test_plan3_score_rev1.py` (125, tester: boundary-moved dry runs at n = 20 / 23 in tmp, Holm cases, freeze guards); with `test_plan3_final*.py` and both leakage files, 227 passed (main-session re-run). Run `20261118-1407_p3_R15_score` + ten per-row folders; outputs `results/plan3/third_look.csv`, `results/plan3/holdout_status.json`.
+- Freeze checks: `score.py` verifies `frozen_config.yaml`, `HOLDOUT_PREREG.md` (hash in `FREEZE.md`) and the row hashes of race_id <= 271. **`freeze_rowhash.json` was generated 08:11:35, eight minutes after the tag (08:03:31), not inside it**; its sha256 is `fcb2798e756893ac6c57ef7a3676f1cd559291fbc4edb25b06e426101b0acd1d` and is committed now, still before any holdout race. Its data were checked against the `FREEZE.md` file hashes, which are in the tag; it is never regenerated.
+- Main-session decisions (before any holdout race), applied mechanically to the pre-registration where it was silent:
+  - Holm: ranked by one-sided bootstrap p = (1 + #{boot <= 0}) / (n_boot + 1), ties T1, T2, T3; rank k confirmed iff the two-sided 1 - 0.05/(m-k+1) percentile lower bound > 0; stop at first failure. A wrong-way test ranks last and cannot block.
+  - A level-t reading (t = 20, 40) uses data through the t-th holdout race only; verdict files are write-once, carry holdout row digests and the commit hash, and are refused from a dirty tree (repo verdict dir only).
+  - `plan2_H2` in the prereg is read as plan-2 frozen H2 = `latent_111` (plan-2 vocabulary in `M12_two_stage/README.md`), so the secondary "final vs plan2_H2" equals T1. Ambiguity recorded, not resolved by choice of a better-looking reference.
+  - Constants alpha 0.05, levels (20, 40), 10,000 resamples, seed 0 hard-coded; config refused if it disagrees.
+- Third look (2024–26 R20, 68 races; already seen, **no decision weight**), paired per-race bootstrap 10,000, seed 0:
+  - T1 final − latent_111 rho +0.0006 [−0.0090, +0.0099] — **the dev gain (+0.0172) does not replicate**; 2024–25 sign negative.
+  - T2 final − final_minus_reverse MAE +0.0214 [−0.0276, +0.0695]; 2026 alone +0.0780 [+0.0009, +0.1576], lower bound sits on 0 and changes sign with another seed, uncorrected — not support.
+  - T3 final − reverse_only rho −0.0036 [−0.0108, +0.0037]; T3 MAE (all entries) 2024–25 −0.070 [−0.138, −0.003] (pace column hurt).
+  - final exact vs grid −0.0210 [−0.0487, +0.0057]; 2025 −0.029 [−0.052, −0.006]; places 1–3 −0.139 [−0.264, −0.014]. Grid order is not beaten on exact rate.
+  - Multiplicity: 516 contrast intervals in `third_look.csv`, 75 exclude 0 (54 positive, 21 negative); none is read as a finding.
+  - Reproduction against stored R14/plan runs: max abs diff 8.9e-16. Truncation: score changes up to 1.2e-3 (reverse_only), order unchanged.
+- Fresh holdout: n = 0, "no verdict (n < 20)". First race eligible: 2026 R21 (Las Vegas).
+- Known operational gaps (not fixed in R15): no live pre-race entries builder; 2027 entry list / lineage to be added per prereg §6; old-row rebuild not dry-run against a real fetch; OpenF1 session list needs refresh.

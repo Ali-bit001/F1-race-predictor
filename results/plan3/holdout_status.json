@@ -1,0 +1,15 @@
+{
+ "n": 0,
+ "date": "2026-11-18",
+ "last_race_id": null,
+ "fresh_race_ids": [],
+ "verdict_state": "no verdict (n < 20)",
+ "readings": {},
+ "third_look_done": true,
+ "third_look_label": "third look, no decision weight",
+ "last_run": "20261118-1407_p3_R15_score",
+ "code": "df9b8e8+dirty-1ba1a78b255c",
+ "frozen_config_sha256": "24ef86b6271b9df4d12a4d08e5fff587d2f2d5bb877e79213c82dad1e19abe00",
+ "holdout_prereg_sha256": "f6031e581389f79b5dd3f46520a7ef2bc7985466d85d16654cfdbdf1b83b1acd",
+ "freeze_rowhash_sha256": "fcb2798e756893ac6c57ef7a3676f1cd559291fbc4edb25b06e426101b0acd1d"
+}

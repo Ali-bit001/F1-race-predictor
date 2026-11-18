@@ -287,7 +287,9 @@ def test_final_vs_latent_111_literal_values():
 @needs_data
 def test_attribution_and_leaderboard_diffs_are_pure_additions():
     for f in ("results/plan3/attribution.csv", "results/plan3/leaderboard.csv"):
-        out = subprocess.run(["git", "diff", "--numstat", "--", f], capture_output=True, text=True, cwd=ROOT).stdout.split()
+        # R14 rows were committed in the commit tagged plan3-freeze: check that commit's own diff (not the working tree).
+        out = subprocess.run(["git", "diff", "--numstat", "plan3-freeze^", "plan3-freeze", "--", f],
+                             capture_output=True, text=True, cwd=ROOT).stdout.split()
         assert out and out[1] == "0", (f, out)          # zero deleted lines
     att = pd.read_csv(ROOT / "results/plan3/attribution.csv")
     assert not att.duplicated(["component", "reference"]).any()
